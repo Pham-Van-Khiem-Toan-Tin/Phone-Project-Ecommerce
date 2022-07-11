@@ -4,6 +4,7 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const path = require("path");
+const connect = require("./configs/db");
 
 require("dotenv").config();
 const app = express();
@@ -15,6 +16,8 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+connect();
 
 app.get("/", (req, res) => {
   res.send("This is shop app");
