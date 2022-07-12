@@ -57,6 +57,14 @@ const productSchema = new mongoose.Schema({
             }
         }
     ],
+    pStatus: {
+        type: String,
+        required: true
+    },
+    pDiscount: {
+        type: Number,
+        default: null
+    }
 }, {timestamps: true});
 
 const productModel = mongoose.model('products', productSchema);
