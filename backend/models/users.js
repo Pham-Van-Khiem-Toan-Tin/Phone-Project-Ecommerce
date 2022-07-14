@@ -7,20 +7,17 @@ const crypto = require("crypto");
 
 const userSchema = new mongoose.Schema(
   {
-    userName: {
-      type: String,
-      required: [true, "Please enter your user name"],
-    },
     name: {
       type: String,
       maxLength: 32,
-      required: [true, "Please enter your name"],
+      required: true,
     },
     email: {
       type: String,
-      unique: true,
-      Validate: [validator.isEmail, "Please enter valid email"],
-      required: [true, "Please enter your email"],
+      index: { unique: true },
+      trim: true,
+      match: /^([a-zA-Z0-9_\.\-]+@(([a-zA-Z0-9\-])+\.))+([a-zA-Z0-9]{2,4})+$/,
+      required: true,
     },
     password: {
       type: String,
@@ -29,14 +26,8 @@ const userSchema = new mongoose.Schema(
       select: false,
     },
     avatar: {
-      public_id: {
-        type: String,
-        required: true,
-      },
-      urlAvatar: {
-        type: String,
-        required: true,
-      },
+      public_id: String,
+      urlAvatar: String,
     },
     role: {
       type: String,
@@ -48,6 +39,7 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 // pre middleware function run before event save
+
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     next();
@@ -56,8 +48,8 @@ userSchema.pre("save", async function (next) {
 });
 
 userSchema.methods.getJWTToken = function () {
-  return jwt.sign({ id: this._id }, process.env.SECRET, {
-    expiresIn: process.env.EXPIRES,
+  return jwt.sign({ id: this._id }, process.env.JWTSECRET, {
+    expiresIn: process.env.JWT_EXPIRE,
   });
 };
 
@@ -67,14 +59,12 @@ userSchema.methods.comparePassword = async function (password) {
 
 userSchema.methods.getResetPasswordToken = function () {
   const resetToken = crypto.randomBytes(20).toString("hex");
-
   this.resetPasswordToken = crypto
     .createHash("sha256")
     .update(resetToken)
     .digest("hex");
-  this.resetPasswordExpire = Date.now(+15 * 60 * 1000);
-
-  return resetToken;
+    this.resetPasswordExpire = Date.now() + 15*60*1000;
+    return resetToken;
 };
 
 const userModel = mongoose.model("users", userSchema);

@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const ObjectId = mongoose.Schema.ObjectId;
 const productSchema = new mongoose.Schema({
     pName: {
         type: String,
@@ -35,7 +35,7 @@ const productSchema = new mongoose.Schema({
     pReview: [
         {
             user: {
-                type: mongoose.Schema.ObjectId,
+                type: ObjectId,
                 ref: 'users',
                 required: true,
             },
