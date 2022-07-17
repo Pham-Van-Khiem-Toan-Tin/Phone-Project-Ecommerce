@@ -28,8 +28,14 @@ const userSchema = new mongoose.Schema(
       select: false,
     },
     avatar: {
-      public_id: String,
-      urlAvatar: String,
+      public_id: {
+        type: String,
+        required: true,
+      },
+      urlAvatar: {
+        type: String,
+        required: true
+      }
     },
     wishList: [{
       wProduct: {

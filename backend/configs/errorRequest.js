@@ -32,5 +32,8 @@ const errorRquest = {
     },
     
   },
+  login: {
+    error: "Login failled"
+  }
 };
 module.exports = errorRquest;
