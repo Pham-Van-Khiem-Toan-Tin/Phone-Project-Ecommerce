@@ -4,11 +4,13 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const crypto = require("crypto");
+const ObjectId = mongoose.Schema.ObjectId;
 
 const userSchema = new mongoose.Schema(
   {
     name: {
       type: String,
+      minLength: 2,
       maxLength: 32,
       required: true,
     },
@@ -29,6 +31,12 @@ const userSchema = new mongoose.Schema(
       public_id: String,
       urlAvatar: String,
     },
+    wishList: [{
+      wProduct: {
+        type: ObjectId,
+        ref: "products"
+      }
+    }],
     role: {
       type: String,
       default: "user",
