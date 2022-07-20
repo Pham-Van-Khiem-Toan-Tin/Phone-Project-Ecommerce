@@ -3,13 +3,51 @@ const ObjectId = mongoose.Schema.ObjectId;
 
 const orderSchema = new mongoose.Schema(
   {
-    allProducts: [
+    shippingInfor: {
+      address: {
+        type: String,
+        required: true,
+      },
+      city: {
+        type: String,
+        required: true,
+      },
+      state: {
+        type: String,
+        required: true,
+      },
+      country: {
+        type: String,
+        required: true,
+      },
+      phoneNum: {
+        type: Number,
+        required: true,
+      },
+    },
+    orderItems: [
       {
-        id: {
+        name: {
+          type: String,
+          required: true,
+        },
+        price: {
+          type: Number,
+          required: true,
+        },
+        quantity: {
+          type: Number,
+          required: true,
+        },
+        image: {
+          type: String,
+          required: true,
+        },
+        product: {
           type: ObjectId,
           ref: "products",
+          required: true,
         },
-        quantity: Number,
       },
     ],
     user: {
@@ -17,33 +55,46 @@ const orderSchema = new mongoose.Schema(
       ref: "users",
       required: true,
     },
-    amount: {
+    paymentInfor: {
+      id: {
+        type: String,
+        required: true,
+      },
+      status: {
+        type: String,
+        required: true,
+      },
+    },
+    paiAt: {
+      type: Date,
+      required: true,
+    },
+    itemsPrice: {
       type: Number,
       required: true,
+      default: 0,
     },
-    transactionid: {
-      type: String,
-      required: true,
-    },
-    address: {
-      type: String,
-      required: true,
-    },
-    phone: {
+    taxPrice: {
       type: Number,
       required: true,
+      default: 0,
     },
-    status: {
+    shippingPrice: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    totalPrice: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    orderStatus: {
       type: String,
-      default: "not processed",
-      enum: [
-        "Not processed",
-        "Processing",
-        "Shipped",
-        "Delivered",
-        "Cancelled",
-      ],
+      required: true,
+      defaul: "Processing",
     },
+    deliveredAt: Date,
   },
   { timestamps: true }
 );

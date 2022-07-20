@@ -33,25 +33,23 @@ class User {
     if (!email || !password) {
       return res.json({ error: "Login failled" });
     } else {
-        try {
-            const user = userModel.findOne({email: email}).select('+password');
-            if(!user) {
-                return res.json({error: "Invalid email or password"});
-            }
-            else {
-                const passwordIsMatch = userModel.comparePassword(password);
-                if(!passwordIsMatch) {
-                    return res.json({error: "Invalid email or password"});
-                }
-                else {
-                    sendToken(user, 200, res);
-                }
-            }
-        } catch (err) {
-            console.log(err);
+      try {
+        const user = userModel.findOne({ email: email }).select("+password");
+        if (!user) {
+          return res.json({ error: "Invalid email or password" });
+        } else {
+          const passwordIsMatch = userModel.comparePassword(password);
+          if (!passwordIsMatch) {
+            return res.json({ error: "Invalid email or password" });
+          } else {
+            sendToken(user, 200, res);
+          }
         }
+      } catch (err) {
+        console.log(err);
+      }
     }
   }
 
-  
+  async logOut(req, res, next) {}
 }

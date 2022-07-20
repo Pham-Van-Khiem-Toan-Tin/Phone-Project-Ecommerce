@@ -10,21 +10,20 @@ const userSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      minLength: 2,
-      maxLength: 32,
-      required: true,
+      required: [true, "Please Enter Your Name"],
+      minLength: [2, "Name should have more than 2 characters"],
+      maxLength: [32, "Name can not exceed 32 characters"],
     },
     email: {
       type: String,
-      index: { unique: true },
-      trim: true,
-      match: /^([a-zA-Z0-9_\.\-]+@(([a-zA-Z0-9\-])+\.))+([a-zA-Z0-9]{2,4})+$/,
-      required: true,
+      required: [true, "Please Enter Your Email"],
+      unique: true,
+      validate: [validator.isEmail, "Please Enter a valid Email"],
     },
     password: {
       type: String,
-      required: true,
-      minLength: 8,
+      required: [true, "Please Enter Your Password"],
+      minLength: [8, "Password should be greater than 8 character"],
       select: false,
     },
     avatar: {
@@ -34,15 +33,17 @@ const userSchema = new mongoose.Schema(
       },
       urlAvatar: {
         type: String,
-        required: true
-      }
+        required: true,
+      },
     },
-    wishList: [{
-      wProduct: {
-        type: ObjectId,
-        ref: "products"
-      }
-    }],
+    wishList: [
+      {
+        wProduct: {
+          type: ObjectId,
+          ref: "products",
+        },
+      },
+    ],
     role: {
       type: String,
       default: "user",
@@ -77,8 +78,8 @@ userSchema.methods.getResetPasswordToken = function () {
     .createHash("sha256")
     .update(resetToken)
     .digest("hex");
-    this.resetPasswordExpire = Date.now() + 15*60*1000;
-    return resetToken;
+  this.resetPasswordExpire = Date.now() + 15 * 60 * 1000;
+  return resetToken;
 };
 
 const userModel = mongoose.model("users", userSchema);
