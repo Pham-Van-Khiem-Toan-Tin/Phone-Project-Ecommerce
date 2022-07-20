@@ -70,6 +70,11 @@ const productSchema = new mongoose.Schema(
         },
       },
     ],
+    user: {
+        type: ObjectId,
+        ref: "users",
+        required: true
+    },
     pStatus: {
       type: String,
       required: true,
