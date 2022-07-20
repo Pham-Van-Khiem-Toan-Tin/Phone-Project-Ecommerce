@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       required: true,
-      minLength: [8, "Password should be greater than 8 characters"],
+      minLength: 8,
       select: false,
     },
     avatar: {
@@ -62,7 +62,7 @@ userSchema.pre("save", async function (next) {
 });
 
 userSchema.methods.getJWTToken = function () {
-  return jwt.sign({ id: this._id }, process.env.JWTSECRET, {
+  return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRE,
   });
 };

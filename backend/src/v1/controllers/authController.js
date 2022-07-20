@@ -1,9 +1,9 @@
 const userModel = require("../models/users");
-const errorRquest = require("../configs/errorRequest");
-const successRequest = require("../configs/successRquest");
+const errorRquest = require("../../configs/errorRequest");
+const successRequest = require("../../configs/successRquest");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
-const { toTitleCase } = require("../configs/titleCase");
+const { toTitleCase } = require("../../configs/titleCase");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 class Auth {
@@ -78,9 +78,9 @@ class Auth {
                 _id: data._id,
                 role: data.role,
               },
-              process.env.JWTSECRET
+              process.env.JWT_SECRET
             );
-            const endcode = jwt.verify(token, process.env.JWTSECRET);
+            const endcode = jwt.verify(token, process.env.JWT_SECRET);
             return res.json({
               token: token,
               user: endcode,
