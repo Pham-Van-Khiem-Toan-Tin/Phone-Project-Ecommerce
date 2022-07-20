@@ -6,7 +6,7 @@ const cloudinary = require("cloudinary");
 
 class User {
   async Register(req, res) {
-    let { name, email, password, avatar } = req.body;
+    let { name, email, password } = req.body;
     try {
       const myCloud = await cloudinary.v2.uploader(req.body.avatar, {
         folder: "avatar",
