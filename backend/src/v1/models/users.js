@@ -31,7 +31,7 @@ const userSchema = new mongoose.Schema(
         type: String,
         required: true,
       },
-      urlAvatar: {
+      url: {
         type: String,
         required: true,
       },

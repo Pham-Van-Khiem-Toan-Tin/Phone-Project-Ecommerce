@@ -2,19 +2,19 @@ const mongoose = require("mongoose");
 const ObjectId = mongoose.Schema.ObjectId;
 const productSchema = new mongoose.Schema(
   {
-    Name: {
+    name: {
       type: String,
       required: [true, "Please enter productName"],
     },
-    Description: {
+    description: {
       type: String,
       required: [true, "Pl;ease enter productDescription"],
     },
-    Price: {
+    price: {
       type: Number,
       required: [true, "Please enter productPrice"],
     },
-    Images: [
+    images: [
       {
         public_id: {
           type: String,
@@ -26,16 +26,16 @@ const productSchema = new mongoose.Schema(
         },
       },
     ],
-    Rating: {
+    ratings: {
       type: Number,
       default: 0,
     },
 
-    Category: {
+    category: {
       type: String,
       required: [true, "Please Enter Product Category"],
     },
-    Stock: {
+    stock: {
       type: Number,
       required: [true, "Please Enter Product Stock"],
       maxLength: [4, "Stock cannot exceed 4 characters"],
@@ -45,7 +45,7 @@ const productSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
-    Review: [
+    reviews: [
       {
         user: {
           type: ObjectId,
@@ -63,10 +63,6 @@ const productSchema = new mongoose.Schema(
         comments: {
           type: String,
           required: true,
-        },
-        createAt: {
-          type: Date,
-          default: Date.now(),
         },
       },
     ],

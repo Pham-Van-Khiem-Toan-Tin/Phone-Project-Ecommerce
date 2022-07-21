@@ -22,6 +22,6 @@ app.use(express.static(path.join(__dirname, "../frontend/build")));
 app.use(cors({ origin: `${process.env.CLIENT_URL}` }));
 
 
-app.use("/api", user);
-app.use("/api", product);
+app.use("/api/v1", user);
+app.use("/api/v1", product);
 module.exports = app;
