@@ -95,7 +95,7 @@ module.exports.forgotPassword = catchAsyncError(async (req, res, next) => {
 });
 
 //Reset password
-module.exports = catchAsyncError(async (req, res, next) => {
+module.exports.resetPassword = catchAsyncError(async (req, res, next) => {
   const resetPasswordToken = crypto
     .createHash("sha256")
     .update(req.param.token)

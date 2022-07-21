@@ -13,6 +13,22 @@ class Apifeatures {
     this.query = this.query.find({...keyword});
     return this;
   }
+  filter() {
+    const queryCoppy = {...this.queryStr};
+    //Removing some fields for category
+    const removeFields = ["keyword","page","limit"];
+    removeFields.forEach((key) => delete queryCoppy[key]);
+    //Filter for price nad rating
+    let queryStr = JSON.stringify(queryCoppy);
+    queryStr = queryStr.replace(/\b(gt|gte|lt|lte)\b/g, (key) => `$${key}`);
+    this.query = this.query.find(JSON.parse(queryStr));
+    return this;
+  }
+  pagination(resultPerPage) {
+    const currentPage = Number(this.queryStr.page) || 1;
+    const skip = resultPerPage * (currentPage - 1);
+    this.query = this.query.limit(resultPerPage)
+  }
 }
 
 module.exports = Apifeatures;

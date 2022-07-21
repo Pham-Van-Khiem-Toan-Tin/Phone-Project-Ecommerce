@@ -2,19 +2,19 @@ const mongoose = require("mongoose");
 const ObjectId = mongoose.Schema.ObjectId;
 const productSchema = new mongoose.Schema(
   {
-    pName: {
+    Name: {
       type: String,
       required: [true, "Please enter productName"],
     },
-    pDescription: {
+    Description: {
       type: String,
       required: [true, "Pl;ease enter productDescription"],
     },
-    pPrice: {
+    Price: {
       type: Number,
       required: [true, "Please enter productPrice"],
     },
-    pImages: [
+    Images: [
       {
         public_id: {
           type: String,
@@ -26,12 +26,12 @@ const productSchema = new mongoose.Schema(
         },
       },
     ],
-    pRating: {
+    Rating: {
       type: Number,
       default: 0,
     },
 
-    pCategory: {
+    Category: {
       type: String,
       required: [true, "Please Enter Product Category"],
     },
@@ -45,7 +45,7 @@ const productSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
-    pReview: [
+    Review: [
       {
         user: {
           type: ObjectId,
@@ -75,11 +75,11 @@ const productSchema = new mongoose.Schema(
         ref: "users",
         required: true
     },
-    pStatus: {
+    Status: {
       type: String,
       required: true,
     },
-    pDiscount: {
+    Discount: {
       type: Number,
       default: null,
     },

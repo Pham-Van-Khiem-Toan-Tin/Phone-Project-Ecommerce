@@ -9,6 +9,10 @@ const helmet = require("helmet");
 require("dotenv").config();
 const app = express();
 
+const user = require("./src/v1/routers/userRouter");
+const product = require("./src/v1/routers/productRouter");
+
+
 app.use(helmet());
 app.use(morgan("dev"));
 app.use(cookieParser());
@@ -17,4 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 app.use(cors({ origin: `${process.env.CLIENT_URL}` }));
 
+
+app.use("/api", user);
+app.use("/api", product);
 module.exports = app;
