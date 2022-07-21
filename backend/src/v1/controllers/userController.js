@@ -8,19 +8,19 @@ const ErrorHandle = require("../utils/errorHandle");
 const sendEmail = require("../utils/sendEmail");
 
 module.exports.register = catchAsyncError(async (req, res, next) => {
-  // const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
-  //   folder: "avatar",
-  //   width: 150,
-  //   crop: "scale",
-  // });
+  const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+    folder: "avatar",
+    width: 150,
+    crop: "scale",
+  });
   let { name, email, password } = req.body;
   const user = await userModel.create({
     name,
     email,
     password,
     avatar: {
-      public_id: "thiisisexample",//myCloud.public_id,
-      url: "thiisisexample"//myCloud.secure_url,
+      public_id: myCloud.public_id,
+      url: myCloud.secure_url,
     },
   });
   sendToken(user, 201, res);
