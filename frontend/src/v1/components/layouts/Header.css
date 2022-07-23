@@ -1,0 +1,35 @@
+.navbar-brand {
+    font-size: 2rem;
+    color: black;
+    font-family: 'Kreon', serif;
+}
+.navbar-brand:hover {
+    color: brown;
+}
+.nav-link {
+    margin-right: 10px;
+    margin-left: 10px;
+    color: black;
+    text-transform: uppercase;
+}
+.nav-link:hover {
+    color: brown;
+}
+.search {
+    height: 40px;
+    width: 80%;
+    border-radius: 60px;
+    margin-right: -35px;
+    outline: none;
+    border: 2px solid rgb(248, 26, 92);
+}
+.btn0{
+    height: 40px;
+    width: 40%;
+    border: none;
+    outline: none;
+    background: rgb(248, 26, 92);
+    color: white;
+    font-weight: 700;
+    border-radius: 60px;
+}
