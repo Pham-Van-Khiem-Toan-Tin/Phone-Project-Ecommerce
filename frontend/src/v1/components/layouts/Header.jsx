@@ -3,7 +3,7 @@ import "./Header.css";
 const Header = () => {
   return (
     <>
-      <nav className="navbar navbar-expand-lg">
+      <nav className="navbar navbar-expand-lg fixed-top bg-light">
         <div className="container">
           <Link className="navbar-brand" to="/">
             Brand

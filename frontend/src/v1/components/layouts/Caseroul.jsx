@@ -4,7 +4,7 @@ import Caseroul2 from "../../../data/caseroul/caseroul2.png";
 import Caseroul3 from "../../../data/caseroul/caseroul3.png";
 const Caseroul = () => {
   return (
-    <div className="container">
+    <div className="container mt-5">
       <div
         id="carouselExampleIndicators"
         className="carousel slide"

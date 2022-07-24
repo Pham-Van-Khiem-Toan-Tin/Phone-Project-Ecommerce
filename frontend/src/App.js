@@ -10,6 +10,7 @@ import Cart from './v1/components/Cart/Cart';
 import User from './v1/components/User/User';
 import About from './v1/components/About/About';
 import Admin from './v1/components/Admin/Admin';
+import Footer from './v1/components/layouts/Footer';
 function App() {
   return (
     <>
@@ -23,6 +24,7 @@ function App() {
       <Route path="/about" element={<About />} />
       <Route path='/admin' element={<Admin />} />
      </Routes> 
+     <Footer />
     </>
   );
 }
