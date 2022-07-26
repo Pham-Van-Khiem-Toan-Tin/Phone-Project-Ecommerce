@@ -42,7 +42,7 @@ const DATA = [
         img: "/assets/images/products/iphone13pro.jpg"
     }
 ]
-const Data2 = [
+const Data2 = [[
     {
         id: 1,
         title: "Iphone11",
@@ -71,7 +71,65 @@ const Data2 = [
         desc: "To access and use all the features of Apple Card, you must add Apple Card to Wallet on an iPhone or iPad with the latest version of iOS or iPadOS. Update to the latest version by going to Settings > General > Software Update. Tap Download and Install.Available for qualifying applicants in the United States.Apple Card is issued by Goldman Sachs Bank USA, Salt Lake City Branch.",
         img: "/assets/images/products/iphone12pro.jpg"
     },
-]
+], [
+    {
+        id: 1,
+        title: "Iphone11",
+        price: 750,
+        desc: "To access and use all the features of Apple Card, you must add Apple Card to Wallet on an iPhone or iPad with the latest version of iOS or iPadOS. Update to the latest version by going to Settings > General > Software Update. Tap Download and Install.Available for qualifying applicants in the United States.Apple Card is issued by Goldman Sachs Bank USA, Salt Lake City Branch.",
+        img: "/assets/images/products/iphone11.jpg"
+    },
+    {
+        id: 2,
+        title: "Iphone12",
+        price: 800,
+        desc: "To access and use all the features of Apple Card, you must add Apple Card to Wallet on an iPhone or iPad with the latest version of iOS or iPadOS. Update to the latest version by going to Settings > General > Software Update. Tap Download and Install.Available for qualifying applicants in the United States.Apple Card is issued by Goldman Sachs Bank USA, Salt Lake City Branch.",
+        img: "/assets/images/products/iphone12.jpg"
+    },
+    {
+        id: 3,
+        title: "Iphone12ProMax",
+        price: 850,
+        desc: "To access and use all the features of Apple Card, you must add Apple Card to Wallet on an iPhone or iPad with the latest version of iOS or iPadOS. Update to the latest version by going to Settings > General > Software Update. Tap Download and Install.Available for qualifying applicants in the United StatesApple Card is issued by Goldman Sachs Bank USA, Salt Lake City Branch.",
+        img: "/assets/images/products/iphone12promax.jpg"
+    },
+    {
+        id: 4,
+        title: "Iphone12Pro",
+        price: 900,
+        desc: "To access and use all the features of Apple Card, you must add Apple Card to Wallet on an iPhone or iPad with the latest version of iOS or iPadOS. Update to the latest version by going to Settings > General > Software Update. Tap Download and Install.Available for qualifying applicants in the United States.Apple Card is issued by Goldman Sachs Bank USA, Salt Lake City Branch.",
+        img: "/assets/images/products/iphone12pro.jpg"
+    },
+],[
+    {
+        id: 1,
+        title: "Iphone11",
+        price: 750,
+        desc: "To access and use all the features of Apple Card, you must add Apple Card to Wallet on an iPhone or iPad with the latest version of iOS or iPadOS. Update to the latest version by going to Settings > General > Software Update. Tap Download and Install.Available for qualifying applicants in the United States.Apple Card is issued by Goldman Sachs Bank USA, Salt Lake City Branch.",
+        img: "/assets/images/products/iphone11.jpg"
+    },
+    {
+        id: 2,
+        title: "Iphone12",
+        price: 800,
+        desc: "To access and use all the features of Apple Card, you must add Apple Card to Wallet on an iPhone or iPad with the latest version of iOS or iPadOS. Update to the latest version by going to Settings > General > Software Update. Tap Download and Install.Available for qualifying applicants in the United States.Apple Card is issued by Goldman Sachs Bank USA, Salt Lake City Branch.",
+        img: "/assets/images/products/iphone12.jpg"
+    },
+    {
+        id: 3,
+        title: "Iphone12ProMax",
+        price: 850,
+        desc: "To access and use all the features of Apple Card, you must add Apple Card to Wallet on an iPhone or iPad with the latest version of iOS or iPadOS. Update to the latest version by going to Settings > General > Software Update. Tap Download and Install.Available for qualifying applicants in the United StatesApple Card is issued by Goldman Sachs Bank USA, Salt Lake City Branch.",
+        img: "/assets/images/products/iphone12promax.jpg"
+    },
+    {
+        id: 4,
+        title: "Iphone12Pro",
+        price: 900,
+        desc: "To access and use all the features of Apple Card, you must add Apple Card to Wallet on an iPhone or iPad with the latest version of iOS or iPadOS. Update to the latest version by going to Settings > General > Software Update. Tap Download and Install.Available for qualifying applicants in the United States.Apple Card is issued by Goldman Sachs Bank USA, Salt Lake City Branch.",
+        img: "/assets/images/products/iphone12pro.jpg"
+    },
+]]
 const Data3 = [
     {
         id: 1,

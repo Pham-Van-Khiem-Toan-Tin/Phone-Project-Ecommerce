@@ -24,3 +24,16 @@ transition: 0.5;
 -moz-box-shadow: 10px 4px 39px 1px rgba(0,0,0,0.7);
 box-shadow: 10px 4px 39px 1px rgba(0,0,0,0.7);
 }
+.slider {
+    transition: ease 2000ms;
+}
+.Home {
+    background-color: black;
+    color: white;
+}
+.Home h3 {
+    display: block;
+}
+.Home h2 {
+    display: block;
+}
