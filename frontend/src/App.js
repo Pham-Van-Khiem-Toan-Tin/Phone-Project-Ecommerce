@@ -2,6 +2,8 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import Header from './v1/components/layouts/Header';
 import { Route, Routes } from 'react-router-dom';
 import Home from './v1/components/Home/Home';

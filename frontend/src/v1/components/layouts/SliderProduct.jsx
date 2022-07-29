@@ -1,80 +1,54 @@
 import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay } from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
 
 const SliderProduct = (props) => {
-  const Data = props.data;
+  const { data } = props;
   return (
     <div className="container">
-      <div
-        id="carouselExampleControls1"
-        className="carousel slide"
-        data-bs-ride="carousel"
+      <Swiper
+        spaceBetween={10}
+        slidesPerView={1}
+        onSwiper={(swiper) => console.log(swiper)}
+        navigation={true}
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 5,
+          },
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 5,
+          },
+          1024: {
+            slidesPerView: 5,
+            spaceBetween: 5,
+          },
+        }}
+        modules={[Navigation, Autoplay]}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
       >
-        <div className="carousel-inner">
-          {Data.map((data, index) => {
-            if (index === 0) {
-              return (
-                <div key={index} className="carousel-item active">
-                  <div className="row">
-                    {data.map((data1, index1) => {
-                      return (
-                        <div key={data1.title} className="col-3">
-                          <img
-                            src={data1.img}
-                            className="d-block w-100"
-                            alt={data1.title}
-                          />
-                        </div>
-                      );
-                    })}
+        {data.map((data1, index) => {
+          return (
+            <div key={index}>
+              <SwiperSlide>
+                <div className="card" style={{width: "100%"}}>
+                  <img src={data1.img} className="card-img-top" alt={data1.title} />
+                  <div className="card-body">
+                    <h5 className="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                   </div>
                 </div>
-              );
-            } else {
-              return (
-                <div key={index} className="carousel-item">
-                  <div className="row">
-                    {data.map((data1, index1) => {
-                      return (
-                        <div key={data1.tilte} className="col-3">
-                          <img
-                            src={data1.img}
-                            className="d-block w-100"
-                            alt={data1.title}
-                          />
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              );
-            }
-          })}
-        </div>
-        <button
-          className="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExampleControls1"
-          data-bs-slide="prev"
-        >
-          <span
-            className="carousel-control-prev-icon"
-            aria-hidden="true"
-          >next</span>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button
-          className="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExampleControls1"
-          data-bs-slide="next"
-        >
-          <span
-            className="carousel-control-next-icon"
-            aria-hidden="true"
-          ></span>
-          <span className="visually-hidden">Next</span>
-        </button>
-      </div>
+              </SwiperSlide>
+            </div>
+          );
+        })}
+      </Swiper>
     </div>
   );
 };
