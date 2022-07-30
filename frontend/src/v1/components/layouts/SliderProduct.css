@@ -1,0 +1,35 @@
+.swiper-button-next {
+    background-color:antiquewhite ;
+    opacity: 0.6;
+    right: 0;
+    display: flex;
+    width: 30px;
+    height: 60px;
+    border-top-left-radius: 90px;
+    border-bottom-left-radius: 90px;
+    align-items: center;
+    justify-content: center;
+}
+.swiper-button-prev {
+    background-color: antiquewhite;
+    opacity: 0.6;
+    left: 0;
+    display: flex;
+    width: 30px;
+    height: 60px;
+    border-top-right-radius: 90px;
+    border-bottom-right-radius: 90px;
+    align-items: center;
+    justify-content: center;
+}
+.swiper-button-next::after, .swiper-button-prev::after {
+    color: black;
+    font-size: 25px;
+    font-weight: 700;
+}
+.swiper-slide {
+    height: auto;
+}
+.card {
+    height: 100%;
+}

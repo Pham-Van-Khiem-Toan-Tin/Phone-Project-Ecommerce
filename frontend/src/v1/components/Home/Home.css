@@ -24,10 +24,4 @@ transition: 0.5;
 -moz-box-shadow: 10px 4px 39px 1px rgba(0,0,0,0.7);
 box-shadow: 10px 4px 39px 1px rgba(0,0,0,0.7);
 }
-.card {
-    cursor: pointer;
-}
-.swiper-button-next::after, .swiper-button-prev::after {
-    color: black;
-    font-size: 30px;
-}
+

@@ -15,21 +15,20 @@
 .nav-link:hover {
     color: brown;
 }
-.search {
-    height: 40px;
-    width: 80%;
-    border-radius: 60px;
-    margin-right: -35px;
-    outline: none;
-    border: 2px solid rgb(248, 26, 92);
+.menu-icon .dropdown-toggle::after {
+    display: none;
 }
-.btn0{
-    height: 40px;
-    width: 40%;
+.menu-icon .dropdown-menu {
+    min-width: 200px;
+    height: auto;
+    top: 150%;
+}
+.menu-icon .dropdown-menu input {
+    height: 100%;
+    outline: none;
     border: none;
-    outline: none;
-    background: rgb(248, 26, 92);
-    color: white;
-    font-weight: 700;
-    border-radius: 60px;
 }
+.modal-header {
+    border-bottom: none;
+}
+

@@ -3,11 +3,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
+import "./SliderProduct.css";
 
 const SliderProduct = (props) => {
   const { data } = props;
   return (
-    <div className="container">
+    <div className="container product-slider">
       <Swiper
         spaceBetween={10}
         slidesPerView={1}

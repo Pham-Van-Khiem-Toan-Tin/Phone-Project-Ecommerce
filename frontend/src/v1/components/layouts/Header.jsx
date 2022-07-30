@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
+import { BsSearch, BsFillPersonFill, BsFillCartFill } from "react-icons/bs";
 import "./Header.css";
+import { useState } from "react";
 const Header = () => {
   return (
     <>
-      <nav className="navbar navbar-expand-lg fixed-top bg-light">
+      <nav className="navbar navbar-expand-lg sticky-top bg-light">
         <div className="container">
           <Link className="navbar-brand" to="/">
             Brand
@@ -32,11 +34,6 @@ const Header = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/user">
-                  User
-                </Link>
-              </li>
-              <li className="nav-item">
                 <Link className="nav-link" to="/contact">
                   Contact
                 </Link>
@@ -47,27 +44,16 @@ const Header = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/cart">
-                  Cart
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/admin">
-                  Admin
+                <Link className="nav-link" to="/blog">
+                  Blog
                 </Link>
               </li>
             </ul>
-            <form className="d-flex" role="search">
-              <input
-                className="px-2 search"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button className="btn0" type="submit">
-                Search
-              </button>
-            </form>
+            <div className="menu-icon d-flex flex-row">
+              <BsSearch className="fs-6 mx-1 my-auto" type="button" data-bs-toggle="modal" data-bs-target="#searchModal" />
+              <BsFillPersonFill className="fs-4 mx-1 my-auto" />
+              <BsFillCartFill className="fs-5 mx-1 my-auto" />
+            </div>
           </div>
         </div>
       </nav>

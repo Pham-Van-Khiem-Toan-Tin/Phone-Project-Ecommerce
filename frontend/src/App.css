@@ -4,3 +4,25 @@
   box-sizing: border-box;
 }
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;500;700;900&family=Kreon&family=Poppins:wght@300;700&display=swap');
+.card {
+  cursor: pointer;
+}
+ul li {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+.input-search {
+  border-radius: 10px;
+  font-size: 20px;
+  outline: none;
+  padding: 10px;
+}
+.input-search::-webkit-input-placeholder {
+  text-align: center;
+}
+
+.input-search:-moz-placeholder {
+  text-align: center;
+}
