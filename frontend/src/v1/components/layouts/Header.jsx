@@ -50,7 +50,7 @@ const Header = () => {
               </li>
             </ul>
             <div className="menu-icon d-flex flex-row">
-              <BsSearch className="fs-6 mx-1 my-auto" type="button" data-bs-toggle="modal" data-bs-target="#searchModal" />
+              <BsSearch className="fs-6 mx-1 my-auto" type="button" />
               <BsFillPersonFill className="fs-4 mx-1 my-auto" />
               <BsFillCartFill className="fs-5 mx-1 my-auto" />
             </div>
