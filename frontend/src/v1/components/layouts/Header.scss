@@ -22,6 +22,7 @@ header {
             .brand {
                 font-weight: 700;
                 font-size: 1.4rem;
+                text-transform: uppercase;
             }
         }
         .submenu {
@@ -34,16 +35,29 @@ header {
                 display: none;
             }
             .menu_children-1 {
-                padding: 0 5px;
-                a.active {
-                    border-bottom: 1px solid #070505;
-                }
+                padding: 0 10px;
+                font-weight: 500;
             }
         }
         .menu_icon {
             display: flex;
             flex-direction: row;
             gap: 10px;
+            .menu_search {
+                position: relative;
+                .menu_search_input {
+                    position: absolute;
+                    top: 150%;
+                    left: -200%;
+                }
+                .menu_search_input::before {
+                    position: absolute;
+                    top: -100%;
+                    width: 10px;
+                    height: 10px;
+                    background-color: #b15656;
+                }
+            }
         }
     }
 }
@@ -80,7 +94,6 @@ header {
                 .menu_children-1 {
                     line-height: 40px;
                     margin: 0 10px;
-                    border-bottom: 1px solid #fff;
                 }
             }
             .submenu.active-toggle {

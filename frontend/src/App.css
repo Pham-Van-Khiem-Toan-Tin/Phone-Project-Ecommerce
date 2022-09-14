@@ -14,17 +14,6 @@ a {
   text-decoration: none;
   color: azure;
 }
-.input-search {
-  border-radius: 10px;
-  font-size: 20px;
-  outline: none;
-  padding: 10px;
-}
-
-.input-search::-webkit-input-placeholder {
-  text-align: center;
-}
-
-.input-search:-moz-placeholder {
-  text-align: center;
+.active {
+  border-bottom: 1px solid #91b156;
 }

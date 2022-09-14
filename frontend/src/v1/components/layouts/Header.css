@@ -34,6 +34,7 @@ header .menu_container .brandAndToggle .menu_toggle {
 header .menu_container .brandAndToggle .brand {
   font-weight: 700;
   font-size: 1.4rem;
+  text-transform: uppercase;
 }
 
 header .menu_container .submenu {
@@ -54,11 +55,8 @@ header .menu_container .submenu .menu_toggle_close {
 }
 
 header .menu_container .submenu .menu_children-1 {
-  padding: 0 5px;
-}
-
-header .menu_container .submenu .menu_children-1 a.active {
-  border-bottom: 1px solid #070505;
+  padding: 0 10px;
+  font-weight: 500;
 }
 
 header .menu_container .menu_icon {
@@ -70,6 +68,24 @@ header .menu_container .menu_icon {
       -ms-flex-direction: row;
           flex-direction: row;
   gap: 10px;
+}
+
+header .menu_container .menu_icon .menu_search {
+  position: relative;
+}
+
+header .menu_container .menu_icon .menu_search .menu_search_input {
+  position: absolute;
+  top: 150%;
+  left: -200%;
+}
+
+header .menu_container .menu_icon .menu_search .menu_search_input::before {
+  position: absolute;
+  top: -100%;
+  width: 10px;
+  height: 10px;
+  background-color: #b15656;
 }
 
 @media (max-width: 768px) {
@@ -116,7 +132,6 @@ header .menu_container .menu_icon {
   header .menu_container .submenu .menu_children-1 {
     line-height: 40px;
     margin: 0 10px;
-    border-bottom: 1px solid #fff;
   }
   header .menu_container .submenu.active-toggle {
     left: 0;

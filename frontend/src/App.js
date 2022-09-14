@@ -10,7 +10,7 @@ import Categories from "./v1/pages/categories/Categories";
 import Contact from "./v1/pages/Contact/Contact";
 import Cart from "./v1/pages/Cart/Cart";
 import User from "./v1/pages/User/User";
-import About from "./v1/pages/About/About";
+
 import Admin from "./v1/pages/Admin/Admin";
 import Footer from "./v1/components/layouts/Footer";
 import Blog from "./v1/pages/Blog/Blog";
@@ -19,7 +19,7 @@ function App() {
     <>
       <Header />
       <Routes>
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<Cart />} />
