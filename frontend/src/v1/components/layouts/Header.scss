@@ -1,0 +1,93 @@
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    font-size: 1.2rem;
+    height: 80px;
+    background-color: rgba($color: #b15656, $alpha: 1.0);
+    color: azure;
+    z-index: 99999;
+    .menu_container {
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        .brandAndToggle {
+            .menu_toggle {
+                display: none;
+            }
+            .brand {
+                font-weight: 700;
+                font-size: 1.4rem;
+            }
+        }
+        .submenu {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: row;
+            line-height: 100%;
+            .menu_toggle_close {
+                display: none;
+            }
+            .menu_children-1 {
+                padding: 0 5px;
+                a.active {
+                    border-bottom: 1px solid #070505;
+                }
+            }
+        }
+        .menu_icon {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        height: 60px;
+        .menu_container {
+            width: 100% !important;
+            .brandAndToggle {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                .menu_toggle {
+                    display: block;
+                }
+            }
+            .submenu {
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                left: -100%;
+                transition: 350ms;
+                height: 100vh;
+                width: 250px;
+                background-color: #b15656;
+                font-size: 1.5rem;
+                font-weight: 500;
+                .menu_toggle_close {
+                    display: block;
+                    margin: 0 10px;
+                    line-height: 60px;
+                }
+                .menu_children-1 {
+                    line-height: 40px;
+                    margin: 0 10px;
+                    border-bottom: 1px solid #fff;
+                }
+            }
+            .submenu.active-toggle {
+                left: 0;
+                transition: 350ms;
+            }
+        }
+
+    }
+}

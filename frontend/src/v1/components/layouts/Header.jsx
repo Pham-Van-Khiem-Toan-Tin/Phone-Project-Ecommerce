@@ -1,63 +1,67 @@
-import { Link } from "react-router-dom";
-import { BsSearch, BsFillPersonFill, BsFillCartFill } from "react-icons/bs";
+import { Link, useLocation } from "react-router-dom";
+import { FaBars, FaSearch, FaUserAlt, FaShoppingCart } from "react-icons/fa";
+import { AiOutlineClose } from "react-icons/ai";
 import "./Header.css";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+const menus = [
+  {
+    display: "Trang chu",
+    path: "/home",
+  },
+  {
+    display: "San pham",
+    path: "/categories",
+  },
+  {
+    display: "Blog",
+    path: "/blog",
+  },
+  {
+    display: "Lien He",
+    path: "/contact",
+  },
+];
 const Header = () => {
+  const pathName = useLocation();
+  const [sideBar, setSideBar] = useState(false);
+  console.log(pathName);
+  const activeNav = menus.findIndex(menu => menu.path === pathName);
+  const showSideBar = () => setSideBar(!sideBar);
+  const closeSideBar = () => setSideBar(!sideBar);
   return (
-    <>
-      <nav className="navbar navbar-expand-lg sticky-top bg-light">
-        <div className="container">
-          <Link className="navbar-brand" to="/">
-            Brand
-          </Link>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav m-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <Link className="nav-link" to="/">
-                  Home
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/categories">
-                  Categories
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/contact">
-                  Contact
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/about">
-                  About
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/blog">
-                  Blog
-                </Link>
-              </li>
-            </ul>
-            <div className="menu-icon d-flex flex-row">
-              <BsSearch className="fs-6 mx-1 my-auto" type="button" />
-              <BsFillPersonFill className="fs-4 mx-1 my-auto" />
-              <BsFillCartFill className="fs-5 mx-1 my-auto" />
-            </div>
+    <header>
+      <div className="container menu_container">
+        <div className="brandAndToggle">
+          <div className="menu_toggle">
+            <FaBars onClick={showSideBar}/>
           </div>
+          <div className="brand">Shop</div>
         </div>
-      </nav>
-    </>
+        <ul className={sideBar ?"submenu active-toggle":"submenu"}>
+          <div className="menu_toggle_close">
+            <AiOutlineClose onClick={closeSideBar}/>
+          </div>
+          {menus.map((menu, index) => {
+            return (
+              <li key={index} className={`"menu_children-1" ${index === activeNav ? "active": ""}`}>
+                <Link to={menu.path}>{menu.display}</Link>
+              </li>
+            );
+          })}
+        </ul>
+        <div className="menu_icon">
+          <div className="menu_search">
+            <FaSearch />
+          </div>
+          <Link to="/user">
+            <FaUserAlt />
+          </Link>
+          <Link to="/cart">
+            <FaShoppingCart />
+          </Link>
+        </div>
+      </div>
+    </header>
   );
 };
 

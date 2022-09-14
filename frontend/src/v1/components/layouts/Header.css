@@ -1,34 +1,127 @@
-.navbar-brand {
-    font-size: 2rem;
-    color: black;
-    font-family: 'Kreon', serif;
-}
-.navbar-brand:hover {
-    color: brown;
-}
-.nav-link {
-    margin-right: 10px;
-    margin-left: 10px;
-    color: black;
-    text-transform: uppercase;
-}
-.nav-link:hover {
-    color: brown;
-}
-.menu-icon .dropdown-toggle::after {
-    display: none;
-}
-.menu-icon .dropdown-menu {
-    min-width: 200px;
-    height: auto;
-    top: 150%;
-}
-.menu-icon .dropdown-menu input {
-    height: 100%;
-    outline: none;
-    border: none;
-}
-.modal-header {
-    border-bottom: none;
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  font-size: 1.2rem;
+  height: 80px;
+  background-color: #b15656;
+  color: azure;
+  z-index: 99999;
 }
 
+header .menu_container {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+header .menu_container .brandAndToggle .menu_toggle {
+  display: none;
+}
+
+header .menu_container .brandAndToggle .brand {
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+header .menu_container .submenu {
+  margin: 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  line-height: 100%;
+}
+
+header .menu_container .submenu .menu_toggle_close {
+  display: none;
+}
+
+header .menu_container .submenu .menu_children-1 {
+  padding: 0 5px;
+}
+
+header .menu_container .submenu .menu_children-1 a.active {
+  border-bottom: 1px solid #070505;
+}
+
+header .menu_container .menu_icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  header {
+    height: 60px;
+  }
+  header .menu_container {
+    width: 100% !important;
+  }
+  header .menu_container .brandAndToggle {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    gap: 10px;
+  }
+  header .menu_container .brandAndToggle .menu_toggle {
+    display: block;
+  }
+  header .menu_container .submenu {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    -webkit-transition: 350ms;
+    transition: 350ms;
+    height: 100vh;
+    width: 250px;
+    background-color: #b15656;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+  header .menu_container .submenu .menu_toggle_close {
+    display: block;
+    margin: 0 10px;
+    line-height: 60px;
+  }
+  header .menu_container .submenu .menu_children-1 {
+    line-height: 40px;
+    margin: 0 10px;
+    border-bottom: 1px solid #fff;
+  }
+  header .menu_container .submenu.active-toggle {
+    left: 0;
+    -webkit-transition: 350ms;
+    transition: 350ms;
+  }
+}
+/*# sourceMappingURL=Header.css.map */

@@ -12,6 +12,7 @@ ul li {
 }
 a {
   text-decoration: none;
+  color: azure;
 }
 .input-search {
   border-radius: 10px;
@@ -19,6 +20,7 @@ a {
   outline: none;
   padding: 10px;
 }
+
 .input-search::-webkit-input-placeholder {
   text-align: center;
 }

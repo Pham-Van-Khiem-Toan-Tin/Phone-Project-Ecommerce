@@ -1,5 +1,5 @@
-import Caseroul from "../layouts/Caseroul";
-import SliderProduct from "../layouts/SliderProduct";
+import Caseroul from "../../components/layouts/Caseroul";
+import SliderProduct from "../../components/layouts/SliderProduct";
 import "./Home.css";
 import { Data2 } from "../../../data/Data";
 const Home = () => {
