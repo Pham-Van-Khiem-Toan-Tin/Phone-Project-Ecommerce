@@ -1,12 +1,13 @@
 import { Link, useLocation } from "react-router-dom";
 import { FaBars, FaSearch, FaUserAlt, FaShoppingCart } from "react-icons/fa";
-import { AiOutlineClose } from "react-icons/ai";
+import { GoX } from "react-icons/go";
+
 import "./Header.css";
 import { useState } from "react";
 const menus = [
   {
     display: "Trang chủ",
-    path: "/home",
+    path: "/",
   },
   {
     display: "Sản phẩm",
@@ -45,7 +46,7 @@ const Header = () => {
         </div>
         <ul className={sideBar ? "submenu active-toggle" : "submenu"}>
           <div className="menu_toggle_close">
-            <AiOutlineClose onClick={closeSideBar} />
+            <GoX onClick={closeSideBar} />
           </div>
           {menus.map((menu, index) => {
             return (

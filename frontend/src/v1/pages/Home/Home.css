@@ -1,0 +1,26 @@
+.hot_sale {
+  background-color: #712cf9;
+  border-radius: 10px;
+}
+
+.hot_sale .hot_sale_header {
+  margin: 10px 5px;
+}
+
+.hot_sale .hot_sale_header .hot_sale-button button {
+  background-color: #ccc;
+  color: #000;
+  border-radius: 10px;
+  margin: 5px 5px;
+  width: 102px;
+  border: none;
+  font-weight: 700;
+}
+
+.hot_sale .hot_sale_header .hot_sale-content {
+  text-transform: uppercase;
+  font-size: 40px;
+  font-weight: 700;
+  color: #F3DB00;
+}
+/*# sourceMappingURL=Home.css.map */
