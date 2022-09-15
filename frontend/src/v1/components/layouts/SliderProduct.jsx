@@ -36,8 +36,8 @@ const  SliderProduct = (props) => {
       >
         {data.map((data1, index) => {
           return (
-            <div key={index}>
-              <SwiperSlide>
+            <div key={data1.img}>
+              <SwiperSlide key={index}>
                 <div className="card" style={{width: "100%"}}>
                   <img src={data1.img} className="card-img-top" alt={data1.title} />
                   <div className="card-body">

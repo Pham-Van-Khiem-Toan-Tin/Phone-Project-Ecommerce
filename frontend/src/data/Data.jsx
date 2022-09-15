@@ -64,22 +64,22 @@ const Data2 = [
     img: "/assets/images/new/SIS-asus.png",
   },
   {
-    id: 1,
+    id: 5,
     title: "Iphone",
     img: "/assets/images/new/apple_1.png",
   },
   {
-    id: 2,
+    id: 6,
     title: "Samsung",
     img: "/assets/images/new/samsung_1.png",
   },
   {
-    id: 3,
+    id: 7,
     title: "Xiaomi",
     img: "/assets/images/new/xiaomi.png",
   },
   {
-    id: 4,
+    id: 8,
     title: "SIS",
     img: "/assets/images/new/SIS-asus.png",
   },

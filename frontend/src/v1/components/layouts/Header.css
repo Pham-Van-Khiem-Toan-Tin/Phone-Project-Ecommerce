@@ -5,7 +5,7 @@ header {
   right: 0;
   font-size: 1.2rem;
   height: 80px;
-  background-color: #b15656;
+  background-color: #712cf9;
   color: azure;
   z-index: 99999;
 }
@@ -75,17 +75,33 @@ header .menu_container .menu_icon .menu_search {
 }
 
 header .menu_container .menu_icon .menu_search .menu_search_input {
+  display: none;
   position: absolute;
   top: 150%;
   left: -200%;
+  min-width: 150px;
+  min-height: 25px;
+  border-radius: 10px;
+}
+
+header .menu_container .menu_icon .menu_search .menu_search_input input {
+  width: 100%;
+  border-radius: 10px;
+}
+
+header .menu_container .menu_icon .menu_search .menu_search_input input:focus {
+  outline: none;
 }
 
 header .menu_container .menu_icon .menu_search .menu_search_input::before {
+  content: " ";
   position: absolute;
-  top: -100%;
-  width: 10px;
-  height: 10px;
-  background-color: #b15656;
+  top: -50%;
+  left: 25%;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid #fff;
 }
 
 @media (max-width: 768px) {
@@ -120,11 +136,12 @@ header .menu_container .menu_icon .menu_search .menu_search_input::before {
     transition: 350ms;
     height: 100vh;
     width: 250px;
-    background-color: #b15656;
+    background-color: #712cf9;
     font-size: 1.5rem;
     font-weight: 500;
   }
   header .menu_container .submenu .menu_toggle_close {
+    font-weight: 700;
     display: block;
     margin: 0 10px;
     line-height: 60px;
@@ -137,6 +154,14 @@ header .menu_container .menu_icon .menu_search .menu_search_input::before {
     left: 0;
     -webkit-transition: 350ms;
     transition: 350ms;
+  }
+  header .menu_container .menu_search_input {
+    position: absolute;
+    top: 150%;
+    left: -350% !important;
+  }
+  header .menu_container .menu_search_input::before {
+    left: 45% !important;
   }
 }
 /*# sourceMappingURL=Header.css.map */
