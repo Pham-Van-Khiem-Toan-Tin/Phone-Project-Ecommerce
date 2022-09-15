@@ -1,9 +1,13 @@
 import Caseroul from "../../components/layouts/Caseroul";
 import SliderProduct from "../../components/layouts/SliderProduct";
 import "./Home.css";
-import { Data2, Data3 } from "../../../data/Data";
+import { Data2, Data3, DATA4 } from "../../../data/Data";
 import { FaShippingFast, FaHandsHelping, FaUserCog , FaFireAlt } from "react-icons/fa";
+import CountdownTimer from "../../components/CountDown/CountDown";
 const Home = () => {
+  const THREE_DAYS_IN_MS = 3 * 24 * 60 * 60 * 1000;
+  const NOW_IN_MS = new Date().getTime();
+  const dateTimeAfterThreeDays = NOW_IN_MS + THREE_DAYS_IN_MS;
   return (
     <div className="Home" >
       <Caseroul />
@@ -24,25 +28,36 @@ const Home = () => {
         </div>
       </div>
       <div className="container hot_sale">
-        <div className="row hot_sale_header">
-          <div className="col hot_sale-button">
-            <button className="p-0 d-inline-block">Điện thoại</button>
-            <button className="p-0 d-inline-block">Phụ kiện</button>
+        <div className="hot_sale_header d-flex flex-row">
+          <div className="hot_sale-button d-flex flex-md-row flex-column align-items-center justify-content-center">
+            <button className="p-0">Điện thoại</button>
+            <button className="p-0">Phụ kiện</button>
           </div>
-          <div className="col mx-auto hot_sale-content">
+          <div className="mx-auto hot_sale-content">
             Hot sale tuần này <FaFireAlt />
           </div>
-          <div className="col hot_sale-timeCoutDown">
-            time
+          <div className="hot_sale-timeCountDown d-flex flex-md-row flex-column align-items-center justify-content-center">
+            <span className="fs-5 fw-bold">Kết thúc sau: </span>
+            <CountdownTimer targetDate={dateTimeAfterThreeDays}/>
           </div>
         </div>
         <div className="hot_sale-slider">
           <SliderProduct data={Data3} />
         </div>
       </div>
-      <div className="container pt-2 d-flex flex-row justify-content-between">
-        <h3>Những hãng nổi bật</h3>
-        <h4>Xem tiếp</h4>
+      <div className="container hot pt-2 d-flex flex-row justify-content-between align-items-center">
+        <h3 className="text-uppercase">Điện thoại nổi bật</h3>
+        <button>Xem tiếp</button>
+      </div>
+      <SliderProduct data={Data2} />
+      <div className="container hot pt-2 d-flex flex-row justify-content-between align-items-center">
+        <h3 className="text-uppercase">Âm Thanh</h3>
+        <button>Xem tiếp</button>
+      </div>
+      <SliderProduct data={Data2} />
+      <div className="container hot pt-2 d-flex flex-row justify-content-between align-items-center">
+        <h3 className="text-uppercase">Phụ kiện nổi bật</h3>
+        <button>Xem tiếp</button>
       </div>
       <SliderProduct data={Data2} />
     </div>

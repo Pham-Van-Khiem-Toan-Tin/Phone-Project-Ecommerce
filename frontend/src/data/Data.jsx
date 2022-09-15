@@ -105,6 +105,108 @@ const Data3 = [
     title: "SIS",
     img: "/assets/images/new/SIS-asus.png",
   },
+  {
+    id: 5,
+    title: "Iphone",
+    img: "/assets/images/new/apple_1.png",
+  },
+  {
+    id: 6,
+    title: "Samsung",
+    img: "/assets/images/new/samsung_1.png",
+  },
+  {
+    id: 7,
+    title: "Xiaomi",
+    img: "/assets/images/new/xiaomi.png",
+  },
+  {
+    id: 8,
+    title: "SIS",
+    img: "/assets/images/new/SIS-asus.png",
+  },
 ];
+const DATA4 = [
+  {
+    id: 1,
+    title: "Iphone",
+    img: "/assets/images/new/apple_1.png",
+  },
+  {
+    id: 2,
+    title: "Samsung",
+    img: "/assets/images/new/samsung_1.png",
+  },
+  {
+    id: 3,
+    title: "Xiaomi",
+    img: "/assets/images/new/xiaomi.png",
+  },
+  {
+    id: 4,
+    title: "SIS",
+    img: "/assets/images/new/SIS-asus.png",
+  },
+  {
+    id: 5,
+    title: "Iphone",
+    img: "/assets/images/new/apple_1.png",
+  },
+  {
+    id: 6,
+    title: "Samsung",
+    img: "/assets/images/new/samsung_1.png",
+  },
+  {
+    id: 7,
+    title: "Xiaomi",
+    img: "/assets/images/new/xiaomi.png",
+  },
+  {
+    id: 8,
+    title: "SIS",
+    img: "/assets/images/new/SIS-asus.png",
+  },
+  {
+    id: 9,
+    title: "Iphone",
+    img: "/assets/images/new/apple_1.png",
+  },
+  {
+    id: 10,
+    title: "Samsung",
+    img: "/assets/images/new/samsung_1.png",
+  },
+  {
+    id: 11,
+    title: "Xiaomi",
+    img: "/assets/images/new/xiaomi.png",
+  },
+  {
+    id: 12,
+    title: "SIS",
+    img: "/assets/images/new/SIS-asus.png",
+  },
+  {
+    id: 13,
+    title: "Iphone",
+    img: "/assets/images/new/apple_1.png",
+  },
+  {
+    id: 14,
+    title: "Samsung",
+    img: "/assets/images/new/samsung_1.png",
+  },
+  {
+    id: 15,
+    title: "Xiaomi",
+    img: "/assets/images/new/xiaomi.png",
+  },
+  {
+    id: 16,
+    title: "SIS",
+    img: "/assets/images/new/SIS-asus.png",
+  },
+]
 
-export { DATA, Data2, Data3 };
+export { DATA, Data2, Data3, DATA4 };
