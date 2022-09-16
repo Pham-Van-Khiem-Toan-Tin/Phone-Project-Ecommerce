@@ -28,7 +28,7 @@ const Home = () => {
         </div>
       </div>
       <div className="container hot_sale">
-        <div className="hot_sale_header d-flex flex-row">
+        <div className="hot_sale_header d-flex flex-row flex-wrap">
           <div className="hot_sale-button d-flex flex-md-row flex-column align-items-center justify-content-center">
             <button className="p-0">Điện thoại</button>
             <button className="p-0">Phụ kiện</button>
