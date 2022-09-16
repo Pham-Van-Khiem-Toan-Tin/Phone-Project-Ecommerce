@@ -1,17 +1,19 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper";
+import { Navigation, Autoplay, Grid } from "swiper";
 import "swiper/css";
+import "swiper/css/grid";
 import "swiper/css/navigation";
 import "./SliderProduct.css";
 
 const  SliderProduct = (props) => {
-  const { data } = props;
+  const { data, row } = props;
   return (
     <div className="container product-slider">
       <Swiper
         spaceBetween={10}
         slidesPerView={1}
+        grid={row?{rows: row}: {rows: 1}}
         onSwiper={(swiper) => console.log(swiper)}
         navigation={true}
         breakpoints={{
@@ -28,7 +30,7 @@ const  SliderProduct = (props) => {
             spaceBetween: 5,
           },
         }}
-        modules={[Navigation, Autoplay]}
+        modules={[Navigation, Autoplay, Grid]}
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,

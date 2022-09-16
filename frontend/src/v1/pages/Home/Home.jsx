@@ -54,7 +54,7 @@ const Home = () => {
         <h3 className="text-uppercase">Âm Thanh</h3>
         <button>Xem tiếp</button>
       </div>
-      <SliderProduct data={Data2} />
+      <SliderProduct data={DATA4} row={2} />
       <div className="container hot pt-2 d-flex flex-row justify-content-between align-items-center">
         <h3 className="text-uppercase">Phụ kiện nổi bật</h3>
         <button>Xem tiếp</button>
