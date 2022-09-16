@@ -26,7 +26,7 @@ module.exports.register = catchAsyncError(async (req, res, next) => {
   sendToken(user, 201, res);
 });
 
-//Logi  user
+//Login  user
 module.exports.loginUser = catchAsyncError(async (req, res, next) => {
   const { email, password } = req.body;
   //checking if user have eamil and password

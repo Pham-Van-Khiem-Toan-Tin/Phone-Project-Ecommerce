@@ -1,1 +1,12 @@
-/* No CSS *//*# sourceMappingURL=Categories.css.map */
+.container_banner-app {
+  background-color: #F0F3F2;
+  border-radius: 10px;
+}
+
+.container_banner-app .button_dowload-app {
+  border-radius: 10px;
+  background-color: #080404;
+  color: #fff;
+  width: 100px;
+}
+/*# sourceMappingURL=Categories.css.map */
