@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaArrowDown } from "react-icons/fa";
 import { Data2 } from "../../../data/Data";
 import "./Categories.css";
 const Categories = () => {
+  const [valueSearchMax, setValueSearchMax] = useState(50000000);
   return (
     <div className="Categories">
       <div className="container container_banner-app d-flex flex-lg-row flex-column flex-wrap justify-content-between align-items-center">
@@ -19,7 +20,19 @@ const Categories = () => {
               <label htmlFor="searchPrice" className="form-label fs-3 fw-bold">
                 Search Price
               </label>
-              <input type="range" className="form-range" id="searchPrice" />
+              <div className="d-flex align-items-center justify-content-center my-2">
+                <div className="searchPriceInputmin me-1">
+                  0.00
+                </div>
+                <div className="categories_search-input">
+                  <div className="valueSearchInput" style={{left: `${valueSearchMax/1000000}%`,
+                  transform: "translateX(-50%)"}}>{valueSearchMax/1000000}tr</div>
+                  <input type="range" min={0} max={100000000} step={1000000} value={valueSearchMax} className="form-range" onChange={(e) => setValueSearchMax(e.target.value)} id="searchPrice" />
+                </div>
+                <div className="searchPriceInputmax ms-1">
+                  100tr
+                </div>
+              </div>
             </div>
             <div className="search-model">
               <div className="d-lg-block d-none">
