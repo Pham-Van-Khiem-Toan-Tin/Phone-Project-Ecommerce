@@ -100,16 +100,16 @@ const Categories = () => {
             <div className="row">
               <div className="col d-flex align-items-center justify-content-center">
                 <nav aria-label="categoriesPagination">
-                  <ul className="pagination">
+                  <ul className="pagination justify-content-center">
                     <li className="page-item disabled">
                       <a className="page-link">Previous</a>
                     </li>
-                    <li className="page-item active">
+                    <li className="page-item">
                       <a className="page-link" href="#">
                         1
                       </a>
                     </li>
-                    <li className="page-item" aria-current="page">
+                    <li className="page-item">
                       <a className="page-link" href="#">
                         2
                       </a>
