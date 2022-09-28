@@ -10,14 +10,121 @@
       -ms-flex-pack: center;
           justify-content: center;
   max-width: 100%;
-  width: 100vw;
-  height: 100vh;
-  background-color: aliceblue;
 }
 
 .user .LoginSignUpBox {
-  width: 25vw;
+  width: 25%;
   height: 70vh;
+  background-color: #F05123;
+  border-radius: 20px;
+}
+
+.user .LoginSignUpBox .login_signup_toggle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 3vmax;
+}
+
+.user .LoginSignUpBox .login_signup_toggle p {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: medium;
+  text-align: center;
+  display: block;
+  padding: 5px;
+  width: 100%;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  color: #fff;
+}
+
+.user .LoginSignUpBox .login_signup_toggle p:hover {
+  color: #4a2cb6;
+}
+
+.user .LoginSignUpBox .userForm {
+  width: 100%;
   overflow: hidden;
+}
+
+.user .LoginSignUpBox .userForm .loginForm, .user .LoginSignUpBox .userForm .registerForm {
+  width: 100%;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.user .LoginSignUpBox .userForm .loginForm svg, .user .LoginSignUpBox .userForm .registerForm svg {
+  font-size: 20px;
+  color: #425aaa;
+  margin: 5px 5px;
+  text-align: center;
+}
+
+.user .LoginSignUpBox .userForm .loginForm input, .user .LoginSignUpBox .userForm .registerForm input {
+  padding: 2px 10px;
+  margin: 10px 5px;
+  border: solid 3px rgba(0, 0, 0, 0.8);
+  border-radius: 20px;
+  outline: none;
+}
+
+.user .LoginSignUpBox .userForm .loginForm input:focus, .user .LoginSignUpBox .userForm .registerForm input:focus {
+  border: solid 3px #4491da;
+}
+
+.user .LoginSignUpBox .userForm .loginForm button, .user .LoginSignUpBox .userForm .registerForm button {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  border-radius: 10px;
+  background-color: aquamarine;
+}
+
+.user .LoginSignUpBox .userForm .registerForm {
+  -webkit-transform: translateY(-58%) translateX(100%);
+          transform: translateY(-58%) translateX(100%);
+}
+
+.user .LoginSignUpBox .userForm .changeRegisterToLeft {
+  -webkit-transform: translateY(-58%) translateX(0%);
+          transform: translateY(-58%) translateX(0%);
+}
+
+.user .LoginSignUpBox .userForm .changeRegisterToNatrual {
+  -webkit-transform: translateY(-58%) translateX(100%);
+          transform: translateY(-58%) translateX(100%);
+}
+
+.user .LoginSignUpBox .userForm .changLoginToLeft {
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+
+.user .LoginSignUpBox .userForm .changLoginToNatrual {
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+}
+
+@media (max-width: 990px) {
+  .user .LoginSignUpBox {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .user .LoginSignUpBox {
+    width: 75%;
+  }
 }
 /*# sourceMappingURL=User.css.map */
