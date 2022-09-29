@@ -4,7 +4,6 @@ import { FaLock, FaUserAlt } from "react-icons/fa";
 
 import "./User.css";
 const User = () => {
-  const [isLogin, setIsLogin] = useState(true);
   const loginTab = useRef(null);
   const registerTab = useRef(null);
   const swichtTab = (e, tab) => {
