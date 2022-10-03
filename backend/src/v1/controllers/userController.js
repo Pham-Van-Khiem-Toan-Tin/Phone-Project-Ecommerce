@@ -31,16 +31,16 @@ module.exports.loginUser = catchAsyncError(async (req, res, next) => {
   const { email, password } = req.body;
   //checking if user have eamil and password
   if (!email || !password) {
-    return next(new ErrorHandle("Please Enter Email and Password"), 400);
+    return next(new ErrorHandle("Please Enter Email and Password", 400));
   }
   const user = userModel.findOne({ email: email }).select("+password");
 
   if (!user) {
-    return next(new ErrorHandle("Invalid email or password"), 401);
+    return next(new ErrorHandle("Invalid email or password", 401));
   }
   const passwordIsMatch = userModel.comparePassword(password);
   if (!passwordIsMatch) {
-    return next(new ErrorHandle("Invalid email or password"), 401);
+    return next(new ErrorHandle("Invalid email or password", 401));
   }
   sendToken(user, 200, res);
 });
@@ -243,4 +243,3 @@ module.exports.deleteUser = catchAsyncError(async (req, res, next) => {
     message: "USer delete successfully!",
   });
 });
-

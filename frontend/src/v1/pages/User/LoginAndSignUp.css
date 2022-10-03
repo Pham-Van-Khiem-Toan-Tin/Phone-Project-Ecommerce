@@ -1,0 +1,196 @@
+.form {
+  position: absolute;
+  background: #fff;
+  border-radius: 6px;
+  max-width: 430px;
+  padding: 30px;
+  width: 100%;
+}
+
+.form .form-content a {
+  text-decoration: none;
+  color: #0171d3;
+}
+
+.form .form-content a:hover {
+  text-decoration: underline;
+}
+
+.form .form-content .form-link {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.form .form-content .form-link span, .form .form-content .form-link a {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.form .form-content .form-link span {
+  color: #232836;
+}
+
+.form .form-header {
+  font-size: 28px;
+  font-weight: 600;
+  color: #232836;
+  text-align: center;
+}
+
+.form .field {
+  position: relative;
+  height: 45px;
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 6px;
+}
+
+.form form {
+  margin-top: 30px;
+}
+
+.form form .field input, .form form .field button {
+  height: 100%;
+  width: 100%;
+  border: none;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.form form .field input {
+  padding: 0 15px;
+  border: 1px solid #CACACA;
+  outline: none;
+}
+
+.form form .field input:focus {
+  border-bottom-width: 2px;
+}
+
+.form form .field button {
+  background-color: #0171d3;
+  color: #fff;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.form form .field button:hover {
+  background-color: #016dcb;
+}
+
+.form form .field .eye-icon {
+  font-size: 18px;
+  position: absolute;
+  color: #8b8b8b;
+  top: 50%;
+  right: 10px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  cursor: pointer;
+  padding: 1px;
+}
+
+.form .line {
+  height: 1px;
+  width: 100%;
+  position: relative;
+  background-color: #d4d4d4;
+  margin: 36px 0;
+}
+
+.form .line::before {
+  content: "Or";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #fff;
+  color: #232836;
+  padding: 0 15px;
+}
+
+.form .media-options a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.form a.facebook {
+  color: #fff;
+  background-color: #4267b2;
+}
+
+.form a.facebook .facebook-icon {
+  background-color: #fff;
+  height: 28px;
+  width: 28px;
+  color: #0171d3;
+  font-size: 20px;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.form a.google {
+  color: #232836;
+  background-color: #fff;
+  border: 1px solid #CACACA;
+}
+
+.form a.google .google-icon {
+  height: 28px;
+  width: 28px;
+  color: #0171d3;
+  font-size: 20px;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: transparent;
+}
+
+.form .facebook-icon, .form .google-icon {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.form.sign-up {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.forms.show-signup .form.sign-up {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.forms.show-signup .form.login {
+  opacity: 1;
+  pointer-events: auto;
+}
+/*# sourceMappingURL=LoginAndSignUp.css.map */
