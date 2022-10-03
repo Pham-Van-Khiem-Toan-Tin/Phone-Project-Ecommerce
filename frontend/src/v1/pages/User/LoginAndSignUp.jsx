@@ -18,10 +18,10 @@ const LoginAndSignUp = () => {
           <div className="form-header">Login</div>
           <form action="#">
             <div className="field input-field">
-              <input type="email" placeholder="Email" className="input" />
+              <input type="email" placeholder="Email" className="input" required />
             </div>
             <div className="field input-field">
-              <input type={type} placeholder="Password" className="input" />
+              <input type={type} placeholder="Password" className="input" required/>
               {iconEyeSlash ? (
                 <FaEyeSlash
                   className="eye-icon"
@@ -74,24 +74,13 @@ const LoginAndSignUp = () => {
           <div className="form-header">Sign Up</div>
           <form action="#">
             <div className="field input-field">
-              <input type="email" placeholder="Email" className="input" />
+              <input type="email" placeholder="Email" className="input" required/>
             </div>
             <div className="field input-field">
-              <input type={type} placeholder="Password" className="input" />
-              {iconEyeSlash ? (
-                <FaEyeSlash
-                  className="eye-icon"
-                  onClick={() => {setIconEyeSlash(false); setType("text")}}
-                />
-              ) : (
-                <FaEye
-                  className="eye-icon"
-                  onClick={() => {setIconEyeSlash(true); setType("password")}}
-                />
-              )}
+              <input type={type} placeholder="Password" className="input" required/>
             </div>
             <div className="field input-field">
-              <input type={type} placeholder="Password" className="input" />
+              <input type={type} placeholder="Password" className="input" required />
               {iconEyeSlash ? (
                 <FaEyeSlash
                   className="eye-icon"
