@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { FaArrowDown } from "react-icons/fa";
 import { Data2 } from "../../../data/Data";
 import "./Categories.css";
 const Categories = () => {
