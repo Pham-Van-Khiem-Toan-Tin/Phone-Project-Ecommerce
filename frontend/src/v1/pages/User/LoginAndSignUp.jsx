@@ -6,11 +6,11 @@ const LoginAndSignUp = () => {
   const [type, setType] = useState("password");
   const [iconEyeSlash, setIconEyeSlash] = useState(true);
   const forms = useRef(null);
- 
+
   const handleShowForm = (e) => {
     e.preventDefault();
-    forms.current.classList.toggle("show-signup"); 
-  }
+    forms.current.classList.toggle("show-signup");
+  };
   return (
     <div className="loginAndSignUp forms" ref={forms}>
       <div className="form login">
@@ -18,19 +18,35 @@ const LoginAndSignUp = () => {
           <div className="form-header">Login</div>
           <form action="#">
             <div className="field input-field">
-              <input type="email" placeholder="Email" className="input" required />
+              <input
+                type="email"
+                placeholder="Email"
+                className="input"
+                required
+              />
             </div>
             <div className="field input-field">
-              <input type={type} placeholder="Password" className="input" required/>
+              <input
+                type={type}
+                placeholder="Password"
+                className="input"
+                required
+              />
               {iconEyeSlash ? (
                 <FaEyeSlash
                   className="eye-icon"
-                  onClick={() => {setIconEyeSlash(false); setType("text")}}
+                  onClick={() => {
+                    setIconEyeSlash(false);
+                    setType("text");
+                  }}
                 />
               ) : (
                 <FaEye
                   className="eye-icon"
-                  onClick={() => {setIconEyeSlash(true); setType("password")}}
+                  onClick={() => {
+                    setIconEyeSlash(true);
+                    setType("password");
+                  }}
                 />
               )}
             </div>
@@ -46,11 +62,14 @@ const LoginAndSignUp = () => {
           <div className="form-link">
             <span>
               Already have an account?
-              <a href="#" className="signup-link" onClick={(e) => {
-                handleShowForm(e)
-              }}>
+              <span
+                className="signup-link"
+                onClick={(e) => {
+                  handleShowForm(e);
+                }}
+              >
                 Sign up
-              </a>
+              </span>
             </span>
           </div>
         </div>
@@ -68,44 +87,73 @@ const LoginAndSignUp = () => {
           </a>
         </div>
       </div>
-{/* form sign-up */}
+      {/* form sign-up */}
       <div className="form sign-up">
         <div className="form-content">
           <div className="form-header">Sign Up</div>
           <form action="#">
             <div className="field input-field">
-              <input type="email" placeholder="Email" className="input" required/>
+              <input
+                type="email"
+                placeholder="Email"
+                className="input"
+                required
+              />
             </div>
             <div className="field input-field">
-              <input type={type} placeholder="Password" className="input" required/>
+              <input
+                type={type}
+                placeholder="Password"
+                className="input"
+                required
+              />
             </div>
             <div className="field input-field">
-              <input type={type} placeholder="Password" className="input" required />
+              <input
+                type={type}
+                placeholder="Password"
+                className="input"
+                required
+              />
               {iconEyeSlash ? (
                 <FaEyeSlash
                   className="eye-icon"
-                  onClick={() => {setIconEyeSlash(false); setType("text")}}
+                  onClick={() => {
+                    setIconEyeSlash(false);
+                    setType("text");
+                  }}
                 />
               ) : (
                 <FaEye
                   className="eye-icon"
-                  onClick={() => {setIconEyeSlash(true); setType("password")}}
+                  onClick={() => {
+                    setIconEyeSlash(true);
+                    setType("password");
+                  }}
                 />
               )}
             </div>
-
+            <div className="chose-avatar">
+              <img src="assets/images/contact/contact.jpg" alt="" />
+              <div className="button-avatar"></div>
+              <label htmlFor="avatar-file">Chose Your Avatar</label>
+              <input type="file" id="avatar-file"/>
+            </div>
             <div className="field input-field">
-              <button>Sign Up</button>
+              <button type="file">Sign Up</button>
             </div>
           </form>
           <div className="form-link">
             <span>
               Already have an account?
-              <a href="#" className="login-link" onClick={(e) => {
-                handleShowForm(e);
-              }}>
+              <span
+                className="login-link"
+                onClick={(e) => {
+                  handleShowForm(e);
+                }}
+              >
                 Login
-              </a>
+              </span>
             </span>
           </div>
         </div>
