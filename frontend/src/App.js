@@ -12,7 +12,7 @@ import Cart from "./v1/pages/Cart/Cart";
 import User from "./v1/pages/User/User";
 import Admin from "./v1/pages/Admin/Admin";
 import Footer from "./v1/components/layouts/Footer";
-import Blog from "./v1/pages/Blog/Blog";
+import About from "./v1/pages/About/About";
 
 function App() {
   const path = useLocation();
@@ -27,7 +27,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/user" element={<User />} />
         <Route path="/admin" element={<Admin />} />
-        <Route path="/blog" element={<Blog />} />
+        <Route path="/about" element={<About />} />
       </Routes>
       <Footer />
     </>

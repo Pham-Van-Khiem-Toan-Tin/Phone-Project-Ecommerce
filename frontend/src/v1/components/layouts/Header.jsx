@@ -13,8 +13,8 @@ const menus = [
     path: "/categories",
   },
   {
-    display: "Blog",
-    path: "/blog",
+    display: "About",
+    path: "/about",
   },
   {
     display: "Contact",

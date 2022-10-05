@@ -12,7 +12,7 @@ const LoginAndSignUp = () => {
     forms.current.classList.toggle("show-signup"); 
   }
   return (
-    <div className="user forms" ref={forms}>
+    <div className="loginAndSignUp forms" ref={forms}>
       <div className="form login">
         <div className="form-content">
           <div className="form-header">Login</div>

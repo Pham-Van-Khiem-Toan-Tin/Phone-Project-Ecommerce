@@ -1,35 +1,61 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { DATA } from "../../../data/Data";
+import useDebounce from "../../hooks/useDebounce";
 const InputSearch = () => {
-    const [Data, setData] = useState([]);
-    const [keyword, setKeyword] = useState("");
-    const typingTimeOutRef = useRef(null);
-    const handleInputSearch = (e) => {
-        const {value} = e.target;
-        setKeyword(value);
-        console.log("onchang");
-        if(typingTimeOutRef.current) {
-            clearTimeout(typingTimeOutRef.current);
-            setData([]);
-        }
-        typingTimeOutRef.current = setTimeout(() => {
-            setData(DATA.filter((data) => data.title.includes(value)))
-        },1000)
+  const [searchTerm, setSearchTerm] = useState("");
+  const [results, setResults] = useState([]);
+  const [isSearching, setIsSearching] = useState(false);
+  const debouncedSearchTerm = useDebounce(searchTerm, 500);
+  const searchCharacters = async (search) => {
+    const apikey = "http://localhost:8888/";
+    return fetch(apikey, { method: "GET" })
+      .then((r) => r.json())
+      .then((r) => r.data.title)
+      .catch((err) => {
+        console.error(err);
+        return [];
+      });
+  };
+  useEffect(() => {
+    if (debouncedSearchTerm) {
+      setIsSearching(true);
+      searchCharacters(debouncedSearchTerm).then((results) => {
+        setIsSearching(false);
+        setResults(results);
+      });
     }
+    else {
+      setResults([]);
+      setIsSearching(false);
+    }
+
+    return () => {};
+  }, []);
+
   return (
     <>
       <form>
-        <input type="text" value={keyword} placeholder="Search..." onChange={handleInputSearch}/>
+        <input
+          type="text"
+          value={searchTerm}
+          placeholder="Search..."
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
         <button>
           <FaSearch />
         </button>
       </form>
-      {Data.length !== 0 && (
+      {isSearching && <div>Searching ...</div>}
+      {results.length !== 0 && (
         <div className="table-search">
           <ul className="search-list">
-            {Data.map((data) => {
-                return (<li className="serach-list-items" key={data.title}>{data.title}</li>)
+            {results.map((data) => {
+              return (
+                <li className="serach-list-items" key={data.title}>
+                  {data.title}
+                </li>
+              );
             })}
           </ul>
         </div>
