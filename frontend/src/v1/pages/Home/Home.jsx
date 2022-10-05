@@ -14,16 +14,16 @@ const Home = () => {
       <div className="container mt-2">
         <div className="row">
           <div className="col">
-            <FaShippingFast className="d-block fs-1 mx-auto" style={{color: "#712cf9"}} />
-            <p className="fs-3 text-center fw-bold" style={{color: "#712cf9"}}>Giao hàng nhanh</p>
+            <FaShippingFast className="d-block fs-1 mx-auto" style={{color: "#ffff"}} />
+            <p className="fs-3 text-center fw-bold" style={{color: "#ffff"}}>Giao hàng nhanh</p>
           </div>
-          <div className="col" style={{borderLeft: "1px solid #712cf9",borderRight: "1px solid #712cf9"}}>
-            <FaHandsHelping className="d-block fs-1 mx-auto" style={{color: "#712cf9"}} />
-            <p className="fs-3 text-center fw-bold" style={{color: "#712cf9"}}>Hỗ trợ trả góp</p>
+          <div className="col" style={{borderLeft: "1px solid #ffff",borderRight: "1px solid #ffff"}}>
+            <FaHandsHelping className="d-block fs-1 mx-auto" style={{color: "#ffff"}} />
+            <p className="fs-3 text-center fw-bold" style={{color: "#ffff"}}>Hỗ trợ trả góp</p>
           </div>
           <div className="col">
-            <FaUserCog className="d-block fs-1 mx-auto" style={{color: "#712cf9"}} />
-            <p className="fs-3 text-center fw-bold" style={{color: "#712cf9"}}>Bảo hành lâu dài</p>
+            <FaUserCog className="d-block fs-1 mx-auto" style={{color: "#ffff"}} />
+            <p className="fs-3 text-center fw-bold" style={{color: "#ffff"}}>Bảo hành lâu dài</p>
           </div>
         </div>
       </div>

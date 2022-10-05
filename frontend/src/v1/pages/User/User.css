@@ -1,7 +1,6 @@
 .user {
   margin-top: 80px;
   height: 100vh;
-  background: linear-gradient(120deg, #2980b9, #8e44ad);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
