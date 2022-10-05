@@ -1,16 +1,15 @@
 import { Link, useLocation } from "react-router-dom";
 import { FaBars, FaSearch, FaUserAlt, FaShoppingCart } from "react-icons/fa";
-import { GoX } from "react-icons/go";
-
+import { BiX } from "react-icons/bi";
 import "./Header.css";
-import { useState } from "react";
+import InputSearch from "./InputSearch";
 const menus = [
   {
-    display: "Trang chủ",
+    display: "Home",
     path: "/",
   },
   {
-    display: "Sản phẩm",
+    display: "Categories",
     path: "/categories",
   },
   {
@@ -18,65 +17,117 @@ const menus = [
     path: "/blog",
   },
   {
-    display: "Liên Hệ",
+    display: "Contact",
     path: "/contact",
   },
 ];
 
 const Header = () => {
   const pathName = useLocation();
-  const [sideBar, setSideBar] = useState(false);
-  const [showInputSearch, setShowInputSearch] = useState(false);
   const activeNav = menus.findIndex((menu) => menu.path === pathName);
-  const showSideBar = () => setSideBar(!sideBar);
-  const closeSideBar = () => setSideBar(!sideBar);
-  const handleInputSearch = () => {
-    setShowInputSearch(!showInputSearch)
-  }
+  
   return (
     <header>
-      <div className="container menu_container">
-        <div className="brandAndToggle">
-          <div className="menu_toggle" onClick={showSideBar}>
+      <div className="menus container">
+        <div className="menus-content">
+          <button
+            className="menu-icon-toggle"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#SideBar"
+            aria-controls="SideBar"
+          >
             <FaBars />
-          </div>
-          <div className="brand">
-            <Link to="/">Shop</Link>
-          </div>
+          </button>
+          <div className="menu-brand">Shop</div>
+          <ul className="menu-link">
+            {menus.map((menu, index) => {
+              return (
+                <li key={index} className="menu-item">
+                  <Link to={menu.path}>{menu.display}</Link>
+                </li>
+              );
+            })}
+          </ul>
         </div>
-        <ul className={sideBar ? "submenu active-toggle" : "submenu"}>
-          <div className="menu_toggle_close">
-            <GoX onClick={closeSideBar} />
-          </div>
-          {menus.map((menu, index) => {
-            return (
-              <li
-                key={menu.path}
-                className={`menu_children-1 ${
-                  index === activeNav ? "active" : ""
-                }`}
-              >
-                <Link to={menu.path} onClick={() => {
-                  closeSideBar();
-                  setShowInputSearch(false)
-                }}>{menu.display}</Link>
-              </li>
-            );
-          })}
-        </ul>
-        <div className="menu_icon">
-          <div className="menu_search">
-            <FaSearch onClick={handleInputSearch}/>
-            <div className="menu_search_input" style={showInputSearch?{display: "block"}:{display:"none"}}>
-              <input  type="text" />
-            </div>
-          </div>
+        <div className="menus-brand">
+          Shop
+        </div>
+        <div className="menus-search">
+          <InputSearch />
+        </div>
+        <div className="menus-icon">
+          <button
+            className="search-icon"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#inputSearch"
+            aria-controls="inputSearch"
+          >
+            <FaSearch />
+          </button>
           <Link to="/user">
             <FaUserAlt />
           </Link>
           <Link to="/cart">
             <FaShoppingCart />
           </Link>
+        </div>
+      </div>
+      <div
+        className="offcanvas offcanvas-start"
+        tabIndex="-1"
+        id="SideBar"
+        aria-labelledby="SideBar-label"
+      >
+        <div className="offcanvas-header sidebar-header">
+          <h5 className="offcanvas-title" id="SideBar-label">
+            Shop
+          </h5>
+          <button
+            type="button"
+            className="sidebar-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          >
+            <BiX />
+          </button>
+        </div>
+        <div className="offcanvas-body">
+          <ul className="menus-sidebar">
+            {menus.map((menu) => {
+              return (
+                <li key={menu.display}>
+                  <Link to={menu.path}>{menu.display}</Link>
+                </li>
+              )
+            })}
+          </ul>
+        </div>
+      </div>
+      <div
+        className="offcanvas offcanvas-top"
+        tabIndex="-1"
+        id="inputSearch"
+        aria-labelledby="offcanvasTopLabel"
+      >
+        <div className="offcanvas-header input-search-header">
+          <h5 className="offcanvas-title" id="offcanvasTopLabel">
+          Search for the product you want
+          </h5>
+          <button
+            type="button"
+            className="input-search-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          >
+            <BiX />
+          </button>
+        </div>
+        <div className="offcanvas-body inputSearch-body">
+          <div className="inputsearch-sidebar">
+            <InputSearch />
+          </div>
         </div>
       </div>
     </header>
