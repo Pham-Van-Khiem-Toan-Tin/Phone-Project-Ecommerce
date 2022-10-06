@@ -1,28 +1,83 @@
 import React, { useRef, useState } from "react";
 import { FaEyeSlash, FaEye, FaFacebookF } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { useDispatch, useSelector } from "react-redux";
+import { register, login } from "../../reduxToolkit/actions/userAction";
+
 import "./LoginAndSignUp.css";
 const LoginAndSignUp = () => {
   const [type, setType] = useState("password");
   const [iconEyeSlash, setIconEyeSlash] = useState(true);
+
   const forms = useRef(null);
+
+  const dispatch = useDispatch();
+  const { isLoading, error, isAuthenticated } = useSelector(
+    (state) => state.user
+  );
+  console.log({error: error, isLoading: isLoading});
 
   const handleShowForm = (e) => {
     e.preventDefault();
     forms.current.classList.toggle("show-signup");
+  };
+
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setloginPassword] = useState("");
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const { name, email, password } = user;
+  const [avatar, setAvatar] = useState("/assets/images/Profile.png");
+  const [avatarPreview, setAvatarPreview] = useState("/assets/images/Profile.png");
+
+  const loginSubmit = (e) => {
+    e.preventDefault();
+    dispatch(login({loginEmail, loginPassword}))
+  }
+  const registerSubmit = (e) => {
+    e.preventDefault();
+    const myForm = new FormData();
+    myForm.set("name", name);
+    myForm.set("email", email);
+    myForm.set("password", password);
+    myForm.set("avatar", avatar);
+    dispatch(register(myForm));
+  };
+
+  const registerDataChange = (e) => {
+    if (e.target.name === "avatar") {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        if (reader.readyState === 2) {
+          setAvatarPreview(reader.result);
+          setAvatar(reader.result);
+        }
+      };
+
+      reader.readAsDataURL(e.target.files[0]);
+    } else {
+      setUser({ ...user, [e.target.name]: e.target.value });
+    }
   };
   return (
     <div className="loginAndSignUp forms" ref={forms}>
       <div className="form login">
         <div className="form-content">
           <div className="form-header">Login</div>
-          <form action="#">
+          <form onSubmit={loginSubmit}>
             <div className="field input-field">
               <input
                 type="email"
                 placeholder="Email"
                 className="input"
                 required
+                value={loginEmail}
+                onChange={(e) => setLoginEmail(e.target.value)}
               />
             </div>
             <div className="field input-field">
@@ -30,6 +85,8 @@ const LoginAndSignUp = () => {
                 type={type}
                 placeholder="Password"
                 className="input"
+                value={loginPassword}
+                onChange={(e) => setloginPassword(e.target.value)}
                 required
               />
               {iconEyeSlash ? (
@@ -56,7 +113,7 @@ const LoginAndSignUp = () => {
               </a>
             </div>
             <div className="field input-field">
-              <button>Login</button>
+              <button type="submit">Login</button>
             </div>
           </form>
           <div className="form-link">
@@ -91,13 +148,27 @@ const LoginAndSignUp = () => {
       <div className="form sign-up">
         <div className="form-content">
           <div className="form-header">Sign Up</div>
-          <form action="#">
+          <form encType="multipart/form-data" onSubmit={registerSubmit}>
+            <div className="field input-field">
+              <input
+                type="text"
+                placeholder="Name"
+                className="input"
+                name="name"
+                value={name}
+                required
+                onChange={registerDataChange}
+              />
+            </div>
             <div className="field input-field">
               <input
                 type="email"
                 placeholder="Email"
                 className="input"
+                name="email"
+                value={email}
                 required
+                onChange={registerDataChange}
               />
             </div>
             <div className="field input-field">
@@ -105,15 +176,10 @@ const LoginAndSignUp = () => {
                 type={type}
                 placeholder="Password"
                 className="input"
+                name="password"
+                value={password}
                 required
-              />
-            </div>
-            <div className="field input-field">
-              <input
-                type={type}
-                placeholder="Password"
-                className="input"
-                required
+                onChange={registerDataChange}
               />
               {iconEyeSlash ? (
                 <FaEyeSlash
@@ -134,13 +200,19 @@ const LoginAndSignUp = () => {
               )}
             </div>
             <div className="chose-avatar">
-              <img src="assets/images/contact/contact.jpg" alt="" />
+              <img src={avatarPreview} alt="" />
               <div className="button-avatar"></div>
               <label htmlFor="avatar-file">Chose Your Avatar</label>
-              <input type="file" id="avatar-file"/>
+              <input
+                type="file"
+                id="avatar-file"
+                name="avatar"
+                accept="image/*"
+                onChange={registerDataChange}
+              />
             </div>
             <div className="field input-field">
-              <button type="file">Sign Up</button>
+              <button type="submit">Sign Up</button>
             </div>
           </form>
           <div className="form-link">

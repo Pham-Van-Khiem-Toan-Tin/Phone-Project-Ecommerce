@@ -34,11 +34,11 @@ module.exports.loginUser = catchAsyncError(async (req, res, next) => {
     return next(new ErrorHandle("Please Enter Email and Password", 400));
   }
   const user = userModel.findOne({ email: email }).select("+password");
-
+  // console.log(user);
   if (!user) {
     return next(new ErrorHandle("Invalid email or password", 401));
   }
-  const passwordIsMatch = userModel.comparePassword(password);
+  const passwordIsMatch = user.comparePassword(password);
   if (!passwordIsMatch) {
     return next(new ErrorHandle("Invalid email or password", 401));
   }
