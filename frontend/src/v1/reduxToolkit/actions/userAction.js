@@ -28,10 +28,10 @@ export const login = createAsyncThunk(
   "USER_LOGIN",
   async (dataLogin, { rejectWithValue }) => {
     try {
-      const config = { headers: { type: 'application/json' } };
+      const config = { headers: { "Content-Type": "application/json" } };
       const { data } = axios.post(
         `http://localhost:8000/api/v1/login`,
-        dataLogin,
+        {email: dataLogin.loginEmail, password: dataLogin.loginPassword},
         config
       );
       console.log(data);
