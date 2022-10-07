@@ -29,16 +29,17 @@ module.exports.register = catchAsyncError(async (req, res, next) => {
 //Login  user
 module.exports.loginUser = catchAsyncError(async (req, res, next) => {
   const { email, password } = req.body;
+  console.log({email, password});
   //checking if user have eamil and password
   if (!email || !password) {
     return next(new ErrorHandle("Please Enter Email and Password", 400));
   }
-  const user = userModel.findOne({ email: email }).select("+password");
+  const user = await userModel.findOne({ email }).select("+password");
   // console.log(user);
   if (!user) {
     return next(new ErrorHandle("Invalid email or password", 401));
   }
-  const passwordIsMatch = user.comparePassword(password);
+  const passwordIsMatch = await user.comparePassword(password);
   if (!passwordIsMatch) {
     return next(new ErrorHandle("Invalid email or password", 401));
   }

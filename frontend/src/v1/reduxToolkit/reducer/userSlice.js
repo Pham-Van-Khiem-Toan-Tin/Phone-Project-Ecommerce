@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { register, login } from "../actions/userAction";
+import { register, login, clearError } from "../actions/userAction";
+
+
 
 const userSlice = createSlice({
   name: "user",
@@ -10,7 +12,9 @@ const userSlice = createSlice({
     isAuthenticated: false,
   },
   reducers: {
-    
+    [clearError]: (state) => {
+      state.error = null;
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(register.pending, (state) => {
@@ -32,7 +36,7 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.isAuthenticated = true;
         state.user = action.payload;
-        console.log(action.payload);
+        // console.log(action.payload);
     });
     builder.addCase(login.rejected, (state, action) => {
         state.isLoading = false;

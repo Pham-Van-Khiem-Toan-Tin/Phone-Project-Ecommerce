@@ -1,7 +1,8 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, createAction } from "@reduxjs/toolkit";
 
 const axios = require("axios").default;
 
+export const clearError = createAction("CLEAR_ERROR");
 //register
 export const register = createAsyncThunk(
   "USER_REGITER",
@@ -29,12 +30,11 @@ export const login = createAsyncThunk(
   async (dataLogin, { rejectWithValue }) => {
     try {
       const config = { headers: { "Content-Type": "application/json" } };
-      const { data } = axios.post(
+      const { data } = await axios.post(
         `http://localhost:8000/api/v1/login`,
         {email: dataLogin.loginEmail, password: dataLogin.loginPassword},
         config
       );
-      console.log(data);
       return data;
     } catch (error) {
         if (error.response && error.response.data.message) {

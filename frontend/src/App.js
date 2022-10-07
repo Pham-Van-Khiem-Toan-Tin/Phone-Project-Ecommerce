@@ -13,10 +13,15 @@ import User from "./v1/pages/User/User";
 import Admin from "./v1/pages/Admin/Admin";
 import Footer from "./v1/components/layouts/Footer";
 import About from "./v1/pages/About/About";
-
+import { ToastContainer } from "react-toastify";
+import LoginAndSignUp from "./v1/pages/User/LoginAndSignUp";
+import Profile from "./v1/pages/User/Profile";
+import ProtectRoute from "./v1/Route/ProtectRoute";
+import { useSelector } from "react-redux";
 function App() {
   const path = useLocation();
   console.log(path);
+  const {isLoading} = useSelector((state) => state.user);
   return (
     <>
       <Header />
@@ -24,11 +29,25 @@ function App() {
         <Route path="/" index element={<Home />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/account" element={<ProtectRoute children={<Profile />}/>}/>
         <Route path="/cart" element={<Cart />} />
-        <Route path="/user" element={<User />} />
+        <Route path="/login" element={<LoginAndSignUp />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/about" element={<About />} />
       </Routes>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+      {/* Same as */}
+      <ToastContainer />
       <Footer />
     </>
   );

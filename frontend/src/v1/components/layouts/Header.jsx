@@ -66,7 +66,7 @@ const Header = () => {
           >
             <FaSearch />
           </button>
-          <Link to="/user">
+          <Link to="/login">
             <FaUserAlt />
           </Link>
           <Link to="/cart">
