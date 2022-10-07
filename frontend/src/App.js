@@ -9,7 +9,6 @@ import Home from "./v1/pages/Home/Home";
 import Categories from "./v1/pages/categories/Categories";
 import Contact from "./v1/pages/Contact/Contact";
 import Cart from "./v1/pages/Cart/Cart";
-import User from "./v1/pages/User/User";
 import Admin from "./v1/pages/Admin/Admin";
 import Footer from "./v1/components/layouts/Footer";
 import About from "./v1/pages/About/About";
@@ -18,10 +17,11 @@ import LoginAndSignUp from "./v1/pages/User/LoginAndSignUp";
 import Profile from "./v1/pages/User/Profile";
 import ProtectRoute from "./v1/Route/ProtectRoute";
 import { useSelector } from "react-redux";
+import "react-toastify/dist/ReactToastify.css";
 function App() {
   const path = useLocation();
   console.log(path);
-  const {isLoading} = useSelector((state) => state.user);
+  const userState = useSelector((state) => state.user);
   return (
     <>
       <Header />
@@ -29,7 +29,12 @@ function App() {
         <Route path="/" index element={<Home />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/account" element={<ProtectRoute children={<Profile />}/>}/>
+        {userState.isLoading === false && (
+          <Route
+            path="/account"
+            element={<ProtectRoute children={<Profile />} />}
+          />
+        )}
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<LoginAndSignUp />} />
         <Route path="/admin" element={<Admin />} />
@@ -37,7 +42,7 @@ function App() {
       </Routes>
       <ToastContainer
         position="top-right"
-        autoClose={5000}
+        autoClose={500}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -47,7 +52,6 @@ function App() {
         pauseOnHover
       />
       {/* Same as */}
-      <ToastContainer />
       <Footer />
     </>
   );

@@ -2,7 +2,6 @@ import { createAsyncThunk, createAction } from "@reduxjs/toolkit";
 
 const axios = require("axios").default;
 
-export const clearError = createAction("CLEAR_ERROR");
 //register
 export const register = createAsyncThunk(
   "USER_REGITER",

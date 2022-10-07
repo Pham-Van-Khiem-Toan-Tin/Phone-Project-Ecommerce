@@ -3,14 +3,15 @@ import { FaEyeSlash, FaEye, FaFacebookF } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader/Loader";
-import { register, login, clearError } from "../../reduxToolkit/actions/userAction";
-import { toast } from 'react-toastify';
+import { register, login } from "../../reduxToolkit/actions/userAction";
+import { clearError } from "../../reduxToolkit/reducer/userSlice";
+import { toast } from "react-toastify";
 import "./LoginAndSignUp.css";
 import { useLocation, useNavigate } from "react-router-dom";
 const LoginAndSignUp = () => {
   const [type, setType] = useState("password");
   const [iconEyeSlash, setIconEyeSlash] = useState(true);
-  const history = useNavigate();
+  const navigate = useNavigate();
   const location = useLocation();
 
   const forms = useRef(null);
@@ -70,17 +71,20 @@ const LoginAndSignUp = () => {
       setUser({ ...user, [e.target.name]: e.target.value });
     }
   };
-  const redirect = location.search?location.search.split("=")[1]:"/account";
+  // console.log({location: location, navigate1: navigate});
+  const redirect = location.search ? location.search.split("=")[1] : "/account";
   useEffect(() => {
-    if(error)  {
-      toast.error({error});
+    console.log(error);
+    if (error) {
+      toast.error(error);
+      console.log("render");
       dispatch(clearError());
     }
-    if(isAuthenticated) {
-      history(redirect);
+    if (isAuthenticated) {
+      navigate(redirect);
     }
-  }, [dispatch, error, toast, history, isAuthenticated, redirect])
-  
+  }, [dispatch, error, navigate, isAuthenticated, toast, redirect]);
+
   return (
     <>
       {isLoading ? (
