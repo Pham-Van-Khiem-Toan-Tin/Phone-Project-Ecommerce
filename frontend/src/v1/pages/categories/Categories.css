@@ -1,0 +1,31 @@
+.container_banner-app {
+  background-color: #F0F3F2;
+  border-radius: 10px;
+}
+
+.container_banner-app .button_dowload-app {
+  border-radius: 10px;
+  background-color: #080404;
+  color: #fff;
+  width: 100px;
+}
+
+.categories_search-input {
+  position: relative;
+}
+
+.categories_search-input input {
+  width: 100%;
+}
+
+.categories_search-input .valueSearchInput {
+  text-align: center;
+  position: absolute;
+  background: #0D6EFD;
+  color: #F0F3F2;
+  border-radius: 10px;
+  width: 50px;
+  padding: 2px;
+  top: -100%;
+}
+/*# sourceMappingURL=Categories.css.map */

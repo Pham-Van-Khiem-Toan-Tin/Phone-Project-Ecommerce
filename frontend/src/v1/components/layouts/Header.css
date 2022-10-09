@@ -1,35 +1,361 @@
-.navbar-brand {
-    font-size: 2rem;
-    color: black;
-    font-family: 'Kreon', serif;
+header {
+  background: linear-gradient(120deg, #430468, #290c91);
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
 }
-.navbar-brand:hover {
-    color: brown;
+
+header .menus {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 60px;
 }
-.nav-link {
-    margin-right: 10px;
-    margin-left: 10px;
-    color: black;
-    text-transform: uppercase;
+
+header .menus .menus-brand {
+  font-size: 40px;
+  padding: 0 10px;
+  font-weight: 700;
+  color: #ffff;
+  text-transform: uppercase;
+  display: none;
 }
-.nav-link:hover {
-    color: brown;
+
+header .menus .menus-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
-.search {
-    height: 40px;
-    width: 80%;
-    border-radius: 60px;
-    margin-right: -35px;
-    outline: none;
-    border: 2px solid rgb(248, 26, 92);
+
+header .menus .menus-content button.menu-icon-toggle {
+  font-size: 30px;
+  font-weight: 600;
+  display: none;
+  border: none;
+  background-color: transparent;
+  color: #ffff;
 }
-.btn0{
-    height: 40px;
-    width: 40%;
-    border: none;
-    outline: none;
-    background: rgb(248, 26, 92);
-    color: white;
-    font-weight: 700;
-    border-radius: 60px;
+
+header .menus .menus-content button.menu-icon-toggle svg {
+  display: block;
+  margin-top: auto;
+  margin-bottom: auto;
 }
+
+header .menus .menus-content button.menu-icon-toggle:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+header .menus .menus-content .menu-brand {
+  font-size: 40px;
+  padding: 0 20px 0 0;
+  font-weight: 700;
+  color: #ffff;
+  text-transform: uppercase;
+}
+
+header .menus .menus-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+header .menus .menus-content ul li a {
+  padding: 18px 10px;
+  font-size: 18px;
+  color: #ffff;
+  font-weight: 400;
+}
+
+header .menus .menus-content ul li a:hover {
+  background-color: #14021f;
+}
+
+header .menus-search {
+  margin-right: auto;
+  margin-left: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+header .menus-search form input {
+  border: none;
+  padding: 5px 25px 5px 10px;
+  border-radius: 9px;
+}
+
+header .menus-search form input:focus {
+  outline: none;
+}
+
+header .menus-search form button {
+  background: none;
+  border: none;
+  border-radius: 40%;
+  -webkit-transform: translateX(-140%);
+          transform: translateX(-140%);
+  color: #430468;
+}
+
+header .menus-search .table-search {
+  position: absolute;
+  background-color: #ffff;
+  min-width: 400px;
+  top: 60px;
+  border-radius: 20px;
+}
+
+header .menus-search .table-search ul {
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+header .menus-search .table-search ul::-webkit-scrollbar {
+  display: none;
+}
+
+header .menus-search .table-search li {
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+}
+
+header .menus-search .table-search:before {
+  content: " ";
+  position: absolute;
+  z-index: 998;
+  top: -20px;
+  left: 50%;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid #ffff;
+}
+
+header .menus-icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-column-gap: 15px;
+          column-gap: 15px;
+  margin-right: 20px;
+  font-size: 20px;
+}
+
+header .menus-icon button {
+  background: none;
+  border: none;
+  color: #ffff;
+  padding: 0;
+  display: none;
+}
+
+header .menus-icon button:focus {
+  background: none;
+  outline: none;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+header .menus-icon a {
+  color: #ffff;
+}
+
+header #SideBar {
+  background: linear-gradient(120deg, #430468, #290c91);
+}
+
+header #SideBar .sidebar-header {
+  height: 60px;
+}
+
+header #SideBar .sidebar-close {
+  background-color: transparent;
+  border: none;
+  font-size: 40px;
+  font-weight: 800;
+  color: #ffff;
+}
+
+header #SideBar .sidebar-close svg {
+  display: block;
+  margin: auto 0;
+}
+
+header #SideBar #SideBar-label {
+  padding: 10px 5px 10px 20px;
+  text-transform: uppercase;
+  color: #ffff;
+  font-size: 40px;
+  font-weight: 800;
+}
+
+header #SideBar .menus-sidebar {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+header #SideBar .menus-sidebar li {
+  font-size: 20px;
+  padding: 10px 5px 10px 20px;
+}
+
+header #SideBar .menus-sidebar li a:hover {
+  color: #ccc;
+  border-bottom: 2px solid #ccc;
+}
+
+header #inputSearch {
+  height: 100vh;
+  background: linear-gradient(120deg, #430468, #290c91);
+  color: #ffff;
+}
+
+header #inputSearch .input-search-header {
+  height: 60px;
+}
+
+header #inputSearch .input-search-close {
+  background-color: transparent;
+  border: none;
+  font-size: 40px;
+  font-weight: 800;
+  color: #ffff;
+}
+
+header #inputSearch .input-search-close svg {
+  display: block;
+  margin: auto 0;
+}
+
+header #inputSearch .inputSearch-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+header #inputSearch .inputSearch-body .inputsearch-sidebar {
+  position: relative;
+}
+
+header #inputSearch .inputSearch-body .inputsearch-sidebar form input {
+  min-width: 250px;
+  border-radius: 9px;
+  padding: 10px 30px 10px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+header #inputSearch .inputSearch-body .inputsearch-sidebar form input:focus {
+  outline: none;
+}
+
+header #inputSearch .inputSearch-body .inputsearch-sidebar form button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  -webkit-transform: translateX(-140%);
+          transform: translateX(-140%);
+  color: rgba(0, 0, 0, 0.2);
+}
+
+header #inputSearch .inputSearch-body .inputsearch-sidebar .table-search {
+  position: absolute;
+  background-color: #ffff;
+  min-width: 400px;
+  top: 60px;
+  left: -30%;
+  border-radius: 20px;
+}
+
+header #inputSearch .inputSearch-body .inputsearch-sidebar .table-search ul {
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+header #inputSearch .inputSearch-body .inputsearch-sidebar .table-search ul::-webkit-scrollbar {
+  display: none;
+}
+
+header #inputSearch .inputSearch-body .inputsearch-sidebar .table-search li {
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+  color: #000;
+}
+
+header #inputSearch .inputSearch-body .inputsearch-sidebar .table-search:before {
+  content: " ";
+  position: absolute;
+  z-index: 998;
+  top: -20px;
+  left: 50%;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid #ffff;
+}
+
+@media (max-width: 1200px) {
+  header .menus .menus-content .menu-brand {
+    display: none;
+  }
+  header .menus .menus-brand {
+    display: block;
+    margin: 0 auto;
+  }
+  header .menus .menus-search {
+    display: none;
+  }
+  header .menus .menus-icon button {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  header .menus .menus-content button.menu-icon-toggle {
+    display: block;
+  }
+  header .menus .menus-content .menu-link {
+    display: none;
+  }
+}
+/*# sourceMappingURL=Header.css.map */

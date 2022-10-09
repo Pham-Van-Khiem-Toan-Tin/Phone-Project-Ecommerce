@@ -5,9 +5,11 @@ const morgan = require("morgan");
 const cors = require("cors");
 const path = require("path");
 const helmet = require("helmet");
-
+const fileUpLoad = require("express-fileupload");
 require("dotenv").config();
 const app = express();
+
+const erorMiddleware = require("./src/v1/middlewares/error");
 
 const user = require("./src/v1/routers/userRouter");
 const product = require("./src/v1/routers/productRouter");
@@ -18,12 +20,16 @@ app.use(morgan("dev"));
 app.use(cookieParser());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "../frontend/build")));
-app.use(cors({ origin: `${process.env.CLIENT_URL}` }));
+app.use(fileUpLoad());
+// app.use(express.static(path.join(__dirname, "../frontend/public")));
+
+app.use(cors({ origin: process.env.CLIENT_URL }));
 
 
 app.use("/api/v1", user);
 app.use("/api/v1", product);
 app.use("/api/v1", order);
+
+app.use(erorMiddleware);
 
 module.exports = app;
