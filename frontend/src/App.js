@@ -24,7 +24,7 @@ function App() {
   const userState = useSelector((state) => state.user);
   return (
     <>
-      <Header />
+      {userState.user === null || userState.user.role !== "admin"?<Header />:null }
       <Routes>
         <Route path="/" index element={<Home />} />
         <Route path="/categories" element={<Categories />} />
