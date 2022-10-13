@@ -1,31 +1,19 @@
-.container_banner-app {
-  background-color: #F0F3F2;
-  border-radius: 10px;
+.categories {
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-.container_banner-app .button_dowload-app {
-  border-radius: 10px;
-  background-color: #080404;
-  color: #fff;
-  width: 100px;
+.categories .product-controller {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
 }
 
-.categories_search-input {
-  position: relative;
-}
-
-.categories_search-input input {
-  width: 100%;
-}
-
-.categories_search-input .valueSearchInput {
-  text-align: center;
-  position: absolute;
-  background: #0D6EFD;
-  color: #F0F3F2;
-  border-radius: 10px;
-  width: 50px;
-  padding: 2px;
-  top: -100%;
+.categories .product-gird {
+  -webkit-box-flex: 8;
+      -ms-flex: 8;
+          flex: 8;
 }
 /*# sourceMappingURL=Categories.css.map */

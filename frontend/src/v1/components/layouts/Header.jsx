@@ -1,8 +1,14 @@
-import { Link, useLocation } from "react-router-dom";
-import { FaBars, FaSearch, FaUserAlt, FaShoppingCart } from "react-icons/fa";
-import { BiX } from "react-icons/bi";
+import React, { useState } from "react";
+import {
+  BsList,
+  BsFillCartFill,
+  BsBellFill,
+  BsFillFilePersonFill,
+  BsSearch,
+} from "react-icons/bs";
 import "./Header.css";
-import InputSearch from "./InputSearch";
+import { Link } from "react-router-dom";
+
 const menus = [
   {
     display: "Home",
@@ -23,111 +29,149 @@ const menus = [
 ];
 
 const Header = () => {
-  const pathName = useLocation();
-  const activeNav = menus.findIndex((menu) => menu.path === pathName);
-  
+  // const pathName = useLocation();
+  // const activeNav = menus.findIndex((menu) => menu.path === pathName);
+
   return (
     <header>
-      <div className="menus container">
-        <div className="menus-content">
+      <div className="navbar-container container">
+        <div className="icon-toggle">
           <button
-            className="menu-icon-toggle"
             type="button"
             data-bs-toggle="offcanvas"
-            data-bs-target="#SideBar"
-            aria-controls="SideBar"
+            data-bs-target="#navSidebar"
+            aria-controls="Sidebar"
           >
-            <FaBars />
+            <BsList />
           </button>
-          <div className="menu-brand">Shop</div>
-          <ul className="menu-link">
-            {menus.map((menu, index) => {
-              return (
-                <li key={index} className="menu-item">
-                  <Link to={menu.path}>{menu.display}</Link>
-                </li>
-              );
-            })}
-          </ul>
         </div>
-        <div className="menus-brand">
-          Shop
+
+        <div className="navbar-brand">Shop</div>
+        <div className="navbar-search">
+          <input type="text" placeholder="Search..." />
+          <div className="icon-search">
+            <BsSearch />
+          </div>
         </div>
-        <div className="menus-search">
-          <InputSearch />
-        </div>
-        <div className="menus-icon">
-          <button
-            className="search-icon"
-            type="button"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#inputSearch"
-            aria-controls="inputSearch"
-          >
-            <FaSearch />
-          </button>
-          <Link to="/login">
-            <FaUserAlt />
-          </Link>
-          <Link to="/cart">
-            <FaShoppingCart />
-          </Link>
+        <div className="navbar_icon-group">
+          <div className="icon-user">
+            <Link to="/login">
+              <BsFillFilePersonFill />
+            </Link>
+          </div>
+          <div className="icon-cart">
+            <Link to="/cart">
+              <BsFillCartFill />
+            </Link>
+          </div>
+          <div className="icon-bell">
+            <Link to="/">
+              <BsBellFill />
+            </Link>
+          </div>
         </div>
       </div>
       <div
         className="offcanvas offcanvas-start"
         tabIndex="-1"
-        id="SideBar"
-        aria-labelledby="SideBar-label"
+        id="navSidebar"
+        aria-labelledby="SidebarLabel"
       >
-        <div className="offcanvas-header sidebar-header">
-          <h5 className="offcanvas-title" id="SideBar-label">
-            Shop
+        <div className="offcanvas-header">
+          <h5 className="offcanvas-title" id="SidebarLabel">
+            Hello, Khiem
           </h5>
           <button
             type="button"
-            className="sidebar-close"
+            className="btn-close"
             data-bs-dismiss="offcanvas"
             aria-label="Close"
-          >
-            <BiX />
-          </button>
+          ></button>
         </div>
         <div className="offcanvas-body">
-          <ul className="menus-sidebar">
+          <div className="title-menu">Admin menu</div>
+          <ul className="list-group list-group-flush">
+            <li className="list-group-item">
+              <Link to="/admin/dasboard">DashBoard</Link>
+            </li>
+            <li className="list-group-item">
+              <Link to="/admin/orders">Orders</Link>
+            </li>
+          </ul>
+          <div className="accordion accordion-flush" id="menuAdmin">
+            <div className="accordion-item">
+              <h2 className="accordion-header" id="flush-menuAdminOne">
+                <button
+                  className="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-menuAdminItemOne"
+                  aria-expanded="false"
+                  aria-controls="flush-menuAdminItemOne"
+                >
+                  User
+                </button>
+              </h2>
+              <div
+                id="flush-menuAdminItemOne"
+                className="accordion-collapse collapse"
+                aria-labelledby="flush-menuAdminOne"
+                data-bs-parent="#menuAdmin"
+              >
+                <div className="accordion-body">
+                  <ul className="list-group list-group-flush">
+                    <li className="list-group-item">
+                      <Link to="/admin/allproducts">All User</Link>
+                    </li>
+                    <li className="list-group-item">
+                      <Link to="/admin/newproduct">Create User</Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div className="accordion-item">
+              <h2 className="accordion-header" id="flush-menuAdminTwo">
+                <button
+                  className="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-menuAdminItemTwo"
+                  aria-expanded="false"
+                  aria-controls="flush-menuAdminItemTwo"
+                >
+                  Product
+                </button>
+              </h2>
+              <div
+                id="flush-menuAdminItemTwo"
+                className="accordion-collapse collapse"
+                aria-labelledby="flush-menuAdminTwo"
+                data-bs-parent="#menuAdmin"
+              >
+                <div className="accordion-body">
+                  <ul className="list-group list-group-flush">
+                    <li className="list-group-item">
+                      <Link to="/admin/allproducts">All Product</Link>
+                    </li>
+                    <li className="list-group-item">
+                      <Link to="/admin/newproduct">Create Product</Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="title-menu">User Menu</div>
+          <ul className="list-group list-group-flush">
             {menus.map((menu) => {
               return (
-                <li key={menu.display}>
+                <li className="list-group-item" key={menu.path}>
                   <Link to={menu.path}>{menu.display}</Link>
                 </li>
-              )
+              );
             })}
           </ul>
-        </div>
-      </div>
-      <div
-        className="offcanvas offcanvas-top"
-        tabIndex="-1"
-        id="inputSearch"
-        aria-labelledby="offcanvasTopLabel"
-      >
-        <div className="offcanvas-header input-search-header">
-          <h5 className="offcanvas-title" id="offcanvasTopLabel">
-          Search for the product you want
-          </h5>
-          <button
-            type="button"
-            className="input-search-close"
-            data-bs-dismiss="offcanvas"
-            aria-label="Close"
-          >
-            <BiX />
-          </button>
-        </div>
-        <div className="offcanvas-body inputSearch-body">
-          <div className="inputsearch-sidebar">
-            <InputSearch />
-          </div>
         </div>
       </div>
     </header>

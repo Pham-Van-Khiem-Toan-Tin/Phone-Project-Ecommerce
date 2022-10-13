@@ -1,4 +1,4 @@
-import Caseroul from "../../components/layouts/Caseroul";
+
 import SliderProduct from "../../components/layouts/SliderProduct";
 import "./Home.css";
 import { Data2, Data3, DATA4 } from "../../../data/Data";
@@ -9,8 +9,7 @@ const Home = () => {
   const NOW_IN_MS = new Date().getTime();
   const dateTimeAfterThreeDays = NOW_IN_MS + THREE_DAYS_IN_MS;
   return (
-    <div className="Home" >
-      <Caseroul />
+    <div className="Home" style={{width: "100vw"}} >
       <div className="container mt-2">
         <div className="row">
           <div className="col">
