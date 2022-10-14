@@ -1,0 +1,91 @@
+.categories {
+    width: 100vw;
+    
+    margin-top: 80px;
+    .categories-header {
+        text-align: center;
+    }
+    .categories-content {
+        display: flex;
+        flex-wrap: wrap !important;
+        .categories-controller {
+            flex: 2;
+            margin: 10px 0 0 30px;
+            padding: 5px;
+            .categories-range {
+                
+                border: 1px solid rgb(230, 222, 222);
+                padding: 5px 10px;
+            }
+            .categories-model {
+                margin-top: 10px;
+                margin-bottom: 10px;
+                color: #fff;
+                text-transform: uppercase;
+                .categories-model-item {
+                    font-size: 16px;
+                    font-weight: 400;
+                    cursor: pointer;
+                    margin-left: 40px;
+                    text-transform: uppercase;
+                }
+                .categories-model-item:hover {
+                    color: rgb(216, 94, 94);
+                }
+            }
+            .categories-rating {
+                border: 1px solid rgb(230, 222, 222);
+                padding: 5px;
+                text-align: center;
+                
+            }
+        }
+        .categories-gird {
+            flex: 8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .categories-gird-content {
+                padding: 0px 30px 10px 10px;
+                .card {
+                    margin-top: 10px;
+                }
+            }
+        }
+    } 
+}
+
+@media (max-width: 768px) {
+    .categories-content {
+        flex-direction: column;
+        .categories-controller {
+            flex: none;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-right: 30px !important;
+            margin-left: 10px;
+            .categories-model {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                h3 {
+                    display: none;
+                }
+                .categories-model-item {
+                    margin-left: 5px !important;
+                    border: 1px solid #fff;
+                    font-size: 15px !important;
+                    padding: 5px;
+                    border-radius: 20px;
+                    background: hsl(0, 0%, 89%);
+                    color: rgb(206, 124, 124);
+                }
+            }
+        }
+        .categories-gird {
+            flex: none;
+        }
+    }
+}

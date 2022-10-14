@@ -1,0 +1,93 @@
+header {
+    background: linear-gradient(120deg,rgb(67, 4, 104),rgb(41, 12, 145));
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    height: 60px;
+    width: 100vw;
+    z-index: 999;
+    .navbar-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .icon-toggle {
+            flex: 1;
+            padding-left: 2px;
+            display: flex;
+            align-items: center;
+            button {
+                background: none;
+                border: none;
+                color: #fff;
+                font-size: 30px;
+                font-weight: 800;
+                svg {
+                    display: block;
+                }
+            }
+        }
+        .navbar-brand {
+            flex: 1;
+            font-size: 30px;
+            font-weight: 700;
+        }
+        .navbar-search {
+            flex: 8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            input {
+                border: none;
+                outline: none;
+                border-radius: 20px;
+                padding: 2px 20px 2px 10px;
+                width: 300px;
+            }
+            .icon-search {
+                position: absolute;
+                color: rgb(83, 73, 73);
+                right: 37%;
+                top: 0%;
+            }
+        }
+        .navbar_icon-group {
+            flex: 2;
+            display: flex;
+            justify-content: flex-end;
+            a {
+                color: #fff;
+                font-size: 20px;
+                margin: 0 5px;
+            }
+        }
+    }
+    .offcanvas{
+        .offcanvas-header {
+            .offcanvas-title {
+                color: rgb(43, 36, 36);
+            }
+        }
+        .offcanvas-body {
+            .title-menu {
+                color: rgb(44, 39, 39);
+                font-size: 30px;
+            }
+            .accordion {
+                .accordion-item {
+                    .accordion-body {
+                        li {
+                            a {
+                                color: #000;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
