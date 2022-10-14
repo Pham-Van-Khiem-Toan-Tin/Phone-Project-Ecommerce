@@ -10,6 +10,7 @@
       -ms-flex-pack: center;
           justify-content: center;
   height: 100vh;
+  width: 100vw;
 }
 
 .profile .user-avatar {

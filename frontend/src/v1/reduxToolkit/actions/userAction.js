@@ -7,7 +7,6 @@ export const register = createAsyncThunk(
   "USER_REGITER",
   async (userForm, { rejectWithValue }) => {
     try {
-        console.log(userForm);
       const config = { headers: { "Content-Type": "multipart/form-data" } };
       const { data } = await axios.post(
         `http://localhost:8000/api/v1/register`,

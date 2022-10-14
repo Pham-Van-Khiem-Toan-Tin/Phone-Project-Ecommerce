@@ -48,7 +48,7 @@ const CreateProduct = () => {
   }
   return (
     <div className="create-product">
-      <form encType="multipart/form-data" onSubmit={handleSubmitCreateProduct}>
+      <form encType="multipart/form-data" onSubmit={(e) => handleSubmitCreateProduct(e)}>
         <label htmlFor="productName">
           Product name <BsFillPhoneFill />
         </label>
@@ -86,7 +86,7 @@ const CreateProduct = () => {
         <label htmlFor="model">
           Category <BsFillTagFill />
         </label>
-        <select name="model" id="model" onChange={(e) => setCategory(e.target.value)}>
+        <select name="model" id="model" defaultValue="" onChange={(e) => setCategory(e.target.value)}>
           <option value="">Chose category</option>
           <option value="Samsung">SamSung</option>
           <option value="Apple">Apple</option>

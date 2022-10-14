@@ -6,6 +6,8 @@ import {
   BsFillFilePersonFill,
   BsSearch,
 } from "react-icons/bs";
+import { useSelector } from "react-redux";
+
 import "./Header.css";
 import { Link } from "react-router-dom";
 
@@ -31,7 +33,8 @@ const menus = [
 const Header = () => {
   // const pathName = useLocation();
   // const activeNav = menus.findIndex((menu) => menu.path === pathName);
-
+  const {user} = useSelector((state) => state.user);
+  console.log({user: user});
   return (
     <header>
       <div className="navbar-container container">
@@ -89,7 +92,7 @@ const Header = () => {
           ></button>
         </div>
         <div className="offcanvas-body">
-          <div className="title-menu">Admin menu</div>
+          {user !== null && user.role === "admin" && <><div className="title-menu">Admin menu</div>
           <ul className="list-group list-group-flush">
             <li className="list-group-item">
               <Link to="/admin/dasboard">DashBoard</Link>
@@ -161,7 +164,7 @@ const Header = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div></>}
           <div className="title-menu">User Menu</div>
           <ul className="list-group list-group-flush">
             {menus.map((menu) => {
