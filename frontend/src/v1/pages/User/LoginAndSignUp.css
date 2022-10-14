@@ -12,6 +12,7 @@
           justify-content: center;
   -webkit-column-gap: 30px;
           column-gap: 30px;
+  width: 100vw;
 }
 
 .form {
@@ -87,9 +88,9 @@
 }
 
 .form form .chose-avatar img {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
+  width: 20%;
+  height: 100%;
+  border-radius: 40%;
 }
 
 .form form .chose-avatar input {
@@ -97,6 +98,9 @@
 }
 
 .form form .chose-avatar label {
+  -webkit-box-flex: 9;
+      -ms-flex: 9;
+          flex: 9;
   height: 45px;
   text-align: center;
   line-height: 45px;

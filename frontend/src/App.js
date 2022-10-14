@@ -20,6 +20,7 @@ import CreateProduct from "./v1/pages/Admin/CreateProduct";
 import UpdateProduct from "./v1/pages/Admin/UpdateProduct";
 import "./App.css"
 import Orders from "./v1/pages/Admin/Orders";
+import AllUser from "./v1/pages/Admin/AllUser";
 function App() {
   const path = useLocation();
   console.log(path);
@@ -56,6 +57,14 @@ function App() {
         />
         <Route
           path="/admin/product/orders"
+          element={<ProtectRoute isAdmin={true} children={<Orders />} />}
+        />
+        <Route
+          path="/admin/allusers"
+          element={<ProtectRoute isAdmin={true} children={<AllUser />} />}
+        />
+        <Route
+          path="/admin/user/:id"
           element={<ProtectRoute isAdmin={true} children={<Orders />} />}
         />
       </Routes>

@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react";
 import { BsPencilFill, BsFillTrashFill } from "react-icons/bs";
-const AllProduct = () => {
+const AllUser = () => {
   return (
-    <div style={{width: "100vw"}}>
+    <div style={{ width: "100vw" }}>
       <section className="pt-5 pb-5">
         <div className="container">
           <div className="row w-100">
@@ -18,9 +18,9 @@ const AllProduct = () => {
               >
                 <thead>
                   <tr>
-                    <th style={{ width: "60%" }}>Product</th>
-                    <th style={{ width: "12%" }}>Price</th>
-                    <th style={{ width: "10%" }}>Stock</th>
+                    <th style={{ width: "60%" }}>User</th>
+                    <th style={{ width: "12%" }}>Email</th>
+                    <th style={{ width: "10%" }}>Role</th>
                     <th style={{ width: "16%" }}>Actions</th>
                   </tr>
                 </thead>
@@ -36,15 +36,12 @@ const AllProduct = () => {
                           />
                         </div>
                         <div className="col-md-9 text-left mt-sm-2">
-                          <h4>Product Name</h4>
-                          <p className="font-weight-light">Brand &amp; Name</p>
+                          <h4>User Name</h4>
                         </div>
                       </div>
                     </td>
-                    <td data-th="Price">$49.00</td>
-                    <td data-th="Quantity">
-                      1
-                    </td>
+                    <td data-th="Price">Email</td>
+                    <td data-th="Quantity">User</td>
                     <td className="actions" data-th="">
                       <div className="text-right">
                         <button className="btn btn-white border-secondary bg-white btn-md mb-2">
@@ -67,15 +64,12 @@ const AllProduct = () => {
                           />
                         </div>
                         <div className="col-md-9 text-left mt-sm-2">
-                          <h4>Product Name</h4>
-                          <p className="font-weight-light">Brand &amp; Name</p>
+                          <h4>User Name</h4>
                         </div>
                       </div>
                     </td>
-                    <td data-th="Price">$49.00</td>
-                    <td data-th="Quantity">
-                      1
-                    </td>
+                    <td data-th="Price">Email</td>
+                    <td data-th="Quantity">User</td>
                     <td className="actions" data-th="">
                       <div className="text-right">
                         <button className="btn btn-white border-secondary bg-white btn-md mb-2">
@@ -98,15 +92,12 @@ const AllProduct = () => {
                           />
                         </div>
                         <div className="col-md-9 text-left mt-sm-2">
-                          <h4>Product Name</h4>
-                          <p className="font-weight-light">Brand &amp; Name</p>
+                          <h4>User Name</h4>
                         </div>
                       </div>
                     </td>
-                    <td data-th="Price">$49.00</td>
-                    <td data-th="Quantity">
-                      1
-                    </td>
+                    <td data-th="Price">Email</td>
+                    <td data-th="Quantity">User</td>
                     <td className="actions" data-th="">
                       <div className="text-right">
                         <button className="btn btn-white border-secondary bg-white btn-md mb-2">
@@ -125,7 +116,7 @@ const AllProduct = () => {
         </div>
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default AllProduct
+export default AllUser;

@@ -1,6 +1,10 @@
-.Footer {
-    background-color: #712CF9;
+.footer {
+    background: linear-gradient(120deg,rgb(67, 4, 104),rgb(41, 12, 145));
+    width: 100vw;
 }
 footer li div {
     color: #fff !important;
+}
+footer li svg {
+    color: #fff;
 }

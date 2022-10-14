@@ -121,7 +121,7 @@ const Header = () => {
                 <div className="accordion-body">
                   <ul className="list-group list-group-flush">
                     <li className="list-group-item">
-                      <Link to="/admin/allproducts">All User</Link>
+                      <Link to="/admin/allusers">All User</Link>
                     </li>
                     <li className="list-group-item">
                       <Link to="/admin/newproduct">Create User</Link>
