@@ -1,0 +1,67 @@
+.create-product {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    form {
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        border-radius: 20px;
+        margin: 0 10px;
+        padding: 20px;
+        -webkit-box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.75);
+        label {
+            font-size: 20px;
+            font-weight: 600;
+        }
+        input {
+            border: 1px solid rgba($color: #000000, $alpha: 0.3);
+            border-radius: 10px;
+            padding: 5px 10px;
+            outline: none;
+            margin: 10px;
+        }
+        textarea {
+            border: 1px solid rgba($color: #000000, $alpha: 0.3);
+            border-radius: 10px;
+            padding: 5px 10px;
+            outline: none;
+            margin: 10px;
+        }
+        select {
+            border: 1px solid rgba($color: #000000, $alpha: 0.3);
+            border-radius: 10px;
+            padding: 5px 10px;
+            outline: none;
+            margin: 10px;
+        }
+        input[type="file"] {
+            border: none;
+        }
+        input[type="file"]::-webkit-file-upload-button {
+            visibility: hidden;
+        }
+        input[type="file"]::before {
+            content: "Chose file";
+            -webkit-user-select: none;
+            border: 1px solid #999;
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 10px;
+            background: rgb(14, 140, 241);
+            color: #fff;
+        }
+        button {
+            border: none;
+            background-color: rgb(14, 140, 241);
+            color: #fff;
+            font-size: 20px;
+            border-radius: 10px;
+            height: 45px;
+        }
+    }
+}
