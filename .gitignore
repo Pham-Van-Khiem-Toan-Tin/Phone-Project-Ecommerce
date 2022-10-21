@@ -1,4 +1,4 @@
 
 *.css.map
-
+*.env
 node_modules
