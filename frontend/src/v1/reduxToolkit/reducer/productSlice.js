@@ -8,3 +8,15 @@ const productSlice = createSlice({
     }
 })
 
+const allProductSlice = createSlice({
+    name: "product",
+    initialState: {
+
+    },
+    reducers: {
+
+    },
+    extraReducers: {
+
+    }
+});
