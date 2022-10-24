@@ -4,7 +4,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
     width: 100vw;
     .user-avatar {
         display: flex;
@@ -59,27 +58,11 @@
     }
 }
 @media (max-width: 992px) {
-    .user {
+    .profile {
         flex-direction: column;
-        .user-avatar {
-            span {
-                padding-left: 0px;
-                font-size: 30px;
-            }
-            button {
-                margin-bottom: 20px;
-            }
-            img {
-                width: 300px;
-                height: 300px;
-            }
-        }
         .user-profile-detail {
             align-items: center;
-            button {
-                width: 300px;
-                height: 40px;
-            }
+            
         }
     }
 }
