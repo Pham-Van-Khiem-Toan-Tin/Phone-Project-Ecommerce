@@ -1,5 +1,5 @@
 import React from "react";
-import { BsArrowCounterclockwise, BsFillTrashFill } from "react-icons/bs";
+import { BsArrowCounterclockwise, BsFillTrashFill, BsFillArrowLeftSquareFill } from "react-icons/bs";
 const Cart = () => {
   return (
     <div style={{width: "100vw"}}>
@@ -151,8 +151,8 @@ const Cart = () => {
               </a>
             </div>
             <div className="col-sm-6 mb-3 mb-m-1 order-md-1 text-md-left">
-              <a href="catalog.html">
-                <i className="fas fa-arrow-left mr-2"></i> Continue Shopping
+              <a href="catalog.html" style={{color: "#fff", fontSize: "24px"}}>
+                <BsFillArrowLeftSquareFill style={{display: "inline-block"}}/> Continue Shopping
               </a>
             </div>
           </div>
