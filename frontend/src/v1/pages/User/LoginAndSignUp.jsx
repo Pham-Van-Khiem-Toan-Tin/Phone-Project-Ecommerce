@@ -4,7 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader/Loader";
 import { register, login } from "../../reduxToolkit/actions/userAction";
-import { clearError } from "../../reduxToolkit/reducer/userSlice";
+import { clearError } from "../../reduxToolkit/reducer/user/userSlice";
 import { toast } from "react-toastify";
 import "./LoginAndSignUp.css";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -20,7 +20,6 @@ const LoginAndSignUp = () => {
   const { isLoading, error, isAuthenticated } = useSelector(
     (state) => state.user
   );
-  console.log({ error: error, isLoading: isLoading });
 
   const handleShowForm = (e) => {
     e.preventDefault();
@@ -74,10 +73,10 @@ const LoginAndSignUp = () => {
   // console.log({location: location, navigate1: navigate});
   const redirect = location.search ? location.search.split("=")[1] : "/account";
   useEffect(() => {
-    console.log(error);
+    // console.log(error);
     if (error) {
       toast.error(error);
-      console.log("render");
+      // console.log("render");
       dispatch(clearError());
     }
     if (isAuthenticated) {

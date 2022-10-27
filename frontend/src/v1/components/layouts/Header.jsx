@@ -34,7 +34,7 @@ const Header = () => {
   // const pathName = useLocation();
   // const activeNav = menus.findIndex((menu) => menu.path === pathName);
   const {user} = useSelector((state) => state.user);
-  console.log({user: user});
+  // console.log({user: user});
   return (
     <header>
       <div className="navbar-container container">

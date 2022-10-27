@@ -1,15 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BsPencilFill, BsFillTrashFill } from "react-icons/bs";
+import { clearError } from "../../reduxToolkit/reducer/user/allUserSlice";
+import { allUser } from "../../reduxToolkit/actions/userAction";
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 const AllUser = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { error, users, isLoading} = useSelector((state) => state.allUsers);
+  useEffect(() => {
+    if(error) {
+      toast.error(error);
+      dispatch(clearError);
+    }
+    dispatch(allUser);
+    console.log(users);
+  }, [dispatch, toast, error]);
   return (
     <div style={{ width: "100vw" }}>
       <section className="pt-5 pb-5">
         <div className="container">
           <div className="row w-100">
             <div className="col-lg-12 col-md-12 col-12">
-              <h3 className="display-5 mb-2 text-center">All Product</h3>
+              <h3 className="display-5 mb-2 text-center">ALL USER</h3>
               <p className="mb-5 text-center">
-                <i className="text-info font-weight-bold">3</i> products in your
+                <i className="text-info font-weight-bold">{users.length}</i> users in your
                 shop
               </p>
               <table

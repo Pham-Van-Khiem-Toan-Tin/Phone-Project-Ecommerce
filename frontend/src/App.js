@@ -23,7 +23,6 @@ import Orders from "./v1/pages/Admin/Orders";
 import AllUser from "./v1/pages/Admin/AllUser";
 function App() {
   const path = useLocation();
-  console.log(path);
 
   return (
     <>

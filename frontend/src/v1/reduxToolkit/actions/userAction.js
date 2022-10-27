@@ -43,3 +43,20 @@ export const login = createAsyncThunk(
     }
   }
 );
+
+export const allUser = createAsyncThunk(
+  "ALL_USER",
+  async  (_, {rejectWithValue}) => {
+    try {
+      const { data } = await axios.get(`http://localhost:8000/api/v1/admin/users`);
+      console.log(data);
+      return data;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+)
