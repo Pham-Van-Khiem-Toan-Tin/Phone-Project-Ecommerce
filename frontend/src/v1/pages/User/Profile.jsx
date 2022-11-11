@@ -7,7 +7,7 @@ const Profile = () => {
   const { user, isLoading, isAuthenticated } = useSelector(
     (state) => state.user
   );
-  console.log(user);
+  // console.log(user);
   const navigate = useNavigate();
   useLayoutEffect(() => {
     if (isAuthenticated === false) {

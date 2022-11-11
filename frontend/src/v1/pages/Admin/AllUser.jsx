@@ -5,16 +5,17 @@ import { allUser } from "../../reduxToolkit/actions/userAction";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 const AllUser = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { error, users, isLoading} = useSelector((state) => state.allUsers);
+  const { error, users, isLoading } = useSelector((state) => state.allUsers);
   useEffect(() => {
-    if(error) {
+    if (error) {
       toast.error(error);
       dispatch(clearError);
     }
-    dispatch(allUser);
+    dispatch(allUser());
     console.log(users);
   }, [dispatch, toast, error]);
   return (
@@ -25,8 +26,8 @@ const AllUser = () => {
             <div className="col-lg-12 col-md-12 col-12">
               <h3 className="display-5 mb-2 text-center">ALL USER</h3>
               <p className="mb-5 text-center">
-                <i className="text-info font-weight-bold">{users.length}</i> users in your
-                shop
+                <i className="text-info font-weight-bold">{users.length}</i>{" "}
+                users in your shop
               </p>
               <table
                 id="shoppingCart"

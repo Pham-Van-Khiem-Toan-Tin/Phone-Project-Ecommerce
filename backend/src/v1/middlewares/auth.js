@@ -5,6 +5,7 @@ require("dotenv").config();
 
 module.exports.isAuthenticatedUser = async (req, res, next) => {
   const {token} = req.cookies;
+  console.log(req.cookies.token);
   if(!token) {
     return next(new ErrorHandle("Please login to access this resource"));
   }
@@ -15,6 +16,7 @@ module.exports.isAuthenticatedUser = async (req, res, next) => {
 
 module.exports.isAuthorizeRoles =  (...roles) => {
   return (req, res, next) => {
+    console.log(req.user);
     if(!roles.includes(req.user.role)) {
         return next(
           new ErrorHandle(`Role: ${req.user.role} is not allowed to access this resource`, 403)
