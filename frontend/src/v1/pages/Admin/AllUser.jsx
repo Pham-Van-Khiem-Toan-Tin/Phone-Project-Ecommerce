@@ -27,7 +27,7 @@ const AllUser = () => {
     }
     if(isDelete) {
       toast.success(message);
-      dispatch(allUser());
+      dispatch(clearDeleteError());
     }
     dispatch(allUser());
   }, [dispatch, toast, error, message, deleteError]);

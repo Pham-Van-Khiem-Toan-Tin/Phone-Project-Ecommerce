@@ -8,12 +8,12 @@ const allUserSlice = createSlice({
     isLoading: false,
     error: null,
     message: null,
-    isDelete: null,
+    isDelete: false,
     deleteError: null,
   },
   reducers: {
     clearError: (state) => (state.error = null),
-    clearDeleteError: (state) => (state.deleteError = null)
+    clearDeleteError: (state) => {state.deleteError = null; state.isDelete = false}
   },
   extraReducers: (builder) => {
     builder.addCase(allUser.pending, (state) => {
