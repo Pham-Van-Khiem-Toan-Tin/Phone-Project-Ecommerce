@@ -17,8 +17,8 @@ const allUserSlice = createSlice({
     });
     builder.addCase(allUser.fulfilled, (state, action) => {
       state.isLoading = false;
-      console.log(action.payload);
-      state.users = action.payload;
+      // console.log(action.payload);
+      state.users = action.payload.users;
     });
     builder.addCase(allUser.rejected, (state, action) => {
       state.isLoading = false;

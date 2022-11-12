@@ -27,7 +27,7 @@ export const login = createAsyncThunk(
   "USER_LOGIN",
   async (dataLogin, { rejectWithValue }) => {
     try {
-      const config = { headers: { "Content-Type": "application/json" } };
+      const config = { headers: { "Content-Type": "application/json" } , withCredentials: true };
       const { data } = await axios.post(
         `http://localhost:8000/api/v1/login`,
         {email: dataLogin.loginEmail, password: dataLogin.loginPassword},
@@ -48,8 +48,8 @@ export const allUser = createAsyncThunk(
   "ALL_USER",
   async  (_, {rejectWithValue}) => {
     try {
-      const { data } = await axios.get(`http://localhost:8000/api/v1/admin/users`);
-      console.log(data);
+      const { data } = await axios.get(`http://localhost:8000/api/v1/admin/users`, {withCredentials: true});
+      // console.log(data);
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {

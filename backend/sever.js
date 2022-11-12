@@ -23,7 +23,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpLoad());
 // app.use(express.static(path.join(__dirname, "../frontend/public")));
 
-app.use(cors({ origin: process.env.CLIENT_URL }));
+app.use(cors({ origin: process.env.CLIENT_URL, credentials: true,
+    exposedHeaders: ["set-cookie"] }));
 
 
 app.use("/api/v1", user);
