@@ -60,3 +60,18 @@ export const allUser = createAsyncThunk(
     }
   }
 )
+export const deleteUser = createAsyncThunk(
+  "DELETE_USER",
+  async (id, {rejectWithValue}) => {
+    try {
+      const {data} = await axios.delete(`http://localhost:8000/api/v1/admin/user/${id}`, {}, {withCredentials: true});
+      return data;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+)
