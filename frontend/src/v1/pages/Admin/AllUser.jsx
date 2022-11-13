@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
+import { Link } from "react-router-dom" 
 const AllUser = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -36,7 +37,7 @@ const AllUser = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <div style={{ width: "100vw" }}>
+        <div style={{ width: "100vw", minHeight: "100vh" }}>
           <section className="pt-5 pb-5">
             <div className="container">
               <div className="row w-100">
@@ -83,7 +84,7 @@ const AllUser = () => {
                             <td className="actions" data-th="">
                               <div className="text-right">
                                 <button className="btn btn-white border-secondary bg-white btn-md mb-2">
-                                  <BsPencilFill />
+                                  <Link to={`/admin/user/${oneUser._id}`}><BsPencilFill /></Link>
                                 </button>
                                 <button
                                   className="btn btn-white border-secondary bg-white btn-md mb-2"

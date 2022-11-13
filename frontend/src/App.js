@@ -21,6 +21,8 @@ import UpdateProduct from "./v1/pages/Admin/UpdateProduct";
 import "./App.css"
 import Orders from "./v1/pages/Admin/Orders";
 import AllUser from "./v1/pages/Admin/AllUser";
+import UpdateUser from "./v1/pages/Admin/UpdateUser";
+
 function App() {
   const path = useLocation();
 
@@ -64,7 +66,7 @@ function App() {
         />
         <Route
           path="/admin/user/:id"
-          element={<ProtectRoute isAdmin={true} children={<Orders />} />}
+          element={<ProtectRoute isAdmin={true} children={<UpdateUser />} />}
         />
       </Routes>
       <ToastContainer

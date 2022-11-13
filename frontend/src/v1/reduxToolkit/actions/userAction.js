@@ -75,3 +75,34 @@ export const deleteUser = createAsyncThunk(
     }
   }
 )
+export const getUserDetail = createAsyncThunk(
+  "GET_USER_DETAIL",
+  async (id, {rejectWithValue}) => {
+    try {
+      const {data} = await axios.get(`http://localhost:8000/api/v1/admin/user/${id}`, {withCredentials: true});
+      return data;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+)
+
+export const updateUser = createAsyncThunk(
+  "UPDATE_USER",
+  async (id, {rejectWithValue}) => {
+    try {
+      const {data} = await axios.put(`http://localhost:8000/api/v1/admin/user/${id}`, {withCredentials: true});
+      return data;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+)
