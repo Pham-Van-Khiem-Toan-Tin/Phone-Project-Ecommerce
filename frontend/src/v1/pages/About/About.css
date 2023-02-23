@@ -1,67 +1,42 @@
 .about {
   height: 100vh;
   width: 100vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
-
 .about .profile-admin {
   width: 80%;
   background: #fff;
-  -webkit-box-shadow: 0px 0px 36px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 36px 0px rgba(0, 0, 0, 0.75);
 }
-
 .about .profile-admin .about-profile-content {
   width: 100%;
   text-align: center;
   font-size: 30px;
   font-weight: 600;
-  color: #dd2c2c;
+  color: rgb(221, 44, 44);
 }
-
 .about .profile-admin .about-profile-body {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
-
 .about .profile-admin .about-profile-body .about-admin-details {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 48%;
 }
-
 .about .profile-admin .about-profile-body .about-admin-details img {
   width: 100px;
   height: 100px;
   border-radius: 50%;
 }
-
 .about .profile-admin .about-profile-body .about-admin-details div {
   margin: 20px;
   font-size: 20px;
   font-weight: 400;
 }
-
 .about .profile-admin .about-profile-body .about-admin-details a {
   color: #000;
   display: block;
@@ -75,52 +50,35 @@
   height: 40px;
   border-radius: 10px;
 }
-
 .about .profile-admin .about-profile-body .about-admin-details .about-warning {
-  text-align-last: center;
+  -moz-text-align-last: center;
+       text-align-last: center;
 }
-
 .about .profile-admin .about-profile-body .about-admin-brands {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   width: 48%;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-
 .about .profile-admin .about-profile-body .about-admin-brands span {
   font-size: 25px;
 }
-
 .about .profile-admin .about-profile-body .about-admin-brands svg {
   font-size: 40px;
   display: block;
   margin: 10px 0;
 }
-
 .about .profile-admin .about-profile-body .about-admin-brands .about-facebook {
-  color: #1298f6;
+  color: rgb(18, 152, 246);
 }
-
 .about .profile-admin .about-profile-body .about-admin-brands .about-youtube {
-  color: #dd2c2c;
+  color: rgb(221, 44, 44);
 }
 
 @media (max-width: 768px) {
   .about .profile-admin .about-profile-body {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
   }
   .about .profile-admin .about-profile-body .about-admin-details {
     width: 100%;
@@ -131,5 +89,4 @@
   .about .profile-admin .about-profile-body .rule {
     display: none;
   }
-}
-/*# sourceMappingURL=About.css.map */
+}/*# sourceMappingURL=About.css.map */

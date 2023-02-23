@@ -2,39 +2,28 @@
   width: 100vw;
   margin-top: 80px;
 }
-
 .categories .categories-header {
   text-align: center;
 }
-
 .categories .categories-content {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap !important;
-      flex-wrap: wrap !important;
+  flex-wrap: wrap !important;
 }
-
 .categories .categories-content .categories-controller {
-  -webkit-box-flex: 2;
-      -ms-flex: 2;
-          flex: 2;
+  flex: 2;
   margin: 10px 0 0 30px;
   padding: 5px;
 }
-
 .categories .categories-content .categories-controller .categories-range {
-  border: 1px solid #e6dede;
+  border: 1px solid rgb(230, 222, 222);
   padding: 5px 10px;
 }
-
 .categories .categories-content .categories-controller .categories-model {
   margin-top: 10px;
   margin-bottom: 10px;
   color: #fff;
   text-transform: uppercase;
 }
-
 .categories .categories-content .categories-controller .categories-model .categories-model-item {
   font-size: 16px;
   font-weight: 400;
@@ -42,77 +31,44 @@
   margin-left: 40px;
   text-transform: uppercase;
 }
-
 .categories .categories-content .categories-controller .categories-model .categories-model-item:hover {
-  color: #d85e5e;
+  color: rgb(216, 94, 94);
 }
-
 .categories .categories-content .categories-controller .categories-rating {
-  border: 1px solid #e6dede;
+  border: 1px solid rgb(230, 222, 222);
   padding: 5px;
   text-align: center;
 }
-
 .categories .categories-content .categories-gird {
-  -webkit-box-flex: 8;
-      -ms-flex: 8;
-          flex: 8;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  flex: 8;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
 }
-
 .categories .categories-content .categories-gird .categories-gird-content {
   padding: 0px 30px 10px 10px;
 }
-
 .categories .categories-content .categories-gird .categories-gird-content .card {
   margin-top: 10px;
 }
 
 @media (max-width: 768px) {
   .categories-content {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
   }
   .categories-content .categories-controller {
-    -webkit-box-flex: 0;
-        -ms-flex: none;
-            flex: none;
-    display: -webkit-box;
-    display: -ms-flexbox;
+    flex: none;
     display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
     margin-right: 30px !important;
     margin-left: 10px;
   }
   .categories-content .categories-controller .categories-model {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    align-items: center;
+    justify-content: center;
   }
   .categories-content .categories-controller .categories-model h3 {
     display: none;
@@ -123,13 +79,10 @@
     font-size: 15px !important;
     padding: 5px;
     border-radius: 20px;
-    background: #e3e3e3;
-    color: #ce7c7c;
+    background: hsl(0deg, 0%, 89%);
+    color: rgb(206, 124, 124);
   }
   .categories-content .categories-gird {
-    -webkit-box-flex: 0;
-        -ms-flex: none;
-            flex: none;
+    flex: none;
   }
-}
-/*# sourceMappingURL=Categories.css.map */
+}/*# sourceMappingURL=Categories.css.map */

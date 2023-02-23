@@ -1,17 +1,10 @@
 .contact {
   width: 100vw;
   height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
-
 .contact .contact-email {
   width: 350px;
   height: 40px;
@@ -26,8 +19,6 @@
   display: block;
   text-align: center;
 }
-
 .contact a:hover {
-  color: #c5771f;
-}
-/*# sourceMappingURL=Contact.css.map */
+  color: rgb(197, 119, 31);
+}/*# sourceMappingURL=Contact.css.map */

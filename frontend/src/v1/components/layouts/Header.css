@@ -1,46 +1,27 @@
 header {
-  background: linear-gradient(120deg, #430468, #290c91);
+  background: linear-gradient(120deg, rgb(67, 4, 104), rgb(41, 12, 145));
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   color: #fff;
   height: 60px;
   width: 100vw;
   z-index: 999;
 }
-
 header .navbar-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
-
 header .navbar-container .icon-toggle {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  flex: 1;
   padding-left: 2px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
-
 header .navbar-container .icon-toggle button {
   background: none;
   border: none;
@@ -48,35 +29,21 @@ header .navbar-container .icon-toggle button {
   font-size: 30px;
   font-weight: 800;
 }
-
 header .navbar-container .icon-toggle button svg {
   display: block;
 }
-
 header .navbar-container .navbar-brand {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  flex: 1;
   font-size: 30px;
   font-weight: 700;
 }
-
 header .navbar-container .navbar-search {
-  -webkit-box-flex: 8;
-      -ms-flex: 8;
-          flex: 8;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  flex: 8;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   position: relative;
 }
-
 header .navbar-container .navbar-search input {
   border: none;
   outline: none;
@@ -84,42 +51,29 @@ header .navbar-container .navbar-search input {
   padding: 2px 20px 2px 10px;
   width: 300px;
 }
-
 header .navbar-container .navbar-search .icon-search {
   position: absolute;
-  color: #534949;
+  color: rgb(83, 73, 73);
   right: 37%;
   top: 0%;
 }
-
 header .navbar-container .navbar_icon-group {
-  -webkit-box-flex: 2;
-      -ms-flex: 2;
-          flex: 2;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  flex: 2;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  justify-content: flex-end;
 }
-
 header .navbar-container .navbar_icon-group a {
   color: #fff;
   font-size: 20px;
   margin: 0 5px;
 }
-
 header .offcanvas .offcanvas-header .offcanvas-title {
-  color: #2b2424;
+  color: rgb(43, 36, 36);
 }
-
 header .offcanvas .offcanvas-body .title-menu {
-  color: #2c2727;
+  color: rgb(44, 39, 39);
   font-size: 30px;
 }
-
 header .offcanvas .offcanvas-body .accordion .accordion-item .accordion-body li a {
   color: #000;
-}
-/*# sourceMappingURL=Header.css.map */
+}/*# sourceMappingURL=Header.css.map */
