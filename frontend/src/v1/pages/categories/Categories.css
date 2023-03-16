@@ -79,7 +79,11 @@
     font-size: 15px !important;
     padding: 5px;
     border-radius: 20px;
+<<<<<<< Updated upstream
     background: hsl(0deg, 0%, 89%);
+=======
+    background: hsl(0, 0%, 89%);
+>>>>>>> Stashed changes
     color: rgb(206, 124, 124);
   }
   .categories-content .categories-gird {

@@ -1,5 +1,5 @@
 import Header from "./v1/components/layouts/Header";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Home from "./v1/pages/Home/Home";
 import Categories from "./v1/pages/categories/Categories";
 import Contact from "./v1/pages/Contact/Contact";
@@ -10,7 +10,6 @@ import { ToastContainer } from "react-toastify";
 import LoginAndSignUp from "./v1/pages/User/LoginAndSignUp";
 import Profile from "./v1/pages/User/Profile";
 import ProtectRoute from "./v1/Route/ProtectRoute";
-import { useSelector } from "react-redux";
 import "react-toastify/dist/ReactToastify.css";
 import * as bootstrap from "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -24,7 +23,7 @@ import AllUser from "./v1/pages/Admin/AllUser";
 import UpdateUser from "./v1/pages/Admin/UpdateUser";
 
 function App() {
-  const path = useLocation();
+
 
   return (
     <>
