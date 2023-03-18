@@ -11,6 +11,7 @@ const userSlice = createSlice({
   },
   reducers: {
     clearError: (state) => {state.error = null;},
+    reload: (state) => {state.isAuthenticated = true;},
   },
   extraReducers: (builder) => {
     builder.addCase(register.pending, (state) => {
@@ -42,5 +43,5 @@ const userSlice = createSlice({
     });
   },
 });
-export const {clearError} = userSlice.actions;
+export const {clearError, reload} = userSlice.actions;
 export default userSlice.reducer;
