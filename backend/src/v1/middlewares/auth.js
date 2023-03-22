@@ -25,3 +25,7 @@ module.exports.isAuthorizeRoles =  (...roles) => {
     next();
   }
 };
+
+module.exports.generateToken = async (data, secret, expires) => {
+  return await jwt.sign(data, secret, {expiresIn: expires});
+}

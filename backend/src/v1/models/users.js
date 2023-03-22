@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const crypto = require("crypto");
+const { generateToken } = require("../middlewares/auth");
 const ObjectId = mongoose.Schema.ObjectId;
 
 const userSchema = new mongoose.Schema(
@@ -63,9 +64,12 @@ userSchema.pre("save", async function (next) {
 });
 
 userSchema.methods.getJWTToken = function () {
-  return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRE,
-  });
+  const accessToken = generateToken({id: this._id}, process.env.ACESSTOKEN_SECRET, process.env.ACESSTOKEN_EXPIRES);
+  const refeshToken = generateToken({id: this._id}, process.env.REFESHTOKEN_SECRET, process.env.ACESSTOKEN_EXPIRES);
+  return {
+    accessToken,
+    refeshToken
+  };
 };
 
 userSchema.methods.comparePassword = async function(password) {
