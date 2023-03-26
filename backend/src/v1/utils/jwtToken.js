@@ -1,19 +1,25 @@
 require("dotenv").config();
 const sendToken = (user, status, res) => {
-  const token = user.getJWTToken();
-
+  const accessToken = user.getAccessToken();
+  const refeshToken = user.getRefeshToken();
   //options cookie
-  const options = {
+  const optionRefeshToken = {
     expires: new Date(
       Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
   };
+  const optionAccessToken = {
+    expires: new Date(
+      Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000
+    ),
+    httpOnly: true,
+  }
 
-  res.status(status).cookie(`token`, token, options).json({
+  res.status(status).cookie(`refeshToken`, refeshToken, optionRefeshToken).cookie(`accessToken`, accessToken, optionAccessToken).json({
     success: true,
     user,
-    token,
+    accessToken,
   });
 };
 

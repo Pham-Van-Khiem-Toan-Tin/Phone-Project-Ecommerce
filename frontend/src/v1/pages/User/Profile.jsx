@@ -9,12 +9,12 @@ const Profile = () => {
   );
   // console.log(user);
   const navigate = useNavigate();
-  useLayoutEffect(() => {
-    if (isAuthenticated === false) {
-      navigate("/login");
-      // console.log(navigate);
-    }
-  }, [navigate, isAuthenticated]);
+  // useLayoutEffect(() => {
+  //   if (isAuthenticated === false) {
+  //     navigate("/login");
+  //     // console.log(navigate);
+  //   }
+  // }, [navigate, isAuthenticated]);
 
   return (
     <>

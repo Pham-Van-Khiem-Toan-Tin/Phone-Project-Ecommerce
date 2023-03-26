@@ -13,7 +13,11 @@ module.exports.register = catchAsyncError(async (req, res, next) => {
     width: 150,
     crop: "scale",
   });
-  let { name, email, password } = req.body;
+  let {
+    name,
+    email,
+    password
+  } = req.body;
   const user = await userModel.create({
     name,
     email,
@@ -28,13 +32,21 @@ module.exports.register = catchAsyncError(async (req, res, next) => {
 
 //Login  user
 module.exports.loginUser = catchAsyncError(async (req, res, next) => {
-  const { email, password } = req.body;
-  console.log({email, password});
+  const {
+    email,
+    password
+  } = req.body;
+  console.log({
+    email,
+    password
+  });
   //checking if user have eamil and password
   if (!email || !password) {
     return next(new ErrorHandle("Please Enter Email and Password", 400));
   }
-  const user = await userModel.findOne({ email }).select("+password");
+  const user = await userModel.findOne({
+    email
+  }).select("+password");
   console.log(user);
   if (!user) {
     return next(new ErrorHandle("Invalid email or password", 401));
@@ -60,7 +72,9 @@ module.exports.logout = catchAsyncError(async (req, res, next) => {
 
 //Forgot password
 module.exports.forgotPassword = catchAsyncError(async (req, res, next) => {
-  const user = await userModel.findOne({ email: req.body.email });
+  const user = await userModel.findOne({
+    email: req.body.email
+  });
 
   if (!user) {
     return next(new ErrorHandle("User not found", 404));
@@ -68,7 +82,9 @@ module.exports.forgotPassword = catchAsyncError(async (req, res, next) => {
 
   //Get reset password
   const resetToken = user.getResetPasswordToken();
-  await user.save({ validateBeforeSave: false });
+  await user.save({
+    validateBeforeSave: false
+  });
 
   const resetPasswordUrl = `${req.protocol}://${req.get(
     "host"
@@ -89,7 +105,9 @@ module.exports.forgotPassword = catchAsyncError(async (req, res, next) => {
     user.resetPasswordToken = undefined;
     user.resetPasswordExpire = undefined;
 
-    await user.save({ validateBeforeSave: false });
+    await user.save({
+      validateBeforeSave: false
+    });
 
     return next(new ErrorHandle(error.message, 500));
   }
@@ -103,7 +121,9 @@ module.exports.resetPassword = catchAsyncError(async (req, res, next) => {
     .digest("hex");
   const user = await userModel.findOne({
     resetPasswordToken,
-    resetPasswordExpire: { $gt: Date.now() },
+    resetPasswordExpire: {
+      $gt: Date.now()
+    },
   });
 
   if (!user) {
@@ -246,3 +266,11 @@ module.exports.deleteUser = catchAsyncError(async (req, res, next) => {
     message: "User delete successfully!",
   });
 });
+
+module.exports.refeshToken = catchAsyncError(async (req, res, next) => {
+  const {accessToken, refeshToken} = req.headers.cookie;
+  if (!data) {
+    return next(new ErrorHandle("Invalid Token", 400));
+  }
+
+})

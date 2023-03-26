@@ -63,13 +63,14 @@ userSchema.pre("save", async function (next) {
   this.password = await bcrypt.hash(this.password, 10);
 });
 
-userSchema.methods.getJWTToken = function () {
+userSchema.methods.getAccessToken = function () {
   const accessToken = generateToken({id: this._id}, process.env.ACESSTOKEN_SECRET, process.env.ACESSTOKEN_EXPIRES);
-  const refeshToken = generateToken({id: this._id}, process.env.REFESHTOKEN_SECRET, process.env.ACESSTOKEN_EXPIRES);
-  return {
-    accessToken,
-    refeshToken
-  };
+  return accessToken;
+}
+
+userSchema.methods.getRefeshToken = function () {
+  const refeshToken = generateToken({id: this._id}, process.env.REFESHTOKEN_SECRET, process.env.REFESHTOKEN_EXPIRES);
+  return refeshToken;
 };
 
 userSchema.methods.comparePassword = async function(password) {
