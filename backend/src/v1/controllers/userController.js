@@ -6,6 +6,7 @@ const cloudinary = require("cloudinary");
 const catchAsyncError = require("../middlewares/catchAsyncError");
 const ErrorHandle = require("../utils/errorHandle");
 const sendEmail = require("../utils/sendEmail");
+const jwt = require("jsonwebtoken");
 
 module.exports.register = catchAsyncError(async (req, res, next) => {
   const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
@@ -268,9 +269,11 @@ module.exports.deleteUser = catchAsyncError(async (req, res, next) => {
 });
 
 module.exports.refeshToken = catchAsyncError(async (req, res, next) => {
-  const {accessToken, refeshToken} = req.headers.cookie;
-  if (!data) {
+  const { refeshToken} = req.headers.cookie;
+  if (!refeshToken) {
     return next(new ErrorHandle("Invalid Token", 400));
   }
+  
+  const exprie = jwt.verify(refeshToken, process.env.REFESHTOKEN_SECRET);
 
 })

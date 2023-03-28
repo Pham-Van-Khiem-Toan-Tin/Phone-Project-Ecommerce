@@ -1,3 +1,4 @@
+const userModel = require("../models/users");
 require("dotenv").config();
 const sendToken = (user, status, res) => {
   const accessToken = user.getAccessToken();

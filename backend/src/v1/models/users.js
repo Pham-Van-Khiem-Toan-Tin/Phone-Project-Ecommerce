@@ -49,6 +49,13 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "user",
     },
+    listRefeshToken: [
+      {
+        refeshToken: {
+          type: String,
+        },
+      },
+    ],
     resetPasswordToken: String,
     resetPasswordExpire: Date,
   },
@@ -64,16 +71,24 @@ userSchema.pre("save", async function (next) {
 });
 
 userSchema.methods.getAccessToken = function () {
-  const accessToken = generateToken({id: this._id}, process.env.ACESSTOKEN_SECRET, process.env.ACESSTOKEN_EXPIRES);
+  const accessToken = generateToken(
+    { id: this._id },
+    process.env.ACESSTOKEN_SECRET,
+    process.env.ACESSTOKEN_EXPIRES
+  );
   return accessToken;
-}
+};
 
 userSchema.methods.getRefeshToken = function () {
-  const refeshToken = generateToken({id: this._id}, process.env.REFESHTOKEN_SECRET, process.env.REFESHTOKEN_EXPIRES);
+  const refeshToken = generateToken(
+    { id: this._id },
+    process.env.REFESHTOKEN_SECRET,
+    process.env.REFESHTOKEN_EXPIRES
+  );
   return refeshToken;
 };
 
-userSchema.methods.comparePassword = async function(password) {
+userSchema.methods.comparePassword = async function (password) {
   return await bcrypt.compare(password, this.password);
 };
 
