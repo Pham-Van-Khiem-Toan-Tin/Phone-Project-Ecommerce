@@ -5,16 +5,6 @@ import { reload } from "../reduxToolkit/reducer/user/userSlice";
 
 const ProtectRoute = ({ isAdmin, children }) => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
-  const dispatch = useDispatch();
-  // useEffect(() => {
-  //   if (document.cookie.accessToken) {
-  //     dispatch(reload);
-  //   } else {
-  //     return <Navigate replace to="/login" />;
-  //   }
-  // }, [dispatch]);
-
-  // console.log(isAuthenticated);
   if (isAuthenticated === false) {
     return <Navigate replace to="/login" />;
   }

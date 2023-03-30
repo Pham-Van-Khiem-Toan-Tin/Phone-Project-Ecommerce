@@ -5,11 +5,11 @@ require("dotenv").config();
 
 module.exports.isAuthenticatedUser = async (req, res, next) => {
   const {token} = req.cookies;
-  console.log(req.cookies.token);
+  console.log(req.cookies);
   if(!token) {
     return next(new ErrorHandle("Please login to access this resource"));
   }
-  const decodeData = jwt.verify(token, process.env.JWT_SECRET);
+  const decodeData = jwt.verify(token, process.env.REFESHTOKEN_SECRET);
   req.user = await userModel.findById(decodeData.id);
   next();
 };
