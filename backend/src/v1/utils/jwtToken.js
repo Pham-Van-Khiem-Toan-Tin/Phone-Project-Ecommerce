@@ -11,7 +11,7 @@ const sendToken = (user, status, res) => {
     ),
     httpOnly: true,
   };
-  res.status(status).cookie(`refeshToken`, refeshToken, optionRefeshToken).json({
+  res.status(status).cookie('refeshToken', refeshToken, optionRefeshToken).json({
     success: true,
     user,
     accessToken,

@@ -4,12 +4,12 @@ const ErrorHandle = require("../utils/errorHandle");
 require("dotenv").config();
 
 module.exports.isAuthenticatedUser = async (req, res, next) => {
-  const {token} = req.cookies;
+  const {refeshToken} = req.cookies;
   console.log(req.cookies);
-  if(!token) {
+  if(!refeshToken) {
     return next(new ErrorHandle("Please login to access this resource"));
   }
-  const decodeData = jwt.verify(token, process.env.REFESHTOKEN_SECRET);
+  const decodeData = jwt.verify(refeshToken, process.env.REFESHTOKEN_SECRET);
   req.user = await userModel.findById(decodeData.id);
   next();
 };
@@ -25,7 +25,3 @@ module.exports.isAuthorizeRoles =  (...roles) => {
     next();
   }
 };
-
-module.exports.generateToken = async (data, secret, expires) => {
-  return await jwt.sign(data, secret, {expiresIn: expires});
-}
