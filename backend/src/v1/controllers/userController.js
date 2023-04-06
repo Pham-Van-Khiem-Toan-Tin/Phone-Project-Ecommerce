@@ -269,11 +269,19 @@ module.exports.deleteUser = catchAsyncError(async (req, res, next) => {
 });
 
 module.exports.refeshToken = catchAsyncError(async (req, res, next) => {
-  const { refeshToken} = req.headers.cookie;
-  if (!refeshToken) {
+  const { refeshToken} = req.cookies;
+  if(refeshToken) {
+    try {
+      const decoded = await jwt.verify(refeshToken, process.env.REFESHTOKEN_SECRET);
+      next();
+    } catch (error) {
+      return next(new ErrorHandle("login expired!"));
+    }
+
+  }
+  else (!refeshToken) {
     return next(new ErrorHandle("Invalid Token", 400));
   }
   
-  const exprie = jwt.verify(refeshToken, process.env.REFESHTOKEN_SECRET);
 
 })
