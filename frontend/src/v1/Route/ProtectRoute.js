@@ -5,8 +5,12 @@ import { reload } from "../reduxToolkit/reducer/user/userSlice";
 
 const ProtectRoute = ({ isAdmin, children }) => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
+<<<<<<< HEAD
   const dispatch = useDispatch();
   if (!localStorage.getItem('accessToken') && isAuthenticated === false) {
+=======
+  if (isAuthenticated === false) {
+>>>>>>> c17094c894dc9b4745fe69861ed2f6cd1bfe3025
     return <Navigate replace to="/login" />;
   }
   if (isAdmin === true && user.role !== "admin") {
