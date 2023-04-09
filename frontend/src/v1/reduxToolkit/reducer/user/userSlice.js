@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { register, login } from "../../actions/userAction";
+import { register, login, getAccount } from "../../actions/userAction";
 
 const userSlice = createSlice({
   name: "user",
@@ -33,13 +33,26 @@ const userSlice = createSlice({
       state.isLoading = false;
       state.isAuthenticated = true;
       state.user = action.payload.user;
-      // console.log(action.payload);
+      if(localStorage.getItem("accessToken")) {
+        localStorage.removeItem("accessToken");
+      }
+      localStorage.setItem('accessToken', JSON.stringify(action.payload.accessToken));
     });
     builder.addCase(login.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
-
-      // console.log(action.payload);
+    });
+    builder.addCase(getAccount.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(getAccount.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.user = action.payload.user;
+      state.isAuthenticated = true;
+    });
+    builder.addCase(getAccount.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
     });
   },
 });

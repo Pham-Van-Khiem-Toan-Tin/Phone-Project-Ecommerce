@@ -106,3 +106,20 @@ export const updateUser = createAsyncThunk(
     }
   }
 )
+
+export const getAccount = createAsyncThunk(
+  "USER_DETAIL",
+  async (token, {rejectWithValue}) => {
+    try {
+      const config = { headers: { "Content-Type": "text/html" } , withCredentials: true };
+      const {data} = await axios.post(`http://localhost:8000/api/v1/me`, token, config);
+      return data;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+)

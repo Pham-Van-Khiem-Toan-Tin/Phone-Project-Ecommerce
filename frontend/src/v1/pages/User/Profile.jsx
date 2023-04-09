@@ -1,21 +1,23 @@
 import React, { useEffect, useLayoutEffect } from "react";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader/Loader";
+import { getAccount } from "../../reduxToolkit/actions/userAction";
 import "./Profile.css";
 const Profile = () => {
   const { user, isLoading, isAuthenticated } = useSelector(
     (state) => state.user
   );
-  // console.log(user);
-  const navigate = useNavigate();
-  // useLayoutEffect(() => {
-  //   if (isAuthenticated === false) {
-  //     navigate("/login");
-  //     // console.log(navigate);
-  //   }
-  // }, [navigate, isAuthenticated]);
-
+  const dispatch = useDispatch();
+  const token = localStorage.getItem("accessToken");
+      console.log(token);
+  console.log(user);
+  useEffect(() => {
+    if(!user) {
+      const token = localStorage.getItem("accessToken");
+      console.log(token);
+      dispatch(getAccount(token));
+    }
+  }, [dispatch]);
   return (
     <>
       {isLoading ? (
