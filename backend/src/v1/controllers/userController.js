@@ -276,11 +276,8 @@ module.exports.refeshToken = catchAsyncError(async (req, res, next) => {
     } catch (error) {
       return next(new ErrorHandle("login expired!"));
     }
-
   }
-  else (!refeshToken) {
+  else {
     return next(new ErrorHandle("Invalid Token", 400));
   }
-  
-
 })
