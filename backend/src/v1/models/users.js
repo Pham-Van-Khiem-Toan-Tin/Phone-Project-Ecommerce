@@ -4,7 +4,6 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const crypto = require("crypto");
-const { generateToken } = require("../middlewares/auth");
 const ObjectId = mongoose.Schema.ObjectId;
 
 const userSchema = new mongoose.Schema(
@@ -71,19 +70,19 @@ userSchema.pre("save", async function (next) {
 });
 
 userSchema.methods.getAccessToken = function () {
-  const accessToken = generateToken(
+  const accessToken = jwt.sign(
     { id: this._id },
     process.env.ACESSTOKEN_SECRET,
-    process.env.ACESSTOKEN_EXPIRES
+    { expiresIn: process.env.ACESSTOKEN_EXPIRES }
   );
   return accessToken;
 };
 
 userSchema.methods.getRefeshToken = function () {
-  const refeshToken = generateToken(
+  const refeshToken = jwt.sign(
     { id: this._id },
     process.env.REFESHTOKEN_SECRET,
-    process.env.REFESHTOKEN_EXPIRES
+    {expiresIn: process.env.REFESHTOKEN_EXPIRES}
   );
   return refeshToken;
 };
