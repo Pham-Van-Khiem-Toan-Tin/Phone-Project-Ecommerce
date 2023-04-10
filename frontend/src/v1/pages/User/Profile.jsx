@@ -12,7 +12,7 @@ const Profile = () => {
   useEffect(() => {
       console.log("chay qua day");
       if(!user) {
-        const token = localStorage.getItem("accessToken");
+        const token = JSON.parse(localStorage.getItem("accessToken"));
         console.log(token);
         dispatch(getAccount(token));
       }

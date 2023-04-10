@@ -30,7 +30,8 @@ const AllUser = () => {
       toast.success(message);
       dispatch(clearDeleteError());
     }
-    dispatch(allUser());
+    const token = JSON.parse(localStorage.getItem("accessToken"));
+    dispatch(allUser(token));
   }, [dispatch, toast, error, message, deleteError]);
   return (
     <>

@@ -1,26 +1,41 @@
 const jwt = require("jsonwebtoken");
 const userModel = require("../models/users");
 const ErrorHandle = require("../utils/errorHandle");
+const { refeshToken } = require("../controllers/userController");
 require("dotenv").config();
 
 module.exports.isAuthenticatedUser = async (req, res, next) => {
-  const { accessToken } = req.body;
-  console.log(req.body);
+  const accessToken = req.headers.authorization.split(" ")[1];
   if (!accessToken) {
     return next(new ErrorHandle("Please login to access this resource"));
   } else {
-    const decodeData = await jwt.verify(
-      accessToken,
-      process.env.ACESSTOKEN_SECRET
-    );
-    if (decodeData) {
+    try {
+      const decodeData = await jwt.verify(
+        accessToken,
+        process.env.ACESSTOKEN_SECRET
+      );
       req.user = await userModel.findById(decodeData.id);
       next();
-    } else {
-      res.json({
-        verifyToken: false,
-        success: false,
-      });
+    } catch (error) {
+      const { refeshToken } = req.cookies;
+      if (refeshToken) {
+        try {
+          const decoded = await jwt.verify(
+            refeshToken,
+            process.env.REFESHTOKEN_SECRET
+          );
+          const accessToken = generateToken({id: decoded.id}, process.env.ACESSTOKEN_SECRET, process.env.ACESSTOKEN_EXPIRES);
+          console.log("chay den day");
+          res.json({
+            accessToken: accessToken,
+          });
+          next();
+        } catch (error) {
+          return next(new ErrorHandle("login expired!"));
+        }
+      } else {
+        return next(new ErrorHandle("Invalid Token", 400));
+      }
     }
   }
 };

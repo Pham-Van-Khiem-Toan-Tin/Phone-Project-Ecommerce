@@ -46,9 +46,10 @@ export const login = createAsyncThunk(
 
 export const allUser = createAsyncThunk(
   "ALL_USER",
-  async  (_, {rejectWithValue}) => {
+  async  (token, {rejectWithValue}) => {
     try {
-      const { data } = await axios.get(`http://localhost:8000/api/v1/admin/users`, {withCredentials: true});
+      const config = { headers: { "Authorization": "Bearer " + token } , withCredentials: true };
+      const { data } = await axios.get(`http://localhost:8000/api/v1/admin/users`, config);
       // console.log(data);
       return data;
     } catch (error) {
@@ -111,8 +112,8 @@ export const getAccount = createAsyncThunk(
   "USER_DETAIL",
   async (token, {rejectWithValue}) => {
     try {
-      const config = { headers: { "Content-Type": "application/json" } , withCredentials: true };
-      const {data} = await axios.post(`http://localhost:8000/api/v1/me`,{accessToken: token}, config);
+      const config = { headers: { "Authorization": "Bearer " + token } , withCredentials: true };
+      const {data} = await axios.post(`http://localhost:8000/api/v1/me`,null, config);
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {
