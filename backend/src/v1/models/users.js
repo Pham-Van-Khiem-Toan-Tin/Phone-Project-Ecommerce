@@ -71,7 +71,8 @@ userSchema.pre("save", async function (next) {
 
 userSchema.methods.getAccessToken = function () {
   const accessToken = jwt.sign(
-    { id: this._id },
+    { id: this._id,
+    role: this.role },
     process.env.ACESSTOKEN_SECRET,
     { expiresIn: process.env.ACESSTOKEN_EXPIRES }
   );
@@ -80,7 +81,8 @@ userSchema.methods.getAccessToken = function () {
 
 userSchema.methods.getRefeshToken = function () {
   const refeshToken = jwt.sign(
-    { id: this._id },
+    { id: this._id,
+      role: this.role },
     process.env.REFESHTOKEN_SECRET,
     {expiresIn: process.env.REFESHTOKEN_EXPIRES}
   );

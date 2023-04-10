@@ -37,10 +37,7 @@ module.exports.loginUser = catchAsyncError(async (req, res, next) => {
     email,
     password
   } = req.body;
-  console.log({
-    email,
-    password
-  });
+  
   //checking if user have eamil and password
   if (!email || !password) {
     return next(new ErrorHandle("Please Enter Email and Password", 400));
@@ -48,7 +45,7 @@ module.exports.loginUser = catchAsyncError(async (req, res, next) => {
   const user = await userModel.findOne({
     email
   }).select("+password");
-  console.log(user);
+  
   if (!user) {
     return next(new ErrorHandle("Invalid email or password", 401));
   }
@@ -146,10 +143,11 @@ module.exports.resetPassword = catchAsyncError(async (req, res, next) => {
 
 module.exports.getUserDetails = catchAsyncError(async (req, res, next) => {
   const user = await userModel.findById(req.user);
-  console.log(user);
+  const newAccessToken = req.token;
   res.status(200).json({
     success: true,
     user,
+    acessToken: newAccessToken
   });
 });
 
@@ -249,7 +247,7 @@ module.exports.updateUserRole = catchAsyncError(async (req, res, next) => {
 
 //delete user(admin)
 module.exports.deleteUser = catchAsyncError(async (req, res, next) => {
-  console.log('penndding');
+  
   const user = await userModel.findById(req.params.id);
 
   if (!user) {
@@ -257,7 +255,7 @@ module.exports.deleteUser = catchAsyncError(async (req, res, next) => {
       new ErrorHandle(`User does not exist with Id: ${req.params.id}`, 400)
     );
   }
-  console.log('success');
+  
   const imageId = user.avatar.public_id;
   await cloudinary.v2.uploader.destroy(imageId);
   await user.remove();

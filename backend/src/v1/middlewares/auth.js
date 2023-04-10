@@ -24,11 +24,11 @@ module.exports.isAuthenticatedUser = async (req, res, next) => {
             refeshToken,
             process.env.REFESHTOKEN_SECRET
           );
-          const accessToken = generateToken({id: decoded.id}, process.env.ACESSTOKEN_SECRET, process.env.ACESSTOKEN_EXPIRES);
-          console.log("chay den day");
-          res.json({
-            accessToken: accessToken,
-          });
+          console.log(decoded);
+          const newAccessToken = jwt.sign({id: decoded.id}, process.env.ACESSTOKEN_SECRET, {expiresIn: process.env.ACESSTOKEN_EXPIRES});
+          req.token = newAccessToken;
+          req.user = decoded.id;
+          req.role = decoded.role;
           next();
         } catch (error) {
           return next(new ErrorHandle("login expired!"));
@@ -43,7 +43,7 @@ module.exports.isAuthenticatedUser = async (req, res, next) => {
 module.exports.isAuthorizeRoles = (...roles) => {
   return (req, res, next) => {
     console.log(req.user);
-    if (!roles.includes(req.user.role)) {
+    if (!roles.includes(req.role)) {
       return next(
         new ErrorHandle(
           `Role: ${req.user.role} is not allowed to access this resource`,
