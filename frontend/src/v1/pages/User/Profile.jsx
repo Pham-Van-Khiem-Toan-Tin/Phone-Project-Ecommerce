@@ -4,20 +4,18 @@ import Loader from "../../components/Loader/Loader";
 import { getAccount } from "../../reduxToolkit/actions/userAction";
 import "./Profile.css";
 const Profile = () => {
-  const { user, isLoading, isAuthenticated } = useSelector(
+  const dispatch = useDispatch();
+  const { user, isLoading, isAuthenticated, accessToken } = useSelector(
     (state) => state.user
   );
-  const dispatch = useDispatch();
-  const token = localStorage.getItem("accessToken");
-      console.log(token);
-  console.log(user);
+  
   useEffect(() => {
-    if(!user) {
-      const token = localStorage.getItem("accessToken");
+      console.log("chay qua day");
+      const token = window.localStorage.getItem("accessToken");
       console.log(token);
       dispatch(getAccount(token));
-    }
   }, [dispatch]);
+
   return (
     <>
       {isLoading ? (

@@ -11,11 +11,13 @@ const sendToken = async (user, status, res) => {
     ),
     httpOnly: true,
   };
-<<<<<<< HEAD
-  res.status(status).cookie(`refeshToken`, refeshToken, optionRefeshToken).json({
-=======
-  res.status(status).cookie('refeshToken', refeshToken, optionRefeshToken).json({
->>>>>>> c17094c894dc9b4745fe69861ed2f6cd1bfe3025
+  const optionAccessToken= {
+    expires: new Date(
+      Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000
+    ),
+    httpOnly: false,
+  };
+  res.status(status).cookie(`refeshToken`, refeshToken, optionRefeshToken).cookie(`accessToken`, accessToken, optionAccessToken).json({
     success: true,
     user,
     accessToken: accessToken,
