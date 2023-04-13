@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { Data2 } from "../../../data/Data";
-
+import MultiRangeSlider from "multi-range-slider-react";
 import StarRatings from "react-star-ratings";
-import "react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css";
 import "./Categories.css";
 import Card from "../../components/Card/Card";
 
 const Categories = () => {
-  const [value, setValue] = useState(50);
-  const [finalValue, setFinalValue] = useState(null);
+  const [minValue, setMinValue] = useState(0);
+  const [maxValue, setMaxValue] = useState(0);
+  const [minValue2, setMinValue2] = useState(0);
+  const [maxValue2, setMaxValue2] = useState(0);
   const [rating, setRating] = useState(5);
   const changeRating = (newRating, name) => {
     setRating(newRating);
@@ -19,7 +20,16 @@ const Categories = () => {
       <div className="categories-content">
         <div className="categories-controller">
           <div className="categories-range">
-            
+          <MultiRangeSlider
+          onInput={(e) => {
+            setMinValue(e.minValue);
+            setMaxValue(e.maxValue);
+          }}
+          onChange={(e) => {
+            setMinValue2(e.minValue);
+            setMaxValue2(e.maxValue);
+          }}
+        ></MultiRangeSlider>
           </div>
           <div className="categories-model">
             <h3 className="categories-model-title">Model</h3>
