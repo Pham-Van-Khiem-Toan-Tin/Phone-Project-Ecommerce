@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Data2 } from "../../../data/Data";
-import RangeSlider from "react-bootstrap-range-slider";
+
 import StarRatings from "react-star-ratings";
 import "react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css";
 import "./Categories.css";
@@ -19,16 +19,7 @@ const Categories = () => {
       <div className="categories-content">
         <div className="categories-controller">
           <div className="categories-range">
-            <RangeSlider
-              min={0}
-              max={100}
-              value={value}
-              onChange={(e) => setValue(e.target.value)}
-              onAfterChange={(e) => setFinalValue(e.target.value)}
-              tooltipLabel={(currentValue) => `${currentValue}tr`}
-              tooltip="on"
-              tooltipPlacement="top"
-            />
+            
           </div>
           <div className="categories-model">
             <h3 className="categories-model-title">Model</h3>
