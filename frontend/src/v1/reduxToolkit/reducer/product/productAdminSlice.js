@@ -1,30 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { newProduct, getAdminProducts } from "../../actions/productAction";
-const allProduct = createSlice({
-    name: "allproductadmin",
-    initialState: {
-        isLoading: false,
-        error: null,
-        product: [],
-    },
-    reducers: {
-        clearErrorAllProduct: (state) => {state.error = null},
-    },
-    extraReducers: (builder) => {
-        builder.addCase(getAdminProducts.pending, (state) => {
-            state.isLoading = true;
-        });
-        builder.addCase(getAdminProducts.fulfilled, (state, action) => {
-            state.isLoading = false;
-            state.product = action.payload;
-        });
-        builder.addCase(getAdminProducts.rejected, (state, action) => {
-            state.isLoading = false;
-            state.error = action.payload;
-        })
-    }
-    
-})
+import { newProduct } from "../../actions/productAction";
+
 const newProductSlice = createSlice({
     name: "newproduct",
     initialState: {
@@ -41,8 +17,9 @@ const newProductSlice = createSlice({
             state.isLoading = true;
         });
         builder.addCase(newProduct.fulfilled, (state, action) => {
-            state.success = action.payload.success;
+            console.log(action.payload.success);
             state.isLoading = false;
+            state.success = action.payload.success;
         })
         builder.addCase(newProduct.rejected, (state, action) => {
             state.error = action.payload.error;

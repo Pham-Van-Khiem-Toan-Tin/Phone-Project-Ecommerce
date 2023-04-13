@@ -14,7 +14,8 @@ module.exports.isAuthenticatedUser = async (req, res, next) => {
         accessToken,
         process.env.ACESSTOKEN_SECRET
       );
-      req.user = await userModel.findById(decodeData.id);
+      req.user = decodeData.id;
+      req.role = decodeData.role;
       next();
     } catch (error) {
       const { refeshToken } = req.cookies;

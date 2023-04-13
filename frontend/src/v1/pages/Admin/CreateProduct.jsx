@@ -10,13 +10,18 @@ import {
   BsFillImageFill,
 } from "react-icons/bs";
 import "./CreateProduct.css";
-import { clearErrorNewProduct, resetNewProduct } from "../../reduxToolkit/reducer/product/productAdminSlice";
+import {
+  clearErrorNewProduct,
+  resetNewProduct,
+} from "../../reduxToolkit/reducer/product/productAdminSlice";
 import { useNavigate } from "react-router-dom";
 import { newProduct } from "../../reduxToolkit/actions/productAction";
 
 const CreateProduct = () => {
   const dispatch = useDispatch();
-  const {error, isLoading, success} = useSelector((state) => state.newproduct);
+  const { error, isLoading, success } = useSelector(
+    (state) => state.newproduct
+  );
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
@@ -26,20 +31,17 @@ const CreateProduct = () => {
   const [images, setImages] = useState([]);
   const [imagePreview, setImagePreview] = useState([]);
   useEffect(() => {
-    if(error) {
+    if (error) {
       toast.error(error);
-      dispatch(clearErrorNewProduct)
+      dispatch(clearErrorNewProduct);
     }
-    if(success) {
+    if (success) {
       toast.success("Product created successfully");
       navigate("/admin/allproducts");
       dispatch(resetNewProduct);
     }
-    return () => {
-      
-    }
   }, [dispatch, error, navigate, success]);
-  
+
   const handleSubmitCreateProduct = (e) => {
     e.preventDefault();
     const myForm = new FormData();
@@ -60,18 +62,21 @@ const CreateProduct = () => {
     files.forEach((file) => {
       const reader = new FileReader();
       reader.onload = () => {
-        if(reader.readyState === 2) {
+        if (reader.readyState === 2) {
           setImagePreview((old) => [...old, reader.result]);
-          setImages((old) => [...old, reader.result])
+          setImages((old) => [...old, reader.result]);
         }
       };
       reader.readAsDataURL(file);
-    })
-  }
+    });
+  };
 
   return (
     <div className="create-product">
-      <form encType="multipart/form-data" onSubmit={(e) => handleSubmitCreateProduct(e)}>
+      <form
+        encType="multipart/form-data"
+        onSubmit={handleSubmitCreateProduct}
+      >
         <label htmlFor="productName">
           Product name <BsFillPhoneFill />
         </label>
@@ -81,6 +86,7 @@ const CreateProduct = () => {
           id="productName"
           placeholder="product name..."
           value={name}
+          onChange={(e) => setName(e.target.value)}
         />
         <label htmlFor="productPrice">
           Price <BsCoin />
@@ -90,10 +96,8 @@ const CreateProduct = () => {
           required
           id="productPrice"
           placeholder="price"
-          step={1000000}
-          min={0}
-          max={100000000}
           value={price}
+          onChange={(e) => setPrice(e.target.value)}
         />
         <label htmlFor="productDescription">
           Description <BsCardHeading />
@@ -104,12 +108,18 @@ const CreateProduct = () => {
           required
           id="productDescription"
           value={description}
+          onChange={(e) => setDescription(e.target.value)}
           placeholder="description..."
         ></textarea>
         <label htmlFor="model">
           Category <BsFillTagFill />
         </label>
-        <select name="model" id="model" defaultValue="" onChange={(e) => setCategory(e.target.value)}>
+        <select
+          name="model"
+          id="model"
+          defaultValue=""
+          onChange={(e) => setCategory(e.target.value)}
+        >
           <option value="">Chose category</option>
           <option value="Samsung">SamSung</option>
           <option value="Apple">Apple</option>
@@ -126,6 +136,7 @@ const CreateProduct = () => {
           min={1}
           value={stock}
           placeholder="Stock"
+          onChange={(e) => setStock(e.target.value)}
         />
         <label htmlFor="productImage">
           Image <BsFillImageFill />
@@ -144,7 +155,9 @@ const CreateProduct = () => {
             <img key={index} src={image} alt="Product Preview" />;
           })}
         </div>
-        <button type="submit">Create</button>
+        <button type="submit" >
+          Create
+        </button>
       </form>
     </div>
   );

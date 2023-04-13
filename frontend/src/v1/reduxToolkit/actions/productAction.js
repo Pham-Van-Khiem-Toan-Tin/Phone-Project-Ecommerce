@@ -8,7 +8,7 @@ export const getProducts = createAsyncThunk(
     {
       keyword = "",
       currentPage = 1,
-      price = [0, 50000000],
+      price = [0, 100000],
       category,
       ratings = 0,
     },
@@ -36,8 +36,15 @@ export const getAdminProducts = createAsyncThunk(
   "ADMIN_GETALLPRODUCTS",
   async (_, { rejectWithValue }) => {
     try {
+      const token = JSON.parse(localStorage.getItem("accessToken"));
+      const config = {
+        headers: {
+          "Authorization": "Bearer " + token,
+        },
+        withCredentials: true,
+      };
       const { data } = await axios.get(
-        `http://localhost:8000/api/v1/admin/products`
+        `http://localhost:8000/api/v1/admin/products`,config
       );
       return data;
     } catch (error) {
@@ -54,15 +61,21 @@ export const newProduct = createAsyncThunk(
   "CREATE_PRODUCT",
   async (productData, { rejectWithValue }) => {
     try {
+      const token = JSON.parse(localStorage.getItem("accessToken"));
       const config = {
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Authorization": "Bearer " + token,
+          "Content-Type": "application/json",
+        },
         withCredentials: true,
       };
-      const { data } = axios.post(
+      const { data } = await axios.post(
         `http://localhost:8000/api/v1/admin/product/new`,
         productData,
         config
       );
+      console.log("chay qua day");
+      console.log(data);
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {

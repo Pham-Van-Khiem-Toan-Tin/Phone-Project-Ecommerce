@@ -63,7 +63,7 @@ const AllUser = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {users.map((oneUser) => {
+                      {users ? (users.map((oneUser) => {
                         return (
                           <tr key={oneUser._id}>
                             <td data-th="avatar-user">
@@ -97,7 +97,7 @@ const AllUser = () => {
                             </td>
                           </tr>
                         );
-                      })}
+                      })): (<div>No user in your shop</div>)}
                     </tbody>
                   </table>
                 </div>

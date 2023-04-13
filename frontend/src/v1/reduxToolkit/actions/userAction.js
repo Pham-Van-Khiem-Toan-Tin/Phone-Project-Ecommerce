@@ -110,8 +110,9 @@ export const updateUser = createAsyncThunk(
 
 export const getAccount = createAsyncThunk(
   "USER_DETAIL",
-  async (token, {rejectWithValue}) => {
+  async (_, {rejectWithValue}) => {
     try {
+      const token = JSON.parse(localStorage.getItem("accessToken"));
       const config = { headers: { "Authorization": "Bearer " + token } , withCredentials: true };
       const {data} = await axios.post(`http://localhost:8000/api/v1/me`,null, config);
       return data;

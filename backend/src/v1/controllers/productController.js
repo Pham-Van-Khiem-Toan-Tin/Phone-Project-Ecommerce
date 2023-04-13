@@ -12,7 +12,6 @@ module.exports.createProduct = catchAsyncError(async (req, res, next) => {
   } else {
     images = req.body.images;
   }
-
   const imagesLinks = [];
 
   for (let i = 0; i < images.length; i++) {
@@ -32,7 +31,7 @@ module.exports.createProduct = catchAsyncError(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
-    product,
+    product: product,
   });
 });
 

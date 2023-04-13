@@ -10,11 +10,8 @@ const Profile = () => {
   );
   
   useEffect(() => {
-      console.log("chay qua day");
       if(!user) {
-        const token = JSON.parse(localStorage.getItem("accessToken"));
-        console.log(token);
-        dispatch(getAccount(token));
+        dispatch(getAccount());
       }
   }, [dispatch]);
 

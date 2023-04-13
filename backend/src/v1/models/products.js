@@ -30,7 +30,6 @@ const productSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
-
     category: {
       type: String,
       required: [true, "Please Enter Product Category"],
@@ -50,35 +49,22 @@ const productSchema = new mongoose.Schema(
         user: {
           type: ObjectId,
           ref: "users",
-          required: true,
+          
         },
         name: {
           type: String,
-          required: true,
+          
         },
         rating: {
           type: Number,
-          required: true,
+          
         },
         comments: {
           type: String,
-          required: true,
+          
         },
       },
     ],
-    user: {
-        type: ObjectId,
-        ref: "users",
-        required: true
-    },
-    Status: {
-      type: String,
-      required: true,
-    },
-    Discount: {
-      type: Number,
-      default: null,
-    },
   },
   { timestamps: true }
 );

@@ -205,6 +205,7 @@ module.exports.updateProfile = catchAsyncError(async (req, res, next) => {
 //get all user(admin)
 module.exports.getAllUser = catchAsyncError(async (req, res, next) => {
   const users = await userModel.find({});
+  
   res.status(200).json({
     success: true,
     users,
