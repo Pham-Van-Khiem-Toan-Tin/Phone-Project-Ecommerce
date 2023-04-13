@@ -1,6 +1,7 @@
 import React from 'react'
 import { BsPencilFill, BsFillTrashFill } from "react-icons/bs";
 const AllProduct = () => {
+  
   return (
     <div style={{width: "100vw"}}>
       <section className="pt-5 pb-5">

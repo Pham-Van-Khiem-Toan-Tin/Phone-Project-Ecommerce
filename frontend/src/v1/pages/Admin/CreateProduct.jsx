@@ -10,8 +10,9 @@ import {
   BsFillImageFill,
 } from "react-icons/bs";
 import "./CreateProduct.css";
-import { clearError } from "../../reduxToolkit/reducer/product/productAdminSlice";
+import { clearErrorNewProduct, resetNewProduct } from "../../reduxToolkit/reducer/product/productAdminSlice";
 import { useNavigate } from "react-router-dom";
+import { newProduct } from "../../reduxToolkit/actions/productAction";
 
 const CreateProduct = () => {
   const dispatch = useDispatch();
@@ -24,6 +25,21 @@ const CreateProduct = () => {
   const [stock, setStock] = useState(0);
   const [images, setImages] = useState([]);
   const [imagePreview, setImagePreview] = useState([]);
+  useEffect(() => {
+    if(error) {
+      toast.error(error);
+      dispatch(clearErrorNewProduct)
+    }
+    if(success) {
+      toast.success("Product created successfully");
+      navigate("/admin/allproducts");
+      dispatch(resetNewProduct);
+    }
+    return () => {
+      
+    }
+  }, [dispatch, error, navigate, success]);
+  
   const handleSubmitCreateProduct = (e) => {
     e.preventDefault();
     const myForm = new FormData();
@@ -35,6 +51,7 @@ const CreateProduct = () => {
     images.forEach((image) => {
       myForm.append("images", image);
     });
+    dispatch(newProduct(myForm));
   };
   const handleCreateProductImagesChange = (e) => {
     const files = Array.from(e.target.files);
@@ -51,20 +68,7 @@ const CreateProduct = () => {
       reader.readAsDataURL(file);
     })
   }
-  useEffect(() => {
-    if(error) {
-      toast.error(error);
-      dispatch(clearError)
-    }
-    if(success) {
-      toast.success("Product created successfully");
-      navigate("/admin/allproducts");
-    }
-    return () => {
-      
-    }
-  }, [])
-  
+
   return (
     <div className="create-product">
       <form encType="multipart/form-data" onSubmit={(e) => handleSubmitCreateProduct(e)}>

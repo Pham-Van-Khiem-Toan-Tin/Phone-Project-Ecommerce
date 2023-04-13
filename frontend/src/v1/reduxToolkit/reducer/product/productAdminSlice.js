@@ -1,6 +1,30 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { newProduct } from "../../actions/productAction";
-
+import { newProduct, getAdminProducts } from "../../actions/productAction";
+const allProduct = createSlice({
+    name: "allproductadmin",
+    initialState: {
+        isLoading: false,
+        error: null,
+        product: [],
+    },
+    reducers: {
+        clearErrorAllProduct: (state) => {state.error = null},
+    },
+    extraReducers: (builder) => {
+        builder.addCase(getAdminProducts.pending, (state) => {
+            state.isLoading = true;
+        });
+        builder.addCase(getAdminProducts.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.product = action.payload;
+        });
+        builder.addCase(getAdminProducts.rejected, (state, action) => {
+            state.isLoading = false;
+            state.error = action.payload;
+        })
+    }
+    
+})
 const newProductSlice = createSlice({
     name: "newproduct",
     initialState: {
@@ -9,7 +33,8 @@ const newProductSlice = createSlice({
         success: false,
     },
     reducers: {
-        clearError: (state) => {state.error = null;},
+        clearErrorNewProduct: (state) => {state.error = null;},
+        resetNewProduct: (state) => {state.success = false},
     },
     extraReducers: (builder) => {
         builder.addCase(newProduct.pending, (state) => {
@@ -26,5 +51,5 @@ const newProductSlice = createSlice({
     }
 });
 
-export const {clearError} = newProductSlice.actions;
+export const {clearErrorNewProduct, resetNewProduct} = newProductSlice.actions;
 export default newProductSlice.reducer;

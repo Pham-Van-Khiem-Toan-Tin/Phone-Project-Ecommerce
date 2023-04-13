@@ -52,10 +52,16 @@ export const getAdminProducts = createAsyncThunk(
 
 export const newProduct = createAsyncThunk(
   "CREATE_PRODUCT",
-  async (_, { rejectWithValue }) => {
+  async (productData, { rejectWithValue }) => {
     try {
+      const config = {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      };
       const { data } = axios.post(
-        `http://localhost:8000/api/v1/admin/product/new`
+        `http://localhost:8000/api/v1/admin/product/new`,
+        productData,
+        config
       );
       return data;
     } catch (error) {
