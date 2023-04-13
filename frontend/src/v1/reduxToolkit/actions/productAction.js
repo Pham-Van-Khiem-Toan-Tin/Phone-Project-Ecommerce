@@ -34,10 +34,28 @@ export const getProducts = createAsyncThunk(
 //get all product for admin
 export const getAdminProducts = createAsyncThunk(
   "ADMIN_GETALLPRODUCTS",
-  async (_,{ rejectWithValue }) => {
+  async (_, { rejectWithValue }) => {
     try {
       const { data } = await axios.get(
         `http://localhost:8000/api/v1/admin/products`
+      );
+      return data;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);
+
+export const newProduct = createAsyncThunk(
+  "CREATE_PRODUCT",
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = axios.post(
+        `http://localhost:8000/api/v1/admin/product/new`
       );
       return data;
     } catch (error) {

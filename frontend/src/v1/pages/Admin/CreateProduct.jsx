@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import {
   BsFillPhoneFill,
   BsCoin,
@@ -9,9 +10,13 @@ import {
   BsFillImageFill,
 } from "react-icons/bs";
 import "./CreateProduct.css";
+import { clearError } from "../../reduxToolkit/reducer/product/productAdminSlice";
+import { useNavigate } from "react-router-dom";
 
 const CreateProduct = () => {
   const dispatch = useDispatch();
+  const {error, isLoading, success} = useSelector((state) => state.newproduct);
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
@@ -46,6 +51,20 @@ const CreateProduct = () => {
       reader.readAsDataURL(file);
     })
   }
+  useEffect(() => {
+    if(error) {
+      toast.error(error);
+      dispatch(clearError)
+    }
+    if(success) {
+      toast.success("Product created successfully");
+      navigate("/admin/allproducts");
+    }
+    return () => {
+      
+    }
+  }, [])
+  
   return (
     <div className="create-product">
       <form encType="multipart/form-data" onSubmit={(e) => handleSubmitCreateProduct(e)}>
