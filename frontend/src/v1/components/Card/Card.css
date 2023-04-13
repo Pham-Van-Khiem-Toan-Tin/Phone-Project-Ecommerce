@@ -1,5 +1,5 @@
 .card {
-  border: none;
+  border: none !important;
   box-shadow: 0px 0px 14px 12px rgba(63, 31, 193, 0.52);
   -webkit-box-shadow: 0px 0px 14px 12px rgba(63, 31, 193, 0.52);
   -moz-box-shadow: 0px 0px 14px 12px rgba(63, 31, 193, 0.52);

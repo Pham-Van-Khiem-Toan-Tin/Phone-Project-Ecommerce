@@ -13,9 +13,26 @@
             margin: 10px 0 0 30px;
             padding: 5px;
             .categories-range {
-                
-                border: 1px solid rgb(230, 222, 222);
+                border-bottom: 1px solid rgb(230, 222, 222);
                 padding: 5px 10px;
+                .multi-range-slider {
+                    border: none;
+                    box-shadow: none;
+                    .caption {
+                        display: flex;
+                        span {
+                            background-color: rgb(71, 53, 139);
+                        }
+                    }
+                    .bar {
+                        .bar-inner {
+                            background-color: rgb(71, 53, 139);
+                        }
+                    }
+                    .labels {
+                        color: #fff;
+                    }
+                }
                 .ruler {
                     display: none;
                 }
@@ -37,7 +54,7 @@
                 }
             }
             .categories-rating {
-                border: 1px solid rgb(230, 222, 222);
+                border-top: 1px solid rgb(230, 222, 222);
                 padding: 5px;
                 text-align: center;
                 

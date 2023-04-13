@@ -92,7 +92,7 @@ const Header = () => {
           ></button>
         </div>
         <div className="offcanvas-body">
-          {user !== null && user.role === "admin" && <><div className="title-menu">Admin menu</div>
+          {user !== null && <><div className="title-menu">Admin menu</div>
           <ul className="list-group list-group-flush">
             <li className="list-group-item">
               <Link to="/admin/dasboard">DashBoard</Link>

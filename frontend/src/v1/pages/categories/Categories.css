@@ -15,8 +15,24 @@
   padding: 5px;
 }
 .categories .categories-content .categories-controller .categories-range {
-  border: 1px solid rgb(230, 222, 222);
+  border-bottom: 1px solid rgb(230, 222, 222);
   padding: 5px 10px;
+}
+.categories .categories-content .categories-controller .categories-range .multi-range-slider {
+  border: none;
+  box-shadow: none;
+}
+.categories .categories-content .categories-controller .categories-range .multi-range-slider .caption {
+  display: flex;
+}
+.categories .categories-content .categories-controller .categories-range .multi-range-slider .caption span {
+  background-color: rgb(71, 53, 139);
+}
+.categories .categories-content .categories-controller .categories-range .multi-range-slider .bar .bar-inner {
+  background-color: rgb(71, 53, 139);
+}
+.categories .categories-content .categories-controller .categories-range .multi-range-slider .labels {
+  color: #fff;
 }
 .categories .categories-content .categories-controller .categories-range .ruler {
   display: none;
@@ -38,7 +54,7 @@
   color: rgb(216, 94, 94);
 }
 .categories .categories-content .categories-controller .categories-rating {
-  border: 1px solid rgb(230, 222, 222);
+  border-top: 1px solid rgb(230, 222, 222);
   padding: 5px;
   text-align: center;
 }

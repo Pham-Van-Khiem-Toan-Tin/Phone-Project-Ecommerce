@@ -21,6 +21,11 @@ const Categories = () => {
         <div className="categories-controller">
           <div className="categories-range">
           <MultiRangeSlider
+          min={0}
+          max={2000}
+          step={100}
+          minValue={300}
+          maxValue={1700}
           onInput={(e) => {
             setMinValue(e.minValue);
             setMaxValue(e.maxValue);
