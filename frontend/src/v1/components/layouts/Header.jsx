@@ -127,7 +127,7 @@ const Header = () => {
                       <Link to="/admin/allusers">All User</Link>
                     </li>
                     <li className="list-group-item">
-                      <Link to="/admin/newproduct">Create User</Link>
+                      <Link to="/admin/createuser">Create User</Link>
                     </li>
                   </ul>
                 </div>
