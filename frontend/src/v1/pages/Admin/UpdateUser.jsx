@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import "./UpdateUser.css";
 import { getUserDetail, updateUser } from "../../reduxToolkit/actions/userAction";
 import { toast } from "react-toastify";
 import { clearError } from "../../reduxToolkit/reducer/user/userDetailSlice";
+import { clearErrorHandle, updateReset } from "../../reduxToolkit/reducer/user/userHandle";
 const UpdateUser = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { isLoading, user, error } = useSelector((state) => state.userDetail);
-  const { isLoading: updateLoading, error: updateError } = useSelector(
-    (state) => state.user
+  const { isLoadingHandle, errorHandle, isUpDate } = useSelector(
+    (state) => state.handleUser
   );
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -26,20 +28,28 @@ const UpdateUser = () => {
       setEmail(user.email);
       setRole(user.role);
     }
+
     if (error) {
       toast.error(error);
-      dispatch(clearError);
+      dispatch(clearError());
     }
-  }, [dispatch, user, id]);
+    if(errorHandle) {
+      toast.error(errorHandle);
+      dispatch(clearErrorHandle)
+    }
+    if(isUpDate) {
+      toast.success("Update user successfully!");
+      navigate("../admin/allusers");
+      dispatch(updateReset());
+    }
+  }, [dispatch, user, id, isUpDate, toast, error, errorHandle, navigate]);
   const updateUserSubmitHandle = (e) => {
     e.preventDefault();
     const myForm = new FormData();
     myForm.set("name",name);
     myForm.set("email",email);
     myForm.set("role",role);
-    console.log({id, myForm});
     dispatch(updateUser({id,myForm}));
-    console.log("chay den day");
   }
   return (
     <div className="updateUser">

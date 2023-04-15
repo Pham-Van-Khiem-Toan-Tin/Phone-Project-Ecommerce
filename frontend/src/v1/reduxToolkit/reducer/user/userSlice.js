@@ -21,15 +21,13 @@ const userSlice = createSlice({
       state.isLoading = false;
       state.user = action.payload.user;
       state.isAuthenticated = true;
-      if(localStorage.getItem("accessToken")) {
-        localStorage.removeItem("accessToken");
-      }
       localStorage.setItem('accessToken', JSON.stringify(action.payload.accessToken));
       localStorage.setItem('roleShop', action.payload.role);
     });
     builder.addCase(register.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
+      localStorage.removeItem("accessToken");
     });
     builder.addCase(login.pending, (state) => {
       state.isLoading = true;
@@ -44,6 +42,7 @@ const userSlice = createSlice({
     builder.addCase(login.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
+      localStorage.removeItem("accessToken");
     });
     builder.addCase(getAccount.pending, (state) => {
       state.isLoading = true;

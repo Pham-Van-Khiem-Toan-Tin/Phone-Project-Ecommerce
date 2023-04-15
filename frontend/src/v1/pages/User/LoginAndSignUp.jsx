@@ -79,7 +79,7 @@ const LoginAndSignUp = () => {
       // console.log("render");
       dispatch(clearError());
     }
-    if (isAuthenticated) {
+    if (localStorage.getItem("accessToken")) {
       navigate(redirect);
     }
   }, [dispatch, error, navigate, isAuthenticated, toast, redirect]);

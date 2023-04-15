@@ -111,7 +111,6 @@ export const updateUser = createAsyncThunk(
         withCredentials: true,
       };
       const {data} = await axios.put(`http://localhost:8000/api/v1/admin/user/${id}`,myForm, config);
-      console.log("chay thanh cong");
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {
