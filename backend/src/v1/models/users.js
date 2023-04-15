@@ -71,20 +71,19 @@ userSchema.pre("save", async function (next) {
 
 userSchema.methods.getAccessToken = function () {
   const accessToken = jwt.sign(
-    { id: this._id,
-    role: this.role },
+    { id: this._id, role: this.role },
     process.env.ACESSTOKEN_SECRET,
     { expiresIn: process.env.ACESSTOKEN_EXPIRES }
   );
+  console.log(this.role);
   return accessToken;
 };
 
 userSchema.methods.getRefeshToken = function () {
   const refeshToken = jwt.sign(
-    { id: this._id,
-      role: this.role },
+    { id: this._id, role: this.role },
     process.env.REFESHTOKEN_SECRET,
-    {expiresIn: process.env.REFESHTOKEN_EXPIRES}
+    { expiresIn: process.env.REFESHTOKEN_EXPIRES }
   );
   return refeshToken;
 };

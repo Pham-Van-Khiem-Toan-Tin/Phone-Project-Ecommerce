@@ -46,8 +46,9 @@ export const login = createAsyncThunk(
 
 export const allUser = createAsyncThunk(
   "ALL_USER",
-  async  (token, {rejectWithValue}) => {
+  async  (_, {rejectWithValue}) => {
     try {
+      const token = JSON.parse(localStorage.getItem("accessToken"));
       const config = { headers: { "Authorization": "Bearer " + token } , withCredentials: true };
       const { data } = await axios.get(`http://localhost:8000/api/v1/admin/users`, config);
       // console.log(data);
@@ -65,7 +66,9 @@ export const deleteUser = createAsyncThunk(
   "DELETE_USER",
   async (id, {rejectWithValue}) => {
     try {
-      const {data} = await axios.delete(`http://localhost:8000/api/v1/admin/user/${id}`, {withCredentials: true});
+      const token = JSON.parse(localStorage.getItem("accessToken"));
+      const config = { headers: { "Authorization": "Bearer " + token } , withCredentials: true };
+      const {data} = await axios.delete(`http://localhost:8000/api/v1/admin/user/${id}`, config);
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -80,7 +83,9 @@ export const getUserDetail = createAsyncThunk(
   "GET_USER_DETAIL",
   async (id, {rejectWithValue}) => {
     try {
-      const {data} = await axios.get(`http://localhost:8000/api/v1/admin/user/${id}`, {withCredentials: true});
+      const token = JSON.parse(localStorage.getItem("accessToken"));
+      const config = { headers: { "Authorization": "Bearer " + token } , withCredentials: true };
+      const {data} = await axios.get(`http://localhost:8000/api/v1/admin/user/${id}`,config);
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -94,9 +99,19 @@ export const getUserDetail = createAsyncThunk(
 
 export const updateUser = createAsyncThunk(
   "UPDATE_USER",
-  async (id, {rejectWithValue}) => {
+  async ({id, myForm}, {rejectWithValue}) => {
     try {
-      const {data} = await axios.put(`http://localhost:8000/api/v1/admin/user/${id}`, {withCredentials: true});
+      const id = "636fe3a30df78277314ec60e"
+      const token = JSON.parse(localStorage.getItem("accessToken"));
+      const config = {
+        headers: {
+          "Authorization": "Bearer " + token,
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      };
+      const {data} = await axios.put(`http://localhost:8000/api/v1/admin/user/${id}`,myForm, config);
+      console.log("chay thanh cong");
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {

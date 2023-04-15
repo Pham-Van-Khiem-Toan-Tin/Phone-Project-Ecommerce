@@ -21,7 +21,7 @@ import "./App.css"
 import Orders from "./v1/pages/Admin/Orders";
 import AllUser from "./v1/pages/Admin/AllUser";
 import UpdateUser from "./v1/pages/Admin/UpdateUser";
-import CreateUser from "./v1/pages/Admin/CreateUser";
+
 
 function App() {
 
@@ -63,10 +63,6 @@ function App() {
         <Route
           path="/admin/allusers"
           element={<ProtectRoute isAdmin={true} children={<AllUser />} />}
-        />
-        <Route
-          path="/admin/createuser"
-          element={<ProtectRoute isAdmin={true} children={<CreateUser />} />}
         />
         <Route
           path="/admin/user/:id"

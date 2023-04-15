@@ -14,7 +14,6 @@ const AllProduct = () => {
       dispatch(clearErrorAllProduct);
     }
     dispatch(getAdminProducts());
-
     return () => {};
   }, []);
 

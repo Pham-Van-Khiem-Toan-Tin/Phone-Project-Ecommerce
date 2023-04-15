@@ -1,5 +1,5 @@
 header {
-    background: linear-gradient(120deg,rgb(67, 4, 104),rgb(41, 12, 145));
+    background: linear-gradient(45deg, #49a09d, #5f2c82);
     position: fixed;
     top: 0;
     left: 0;
@@ -67,22 +67,53 @@ header {
         }
     }
     .offcanvas{
+	    background: linear-gradient(45deg, #49a09d, #5f2c82);
+        color: #fff;
         .offcanvas-header {
-            .offcanvas-title {
-                color: rgb(43, 36, 36);
-            }
+            
         }
         .offcanvas-body {
+            ul {
+	            background: transparent;
+                box-shadow: none !important;
+                border: none;
+            }
+            li {
+                font-weight: 700;
+                background: transparent;
+                border: none;
+                a {
+                    color: #fff;
+                }
+                a:hover {
+                    color: #5f2c82;
+                }
+            }
+            .list-group-item {
+                padding-left: 20px ;
+            }
             .title-menu {
-                color: rgb(44, 39, 39);
+                
                 font-size: 30px;
             }
             .accordion {
+                background: transparent;
                 .accordion-item {
+                    background: transparent;
+                    .accordion-header {
+                        button {
+                            background: transparent;
+                            border: none;
+                        }
+                    }
+                    .accordion-button {
+                        font-weight: 700;
+                        color: #fff;
+                    }
                     .accordion-body {
                         li {
                             a {
-                                color: #000;
+                                color: #fff;
                             }
                         }
                     }

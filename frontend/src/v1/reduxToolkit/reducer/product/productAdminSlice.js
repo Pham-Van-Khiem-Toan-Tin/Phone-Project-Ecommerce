@@ -7,6 +7,7 @@ const newProductSlice = createSlice({
         isLoading: false,
         error: null,
         success: false,
+        
     },
     reducers: {
         clearErrorNewProduct: (state) => {state.error = null;},
@@ -17,13 +18,18 @@ const newProductSlice = createSlice({
             state.isLoading = true;
         });
         builder.addCase(newProduct.fulfilled, (state, action) => {
-            console.log(action.payload.success);
             state.isLoading = false;
             state.success = action.payload.success;
+            if(action.payload.accessToken) {
+                localStorage.setItem('accessToken', JSON.stringify(action.payload.accessToken));
+            }
         })
         builder.addCase(newProduct.rejected, (state, action) => {
             state.error = action.payload.error;
             state.isLoading = false;
+            if(action.payload.accessToken) {
+                localStorage.setItem('accessToken', JSON.stringify(action.payload.accessToken));
+            }
         })
     }
 });

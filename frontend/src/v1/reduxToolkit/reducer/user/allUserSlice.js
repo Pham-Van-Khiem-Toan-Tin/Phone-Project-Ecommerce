@@ -21,8 +21,10 @@ const allUserSlice = createSlice({
     });
     builder.addCase(allUser.fulfilled, (state, action) => {
       state.isLoading = false;
-      // console.log(action.payload);
       state.users = action.payload.users;
+      if(action.payload.accessToken) {
+        localStorage.setItem('accessToken', JSON.stringify(action.payload.accessToken));
+      }
     });
     builder.addCase(allUser.rejected, (state, action) => {
       state.isLoading = false;
@@ -35,10 +37,16 @@ const allUserSlice = createSlice({
       state.isDelete = action.payload.success;
       state.isLoading = false;
       state.message = action.payload.message;
+      if(action.payload.accessToken) {
+        localStorage.setItem('accessToken', JSON.stringify(action.payload.accessToken));
+      }
     });
     builder.addCase(deleteUser.rejected, (state, action) => {
       state.isLoading = false;
       state.deleteError = action.payload;
+      if(action.payload.accessToken) {
+        localStorage.setItem('accessToken', JSON.stringify(action.payload.accessToken));
+      }
     });
   },
 });

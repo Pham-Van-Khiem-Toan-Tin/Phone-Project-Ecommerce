@@ -1,32 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getUserDetail } from "../../actions/userAction";
-const UserDetailSlice = createSlice({
-  name: "userDetails",
+import { updateUser } from "../../actions/userAction";
+const UserHandleSlice = createSlice({
+  name: "userHandle",
   initialState: {
     isLoading: false,
-    user: null,
     error: null,
+    isUpDate: false,
   },
   reducers: {
     clearError: (state) => (state.error = null),
   },
   extraReducers: (builder) => {
-    builder.addCase(getUserDetail.pending, (state) => {
+    builder.addCase(updateUser.pending, (state) => {
         state.isLoading = true;
     });
-    builder.addCase(getUserDetail.fulfilled, (state, action) => {
+    builder.addCase(updateUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.user = action.payload.user;
+        state.isUpDate = true;
         if(action.payload.accessToken) {
           localStorage.setItem('accessToken', JSON.stringify(action.payload.accessToken));
         }
     });
-    builder.addCase(getUserDetail.rejected, (state, action) => {
+    builder.addCase(updateUser.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
     });
   },
 });
-
-export const {clearError} = UserDetailSlice.actions;
-export default UserDetailSlice.reducer;
+export const {clearError} = UserHandleSlice.actions;
+export default UserHandleSlice.reducer;

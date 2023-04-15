@@ -28,11 +28,20 @@ module.exports.createProduct = catchAsyncError(async (req, res, next) => {
   req.body.user = req.user.id;
 
   const product = await productModel.create(req.body);
-
-  res.status(200).json({
-    success: true,
-    product: product,
-  });
+  if(req.token) {
+    const newAccessToken = req.token;
+    res.status(200).json({
+      success: true,
+      product: product,
+      accessToken: newAccessToken,
+    });
+  }
+  else {
+    res.status(200).json({
+      success: true,
+      product: product,
+    });
+  }
 });
 
 //get all product
@@ -59,10 +68,21 @@ module.exports.getAllProducts = catchAsyncError(async (req, res, next) => {
 
 module.exports.getAdminProducts = catchAsyncError(async (req, res, next) => {
   const products = await productModel.find({});
-  res.status(200).json({
-    success: true,
-    products,
-  });
+  if(req.token) {
+    const newAccessToken = req.token;
+    res.status(200).json({
+      success: true,
+      products,
+      accessToken: newAccessToken,
+      
+    });
+  }
+  else {
+    res.status(200).json({
+      success: true,
+      products,
+    });
+  }
 });
 
 //get product deltails

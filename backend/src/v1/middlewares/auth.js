@@ -14,6 +14,7 @@ module.exports.isAuthenticatedUser = async (req, res, next) => {
         accessToken,
         process.env.ACESSTOKEN_SECRET
       );
+      console.log(accessToken);
       req.user = decodeData.id;
       req.role = decodeData.role;
       next();
@@ -25,8 +26,11 @@ module.exports.isAuthenticatedUser = async (req, res, next) => {
             refeshToken,
             process.env.REFESHTOKEN_SECRET
           );
-          console.log(decoded);
-          const newAccessToken = jwt.sign({id: decoded.id}, process.env.ACESSTOKEN_SECRET, {expiresIn: process.env.ACESSTOKEN_EXPIRES});
+          const newAccessToken = jwt.sign(
+            { id: decoded.id, role: decoded.role},
+            process.env.ACESSTOKEN_SECRET,
+            { expiresIn: process.env.ACESSTOKEN_EXPIRES }
+          );
           req.token = newAccessToken;
           req.user = decoded.id;
           req.role = decoded.role;
@@ -43,13 +47,9 @@ module.exports.isAuthenticatedUser = async (req, res, next) => {
 
 module.exports.isAuthorizeRoles = (...roles) => {
   return (req, res, next) => {
-    console.log(req.user);
     if (!roles.includes(req.role)) {
       return next(
-        new ErrorHandle(
-          `Role: ${req.user.role} is not allowed to access this resource`,
-          403
-        )
+        new ErrorHandle(`Role: You is not allowed to access this resource`, 403)
       );
     }
     next();

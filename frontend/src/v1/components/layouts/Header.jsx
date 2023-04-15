@@ -33,7 +33,7 @@ const menus = [
 const Header = () => {
   // const pathName = useLocation();
   // const activeNav = menus.findIndex((menu) => menu.path === pathName);
-  const {user} = useSelector((state) => state.user);
+  const { isAuthenticated } = useSelector((state) => state.user);
   // console.log({user: user});
   return (
     <header>
@@ -92,7 +92,7 @@ const Header = () => {
           ></button>
         </div>
         <div className="offcanvas-body">
-          {user !== null && <><div className="title-menu">Admin menu</div>
+          {localStorage.getItem("role") === "admin" && <><div className="title-menu">Admin menu</div>
           <ul className="list-group list-group-flush">
             <li className="list-group-item">
               <Link to="/admin/dasboard">DashBoard</Link>
@@ -100,39 +100,12 @@ const Header = () => {
             <li className="list-group-item">
               <Link to="/admin/orders">Orders</Link>
             </li>
+            <li className="list-group-item">
+              <Link to="/admin/allusers">User</Link>
+            </li>
           </ul>
           <div className="accordion accordion-flush" id="menuAdmin">
-            <div className="accordion-item">
-              <h2 className="accordion-header" id="flush-menuAdminOne">
-                <button
-                  className="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-menuAdminItemOne"
-                  aria-expanded="false"
-                  aria-controls="flush-menuAdminItemOne"
-                >
-                  User
-                </button>
-              </h2>
-              <div
-                id="flush-menuAdminItemOne"
-                className="accordion-collapse collapse"
-                aria-labelledby="flush-menuAdminOne"
-                data-bs-parent="#menuAdmin"
-              >
-                <div className="accordion-body">
-                  <ul className="list-group list-group-flush">
-                    <li className="list-group-item">
-                      <Link to="/admin/allusers">All User</Link>
-                    </li>
-                    <li className="list-group-item">
-                      <Link to="/admin/createuser">Create User</Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+            
             <div className="accordion-item">
               <h2 className="accordion-header" id="flush-menuAdminTwo">
                 <button

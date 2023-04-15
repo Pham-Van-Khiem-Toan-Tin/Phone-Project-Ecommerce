@@ -8,7 +8,6 @@ const userSlice = createSlice({
     error: "",
     user: null,
     isAuthenticated: false,
-    accessToken: null
   },
   reducers: {
     clearError: (state) => {state.error = null;},
@@ -22,10 +21,11 @@ const userSlice = createSlice({
       state.isLoading = false;
       state.user = action.payload.user;
       state.isAuthenticated = true;
-      if(window.localStorage.getItem("accessToken")) {
-        window.localStorage.removeItem("accessToken");
+      if(localStorage.getItem("accessToken")) {
+        localStorage.removeItem("accessToken");
       }
-      window.localStorage.setItem('accessToken', JSON.stringify(action.payload.accessToken));
+      localStorage.setItem('accessToken', JSON.stringify(action.payload.accessToken));
+      localStorage.setItem('roleShop', action.payload.role);
     });
     builder.addCase(register.rejected, (state, action) => {
       state.isLoading = false;
@@ -38,11 +38,8 @@ const userSlice = createSlice({
       state.isLoading = false;
       state.isAuthenticated = true;
       state.user = action.payload.user;
-      state.accessToken = action.payload.accessToken;
-      if(window.localStorage.getItem("accessToken")) {
-        window.localStorage.removeItem("accessToken");
-      }
-      window.localStorage.setItem('accessToken', JSON.stringify(action.payload.accessToken));
+      localStorage.setItem('accessToken', JSON.stringify(action.payload.accessToken));
+      localStorage.setItem("role", action.payload.role);
     });
     builder.addCase(login.rejected, (state, action) => {
       state.isLoading = false;
@@ -55,11 +52,14 @@ const userSlice = createSlice({
       state.isLoading = false;
       state.user = action.payload.user;
       state.isAuthenticated = true;
-      state.accessToken = action.payload.accessToken;
+      if(action.payload.accessToken) {
+        localStorage.setItem('accessToken', JSON.stringify(action.payload.accessToken));
+      }
     });
     builder.addCase(getAccount.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
+      
     });
   },
 });

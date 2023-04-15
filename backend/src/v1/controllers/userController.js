@@ -143,12 +143,20 @@ module.exports.resetPassword = catchAsyncError(async (req, res, next) => {
 
 module.exports.getUserDetails = catchAsyncError(async (req, res, next) => {
   const user = await userModel.findById(req.user);
-  const newAccessToken = req.token;
-  res.status(200).json({
+  if(req.token) {
+    const newAccessToken = req.token;
+    res.status(200).json({
     success: true,
     user,
-    acessToken: newAccessToken
+    accessToken: newAccessToken,
   });
+  } else {
+    res.status(200).json({
+      success: true,
+      user,
+    });
+  }
+  
 });
 
 //Update user password
@@ -205,11 +213,22 @@ module.exports.updateProfile = catchAsyncError(async (req, res, next) => {
 //get all user(admin)
 module.exports.getAllUser = catchAsyncError(async (req, res, next) => {
   const users = await userModel.find({});
-  
-  res.status(200).json({
-    success: true,
-    users,
-  });
+  if(req.token) {
+    const newAccessToken = req.token;
+    res.status(200).json({
+      success: true,
+      users,
+      accessToken: newAccessToken,
+      role: req.role
+    });
+  }
+  else {
+    res.status(200).json({
+      success: true,
+      users,
+      role: req.role
+    });
+  }
 });
 
 //get single user(admin)
@@ -220,11 +239,21 @@ module.exports.getSingleUser = catchAsyncError(async (req, res, next) => {
       new ErrorHandle(`User does not exist with Id: ${req.params.id}`)
     );
   }
-
-  res.status(200).json({
-    success: true,
-    user,
-  });
+  if(req.token) {
+    const newAccessToken = req.token;
+    res.status(200).json({
+      success: true,
+      user,
+      accessToken: newAccessToken,
+    });
+  }
+  else {
+    res.status(200).json({
+      success: true,
+      user,
+    });
+  }
+  
 });
 
 //update user role --Admin
@@ -240,17 +269,25 @@ module.exports.updateUserRole = catchAsyncError(async (req, res, next) => {
     runValidators: true,
     useFindAndModify: false,
   });
-
-  res.status(200).json({
-    success: true,
-  });
+  if(req.token) {
+    const newAccessToken = req.token;
+    res.status(200).json({
+      success: true,
+      accessToken: newAccessToken,
+    });
+  }
+  else {
+    res.status(200).json({
+      success: true,
+    });
+  }
+  
 });
 
 //delete user(admin)
 module.exports.deleteUser = catchAsyncError(async (req, res, next) => {
   
   const user = await userModel.findById(req.params.id);
-
   if (!user) {
     return next(
       new ErrorHandle(`User does not exist with Id: ${req.params.id}`, 400)
@@ -260,11 +297,20 @@ module.exports.deleteUser = catchAsyncError(async (req, res, next) => {
   const imageId = user.avatar.public_id;
   await cloudinary.v2.uploader.destroy(imageId);
   await user.remove();
-
-  res.status(200).json({
-    success: true,
-    message: "User delete successfully!",
-  });
+  if(req.token) {
+    const newAccessToken = req.token;
+    res.status(200).json({
+      success: true,
+      message: "User delete successfully!",
+      accessToken: newAccessToken,
+    });
+  }
+  else {
+    res.status(200).json({
+      success: true,
+      message: "User delete successfully!",
+    });
+  }
 });
 
 module.exports.refeshToken = catchAsyncError(async (req, res, next) => {

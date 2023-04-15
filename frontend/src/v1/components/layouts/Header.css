@@ -1,5 +1,5 @@
 header {
-  background: linear-gradient(120deg, rgb(67, 4, 104), rgb(41, 12, 145));
+  background: linear-gradient(45deg, #49a09d, #5f2c82);
   position: fixed;
   top: 0;
   left: 0;
@@ -67,13 +67,46 @@ header .navbar-container .navbar_icon-group a {
   font-size: 20px;
   margin: 0 5px;
 }
-header .offcanvas .offcanvas-header .offcanvas-title {
-  color: rgb(43, 36, 36);
+header .offcanvas {
+  background: linear-gradient(45deg, #49a09d, #5f2c82);
+  color: #fff;
+}
+header .offcanvas .offcanvas-body ul {
+  background: transparent;
+  box-shadow: none !important;
+  border: none;
+}
+header .offcanvas .offcanvas-body li {
+  font-weight: 700;
+  background: transparent;
+  border: none;
+}
+header .offcanvas .offcanvas-body li a {
+  color: #fff;
+}
+header .offcanvas .offcanvas-body li a:hover {
+  color: #5f2c82;
+}
+header .offcanvas .offcanvas-body .list-group-item {
+  padding-left: 20px;
 }
 header .offcanvas .offcanvas-body .title-menu {
-  color: rgb(44, 39, 39);
   font-size: 30px;
 }
+header .offcanvas .offcanvas-body .accordion {
+  background: transparent;
+}
+header .offcanvas .offcanvas-body .accordion .accordion-item {
+  background: transparent;
+}
+header .offcanvas .offcanvas-body .accordion .accordion-item .accordion-header button {
+  background: transparent;
+  border: none;
+}
+header .offcanvas .offcanvas-body .accordion .accordion-item .accordion-button {
+  font-weight: 700;
+  color: #fff;
+}
 header .offcanvas .offcanvas-body .accordion .accordion-item .accordion-body li a {
-  color: #000;
+  color: #fff;
 }/*# sourceMappingURL=Header.css.map */

@@ -1,0 +1,49 @@
+.alluser {
+  font-family: sans-serif;
+  font-weight: 100;
+  width: 100vw;
+  margin: 0;
+  background: linear-gradient(45deg, #49a09d, #5f2c82);
+  font-weight: 100;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.alluser .container table {
+  width: 800px;
+  border-collapse: collapse;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}
+.alluser .container table thead th {
+  background-color: #55608f;
+}
+.alluser .container table th, .alluser .container table td {
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+.alluser .container table th {
+  text-align: left;
+}
+.alluser .container table tbody .icon-handle_user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.alluser .container table tbody .icon-handle_user span {
+  display: inline-block;
+  flex: 1;
+  text-align: center;
+}
+.alluser .container table tbody .icon-handle_user span:hover {
+  color: #49a09d;
+}
+.alluser .container table tbody .icon-handle_user span a {
+  color: #fff;
+}
+.alluser .container table tbody .icon-handle_user span a:hover {
+  color: #ccc;
+}/*# sourceMappingURL=AllUser.css.map */

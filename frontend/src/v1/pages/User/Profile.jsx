@@ -5,10 +5,9 @@ import { getAccount } from "../../reduxToolkit/actions/userAction";
 import "./Profile.css";
 const Profile = () => {
   const dispatch = useDispatch();
-  const { user, isLoading, isAuthenticated, accessToken } = useSelector(
+  const { user, isLoading } = useSelector(
     (state) => state.user
   );
-  
   useEffect(() => {
       if(!user) {
         dispatch(getAccount());

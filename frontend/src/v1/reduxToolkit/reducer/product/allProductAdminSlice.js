@@ -18,10 +18,16 @@ const allProductAdminSlice = createSlice({
         builder.addCase(getAdminProducts.fulfilled, (state, action) => {
             state.isLoading = false;
             state.product = action.payload.products;
+            if(action.payload.accessToken) {
+                localStorage.setItem('accessToken', JSON.stringify(action.payload.accessToken));
+            }
         });
         builder.addCase(getAdminProducts.rejected, (state, action) => {
             state.isLoading = false;
             state.error = action.payload;
+            if(action.payload.accessToken) {
+                localStorage.setItem('accessToken', JSON.stringify(action.payload.accessToken));
+            }
         })
     }
 });

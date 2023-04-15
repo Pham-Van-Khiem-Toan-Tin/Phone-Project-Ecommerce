@@ -74,8 +74,6 @@ export const newProduct = createAsyncThunk(
         productData,
         config
       );
-      console.log("chay qua day");
-      console.log(data);
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {
