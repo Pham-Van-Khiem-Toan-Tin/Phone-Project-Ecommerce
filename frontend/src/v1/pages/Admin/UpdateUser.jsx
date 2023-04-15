@@ -44,17 +44,17 @@ const UpdateUser = () => {
   return (
     <div className="updateUser">
       <form onSubmit={(e) => updateUserSubmitHandle(e)}>
-        <div  className="subTitle">
+        <label htmlFor="update-user-name" className="subTitle">
           Name
-        </div>
+        </label>
         <input id="update-user-name" type="text" value={name} onChange={(e) => {setName(e.target.value)}}/>
-        <div  className="subTitle">
+        <label htmlFor="update-user-email" className="subTitle">
           Email
-        </div>
+        </label>
         <input id="update-user-email" type="email" value={email} onChange={(e) => {setEmail(e.target.value)}}/>
-        <div className="subTitle">
+        <label htmlFor="update-user-role" className="subTitle">
           Role
-        </div>
+        </label>
         <select name="Role" id="update-user-role" value={role} onChange={(e) => {setRole(e.target.value)}}>
           <option value="">Choose Role</option>
           <option value="user">User</option>

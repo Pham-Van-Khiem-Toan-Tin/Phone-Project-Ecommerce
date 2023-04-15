@@ -31,10 +31,8 @@ const menus = [
 ];
 
 const Header = () => {
-  // const pathName = useLocation();
-  // const activeNav = menus.findIndex((menu) => menu.path === pathName);
   const { isAuthenticated } = useSelector((state) => state.user);
-  // console.log({user: user});
+
   return (
     <header>
       <div className="navbar-container container">
@@ -51,10 +49,11 @@ const Header = () => {
 
         <div className="navbar-brand">Shop</div>
         <div className="navbar-search">
-          <input type="text" placeholder="Search..." />
-          <div className="icon-search">
-            <BsSearch />
-          </div>
+        <input type="text" name="search" placeholder="Search..." className="search-input" />
+        <a href="#" class="search-btn">
+            <BsSearch />     
+        </a>
+          
         </div>
         <div className="navbar_icon-group">
           <div className="icon-user">
