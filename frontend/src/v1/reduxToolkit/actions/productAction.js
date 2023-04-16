@@ -5,19 +5,16 @@ const axios = require("axios").default;
 export const getProducts = createAsyncThunk(
   "REQUEST_GETALLPROCDUCTS",
   async (
-    {
-      keyword = "",
-      currentPage = 1,
-      price = [0, 100000],
-      category,
-      ratings = 0,
-    },
+    dataProduct,
     { rejectWithValue }
   ) => {
     try {
-      let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
-      if (category) {
-        link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
+      if(!dataProduct.keyword) {
+        dataProduct.keyword = "";
+      }
+      let link = `/api/v1/products?keyword=${dataProduct.keyword}&page=${dataProduct.currentPage}&price[gte]=${dataProduct.minValue}&price[lte]=${dataProduct.maxValue}&ratings[gte]=${dataProduct.ratings}`;
+      if (dataProduct.category) {
+        link = `/api/v1/products?keyword=${dataProduct.keyword}&page=${dataProduct.currentPage}&price[gte]=${dataProduct.minValue}&price[lte]=${dataProduct.maxValue}&category=${dataProduct.category}&ratings[gte]=${dataProduct.ratings}`;
       }
       const { data } = await axios.get(link);
       return data;

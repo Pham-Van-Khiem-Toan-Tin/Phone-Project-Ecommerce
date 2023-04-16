@@ -6,11 +6,11 @@ const Card = (props) => {
   return (
     <>
       <div className="card" style={{ width: "100%" }}>
-        <img src={data.img} className="card-img-top" alt={data.title} />
+        <img src={data.images[0].url} className="card-img-top" alt={data.name} />
         <div className="card-body">
           <h5 className="card-title">
-            <div className="card-name">{data.title}</div>
-            <div className="card_price">100$</div>
+            <div className="card-name">{data.name}</div>
+            <div className="card_price">{data.price}</div>
           </h5>
           <div className="card-star">
           <StarRatings

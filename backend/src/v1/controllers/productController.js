@@ -46,19 +46,27 @@ module.exports.createProduct = catchAsyncError(async (req, res, next) => {
 
 //get all product
 module.exports.getAllProducts = catchAsyncError(async (req, res, next) => {
-  const resultPerPage = 8;
-  const productCount = await productModel.countDocuments();
+  const resultPerPage = 4;
+  const productsCount = await productModel.countDocuments();
+  // console.log(productsCount);
+  // console.log("chay vao day");
   const apiFeature = new Apifeatures(productModel.find(), req.query)
     .search()
     .filter();
-  let products = await apiFeature.query;
+  let products = await apiFeature.query.clone();
+  // console.log("chay xuong day");
+  // console.log(products);
   let filteredProductsCount = products.length;
+  // console.log(filteredProductsCount);
+  // console.log(apiFeature.query);
   apiFeature.pagination(resultPerPage);
   products = await apiFeature.query;
+  // console.log("chay xuong day nay");
+  console.log({ketqua: products});
   res.status(200).json({
     success: true,
     products,
-    productCount,
+    productsCount,
     resultPerPage,
     filteredProductsCount,
   });
