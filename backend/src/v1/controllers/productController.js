@@ -46,7 +46,7 @@ module.exports.createProduct = catchAsyncError(async (req, res, next) => {
 
 //get all product
 module.exports.getAllProducts = catchAsyncError(async (req, res, next) => {
-  const resultPerPage = 4;
+  const resultPerPage = 8;
   const productsCount = await productModel.countDocuments();
   // console.log(productsCount);
   // console.log("chay vao day");
@@ -62,7 +62,7 @@ module.exports.getAllProducts = catchAsyncError(async (req, res, next) => {
   apiFeature.pagination(resultPerPage);
   products = await apiFeature.query;
   // console.log("chay xuong day nay");
-  console.log({ketqua: products});
+  // console.log({ketqua: products});
   res.status(200).json({
     success: true,
     products,
@@ -71,6 +71,24 @@ module.exports.getAllProducts = catchAsyncError(async (req, res, next) => {
     filteredProductsCount,
   });
 });
+
+//get hort product home
+module.exports.getHotProducts = catchAsyncError(async (req, res, next) => {
+  const models = ["Samsung", "Xiaomi", "Apple", "Oppo"];
+  // const hotproducts = await productModel.find({category: {$in: models}}).limit(8);
+  const samsungProduct = await productModel.find({category: "Samsung"}).limit(12);
+  const appleProduct = await productModel.find({category: "Apple"}).limit(8);
+  const xiaomiProduct = await productModel.find({category: "Xiaomi"}).limit(8);
+  const oppoProduct = await productModel.find({category: "Oppo"}).limit(8);
+  console.log(samsungProduct);
+  res.status(200).json({
+    success: true,
+    samsungProduct,
+    appleProduct,
+    xiaomiProduct,
+    oppoProduct
+  })
+})
 
 //get all product -- admin
 

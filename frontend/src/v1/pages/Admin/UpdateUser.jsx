@@ -17,6 +17,7 @@ const UpdateUser = () => {
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
   const { id } = useParams();
+  console.log(id);
   useEffect(() => {
     if (!user) {
       dispatch(getUserDetail(id));

@@ -4,19 +4,32 @@ const axios = require("axios").default;
 //get all prooduct
 export const getProducts = createAsyncThunk(
   "REQUEST_GETALLPROCDUCTS",
-  async (
-    dataProduct,
-    { rejectWithValue }
-  ) => {
+  async (dataProduct, { rejectWithValue }) => {
     try {
-      if(!dataProduct.keyword) {
+      if (!dataProduct.keyword) {
         dataProduct.keyword = "";
       }
-      let link = `/api/v1/products?keyword=${dataProduct.keyword}&page=${dataProduct.currentPage}&price[gte]=${dataProduct.minValue}&price[lte]=${dataProduct.maxValue}&ratings[gte]=${dataProduct.ratings}`;
+      let link = `http://localhost:8000/api/v1/products?keyword=${dataProduct.keyword}&page=${dataProduct.currentPage}&price[gte]=${dataProduct.minValue}&price[lte]=${dataProduct.maxValue}&ratings[gte]=${dataProduct.ratings}`;
       if (dataProduct.category) {
-        link = `/api/v1/products?keyword=${dataProduct.keyword}&page=${dataProduct.currentPage}&price[gte]=${dataProduct.minValue}&price[lte]=${dataProduct.maxValue}&category=${dataProduct.category}&ratings[gte]=${dataProduct.ratings}`;
+        link = `http://localhost:8000/api/v1/products?keyword=${dataProduct.keyword}&page=${dataProduct.currentPage}&price[gte]=${dataProduct.minValue}&price[lte]=${dataProduct.maxValue}&category=${dataProduct.category}&ratings[gte]=${dataProduct.ratings}`;
       }
       const { data } = await axios.get(link);
+      return data;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);
+
+export const getHotProduct = createAsyncThunk(
+  "REQUEST_GETHOTPRODUCTS",
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get("http://localhost:8000/api/v1/hotproducts");
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -36,12 +49,13 @@ export const getAdminProducts = createAsyncThunk(
       const token = JSON.parse(localStorage.getItem("accessToken"));
       const config = {
         headers: {
-          "Authorization": "Bearer " + token,
+          Authorization: "Bearer " + token,
         },
         withCredentials: true,
       };
       const { data } = await axios.get(
-        `http://localhost:8000/api/v1/admin/products`,config
+        `http://localhost:8000/api/v1/admin/products`,
+        config
       );
       return data;
     } catch (error) {
@@ -61,7 +75,7 @@ export const newProduct = createAsyncThunk(
       const token = JSON.parse(localStorage.getItem("accessToken"));
       const config = {
         headers: {
-          "Authorization": "Bearer " + token,
+          Authorization: "Bearer " + token,
           "Content-Type": "application/json",
         },
         withCredentials: true,
@@ -81,3 +95,19 @@ export const newProduct = createAsyncThunk(
     }
   }
 );
+
+export const getProductDetail = createAsyncThunk(
+  "PRODUCT_DETAIL",
+  async (id, {rejectWithValue}) => {
+    try {
+      const {data} = await axios.get(`http://localhost:8000/api/v1/product/${id}`);
+      return data;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+)

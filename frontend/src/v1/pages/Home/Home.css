@@ -1,3 +1,25 @@
+.banner-slider {
+  height: 700px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.banner-slider .swiper {
+  height: 100%;
+  padding: 0;
+}
+.banner-slider .swiper img {
+  width: 100%;
+  height: 100%;
+}
+
+.banner-img {
+  margin: 20px 0;
+}
+.banner-img img {
+  width: 100%;
+  border-radius: 10px;
+}
+
 .hot_sale {
   background-color: #712cf9;
   border-radius: 10px;
@@ -40,7 +62,7 @@
 }
 
 .hot h3 {
-  color: #444444;
+  color: white;
 }
 .hot button {
   border-radius: 10px;

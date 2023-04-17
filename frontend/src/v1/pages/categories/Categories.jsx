@@ -21,26 +21,47 @@ const Categories = () => {
     filteredProductsCount,
     error,
   } = useSelector((state) => state.allproduct);
+  const listCategories = ["Samsung", "Xiaomi", "Apple", "Oppo"];
   const [currentPage, setCurrentPage] = useState(1);
   const [category, setCategory] = useState("");
   const [ratings, setRating] = useState(0);
   const [minValue, setMinValue] = useState(0);
-  const [maxValue, setMaxValue] = useState(3000);
-  
- 
+  const [maxValue, setMaxValue] = useState(30000000);
+
   const changeRating = (newRating, name) => {
     setRating(newRating);
   };
   console.log(ratings);
   const { keyword } = useParams();
   let count = filteredProductsCount;
+  let pageCouts = [currentPage, currentPage + 1, currentPage + 2];
   useEffect(() => {
     if (error) {
       toast.error(error);
       dispatch(clearError());
     }
-    dispatch(getProducts({keyword, currentPage, minValue, maxValue, category, ratings}))
-  }, [keyword, currentPage, minValue, maxValue, category, ratings, dispatch, error, toast, error]);
+    dispatch(
+      getProducts({
+        keyword,
+        currentPage,
+        minValue,
+        maxValue,
+        category,
+        ratings,
+      })
+    );
+  }, [
+    keyword,
+    currentPage,
+    minValue,
+    maxValue,
+    category,
+    ratings,
+    dispatch,
+    error,
+    toast,
+    error,
+  ]);
 
   return (
     <>
@@ -48,14 +69,13 @@ const Categories = () => {
         <Loader />
       ) : (
         <div className="categories">
-          <h1 className="categories-header">Products</h1>
           <div className="categories-content">
             <div className="categories-controller">
               <div className="categories-range">
                 <MultiRangeSlider
                   min={0}
-                  max={3000}
-                  step={100}
+                  max={30000000}
+                  step={1000000}
                   minValue={minValue}
                   maxValue={maxValue}
                   onChange={(e) => {
@@ -66,10 +86,22 @@ const Categories = () => {
               </div>
               <div className="categories-model">
                 <h3 className="categories-model-title">Model</h3>
-                <div className="categories-model-item">SamSung</div>
-                <div className="categories-model-item">XiaoMi</div>
-                <div className="categories-model-item">Apple</div>
-                <div className="categories-model-item">Oppo</div>
+                {listCategories.map((item, index) => {
+                  return (
+                    <>
+                      <div
+                        className="categories-model-item"
+                        key={index}
+                        onClick={() => {
+                          setCategory(item);
+                          setCurrentPage(1);
+                        }}
+                      >
+                        {item}
+                      </div>
+                    </>
+                  );
+                })}
               </div>
               <div className="categories-rating">
                 <StarRatings
@@ -85,43 +117,50 @@ const Categories = () => {
               </div>
             </div>
             <div className="categories-gird">
+              <h1 className="categories-header">Products</h1>
               <div className="categories-gird-content">
                 <div className="row">
-                  {products && products.map((product) => {
-                    return (
-                      <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6">
-                        <Card data={product} />
-                      </div>
-                    );
-                  })}
+                  {products &&
+                    products.map((product) => {
+                      return (
+                        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6">
+                          <Card data={product} />
+                        </div>
+                      );
+                    })}
                 </div>
               </div>
+              
+                <ul className="pagination-list">
+                  <li>
+                    <button className="" aria-label="Previous" disabled={currentPage==1?true: false} onClick={() => setCurrentPage(currentPage-1)}>
+                      <span aria-hidden="true">&laquo;</span>
+                    </button>
+                  </li>
+                  {pageCouts.map((pageCout) => {
+                    console.log(Math.round(filteredProductsCount/resultPerPage) + 1 < pageCout);
+                    return (
+                      <>
+                        <li className="">
+                          <button
+                            className=""
+                            disabled={Math.round(filteredProductsCount/resultPerPage) + 1 < pageCout ? true : false}
+                            onClick={() => setCurrentPage(pageCout)}
+                          >
+                            {pageCout}
+                          </button>
+                        </li>
+                      </>
+                    );
+                  })}
+                  <li className="page-">
+                    <button className="" aria-label="Next" disabled={Math.round(filteredProductsCount/resultPerPage) == currentPage ?true:false} onClick={() => setCurrentPage(currentPage+1)}>
+                      <span aria-hidden="true">&raquo;</span>
+                    </button>
+                  </li>
+                </ul>
+              
             </div>
-          </div>
-          <div className="categories-gird-pagination d-flex justify-content-center">
-            <nav aria-label="Page navigation example">
-              <ul class="pagination">
-                <li class="page-item">
-                  <button class="page-link" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                  </button>
-                </li>
-                <li class="page-item">
-                  <button class="page-link">1</button>
-                </li>
-                <li class="page-item">
-                  <button class="page-link">2</button>
-                </li>
-                <li class="page-item">
-                  <button class="page-link">3</button>
-                </li>
-                <li class="page-item">
-                  <button class="page-link" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                  </button>
-                </li>
-              </ul>
-            </nav>
           </div>
         </div>
       )}

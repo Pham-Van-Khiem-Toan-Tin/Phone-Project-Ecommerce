@@ -1,0 +1,21 @@
+.productdetail {
+  background-color: transparent;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.productdetail .productdetail-carousel {
+  flex: 1;
+}
+.productdetail .productdetail-carousel img {
+  height: 400px;
+}
+.productdetail .productdetail-content {
+  flex: 1;
+  height: 100%;
+  padding: 10px;
+  color: #fff;
+}
+.productdetail .productdetail-content .productdetail-ratings svg {
+  vertical-align: baseline;
+}/*# sourceMappingURL=Productdetail.css.map */

@@ -1,28 +1,40 @@
 import React from "react";
 import StarRatings from "react-star-ratings";
+
+import { FaEye, FaHeart, FaCartPlus } from "react-icons/fa";
+
 import "./Card.css";
+import { Link } from "react-router-dom";
 const Card = (props) => {
   const { data } = props;
   return (
     <>
-      <div className="card" style={{ width: "100%" }}>
-        <img src={data.images[0].url} className="card-img-top" alt={data.name} />
-        <div className="card-body">
-          <h5 className="card-title">
-            <div className="card-name">{data.name}</div>
-            <div className="card_price">{data.price}</div>
-          </h5>
-          <div className="card-star">
-          <StarRatings
-              rating={2.5}
+      <div className="product_card">
+        <div className="product_img">
+          <img src={data.images[0].url} alt={data.name}/>
+        </div>
+        <div className="product_name">
+          <span>{data.name}</span>
+        </div>
+        <div className="product_price">
+          <span>{data.price} đ</span>
+        </div>
+        <div className="ratings">
+        <StarRatings
+              rating={data.ratings}
               starRatedColor="rgb(211 118 26)"
               numberOfStars={5}
               name="rating"
               starDimension="15px"
               starSpacing="1px"
             />
-          </div>
-          <button class="btn btn-primary">Add to cart</button>
+        </div>
+        <div className="product_menu">
+          <ul>
+            <li className="product_menu-item"><Link to={`/categories/${data._id}`}><span><FaEye /></span></Link></li>
+            <li className="product_menu-item"><span><FaCartPlus /></span></li>
+            <li className="product_menu-item"><span><FaHeart /></span></li>
+          </ul>
         </div>
       </div>
     </>

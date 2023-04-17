@@ -27,18 +27,18 @@ const CreateProduct = () => {
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
-  const [stock, setStock] = useState(0);
+  const [stock, setStock] = useState(20);
   const [images, setImages] = useState([]);
   const [imagePreview, setImagePreview] = useState([]);
   useEffect(() => {
     if (error) {
       toast.error(error);
-      dispatch(clearErrorNewProduct);
+      dispatch(clearErrorNewProduct());
     }
     if (success) {
       toast.success("Product created successfully");
       navigate("/admin/allproducts");
-      dispatch(resetNewProduct);
+      dispatch(resetNewProduct());
     }
   }, [dispatch, error, navigate, success]);
 
@@ -117,7 +117,7 @@ const CreateProduct = () => {
         <select
           name="model"
           id="model"
-          defaultValue=""
+          
           onChange={(e) => setCategory(e.target.value)}
         >
           <option value="">Chose category</option>

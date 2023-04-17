@@ -21,6 +21,7 @@ import "./App.css"
 import Orders from "./v1/pages/Admin/Orders";
 import AllUser from "./v1/pages/Admin/AllUser";
 import UpdateUser from "./v1/pages/Admin/UpdateUser";
+import Productdetail from "./v1/pages/ProductDetail/Productdetail";
 
 
 function App() {
@@ -32,7 +33,7 @@ function App() {
       <Routes>
         <Route path="/" index element={<Home />} />
         <Route path="/categories" element={<Categories />} />
-        <Route path="/categories/:keyword" element={<Categories />} />
+        <Route path="/categories/:id" element={<Productdetail />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<LoginAndSignUp />} />

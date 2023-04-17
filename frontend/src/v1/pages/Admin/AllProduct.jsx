@@ -18,7 +18,7 @@ const AllProduct = () => {
   }, []);
 
   return (
-    <div className="allproduct">
+    <div className="allproduct table-responsive">
       <div className="container">
         <table>
           <thead>

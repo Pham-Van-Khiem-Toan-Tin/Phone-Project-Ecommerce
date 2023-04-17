@@ -9,6 +9,7 @@ const {
   createProductReviews,
   getProductReviews,
   deleteReview,
+  getHotProducts,
 } = require("../controllers/productController");
 const {
   isAuthenticatedUser,
@@ -17,6 +18,7 @@ const {
 const router = express.Router();
 
 router.route("/products").get(getAllProducts);
+router.route("/hotproducts").get(getHotProducts);
 router
   .route("/admin/products")
   .get(isAuthenticatedUser, isAuthorizeRoles("admin"), getAdminProducts);

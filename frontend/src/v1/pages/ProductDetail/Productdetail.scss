@@ -1,0 +1,24 @@
+.productdetail {
+    background-color: transparent;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    // align-items: center;
+    .productdetail-carousel {
+        flex: 1;
+        img {
+            height: 400px;
+        }
+    }
+    .productdetail-content {
+        flex: 1;
+        height: 100%;
+        padding: 10px;
+        color: #fff;
+        .productdetail-ratings {
+            svg {
+                vertical-align: baseline;
+            }
+        }
+    }
+}

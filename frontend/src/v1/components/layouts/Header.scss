@@ -6,6 +6,7 @@ header {
     right: 0;
     display: flex;
     align-items: center;
+    justify-content: center;
     color: #fff;
     height: 60px;
     width: 100vw;
@@ -17,95 +18,95 @@ header {
         .icon-toggle {
             flex: 1;
             padding-left: 2px;
-            display: flex;
-            align-items: center;
+            
             button {
-                background: none;
+                background-color: transparent;
+                border-radius: 10px;
+                height: 30px;
                 border: none;
-                color: #fff;
-                font-size: 30px;
-                font-weight: 800;
                 svg {
-                    display: block;
+                    color: #ffff;
+                    font-size: 30px;
+                    vertical-align: baseline;
+                    font-weight: 700;
                 }
             }
+           
         }
         .navbar-brand {
             flex: 1;
-            font-size: 30px;
-            font-weight: 700;
-        }
-        body{
-            margin: 0;
-            padding: 0;
-            background-color: #b2e0df;
-            height: 100vh;
             display: flex;
-            justify-content: center;
             align-items: center;
-        }
-        
-        .navbar-search{
-            background: #fff;
-            height: 30px;
-            border-radius: 30px;
-            padding: 10px 20px;
-            display: flex;
             justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: 0.8s;
-            /*box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-            inset -7px -7px 10px 0px rgba(0,0,0,.1),
-           7px 7px 20px 0px rgba(0,0,0,.1),
-           4px 4px 5px 0px rgba(0,0,0,.1);
-           text-shadow:  0px 0px 6px rgba(255,255,255,.3),
-                      -4px -4px 6px rgba(116, 125, 136, .2);
-          text-shadow: 2px 2px 3px rgba(255,255,255,0.5);*/
-          box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
-                      -4px -4px 6px 0 rgba(116, 125, 136, .2), 
-            inset -4px -4px 6px 0 rgba(255,255,255,.2),
-            inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
-        }
-        
-        .navbar-search:hover > .search-input{
-            width: 200px;
-        }
-        
-        .navbar-search .search-input{
-            background: transparent;
-            border: none;
-            outline:none;
-            width: 0px;
-            font-weight: 500;
-            font-size: 16px;
-            transition: 0.8s;
-        
-        }
-        
-        .navbar-search .search-btn {
-            color: #5cbdbb;
-            font-weight: 300;
-        }
-        
-        @keyframes hoverShake {
-          0% {transform: skew(0deg,0deg);}
-          25% {transform: skew(5deg, 5deg);}
-          75% {transform: skew(-5deg, -5deg);}
-          100% {transform: skew(0deg,0deg);}
-        }
-        
-        .navbar-search:hover{
-          animation: hoverShake 0.15s linear 3;
+            span {
+                text-align: center;
+                font-size: 30px;
+                font-weight: 700;
+            }
         }
         .navbar_icon-group {
-            flex: 2;
+            flex: 1;
             display: flex;
             justify-content: flex-end;
-            a {
-                color: #fff;
-                font-size: 20px;
-                margin: 0 5px;
+            div {
+
+                a {
+                    display: block;
+                    margin: auto 5px;
+                    
+                    border-radius: 5px;
+                    padding: 2px;
+                    span {
+                        text-align: center;
+                        svg {
+                            font-size: 25px;
+                            color: #fff;
+                            vertical-align:baseline;
+                        }
+                    }
+                }
+            }
+            .navbar-search{
+                margin-right: 10px;
+                background: #fff;
+                height: 30px;
+                border-radius: 30px;
+                padding: 10px 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                transition: 0.8s;
+                box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
+                          -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+                inset -4px -4px 6px 0 rgba(255,255,255,.2),
+                inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+                .search-input{
+                    background: transparent;
+                    border: none;
+                    outline:none;
+                    width: 0px;
+                    font-weight: 500;
+                    font-size: 16px;
+                    transition: 0.8s;
+                    
+                }
+                .search-btn {
+                    color: #5cbdbb;
+                    font-weight: 300;
+                }
+                &:hover > .search-input{
+                    width: 200px;
+                }
+                &:hover{
+                    animation: hoverShake 0.15s linear 3;
+                }
+            }
+            @keyframes hoverShake {
+              0% {transform: skew(0deg,0deg);}
+              25% {transform: skew(5deg, 5deg);}
+              75% {transform: skew(-5deg, -5deg);}
+              100% {transform: skew(0deg,0deg);}
             }
         }
     }
@@ -114,9 +115,19 @@ header {
         color: #fff;
         .offcanvas-header {
             button {
-                color: #fff;
                 margin-right: 12px;
+                svg {
+                    color: #fff;
+                    font-size: 30px;
+                    vertical-align: baseline;
+                    font-weight: 700;
+                }
+                &:active {
+                    border: none;
+                    color: #ccc;
+                }
             }
+
         }
         .offcanvas-body {
             ul {

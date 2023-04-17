@@ -5,7 +5,9 @@ import userDetailReducer from "./reducer/user/userDetailSlice";
 import newProductReducer from "./reducer/product/productAdminSlice";
 import allProductAdmin from "./reducer/product/allProductAdminSlice";
 import userHandle from "./reducer/user/userHandle";
-import allProductReducer from "./reducer/product/productSlice"
+import allProductReducer from "./reducer/product/productSlice";
+import allProductsHomeReducer from "./reducer/product/productsHomeSlice";
+import productDetailReducer from "./reducer/product//productDetailSlice";
 const store = configureStore({
     reducer: {
         user: userReducer,
@@ -14,7 +16,9 @@ const store = configureStore({
         newproduct: newProductReducer,
         alladminproduct: allProductAdmin,
         handleUser: userHandle,
-        allproduct: allProductReducer
+        allproduct: allProductReducer,
+        productshome: allProductsHomeReducer,
+        productdetail: productDetailReducer
     }
 });
 
