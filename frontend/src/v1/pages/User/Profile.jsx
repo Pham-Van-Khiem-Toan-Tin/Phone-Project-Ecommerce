@@ -12,10 +12,6 @@ const Profile = () => {
   );
   const navigate = useNavigate();
   useEffect(() => {
-      if(error) {
-        navigate("/login");
-        dispatch(clearError());
-      }
       if(!user) {
         dispatch(getAccount());
       }
