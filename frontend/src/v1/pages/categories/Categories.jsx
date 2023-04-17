@@ -144,7 +144,7 @@ const Categories = () => {
                         <li className="">
                           <button
                             className=""
-                            disabled={Math.round(filteredProductsCount/resultPerPage) + 1 < pageCout ? true : false}
+                            disabled={filteredProductsCount < resultPerPage || Math.round(filteredProductsCount/resultPerPage) + 1 < pageCout ? true : false}
                             onClick={() => setCurrentPage(pageCout)}
                           >
                             {pageCout}
@@ -154,7 +154,7 @@ const Categories = () => {
                     );
                   })}
                   <li className="page-">
-                    <button className="" aria-label="Next" disabled={Math.round(filteredProductsCount/resultPerPage) == currentPage ?true:false} onClick={() => setCurrentPage(currentPage+1)}>
+                    <button className="" aria-label="Next" disabled={filteredProductsCount < resultPerPage || Math.round(filteredProductsCount/resultPerPage) < currentPage + 1 ?true:false} onClick={() => setCurrentPage(currentPage+1)}>
                       <span aria-hidden="true">&raquo;</span>
                     </button>
                   </li>

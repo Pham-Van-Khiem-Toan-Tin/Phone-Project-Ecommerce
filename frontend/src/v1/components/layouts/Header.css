@@ -64,7 +64,7 @@ header .navbar-container .navbar_icon-group div a span svg {
   vertical-align: baseline;
 }
 header .navbar-container .navbar_icon-group .navbar-search {
-  margin-right: 10px;
+  margin: 0 10px;
   background: #fff;
   height: 30px;
   border-radius: 30px;

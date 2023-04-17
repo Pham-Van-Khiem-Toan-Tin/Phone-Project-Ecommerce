@@ -84,7 +84,7 @@ const Productdetail = () => {
           <p className="productdetail-id">{product?._id}</p>
           <div className="productdetail-ratings">
             <StarRatings
-              rating={product.ratings}
+              rating={product?.ratings ? product.ratings : 5}
               starRatedColor="rgb(255, 255, 0)"
               numberOfStars={5}
               name="rating"
@@ -96,7 +96,7 @@ const Productdetail = () => {
           </div>
           <div className="productdetail-price">{product?.price}</div>
           <div className="productdetail-name">
-            Status: {product.stock > 0 ? "Instock" : "OutOfstock"}
+            Status: {product?.stock > 0 ? "Instock" : "OutOfstock"}
           </div>
           <div>
             Description: <p>{product?.description}</p>
