@@ -43,6 +43,7 @@ header .navbar-container .navbar-brand span {
   text-align: center;
   font-size: 30px;
   font-weight: 700;
+  font-family: "Courier New", Courier, monospace;
 }
 header .navbar-container .navbar_icon-group {
   flex: 1;
@@ -115,6 +116,7 @@ header .offcanvas {
 }
 header .offcanvas .offcanvas-header button {
   margin-right: 12px;
+  border: none;
 }
 header .offcanvas .offcanvas-header button svg {
   color: #fff;

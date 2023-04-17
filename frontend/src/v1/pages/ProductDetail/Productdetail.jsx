@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import StarRatings from "react-star-ratings";
 
 import "./Productdetail.css";
@@ -11,6 +11,7 @@ const Productdetail = () => {
     (state) => state.productdetail
   );
   const { id } = useParams();
+  const [quanlityCart, setQuanlityCart] = useState(1);
   console.log(id);
   useEffect(() => {
     dispatch(getProductDetail(id));
@@ -31,57 +32,43 @@ const Productdetail = () => {
         <div className="productdetail-carousel">
           <div id="productDetail" className="carousel slide">
             <div className="carousel-indicators">
-              <button
-                type="button"
-                data-bs-target="#productDetail"
-                data-bs-slide-to="0"
-                className="active"
-                aria-current="true"
-                aria-label="Slide 1"
-              >
-                test
-              </button>
-              <button
-                type="button"
-                data-bs-target="#productDetail"
-                data-bs-slide-to="1"
-                aria-label="Slide 2"
-              ></button>
-              <button
-                type="button"
-                data-bs-target="#productDetail"
-                data-bs-slide-to="2"
-                aria-label="Slide 3"
-              ></button>
+              {product?.images.map((image, index) => {
+                return (
+                  <>
+                    <button
+                      type="button"
+                      data-bs-target="#productDetail"
+                      data-bs-slide-to={`${index}`}
+                      className="active"
+                      aria-current="true"
+                      aria-label={`Slider ${index}`}
+                    >
+                      test
+                    </button>
+                  </>
+                );
+              })}
             </div>
             <div className="carousel-inner">
-              <div className="carousel-item active">
-                <img
-                  src="../../assets/images/sliders/slider1.jpg"
-                  className="d-block w-100"
-                  alt="..."
-                />
-              </div>
-              <div className="carousel-item">
-                <img
-                  src="../../assets/images/sliders/slider2.jpg"
-                  className="d-block w-100"
-                  alt="..."
-                />
-              </div>
-              <div className="carousel-item">
-                <img
-                  src="../../assets/images/sliders/slider3.jpg"
-                  className="d-block w-100"
-                  alt="..."
-                />
-              </div>
+              {product?.images.map((image) => {
+                return (
+                  <>
+                    <div className="carousel-item active">
+                      <img
+                        src={image.url}
+                        className="d-block w-100"
+                        alt={image.url}
+                      />
+                    </div>
+                  </>
+                );
+              })}
             </div>
           </div>
         </div>
         <div className="productdetail-content">
           <h2 className="productdetail-name">{product?.name}</h2>
-          <p className="productdetail-id">{product?._id}</p>
+          <p className="productdetail-id"># {product?._id}</p>
           <div className="productdetail-ratings">
             <StarRatings
               rating={product?.ratings ? product.ratings : 5}
@@ -94,14 +81,28 @@ const Productdetail = () => {
             />
             <span> ({product?.reviews} reviews)</span>
           </div>
-          <div className="productdetail-price">{product?.price}</div>
+          <div className="quanlity-cart">
+            <button onClick={() => setQuanlityCart(quanlityCart + 1)}>+</button>
+            <input type="number" value={quanlityCart} readOnly />
+            <button
+              onClick={() => {
+                if (quanlityCart > 1) {
+                  setQuanlityCart(quanlityCart - 1);
+                }
+              }}
+            >
+              -
+            </button>
+            <button className="detail-to-cart">Add to cart</button>
+          </div>
+          <div className="productdetail-price">{product?.price} đ</div>
           <div className="productdetail-name">
             Status: {product?.stock > 0 ? "Instock" : "OutOfstock"}
           </div>
-          <div>
+          <div className="productdetail-description">
             Description: <p>{product?.description}</p>
           </div>
-          <button>Submit review</button>
+          <button className="button-review">Submit review</button>
         </div>
       </div>
     </div>

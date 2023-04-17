@@ -12,6 +12,7 @@ module.exports.createProduct = catchAsyncError(async (req, res, next) => {
   } else {
     images = req.body.images;
   }
+  console.log(images);
   const imagesLinks = [];
 
   for (let i = 0; i < images.length; i++) {

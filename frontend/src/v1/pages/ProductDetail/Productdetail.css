@@ -1,21 +1,83 @@
 .productdetail {
-  background-color: transparent;
+  background-color: #712CF9;
   width: 100%;
   display: flex;
+  border-radius: 20px;
+  overflow: hidden;
   flex-wrap: wrap;
+  box-shadow: 0px 0px 14px 12px rgba(63, 31, 193, 0.52);
+  -webkit-box-shadow: 0px 0px 14px 12px rgba(63, 31, 193, 0.52);
+  -moz-box-shadow: 0px 0px 14px 12px rgba(63, 31, 193, 0.52);
 }
 .productdetail .productdetail-carousel {
   flex: 1;
 }
-.productdetail .productdetail-carousel img {
-  height: 400px;
+.productdetail .productdetail-carousel .carousel {
+  height: 100%;
+}
+.productdetail .productdetail-carousel .carousel-inner {
+  height: 100%;
+}
+.productdetail .productdetail-carousel .carousel-inner .carousel-item {
+  border-bottom: none;
+  height: 100%;
+}
+.productdetail .productdetail-carousel .carousel-inner .carousel-item img {
+  height: 100%;
+  max-height: 600px;
 }
 .productdetail .productdetail-content {
   flex: 1;
-  height: 100%;
+  height: inherit;
   padding: 10px;
   color: #fff;
+  font-weight: 700;
+  position: relative;
 }
 .productdetail .productdetail-content .productdetail-ratings svg {
   vertical-align: baseline;
+}
+.productdetail .productdetail-content .productdetail-description {
+  font-weight: 200;
+}
+.productdetail .productdetail-content .quanlity-cart button {
+  width: 10%;
+}
+.productdetail .productdetail-content .quanlity-cart input {
+  width: 10%;
+  margin: 0 5px;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 0.5vmax;
+  border: none;
+}
+.productdetail .productdetail-content .quanlity-cart input:focus-visible {
+  border: none;
+  outline: none;
+}
+.productdetail .productdetail-content .quanlity-cart .detail-to-cart {
+  width: 30%;
+  margin: 0 10px;
+}
+.productdetail .productdetail-content .productdetail-price {
+  margin: 10px 0;
+}
+.productdetail .productdetail-content button {
+  background-color: #5d448f;
+  border: none;
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  width: 33%;
+  font-weight: 700;
+}
+.productdetail .productdetail-content .button-review {
+  position: relative;
+  top: 4px;
+}
+.productdetail .productdetail-content button:hover {
+  background-color: #712CF9;
+  box-shadow: 0px 0px 14px 12px rgba(63, 31, 193, 0.52);
+  -webkit-box-shadow: 0px 0px 14px 12px rgba(63, 31, 193, 0.52);
+  -moz-box-shadow: 0px 0px 14px 12px rgba(63, 31, 193, 0.52);
 }/*# sourceMappingURL=Productdetail.css.map */

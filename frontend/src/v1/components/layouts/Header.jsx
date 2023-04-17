@@ -42,7 +42,7 @@ const Header = () => {
           </button>
         </div>
         <div className="navbar-brand">
-          <span>Shop</span>
+          <span>Online Khiem's Shop</span>
         </div>
         <div className="navbar_icon-group">
           <div className="navbar-search">

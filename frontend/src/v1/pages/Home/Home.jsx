@@ -19,6 +19,9 @@ import { toast } from "react-toastify";
 import { useEffect } from "react";
 import { clearError } from "../../reduxToolkit/reducer/product/productsHomeSlice";
 import { getHotProduct } from "../../reduxToolkit/actions/productAction";
+import { getProducts } from "../../reduxToolkit/actions/productAction";
+
+import { Link } from "react-router-dom";
 const Home = () => {
   const THREE_DAYS_IN_MS = 3 * 24 * 60 * 60 * 1000;
   const NOW_IN_MS = new Date().getTime();
@@ -64,7 +67,9 @@ const Home = () => {
               </SwiperSlide>
             </Swiper>
           </div>
-          <div className="container banner-img"><img src="assets/images/sliders/banner.webp" /></div>
+          <div className="container banner-img">
+            <img src="assets/images/sliders/banner.webp" />
+          </div>
           <div className="container mt-2">
             <div className="row">
               <div className="col">
@@ -136,7 +141,9 @@ const Home = () => {
           <SliderProduct data={approducts} />
           <div className="container hot pt-2 d-flex flex-row justify-content-between align-items-center">
             <h3 className="text-uppercase">Điện thoại samsung</h3>
-            <button>Xem tiếp</button>
+            <button>
+              <Link to="/categories">Xem tiếp</Link>
+            </button>
           </div>
           <SliderProduct data={ssproducts} row={2} />
           <div className="container hot pt-2 d-flex flex-row justify-content-between align-items-center">
