@@ -3,12 +3,19 @@ import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader/Loader";
 import { getAccount } from "../../reduxToolkit/actions/userAction";
 import "./Profile.css";
+import { useNavigate } from "react-router-dom";
+import { clearError } from "../../reduxToolkit/reducer/user/userSlice";
 const Profile = () => {
   const dispatch = useDispatch();
-  const { user, isLoading } = useSelector(
+  const { user, isLoading, error } = useSelector(
     (state) => state.user
   );
+  const navigate = useNavigate();
   useEffect(() => {
+      if(error) {
+        navigate("/login");
+        dispatch(clearError());
+      }
       if(!user) {
         dispatch(getAccount());
       }
