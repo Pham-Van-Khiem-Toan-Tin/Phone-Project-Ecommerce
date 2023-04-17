@@ -6,7 +6,7 @@
 body {
   background: linear-gradient(120deg, #2980b9, #8e44ad);  
   margin-top: 60px;
-  width: 100vw;
+  width: 100%;
 }
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;500;700;900&family=Kreon&family=Poppins:wght@300;700&display=swap');
 .card {

@@ -26,7 +26,7 @@ const Categories = () => {
   const [category, setCategory] = useState("");
   const [ratings, setRating] = useState(0);
   const [minValue, setMinValue] = useState(0);
-  const [maxValue, setMaxValue] = useState(30000000);
+  const [maxValue, setMaxValue] = useState(50000000);
 
   const changeRating = (newRating, name) => {
     setRating(newRating);
@@ -74,7 +74,7 @@ const Categories = () => {
               <div className="categories-range">
                 <MultiRangeSlider
                   min={0}
-                  max={30000000}
+                  max={50000000}
                   step={1000000}
                   minValue={minValue}
                   maxValue={maxValue}
