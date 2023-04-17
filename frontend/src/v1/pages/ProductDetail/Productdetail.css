@@ -8,6 +8,7 @@
   box-shadow: 0px 0px 14px 12px rgba(63, 31, 193, 0.52);
   -webkit-box-shadow: 0px 0px 14px 12px rgba(63, 31, 193, 0.52);
   -moz-box-shadow: 0px 0px 14px 12px rgba(63, 31, 193, 0.52);
+  color: #fff;
 }
 .productdetail .productdetail-carousel {
   flex: 1;
@@ -30,7 +31,6 @@
   flex: 1;
   height: inherit;
   padding: 10px;
-  color: #fff;
   font-weight: 700;
   position: relative;
 }
@@ -80,4 +80,17 @@
   box-shadow: 0px 0px 14px 12px rgba(63, 31, 193, 0.52);
   -webkit-box-shadow: 0px 0px 14px 12px rgba(63, 31, 193, 0.52);
   -moz-box-shadow: 0px 0px 14px 12px rgba(63, 31, 193, 0.52);
+}
+
+h3 {
+  color: #fff;
+  margin: 30px 0;
+  text-transform: uppercase;
+}
+
+.listReview {
+  width: 100%;
+}
+.listReview .card {
+  width: 100%;
 }/*# sourceMappingURL=Productdetail.css.map */

@@ -79,7 +79,7 @@ const Productdetail = () => {
               starDimension="20px"
               starSpacing="2px"
             />
-            <span> ({product?.reviews} reviews)</span>
+            <span> ({product?.numOfReview} reviews)</span>
           </div>
           <div className="quanlity-cart">
             <button onClick={() => setQuanlityCart(quanlityCart + 1)}>+</button>
@@ -104,6 +104,27 @@ const Productdetail = () => {
           </div>
           <button className="button-review">Submit review</button>
         </div>
+      </div>
+      <h3>Reviews</h3>
+      <div className="listReview">
+        {product?.reviews.map((review) => {
+          <div className="card">
+            <div className="card-header">{review?.name}</div>
+            <div className="card-body">
+              <StarRatings
+                rating={review?.rating}
+                starRatedColor="rgb(255, 255, 0)"
+                numberOfStars={5}
+                name="rating"
+                starHoverColor="rgb(255, 191, 0)"
+                starDimension="20px"
+                starSpacing="2px"
+              />
+              <h5 className="card-title">Comment: </h5>
+              <p className="card-text">{review?.comments}</p>
+            </div>
+          </div>;
+        })}
       </div>
     </div>
   );
