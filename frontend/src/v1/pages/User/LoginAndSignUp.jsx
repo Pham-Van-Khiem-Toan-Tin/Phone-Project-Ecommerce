@@ -78,8 +78,11 @@ const LoginAndSignUp = () => {
       toast.error(error);
       // console.log("render");
       dispatch(clearError());
+      if(localStorage.getItem("accessToken")) {
+        localStorage.removeItem("accessToken");
+      }
     }
-    if(localStorage.getItem("accessToken")) {
+    if(localStorage.getItem("accessToken") && !error) {
       navigate(redirect);
     }
   }, [dispatch, error, navigate, isAuthenticated, toast, redirect]);

@@ -13,9 +13,14 @@ const Profile = () => {
   const navigate = useNavigate();
   useEffect(() => {
       if(!user) {
-        dispatch(getAccount());
+        if(!error) {
+          dispatch(getAccount());
+        }
+        else {
+          navigate("/login");
+        }
       }
-  }, [dispatch]);
+  }, [dispatch, error]);
 
   return (
     <>

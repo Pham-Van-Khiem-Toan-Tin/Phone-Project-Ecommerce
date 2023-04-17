@@ -71,7 +71,7 @@ const UpdateUser = () => {
           <option value="user">User</option>
           <option value="admin">Admin</option>
         </select>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary" disabled={isLoading?true:false}>
           Update
         </button>
       </form>
