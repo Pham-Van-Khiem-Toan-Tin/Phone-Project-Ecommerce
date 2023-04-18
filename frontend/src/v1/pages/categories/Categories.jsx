@@ -72,6 +72,7 @@ const Categories = () => {
           <div className="categories-content">
             <div className="categories-controller">
               <div className="categories-range">
+                <h3>Price</h3>
                 <MultiRangeSlider
                   min={0}
                   max={50000000}

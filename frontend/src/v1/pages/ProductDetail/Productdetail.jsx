@@ -115,10 +115,10 @@ const Productdetail = () => {
                 <div className="productdetail-ratings">
                   <StarRatings
                     rating={product?.ratings ? product.ratings : 5}
-                    starRatedColor="rgb(255, 255, 0)"
+                    starRatedColor="#FFC107"
                     numberOfStars={5}
                     name="rating"
-                    starHoverColor="rgb(255, 191, 0)"
+                    starHoverColor="#FFC107"
                     starDimension="20px"
                     starSpacing="2px"
                   />
@@ -166,10 +166,10 @@ const Productdetail = () => {
                     <div className="card-body">
                       <StarRatings
                         rating={review.rating}
-                        starRatedColor="rgb(255, 255, 0)"
+                        starRatedColor="#FFC107"
                         numberOfStars={5}
                         name="rating"
-                        starHoverColor="rgb(255, 191, 0)"
+                        starHoverColor="#FFC107"
                         starDimension="20px"
                         starSpacing="2px"
                       />

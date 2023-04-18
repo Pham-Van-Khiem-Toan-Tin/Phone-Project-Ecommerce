@@ -30,7 +30,7 @@
   background-color: rgb(71, 53, 139);
 }
 .categories .categories-content .categories-controller .categories-range .multi-range-slider .labels {
-  color: #fff;
+  display: none;
 }
 .categories .categories-content .categories-controller .categories-range .ruler {
   display: none;
