@@ -196,24 +196,30 @@ module.exports.deleteProduct = catchAsyncError(async (req, res, next) => {
 module.exports.createProductReviews = catchAsyncError(
   async (req, res, next) => {
     const { rating, comment, productId } = req.body;
+    console.log(rating);
+    console.log(comment);
+    console.log(productId);
     const review = {
-      user: req.user._id,
+      user: req.user,
       name: req.name,
       rating: Number(rating),
       comment,
     };
-    const product = productModel.findById(productId);
-
+    console.log(req.name);
+    console.log(req.user);
+    const product = await productModel.findById(productId);
+    console.log(product._id);
     const isReviewed = product.reviews.find(
-      (rev) => rev.user.toString() === req.user._id.toString()
+      (rev) => rev.user.toString() === req.user.toString()
     );
     if (isReviewed) {
       product.reviews.forEach((rev) => {
-        if (rev.user.toString() === req.user._id.toString()) {
+        if (rev.user.toString() === req.user.toString()) {
           rev.rating = rating;
           rev.comment = comment;
         }
       });
+      console.log("chay vao day");
     } else {
       product.reviews.push(review);
       product.numOfReview = product.reviews.length;

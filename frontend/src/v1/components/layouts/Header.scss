@@ -116,18 +116,22 @@ header {
         color: #fff;
         .offcanvas-header {
             button {
-                margin-right: 12px;
                 border: none;
                 svg {
+                    transition: transform 0.5s ease-in;
                     color: #fff;
                     font-size: 30px;
                     vertical-align: baseline;
                     font-weight: 700;
+                    &:hover {
+                    transform: rotate(40deg);
+                }
                 }
                 &:active {
                     border: none;
                     color: #ccc;
                 }
+                
             }
 
         }
@@ -163,8 +167,18 @@ header {
                         button {
                             background: transparent;
                             border: none;
+                            outline: none;
+                            &:focus {
+                                box-shadow: none;
+                            }
+                            &:hover {
+                                color: #5f2c82;
+                            }
                         }
-                        
+                        .accordion-button::after {
+                            background-image: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="30" height="30" viewBox="0 0 16 16"%3E%3Cg transform="rotate(180 8 8)"%3E%3Cpath fill="white" fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56L2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E');
+                            
+                        }
                     }
                     .accordion-button {
                         font-weight: 700;
@@ -174,6 +188,10 @@ header {
                         li {
                             a {
                                 color: #fff;
+                                &:hover {
+                                    color: #5f2c82;
+
+                                }
                             }
                         }
                     }

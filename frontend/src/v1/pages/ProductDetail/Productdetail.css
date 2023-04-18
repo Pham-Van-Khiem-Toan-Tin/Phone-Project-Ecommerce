@@ -29,7 +29,7 @@
 }
 .productdetail .productdetail-content {
   flex: 1;
-  height: inherit;
+  height: 100%;
   padding: 10px;
   font-weight: 700;
   position: relative;
@@ -93,4 +93,17 @@ h3 {
 }
 .listReview .card {
   width: 100%;
+}
+
+#submitReviewModal .modal-body .newRatings .star-ratings {
+  margin: 10px;
+}
+#submitReviewModal .modal-body .newRatings .star-ratings svg {
+  vertical-align: baseline;
+}
+#submitReviewModal .modal-body textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  min-height: 100px;
 }/*# sourceMappingURL=Productdetail.css.map */

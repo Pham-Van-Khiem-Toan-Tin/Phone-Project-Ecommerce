@@ -115,14 +115,17 @@ header .offcanvas {
   color: #fff;
 }
 header .offcanvas .offcanvas-header button {
-  margin-right: 12px;
   border: none;
 }
 header .offcanvas .offcanvas-header button svg {
+  transition: transform 0.5s ease-in;
   color: #fff;
   font-size: 30px;
   vertical-align: baseline;
   font-weight: 700;
+}
+header .offcanvas .offcanvas-header button svg:hover {
+  transform: rotate(40deg);
 }
 header .offcanvas .offcanvas-header button:active {
   border: none;
@@ -159,6 +162,16 @@ header .offcanvas .offcanvas-body .accordion .accordion-item {
 header .offcanvas .offcanvas-body .accordion .accordion-item .accordion-header button {
   background: transparent;
   border: none;
+  outline: none;
+}
+header .offcanvas .offcanvas-body .accordion .accordion-item .accordion-header button:focus {
+  box-shadow: none;
+}
+header .offcanvas .offcanvas-body .accordion .accordion-item .accordion-header button:hover {
+  color: #5f2c82;
+}
+header .offcanvas .offcanvas-body .accordion .accordion-item .accordion-header .accordion-button::after {
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="30" height="30" viewBox="0 0 16 16"%3E%3Cg transform="rotate(180 8 8)"%3E%3Cpath fill="white" fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56L2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E');
 }
 header .offcanvas .offcanvas-body .accordion .accordion-item .accordion-button {
   font-weight: 700;
@@ -166,4 +179,7 @@ header .offcanvas .offcanvas-body .accordion .accordion-item .accordion-button {
 }
 header .offcanvas .offcanvas-body .accordion .accordion-item .accordion-body li a {
   color: #fff;
+}
+header .offcanvas .offcanvas-body .accordion .accordion-item .accordion-body li a:hover {
+  color: #5f2c82;
 }/*# sourceMappingURL=Header.css.map */

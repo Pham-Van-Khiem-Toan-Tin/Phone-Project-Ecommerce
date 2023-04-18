@@ -313,6 +313,3 @@ module.exports.deleteUser = catchAsyncError(async (req, res, next) => {
   }
 });
 
-module.exports.refeshToken = catchAsyncError(async (req, res, next) => {
-  
-})

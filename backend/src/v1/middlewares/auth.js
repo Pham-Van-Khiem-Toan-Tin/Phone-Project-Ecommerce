@@ -1,7 +1,6 @@
 const jwt = require("jsonwebtoken");
 const userModel = require("../models/users");
 const ErrorHandle = require("../utils/errorHandle");
-const { refeshToken } = require("../controllers/userController");
 require("dotenv").config();
 
 module.exports.isAuthenticatedUser = async (req, res, next) => {
@@ -17,6 +16,7 @@ module.exports.isAuthenticatedUser = async (req, res, next) => {
       console.log(accessToken);
       req.user = decodeData.id;
       req.role = decodeData.role;
+      req.name = decodeData.name;
       next();
     } catch (error) {
       const { refeshToken } = req.cookies;
@@ -34,6 +34,7 @@ module.exports.isAuthenticatedUser = async (req, res, next) => {
           req.token = newAccessToken;
           req.user = decoded.id;
           req.role = decoded.role;
+          req.name = decoded.name;
           next();
         } catch (error) {
           return next(new ErrorHandle("login expired!"));
@@ -56,6 +57,4 @@ module.exports.isAuthorizeRoles = (...roles) => {
   };
 };
 
-module.exports.generateToken = async (data, secret, expires) => {
-  return await jwt.sign(data, secret, { expiresIn: expires });
-};
+

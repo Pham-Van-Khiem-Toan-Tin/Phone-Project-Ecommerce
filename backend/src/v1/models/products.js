@@ -59,7 +59,7 @@ const productSchema = new mongoose.Schema(
           type: Number,
           
         },
-        comments: {
+        comment: {
           type: String,
           
         },

@@ -26,7 +26,7 @@ const menus = [
 ];
 
 const Header = () => {
-  const { isAuthenticated } = useSelector((state) => state.user);
+  const { isAuthenticated, user } = useSelector((state) => state.user);
 
   return (
     <header>
@@ -87,7 +87,7 @@ const Header = () => {
       >
         <div className="offcanvas-header">
           <h5 className="offcanvas-title" id="SidebarLabel">
-            Hello, Khiem
+            Hello, {user?.name ? user?.name : "User"}
           </h5>
           <button
             type="button"
