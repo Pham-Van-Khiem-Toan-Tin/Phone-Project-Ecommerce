@@ -22,7 +22,7 @@ const store = configureStore({
     productshome: allProductsHomeReducer,
     productdetail: productDetailReducer,
     newReview: newProductReviewReducer,
-    addToCart: addToCartReducer,
+    cart: addToCartReducer,
   },
 });
 export default store;

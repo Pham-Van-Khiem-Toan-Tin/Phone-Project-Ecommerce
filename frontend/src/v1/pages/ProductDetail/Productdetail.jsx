@@ -15,6 +15,8 @@ import {
   newReviewReset,
 } from "../../reduxToolkit/reducer/product/productReviewSlice";
 import Loader from "../../components/Loader/Loader";
+import { addItemToCart } from "../../reduxToolkit/actions/cartAction";
+import { clearErrorCart, resetToCart } from "../../reduxToolkit/reducer/product/cartProductSlice";
 const Productdetail = () => {
   const dispatch = useDispatch();
   const { error, isLoading, product } = useSelector(
@@ -23,13 +25,12 @@ const Productdetail = () => {
   const { error: errorReview, success } = useSelector(
     (state) => state.newReview
   );
+  const {success: successCart, error: errorCart} = useSelector((state) => state.cart);
   const { id } = useParams();
   const [quanlityCart, setQuanlityCart] = useState(1);
   const [ratings, setRatings] = useState(0);
   const [comment, setComment] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  console.log(comment);
-  console.log(ratings);
   const handleAddSubmit = () => {
     const myForm = new FormData();
     myForm.set("rating", ratings);
@@ -41,7 +42,7 @@ const Productdetail = () => {
     setRatings(newRating);
   };
   const handleAddCart = () => {
-    dispatch()
+    dispatch(addItemToCart({id,quanlityCart}));
   }
   useEffect(() => {
     if (error) {
@@ -52,12 +53,20 @@ const Productdetail = () => {
       toast.error(errorReview);
       dispatch(clearErrorReview());
     }
+    if(errorCart) {
+      toast.error(errorCart);
+      dispatch(clearErrorCart());
+    }
+    if(successCart) {
+      toast.success("Product added ro cart");
+      dispatch(resetToCart());
+    }
     if (success) {
       toast.success("Your's review created!");
       dispatch(newReviewReset());
     }
     dispatch(getProductDetail(id));
-  }, [dispatch, id, error, toast, errorReview, success]);
+  }, [dispatch, id, error, toast, errorReview, success, errorCart, successCart]);
 
   return (
     <>

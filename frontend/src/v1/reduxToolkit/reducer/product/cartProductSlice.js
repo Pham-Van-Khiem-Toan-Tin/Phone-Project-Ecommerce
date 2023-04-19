@@ -7,12 +7,13 @@ const addItemCartSlice = createSlice({
     isLoading: false,
     success: null,
     error: null,
+    cartList: [],
   },
   reducers: {
-    clearError: (state) => {
+    clearErrorCart: (state) => {
       state.error = null;
     },
-    resetAddToCart: (state) => {
+    resetToCart: (state) => {
       state.success = null;
     },
   },
@@ -37,5 +38,5 @@ const addItemCartSlice = createSlice({
   },
 });
 
-export const { clearError, resetAddToCart } = addItemCartSlice.actions;
+export const { clearErrorCart, resetToCart } = addItemCartSlice.actions;
 export default addItemCartSlice.reducer;

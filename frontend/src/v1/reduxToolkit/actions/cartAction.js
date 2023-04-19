@@ -4,7 +4,7 @@ const axios = require("axios").default;
 
 export const addItemToCart = createAsyncThunk(
   "ADD_ITEMCART",
-  async (data, { rejectWithValue }) => {
+  async (dataCart, { rejectWithValue }) => {
     try {
       const token = JSON.parse(localStorage.getItem("accessToken"));
       const config = {
@@ -14,7 +14,7 @@ export const addItemToCart = createAsyncThunk(
         },
         withCredentials: true,
       };
-      const { data } = await axios.put(`http://localhost:8000/api/v1/addcart`);
+      const { data } = await axios.put(`http://localhost:8000/api/v1/addcart`,{producId: dataCart.id,quanlityProduct: dataCart.quanlityCart } , config);
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {
