@@ -32,7 +32,7 @@ const Cart = () => {
                           <img
                             src="https://via.placeholder.com/250x250/5fa9f8/ffffff"
                             alt=""
-                            className="img-fluid d-none d-md-block rounded mb-2 shadow "
+                            className="img-fluid d-none d-md-block rounded mb-2 shadow"
                           />
                         </div>
                         <div className="col-md-9 text-left mt-sm-2">

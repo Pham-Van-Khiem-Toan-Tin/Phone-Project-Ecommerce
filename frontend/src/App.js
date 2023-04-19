@@ -35,13 +35,13 @@ function App() {
         <Route path="/categories" element={<Categories />} />
         <Route path="/categories/:id" element={<Productdetail />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<LoginAndSignUp />} />
         <Route path="/about" element={<About />} />
         <Route
           path="/account"
           element={<ProtectRoute children={<Profile />} />}
         />
+        <Route path="/cart" element={<ProtectRoute children={<Cart />} />} />
         <Route
           path="/admin/dashboard"
           element={<ProtectRoute isAdmin={true} children={<DashBoard />} />}

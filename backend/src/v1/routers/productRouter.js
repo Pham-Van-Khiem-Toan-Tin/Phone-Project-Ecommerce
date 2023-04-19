@@ -15,10 +15,12 @@ const {
   isAuthenticatedUser,
   isAuthorizeRoles,
 } = require("../middlewares/auth");
+const { addCart } = require("../controllers/cartController");
 const router = express.Router();
 
 router.route("/products").get(getAllProducts);
 router.route("/hotproducts").get(getHotProducts);
+router.route("/addcart").put(isAuthenticatedUser,addCart);
 router
   .route("/admin/products")
   .get(isAuthenticatedUser, isAuthorizeRoles("admin"), getAdminProducts);

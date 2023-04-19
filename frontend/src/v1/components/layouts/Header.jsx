@@ -27,7 +27,7 @@ const menus = [
 
 const Header = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
-
+  const [isOpenBrand, setIsOpenBrand] = useState(true);
   return (
     <header>
       <div className="navbar-container container">
@@ -41,11 +41,11 @@ const Header = () => {
             <FaBars />
           </button>
         </div>
-        <div className="navbar-brand">
-          <span>Online Khiem's Shop</span>
-        </div>
+        {isOpenBrand && (<div className="navbar-brand">
+          <span>Khiem's Shop</span>
+        </div>)}
         <div className="navbar_icon-group">
-          <div className="navbar-search">
+          <div className="navbar-search" onMouseEnter={() => setIsOpenBrand(false)} onMouseLeave={() => setIsOpenBrand(true)}>
             <input
               type="text"
               name="search"

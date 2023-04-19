@@ -12,7 +12,6 @@ module.exports.createProduct = catchAsyncError(async (req, res, next) => {
   } else {
     images = req.body.images;
   }
-  console.log(images);
   const imagesLinks = [];
 
   for (let i = 0; i < images.length; i++) {
@@ -49,21 +48,13 @@ module.exports.createProduct = catchAsyncError(async (req, res, next) => {
 module.exports.getAllProducts = catchAsyncError(async (req, res, next) => {
   const resultPerPage = 8;
   const productsCount = await productModel.countDocuments();
-  // console.log(productsCount);
-  // console.log("chay vao day");
   const apiFeature = new Apifeatures(productModel.find(), req.query)
     .search()
     .filter();
   let products = await apiFeature.query.clone();
-  // console.log("chay xuong day");
-  // console.log(products);
   let filteredProductsCount = products.length;
-  // console.log(filteredProductsCount);
-  // console.log(apiFeature.query);
   apiFeature.pagination(resultPerPage);
   products = await apiFeature.query;
-  // console.log("chay xuong day nay");
-  // console.log({ketqua: products});
   res.status(200).json({
     success: true,
     products,
@@ -76,12 +67,10 @@ module.exports.getAllProducts = catchAsyncError(async (req, res, next) => {
 //get hort product home
 module.exports.getHotProducts = catchAsyncError(async (req, res, next) => {
   const models = ["Samsung", "Xiaomi", "Apple", "Oppo"];
-  // const hotproducts = await productModel.find({category: {$in: models}}).limit(8);
   const samsungProduct = await productModel.find({category: "Samsung"}).limit(12);
   const appleProduct = await productModel.find({category: "Apple"}).limit(8);
   const xiaomiProduct = await productModel.find({category: "Xiaomi"}).limit(8);
   const oppoProduct = await productModel.find({category: "Oppo"}).limit(8);
-  console.log(samsungProduct);
   res.status(200).json({
     success: true,
     samsungProduct,
@@ -196,19 +185,13 @@ module.exports.deleteProduct = catchAsyncError(async (req, res, next) => {
 module.exports.createProductReviews = catchAsyncError(
   async (req, res, next) => {
     const { rating, comment, productId } = req.body;
-    console.log(rating);
-    console.log(comment);
-    console.log(productId);
     const review = {
       user: req.user,
       name: req.name,
       rating: Number(rating),
       comment,
     };
-    console.log(req.name);
-    console.log(req.user);
     const product = await productModel.findById(productId);
-    console.log(product._id);
     const isReviewed = product.reviews.find(
       (rev) => rev.user.toString() === req.user.toString()
     );
@@ -219,7 +202,6 @@ module.exports.createProductReviews = catchAsyncError(
           rev.comment = comment;
         }
       });
-      console.log("chay vao day");
     } else {
       product.reviews.push(review);
       product.numOfReview = product.reviews.length;
@@ -288,3 +270,4 @@ module.exports.deleteReview = catchAsyncError(async (req, res, next) => {
     success: true,
   });
 });
+

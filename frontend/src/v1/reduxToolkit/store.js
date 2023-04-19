@@ -9,6 +9,7 @@ import allProductReducer from "./reducer/product/productSlice";
 import allProductsHomeReducer from "./reducer/product/productsHomeSlice";
 import productDetailReducer from "./reducer/product/productDetailSlice";
 import newProductReviewReducer from "./reducer/product/productReviewSlice";
+import addToCartReducer from "./reducer/product/cartProductSlice";
 const store = configureStore({
   reducer: {
     user: userReducer,
@@ -21,7 +22,7 @@ const store = configureStore({
     productshome: allProductsHomeReducer,
     productdetail: productDetailReducer,
     newReview: newProductReviewReducer,
+    addToCart: addToCartReducer,
   },
 });
-
 export default store;

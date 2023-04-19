@@ -21,9 +21,14 @@ const newProductReviewSlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(newReview.fulfilled, (state, action) => {
-      console.log(action.payload);
       state.isLoading = false;
       state.success = action.payload.success;
+      if (action.payload.accessToken) {
+        localStorage.setItem(
+          "accessToken",
+          JSON.stringify(action.payload.accessToken)
+        );
+      }
     });
     builder.addCase(newReview.rejected, (state, action) => {
       state.isLoading = false;
@@ -32,5 +37,6 @@ const newProductReviewSlice = createSlice({
   },
 });
 
-export const { clearErrorReview, newReviewReset } = newProductReviewSlice.actions;
+export const { clearErrorReview, newReviewReset } =
+  newProductReviewSlice.actions;
 export default newProductReviewSlice.reducer;

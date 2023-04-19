@@ -38,6 +38,7 @@ header .navbar-container .navbar-brand {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 1s ease-in-out;
 }
 header .navbar-container .navbar-brand span {
   text-align: center;

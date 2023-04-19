@@ -44,6 +44,10 @@ const userSchema = new mongoose.Schema(
         },
       },
     ],
+    cartId: {
+      type: ObjectId,
+      ref: "cart"
+    },
     role: {
       type: String,
       default: "user",

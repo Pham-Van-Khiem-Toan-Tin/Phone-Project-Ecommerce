@@ -10,7 +10,6 @@ class Apifeatures {
             $options: "i"
         }
     }:{};
-    console.log("chay qua day");
     this.query = this.query.find({...keyword});
     return this;
   }
@@ -21,18 +20,14 @@ class Apifeatures {
     removeFields.forEach((key) => delete queryCoppy[key]);
     //Filter for price and rating
     let queryStr = JSON.stringify(queryCoppy);
-    console.log(queryStr);
     queryStr = queryStr.replace(/\b(gt|gte|lt|lte)\b/g, (key) => `$${key}`);
     this.query = this.query.find(JSON.parse(queryStr));
     return this;
   }
   pagination(resultPerPage) {
     const currentPage = Number(this.queryStr.page) || 1;
-    console.log({currentPage: currentPage});
     const skip = resultPerPage * (currentPage - 1);
-    console.log({skip: skip});
     this.query = this.query.limit(resultPerPage).skip(skip);
-    // console.log(this.query);
     return this;
   }
 }

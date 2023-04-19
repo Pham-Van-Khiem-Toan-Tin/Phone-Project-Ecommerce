@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import StarRatings from "react-star-ratings";
-
+import { FaAngleDoubleDown, FaAngleDoubleUp } from "react-icons/fa";
 import "./Productdetail.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -27,6 +27,7 @@ const Productdetail = () => {
   const [quanlityCart, setQuanlityCart] = useState(1);
   const [ratings, setRatings] = useState(0);
   const [comment, setComment] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
   console.log(comment);
   console.log(ratings);
   const handleAddSubmit = () => {
@@ -39,6 +40,9 @@ const Productdetail = () => {
   const changeRatings = (newRating, name) => {
     setRatings(newRating);
   };
+  const handleAddCart = () => {
+    dispatch()
+  }
   useEffect(() => {
     if (error) {
       toast.error(error);
@@ -138,7 +142,7 @@ const Productdetail = () => {
                   >
                     -
                   </button>
-                  <button className="detail-to-cart">Add to cart</button>
+                  <button className="detail-to-cart" onClick={handleAddCart}>Add to cart</button>
                 </div>
                 <div className="productdetail-price">{product?.price} đ</div>
                 <div className="productdetail-name">
@@ -156,14 +160,15 @@ const Productdetail = () => {
                 </button>
               </div>
             </div>
-            <h3>Reviews</h3>
-            <div className="listReview">
+            
+            <button className="display-review" onClick={() => setIsOpen(!isOpen)}>CLick to {isOpen ? "close" : "open"} Review {isOpen ? <FaAngleDoubleUp /> : <FaAngleDoubleDown />} </button>
+            {isOpen && (<div className="listReviews">
               {product?.reviews && product?.reviews[0] ? (
                 product.reviews.map((review) => {
                   return (
-                  <div className="card">
-                    <div className="card-header">{review.name}</div>
-                    <div className="card-body">
+                  <div className="listReview">
+                    <h4 className="listReview-header">{review.name}</h4>
+                    <div className="listReview-body">
                       <StarRatings
                         rating={review.rating}
                         starRatedColor="#FFC107"
@@ -173,15 +178,15 @@ const Productdetail = () => {
                         starDimension="20px"
                         starSpacing="2px"
                       />
-                      <h5 className="card-title">Comment: </h5>
-                      <p className="card-text">{review.comment}</p>
+                      <h5 className="listReview-title">Comment: </h5>
+                      <p className="listReview-text">{review.comment}</p>
                     </div>
                   </div>)
                 })
               ) : (
-                <div>No reviews</div>
+                <h4 className="listReview-nocontent">No reviews</h4>
               )}
-            </div>
+            </div>)}
           </div>
           <div
             className="modal fade"
