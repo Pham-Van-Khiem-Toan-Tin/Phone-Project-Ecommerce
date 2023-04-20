@@ -6,12 +6,9 @@ const ErrorHandle = require("../utils/errorHandle");
 module.exports.addCart = catchAsyncError(async (req, res, next) => {
   const { producId, quanlityProduct } = req.body;
   const userCart = await userModel.findById(req.user).select("cartId");
-  console.log(producId);
-  console.log(quanlityProduct);
   if (userCart.cartId) {
     const cart = await cartModel.findById(userCart.cartId);
     const productIndex = cart.caProduct.findIndex((product) => product.id_product.toString() === producId);
-    console.log(productIndex);
     if (productIndex !== -1) {
       cart.caProduct[productIndex].quantity += quanlityProduct;
     } else {
@@ -27,11 +24,9 @@ module.exports.addCart = catchAsyncError(async (req, res, next) => {
       id_product: producId,
       quantity: quanlityProduct,
     });
-    console.log(arrayProduct);
     const newProductCart = await cartModel.create({ caProduct: arrayProduct });
     const user = await userModel.findByIdAndUpdate(req.user, {cartId: newProductCart._id});
   }
-
   if (req.token) {
     const newAccessToken = req.token;
     res.status(200).json({
@@ -44,3 +39,31 @@ module.exports.addCart = catchAsyncError(async (req, res, next) => {
     });
   }
 });
+
+module.exports.getProductInCart(async (req, res, next) => {
+  try {
+    const listProductCart = await cartModel.find({}).populate({
+      path: "caProduct.id_product",
+      select: "name price images category"
+    });
+    if (req.token) {
+      const newAccessToken = req.token;
+      res.status(200).json({
+        success: true,
+        accessToken: newAccessToken,
+        cart: listProductCart
+      });
+    } else {
+      res.status(200).json({
+        success: true,
+        cart: listProductCart
+      });
+    }
+  } catch (error) {
+    return next(new ErrorHandle(error, 500));
+  }
+
+})
+module.exports.removeProductCart = catchAsyncError(async (req, res, next) => {
+
+})

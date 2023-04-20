@@ -13,7 +13,6 @@ module.exports.isAuthenticatedUser = async (req, res, next) => {
         accessToken,
         process.env.ACESSTOKEN_SECRET
       );
-      console.log(accessToken);
       req.user = decodeData.id;
       req.role = decodeData.role;
       req.name = decodeData.name;
