@@ -1,0 +1,9 @@
+.cart .Quantity input {
+  outline: none;
+  border-radius: 10px;
+}
+.cart .Quantity button {
+  background: transparent;
+  color: white;
+  border: none;
+}/*# sourceMappingURL=Cart.css.map */

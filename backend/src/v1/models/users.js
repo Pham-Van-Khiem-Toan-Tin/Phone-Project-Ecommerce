@@ -46,7 +46,7 @@ const userSchema = new mongoose.Schema(
     ],
     cartId: {
       type: ObjectId,
-      ref: "cart"
+      ref: "cart",
     },
     role: {
       type: String,
@@ -75,7 +75,7 @@ userSchema.pre("save", async function (next) {
 
 userSchema.methods.getAccessToken = function () {
   const accessToken = jwt.sign(
-    { id: this._id, role: this.role, name: this.name },
+    { id: this._id, role: this.role, name: this.name, cart: this.cartId },
     process.env.ACESSTOKEN_SECRET,
     { expiresIn: process.env.ACESSTOKEN_EXPIRES }
   );
@@ -85,7 +85,7 @@ userSchema.methods.getAccessToken = function () {
 
 userSchema.methods.getRefeshToken = function () {
   const refeshToken = jwt.sign(
-    { id: this._id, role: this.role, name: this.name },
+    { id: this._id, role: this.role, name: this.name, cart: this.cartId },
     process.env.REFESHTOKEN_SECRET,
     { expiresIn: process.env.REFESHTOKEN_EXPIRES }
   );

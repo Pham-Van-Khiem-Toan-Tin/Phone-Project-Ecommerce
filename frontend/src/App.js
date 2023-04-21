@@ -22,6 +22,7 @@ import Orders from "./v1/pages/Admin/Orders";
 import AllUser from "./v1/pages/Admin/AllUser";
 import UpdateUser from "./v1/pages/Admin/UpdateUser";
 import Productdetail from "./v1/pages/ProductDetail/Productdetail";
+import Shipping from "./v1/pages/Shipping/Shipping";
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
           element={<ProtectRoute children={<Profile />} />}
         />
         <Route path="/cart" element={<ProtectRoute children={<Cart />} />} />
+        <Route path="/shipping" element={<ProtectRoute children={<Shipping />} />} />
         <Route
           path="/admin/dashboard"
           element={<ProtectRoute isAdmin={true} children={<DashBoard />} />}

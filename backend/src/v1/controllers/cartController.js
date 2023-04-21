@@ -1,3 +1,4 @@
+
 const catchAsyncError = require("../middlewares/catchAsyncError");
 const cartModel = require("../models/cart");
 const userModel = require("../models/users");
@@ -40,30 +41,39 @@ module.exports.addCart = catchAsyncError(async (req, res, next) => {
   }
 });
 
-module.exports.getProductInCart(async (req, res, next) => {
+module.exports.getProductInCart = catchAsyncError(async (req, res, next) => {
   try {
-    const listProductCart = await cartModel.find({}).populate({
+    const cartId = req.cart;
+    const listProductCart = await cartModel.findById(cartId).populate({
       path: "caProduct.id_product",
       select: "name price images category"
     });
+    console.log(listProductCart);
+    console.log(listProductCart.caProduct.length);
+    var total = 0;
+    if(listProductCart) {
+      for (let i = 0; i < listProductCart.caProduct.length; i++) {
+        total = total + listProductCart.caProduct[i].id_product.price * listProductCart.caProduct[i].quantity;
+      }
+    }
+    
     if (req.token) {
       const newAccessToken = req.token;
       res.status(200).json({
         success: true,
         accessToken: newAccessToken,
-        cart: listProductCart
+        cart: listProductCart,
+        total: total
       });
     } else {
       res.status(200).json({
         success: true,
-        cart: listProductCart
+        cart: listProductCart,
+        total: total
       });
     }
   } catch (error) {
     return next(new ErrorHandle(error, 500));
   }
-
 })
-module.exports.removeProductCart = catchAsyncError(async (req, res, next) => {
 
-})

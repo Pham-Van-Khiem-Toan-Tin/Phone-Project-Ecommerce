@@ -16,6 +16,7 @@ module.exports.isAuthenticatedUser = async (req, res, next) => {
       req.user = decodeData.id;
       req.role = decodeData.role;
       req.name = decodeData.name;
+      req.cart = decodeData.cart;
       next();
     } catch (error) {
       const { refeshToken } = req.cookies;
@@ -26,7 +27,7 @@ module.exports.isAuthenticatedUser = async (req, res, next) => {
             process.env.REFESHTOKEN_SECRET
           );
           const newAccessToken = jwt.sign(
-            { id: decoded.id, role: decoded.role},
+            { id: decoded.id, role: decoded.role, cart: decoded.cart},
             process.env.ACESSTOKEN_SECRET,
             { expiresIn: process.env.ACESSTOKEN_EXPIRES }
           );
@@ -34,6 +35,7 @@ module.exports.isAuthenticatedUser = async (req, res, next) => {
           req.user = decoded.id;
           req.role = decoded.role;
           req.name = decoded.name;
+          req.cart = decoded.cart;
           next();
         } catch (error) {
           return next(new ErrorHandle("login expired!"));

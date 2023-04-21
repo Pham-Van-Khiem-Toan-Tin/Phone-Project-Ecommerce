@@ -102,10 +102,10 @@ const Header = () => {
               <div className="title-menu">Admin menu</div>
               <ul className="list-group list-group-flush">
                 <li className="list-group-item">
-                  <Link to="/admin/dasboard">DashBoard</Link>
+                  <Link to="/admin/dashboard">DashBoard</Link>
                 </li>
                 <li className="list-group-item">
-                  <Link to="/admin/orders">Orders</Link>
+                  <Link to="/admin/product/orders">Orders</Link>
                 </li>
                 <li className="list-group-item">
                   <Link to="/admin/allusers">User</Link>

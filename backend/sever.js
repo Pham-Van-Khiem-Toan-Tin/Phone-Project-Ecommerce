@@ -14,7 +14,7 @@ const erorMiddleware = require("./src/v1/middlewares/error");
 const user = require("./src/v1/routers/userRouter");
 const product = require("./src/v1/routers/productRouter");
 const order = require("./src/v1/routers/orderRouter");
-
+const cart = require("./src/v1/routers/cartRouter");
 app.use(helmet());
 app.use(morgan("dev"));
 app.use(cookieParser());
@@ -30,7 +30,7 @@ app.use(cors({ origin: process.env.CLIENT_URL, credentials: true,
 app.use("/api/v1", user);
 app.use("/api/v1", product);
 app.use("/api/v1", order);
-
+app.use("/api/v1", cart)
 app.use(erorMiddleware);
 
 module.exports = app;
