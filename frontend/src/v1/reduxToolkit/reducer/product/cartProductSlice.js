@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addItemToCart, getProductCart } from "../../actions/cartAction";
+import { addItemToCart, deleteItemCart, getProductCart } from "../../actions/cartAction";
 
 const addItemCartSlice = createSlice({
   name: "allproductcategories",
@@ -9,6 +9,7 @@ const addItemCartSlice = createSlice({
     error: null,
     cartList: null,
     total: null,
+    shippingInFor: {},
   },
   reducers: {
     clearErrorCart: (state) => {
@@ -17,6 +18,9 @@ const addItemCartSlice = createSlice({
     resetToCart: (state) => {
       state.success = null;
     },
+    shippingInforSubmit: (state, action) => {
+      state.shippingInFor = action.payload;
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(addItemToCart.pending, (state) => {
@@ -43,7 +47,6 @@ const addItemCartSlice = createSlice({
       state.isLoading = false;
       state.cartList = action.payload.cart.caProduct;
       state.total = action.payload.total;
-      console.log(action.payload);
       if (action.payload.accessToken) {
         localStorage.setItem(
           "accessToken",
@@ -55,8 +58,25 @@ const addItemCartSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     });
+    builder.addCase(deleteItemCart.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(deleteItemCart.fulfilled, (state, action) => {
+      state.success = action.payload.success;
+      state.isLoading = false;
+      if(action.payload.accessToken) {
+        localStorage.setItem(
+          "accessToken",
+          JSON.stringify(action.payload.accessToken)
+        );
+      }
+    });
+    builder.addCase(deleteItemCart.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    });
   },
 });
 
-export const { clearErrorCart, resetToCart } = addItemCartSlice.actions;
+export const { clearErrorCart, resetToCart, shippingInforSubmit } = addItemCartSlice.actions;
 export default addItemCartSlice.reducer;

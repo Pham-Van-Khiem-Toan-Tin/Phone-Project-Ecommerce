@@ -1,0 +1,39 @@
+.shipping {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    form {
+        display: flex;
+        flex-direction: column;
+        div {
+            position: relative;
+            svg {
+                position: absolute;
+                top: 55%;
+                left: 5%;
+                fill: #605F60;
+                vertical-align: baseline;
+            }
+            .shipping-input {
+                min-width: 250px;
+                height: 45px;
+                margin-top: 20px;
+                border: none;
+                border-radius: 20px;
+                outline: none;
+                padding: 20px 20px 20px 40px;
+            }
+
+        }
+        .shipping-submit {
+            border: none;
+            border-radius: 20px;
+            height: 45px;
+            margin-top: 20px;
+            color: #ffff;
+            background-color: #712CF9;
+        }
+    }
+}

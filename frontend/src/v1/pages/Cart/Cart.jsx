@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import {
-  BsArrowCounterclockwise,
   BsFillTrashFill,
   BsFillArrowLeftSquareFill,
 } from "react-icons/bs";
@@ -12,6 +11,7 @@ import {
 } from "../../reduxToolkit/reducer/product/cartProductSlice";
 import {
   addItemToCart,
+  deleteItemCart,
   getProductCart,
 } from "../../reduxToolkit/actions/cartAction";
 import "./Cart.css";
@@ -21,21 +21,17 @@ const Cart = () => {
   const { isLoading, error, cartList, success, total } = useSelector(
     (state) => state.cart
   );
-  const handleChangeQuanlityProduct = () => {
-    dispatch();
-  };
-  
   useEffect(() => {
     if (error) {
       toast.error(error);
       dispatch(clearErrorCart());
     }
     if (success) {
-      toast.success("Change product in cart success");
+      toast.success(success);
       dispatch(resetToCart());
     }
     dispatch(getProductCart());
-  }, [error, dispatch, toast, success]);
+  }, [error, dispatch, success]);
   return (
     <div style={{ width: "100vw" }} className="cart">
       <section className="pt-5 pb-5">
@@ -44,7 +40,7 @@ const Cart = () => {
             <div className="col-lg-12 col-md-12 col-12">
               <h3 className="display-5 mb-2 text-center">Shopping Cart</h3>
               <p className="mb-5 text-center">
-                <i className="text-info font-weight-bold">3</i> items in your
+                <i className="text-info font-weight-bold">{cartList?.length}</i> items in your
                 cart
               </p>
               <table
@@ -123,7 +119,7 @@ const Cart = () => {
                           </td>
                           <td className="actions" data-th="">
                             <div className="text-right">
-                              <button className="btn btn-white border-secondary bg-white btn-md mb-2">
+                              <button onClick={() => {dispatch(deleteItemCart(item.id_product._id))}} className="btn btn-white border-secondary bg-white btn-md mb-2">
                                 <BsFillTrashFill />
                               </button>
                             </div>
@@ -142,7 +138,7 @@ const Cart = () => {
           <div className="row mt-4 d-flex align-items-center">
             <div className="col-sm-6 order-md-2 text-right">
               <Link
-                to="/login?redirect=../shipping"
+                to="../shipping"
                 className="btn btn-primary mb-4 btn-lg pl-5 pr-5"
               >
                 Checkout

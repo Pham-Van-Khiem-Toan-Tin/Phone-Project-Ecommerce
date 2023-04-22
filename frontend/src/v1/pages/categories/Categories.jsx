@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Data2 } from "../../../data/Data";
 import MultiRangeSlider from "multi-range-slider-react";
 import StarRatings from "react-star-ratings";
 import "./Categories.css";
@@ -10,6 +9,8 @@ import { toast } from "react-toastify";
 import { clearError } from "../../reduxToolkit/reducer/product/productSlice";
 import { useParams } from "react-router-dom";
 import { getProducts } from "../../reduxToolkit/actions/productAction";
+import ClearToast from "./ClearToast";
+
 
 const Categories = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ const Categories = () => {
     filteredProductsCount,
     error,
   } = useSelector((state) => state.allproduct);
+ 
   const listCategories = ["Samsung", "Xiaomi", "Apple", "Oppo"];
   const [currentPage, setCurrentPage] = useState(1);
   const [category, setCategory] = useState("");
@@ -36,6 +38,7 @@ const Categories = () => {
   let count = filteredProductsCount;
   let pageCouts = [currentPage, currentPage + 1, currentPage + 2];
   useEffect(() => {
+    console.log("re-reder");
     if (error) {
       toast.error(error);
       dispatch(clearError());
@@ -59,12 +62,11 @@ const Categories = () => {
     ratings,
     dispatch,
     error,
-    toast,
-    error,
   ]);
 
   return (
     <>
+    <ClearToast/>
       {isLoading ? (
         <Loader />
       ) : (
@@ -92,7 +94,7 @@ const Categories = () => {
                     <>
                       <div
                         className="categories-model-item"
-                        key={index}
+                        key={item._id}
                         onClick={() => {
                           setCategory(item);
                           setCurrentPage(1);
@@ -131,36 +133,61 @@ const Categories = () => {
                     })}
                 </div>
               </div>
-              
-                <ul className="pagination-list">
-                  <li>
-                    <button className="" aria-label="Previous" disabled={currentPage==1?true: false} onClick={() => setCurrentPage(currentPage-1)}>
-                      <span aria-hidden="true">&laquo;</span>
-                    </button>
-                  </li>
-                  {pageCouts.map((pageCout) => {
-                    console.log(Math.round(filteredProductsCount/resultPerPage) + 1 < pageCout);
-                    return (
-                      <>
-                        <li className="">
-                          <button
-                            className=""
-                            disabled={filteredProductsCount < resultPerPage || Math.round(filteredProductsCount/resultPerPage) + 1 < pageCout ? true : false}
-                            onClick={() => setCurrentPage(pageCout)}
-                          >
-                            {pageCout}
-                          </button>
-                        </li>
-                      </>
-                    );
-                  })}
-                  <li className="page-">
-                    <button className="" aria-label="Next" disabled={filteredProductsCount < resultPerPage || Math.round(filteredProductsCount/resultPerPage) < currentPage + 1 ?true:false} onClick={() => setCurrentPage(currentPage+1)}>
-                      <span aria-hidden="true">&raquo;</span>
-                    </button>
-                  </li>
-                </ul>
-              
+
+              <ul className="pagination-list">
+                <li>
+                  <button
+                    className=""
+                    aria-label="Previous"
+                    disabled={currentPage == 1 ? true : false}
+                    onClick={() => setCurrentPage(currentPage - 1)}
+                  >
+                    <span aria-hidden="true">&laquo;</span>
+                  </button>
+                </li>
+                {pageCouts.map((pageCout) => {
+                  console.log(
+                    Math.round(filteredProductsCount / resultPerPage) + 1 <
+                      pageCout
+                  );
+                  return (
+                    <>
+                      <li className="">
+                        <button
+                          className=""
+                          disabled={
+                            filteredProductsCount < resultPerPage ||
+                            Math.round(filteredProductsCount / resultPerPage) +
+                              1 <
+                              pageCout
+                              ? true
+                              : false
+                          }
+                          onClick={() => setCurrentPage(pageCout)}
+                        >
+                          {pageCout}
+                        </button>
+                      </li>
+                    </>
+                  );
+                })}
+                <li className="page-">
+                  <button
+                    className=""
+                    aria-label="Next"
+                    disabled={
+                      filteredProductsCount < resultPerPage ||
+                      Math.round(filteredProductsCount / resultPerPage) <
+                        currentPage + 1
+                        ? true
+                        : false
+                    }
+                    onClick={() => setCurrentPage(currentPage + 1)}
+                  >
+                    <span aria-hidden="true">&raquo;</span>
+                  </button>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

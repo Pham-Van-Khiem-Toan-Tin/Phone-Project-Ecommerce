@@ -22,6 +22,7 @@ import { getHotProduct } from "../../reduxToolkit/actions/productAction";
 import { getProducts } from "../../reduxToolkit/actions/productAction";
 
 import { Link } from "react-router-dom";
+import ClearToast from "../categories/ClearToast";
 const Home = () => {
   const THREE_DAYS_IN_MS = 3 * 24 * 60 * 60 * 1000;
   const NOW_IN_MS = new Date().getTime();
@@ -38,6 +39,7 @@ const Home = () => {
   }, [dispatch, error, toast]);
   return (
     <>
+    <ClearToast />
       {isLoading ? (
         <Loader />
       ) : (

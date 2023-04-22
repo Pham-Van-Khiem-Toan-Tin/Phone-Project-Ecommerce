@@ -1,12 +1,17 @@
 import React from "react";
 import StarRatings from "react-star-ratings";
+import { addItemToCart } from "../../reduxToolkit/actions/cartAction";
+import { useDispatch, useSelector } from "react-redux";
 
 import { FaEye, FaHeart, FaCartPlus } from "react-icons/fa";
 
 import "./Card.css";
 import { Link } from "react-router-dom";
 const Card = (props) => {
+  const dispatch = useDispatch();
+  
   const { data } = props;
+  
   return (
     <>
       <div className="product_card">
@@ -32,7 +37,7 @@ const Card = (props) => {
         <div className="product_menu">
           <ul>
             <li className="product_menu-item"><Link to={`/categories/${data._id}`}><span><FaEye /></span></Link></li>
-            <li className="product_menu-item"><span><FaCartPlus /></span></li>
+            <li className="product_menu-item" onClick={() =>  dispatch(addItemToCart({id: data._id,quanlityCart: 1}))}><span><FaCartPlus /></span></li>
             <li className="product_menu-item"><span><FaHeart /></span></li>
           </ul>
         </div>

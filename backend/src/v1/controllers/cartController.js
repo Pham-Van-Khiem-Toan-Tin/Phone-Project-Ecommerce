@@ -1,4 +1,3 @@
-
 const catchAsyncError = require("../middlewares/catchAsyncError");
 const cartModel = require("../models/cart");
 const userModel = require("../models/users");
@@ -9,7 +8,9 @@ module.exports.addCart = catchAsyncError(async (req, res, next) => {
   const userCart = await userModel.findById(req.user).select("cartId");
   if (userCart.cartId) {
     const cart = await cartModel.findById(userCart.cartId);
-    const productIndex = cart.caProduct.findIndex((product) => product.id_product.toString() === producId);
+    const productIndex = cart.caProduct.findIndex(
+      (product) => product.id_product.toString() === producId
+    );
     if (productIndex !== -1) {
       cart.caProduct[productIndex].quantity += quanlityProduct;
     } else {
@@ -26,19 +27,47 @@ module.exports.addCart = catchAsyncError(async (req, res, next) => {
       quantity: quanlityProduct,
     });
     const newProductCart = await cartModel.create({ caProduct: arrayProduct });
-    const user = await userModel.findByIdAndUpdate(req.user, {cartId: newProductCart._id});
+    const user = await userModel.findByIdAndUpdate(req.user, {
+      cartId: newProductCart._id,
+    });
   }
   if (req.token) {
     const newAccessToken = req.token;
     res.status(200).json({
-      success: true,
+      success: "product added to cart",
       accessToken: newAccessToken,
     });
   } else {
     res.status(200).json({
-      success: true,
+      success: "product added to cart",
     });
   }
+});
+
+module.exports.deleteProductCart = catchAsyncError(async (req, res, next) => {
+    const producId = req.params.id;
+    const userCart = await userModel.findById(req.user).select("cartId");
+    if(!userCart) {
+      throw next(new ErrorHandle("You should add product to delete", 500));
+    }
+    const cart = await cartModel.findByIdAndUpdate(
+      userCart.cartId,
+      {
+        $pull: { caProduct: { id_product: producId } },
+      },
+      { new: true }
+    );
+    if (req.token) {
+      const newAccessToken = req.token;
+      res.status(200).json({
+        success: "Delete product in cart successfully",
+        accessToken: newAccessToken,
+      });
+    } else {
+      res.status(200).json({
+        success: "Delete product in cart successfully",
+      });
+    }
 });
 
 module.exports.getProductInCart = catchAsyncError(async (req, res, next) => {
@@ -46,34 +75,36 @@ module.exports.getProductInCart = catchAsyncError(async (req, res, next) => {
     const cartId = req.cart;
     const listProductCart = await cartModel.findById(cartId).populate({
       path: "caProduct.id_product",
-      select: "name price images category"
+      select: "name price images category",
     });
     console.log(listProductCart);
     console.log(listProductCart.caProduct.length);
     var total = 0;
-    if(listProductCart) {
+    if (listProductCart) {
       for (let i = 0; i < listProductCart.caProduct.length; i++) {
-        total = total + listProductCart.caProduct[i].id_product.price * listProductCart.caProduct[i].quantity;
+        total =
+          total +
+          listProductCart.caProduct[i].id_product.price *
+            listProductCart.caProduct[i].quantity;
       }
     }
-    
+
     if (req.token) {
       const newAccessToken = req.token;
       res.status(200).json({
         success: true,
         accessToken: newAccessToken,
         cart: listProductCart,
-        total: total
+        total: total,
       });
     } else {
       res.status(200).json({
         success: true,
         cart: listProductCart,
-        total: total
+        total: total,
       });
     }
   } catch (error) {
     return next(new ErrorHandle(error, 500));
   }
-})
-
+});

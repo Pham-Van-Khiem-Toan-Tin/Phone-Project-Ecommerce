@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./AllProduct.css";
-import { BsPencilFill, BsFillTrashFill } from "react-icons/bs";
+
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { clearErrorAllProduct } from "../../reduxToolkit/reducer/product/allProductAdminSlice";

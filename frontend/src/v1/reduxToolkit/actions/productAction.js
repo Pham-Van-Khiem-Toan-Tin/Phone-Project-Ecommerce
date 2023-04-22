@@ -1,4 +1,4 @@
-import { createAsyncThunk, createAction, current } from "@reduxjs/toolkit";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 const axios = require("axios").default;
 
 //get all prooduct
