@@ -1,1 +1,22 @@
-/*# sourceMappingURL=OrderConfirm.css.map */
+.orderconfirm {
+  display: flex;
+  color: #fff;
+}
+.orderconfirm .shippingInfor {
+  padding: 20px 0 20px 20px;
+  flex: 8;
+  display: flex;
+  justify-content: space-between;
+}
+.orderconfirm .shippingInfor .shippingInfor-content .userInfor {
+  margin-left: 30px;
+}
+.orderconfirm .shippingInfor .vr {
+  width: 2px;
+}
+.orderconfirm .total {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}/*# sourceMappingURL=OrderConfirm.css.map */
