@@ -3,12 +3,22 @@
     color: #fff;
     .shippingInfor {
         padding: 20px 0 20px 20px;
-        flex: 8;
+        flex: 6;
         display: flex;
         justify-content: space-between;
         .shippingInfor-content {
+            color: #fff;
+            width: 100%;
             .userInfor {
                 margin-left: 30px;
+            }
+            .cart-list {
+                width: 100%;
+                .card {
+                    background: transparent;
+                    border: none;
+                    width: 100%;
+                }
             }
         } 
         .vr {
@@ -16,9 +26,28 @@
         }
     }
     .total {
-        flex: 2;
+        flex: 4;
         display: flex;
-        align-items: center;
-        justify-content: center;
-        }
+        flex-direction: column;
+       align-items: center;
+       .rule {
+        min-width: 250px;
+        height: 2px;
+        background-color: #fff;
+       }
+       .total-price {
+        font-size: 20px;
+        display: flex;
+        min-width: 250px;
+        justify-content: space-between;
+       }
+       button {
+        border: none;
+        background: #7431F9;
+        color: #fff;
+        margin-top: 20px;
+        border-radius: 5px;
+        padding: 10px 20px;
+       }
+    }
 }
