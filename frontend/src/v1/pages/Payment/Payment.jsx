@@ -5,7 +5,7 @@ const Payment = () => {
     <div className='payment'>
         <form>
             <h5>Card-number</h5>
-            <input type='text' id="cardnum" name="card-num" placeholder="1234 5678 9012 3457" size="17" id="cno" minlength="19" maxlength="19"/>
+            <input type='text' id="cardnum" name="card-num" placeholder="1234 5678 9012 3457" size="17" minlength="19" maxlength="19"/>
             <h5>Card-name</h5>
             <input type="text" name="name" placeholder="Name" size="17"/>
             <h5>Card-month</h5>
