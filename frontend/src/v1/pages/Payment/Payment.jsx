@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import "./Payment.css";
-import { useDispatch } from 'react-redux';
+import {useStripe, useElements, CardCvcElement, CardNumberElement,CardExpiryElement} from "@stripe/react-stripe-js"
+import { useDispatch, useSelector } from 'react-redux';
 const Payment = () => {
     const dispatch = useDispatch();
+    const stripe = useStripe();
+    const elmements = useElements();
+    const payBtn = useRef(null);
     const orderInfor = JSON.parse(sessionStorage.getItem("orderInfor"));
+    const {shippingInfor, cartList} = useSelector((state) => state.cart);
+    const {} = useSelector((state) => state.user);
   return (
     <div className='payment'>
         <form>
