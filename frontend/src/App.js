@@ -24,6 +24,7 @@ import UpdateUser from "./v1/pages/Admin/UpdateUser";
 import Productdetail from "./v1/pages/ProductDetail/Productdetail";
 import Shipping from "./v1/pages/Shipping/Shipping";
 import OrderConFirm from "./v1/pages/OrderConfirm/OrderConFirm";
+import Payment from "./v1/pages/Payment/Payment";
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
         <Route path="/cart" element={<ProtectRoute children={<Cart />} />} />
         <Route path="/shipping" element={<ProtectRoute children={<Shipping />} />} />
         <Route path="/order/confirm" element={<ProtectRoute children={<OrderConFirm />} />} />
+        <Route path="/payment" element={<ProtectRoute children={<Payment />} />} />
         <Route
           path="/admin/dashboard"
           element={<ProtectRoute isAdmin={true} children={<DashBoard />} />}

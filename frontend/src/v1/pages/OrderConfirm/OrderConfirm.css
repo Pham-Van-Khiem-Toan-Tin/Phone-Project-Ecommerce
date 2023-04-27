@@ -18,10 +18,28 @@
 .orderconfirm .shippingInfor .shippingInfor-content .cart-list {
   width: 100%;
 }
-.orderconfirm .shippingInfor .shippingInfor-content .cart-list .card {
-  background: transparent;
-  border: none;
+.orderconfirm .shippingInfor .shippingInfor-content .cart-list .card-shipping {
+  display: flex;
+  margin: 0.5rem;
+}
+.orderconfirm .shippingInfor .shippingInfor-content .cart-list .card-shipping img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 1rem;
+}
+.orderconfirm .shippingInfor .shippingInfor-content .cart-list .card-shipping .card-shipping-content {
+  padding: 0.5rem;
   width: 100%;
+}
+.orderconfirm .shippingInfor .shippingInfor-content .cart-list .card-shipping .card-shipping-content h4 {
+  font-size: 1rem;
+}
+.orderconfirm .shippingInfor .shippingInfor-content .cart-list .card-shipping .card-shipping-content .sum-price {
+  display: flex;
+  justify-content: space-between;
+}
+.orderconfirm .shippingInfor .shippingInfor-content .cart-list .card-shipping .card-shipping-content .sum-price h5 {
+  font-size: 0.75rem;
 }
 .orderconfirm .shippingInfor .vr {
   width: 2px;

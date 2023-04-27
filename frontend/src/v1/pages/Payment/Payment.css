@@ -1,0 +1,27 @@
+.payment {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.payment form {
+  display: flex;
+  flex-direction: column;
+  min-width: 17rem;
+  background-color: #7532F9;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+.payment form h5 {
+  font-size: 1rem;
+  color: #fff;
+  margin-left: 0.5rem;
+  margin-bottom: 0;
+}
+.payment form input {
+  margin: 0.5rem;
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}/*# sourceMappingURL=Payment.css.map */
