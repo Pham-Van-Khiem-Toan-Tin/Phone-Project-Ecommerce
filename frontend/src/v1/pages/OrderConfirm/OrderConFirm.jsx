@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./OrderConfirm.css";
 import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 
 const OrderConFirm = () => {
   const navigate = useNavigate();
