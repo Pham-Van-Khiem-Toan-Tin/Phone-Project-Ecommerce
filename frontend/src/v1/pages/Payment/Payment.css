@@ -12,7 +12,7 @@
   border-radius: 1rem;
   padding: 0.5rem;
 }
-.payment form h5 {
+.payment form label {
   font-size: 1rem;
   color: #fff;
   margin-left: 0.5rem;
@@ -24,4 +24,8 @@
   outline: none;
   border-radius: 0.5rem;
   padding: 0.5rem;
+}
+.payment form input[type=submit] {
+  background-color: #765bac;
+  color: #fff;
 }/*# sourceMappingURL=Payment.css.map */

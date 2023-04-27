@@ -9,7 +9,7 @@ const addItemCartSlice = createSlice({
     error: null,
     cartList: null,
     total: null,
-    shippingInFor: {},
+    shippingInfor: {},
   },
   reducers: {
     clearErrorCart: (state) => {
@@ -19,7 +19,8 @@ const addItemCartSlice = createSlice({
       state.success = null;
     },
     shippingInforSubmit: (state, action) => {
-      state.shippingInFor = action.payload;
+      localStorage.setItem("shippingInfor", JSON.stringify(action.payload))
+      state.shippingInfor = action.payload;
     }
   },
   extraReducers: (builder) => {

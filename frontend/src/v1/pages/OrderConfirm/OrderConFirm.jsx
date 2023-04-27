@@ -6,12 +6,12 @@ import {  useNavigate } from "react-router-dom";
 const OrderConFirm = () => {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.user);
-  const { shippingInFor, cartList } = useSelector((state) => state.cart);
+  const { shippingInfor, cartList } = useSelector((state) => state.cart);
   const subtotal = cartList.reduce((acc,item) => { return acc + item.id_product.price * item.quantity},0);
   const shippingCharges = subtotal > 100000000 ? 0 : 20000;
   const tax = subtotal * 0.008;
   const totalPrice = subtotal + tax + shippingCharges;
-  const address = `${shippingInFor.address}, ${shippingInFor.city}, ${shippingInFor.pinCode}, ${shippingInFor.country}`;
+  const address = `${shippingInfor.address}, ${shippingInfor.city}, ${shippingInfor.pinCode}, ${shippingInfor.country}`;
   const processToPayment = () => {
     const data = {
       subtotal,
@@ -29,7 +29,7 @@ const OrderConFirm = () => {
           <h4>Shipping Infor:</h4>
           <div className="userInfor">
             <div>Name: {user?.name}</div>
-            <div>Phone: {shippingInFor?.phoneNum}</div>
+            <div>Phone: {shippingInfor?.phoneNum}</div>
             <div>Address: {address}</div>
           </div>
           <h4>Your Cart Items</h4>
@@ -56,7 +56,7 @@ const OrderConFirm = () => {
               })}
           </div>
         </div>
-        <div class="vr"></div>
+        <div className="vr"></div>
       </div>
       <div className="total">
         <h4>Total</h4>

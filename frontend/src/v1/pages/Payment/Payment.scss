@@ -10,7 +10,7 @@
         background-color: #7532F9;
         border-radius: 1rem;
         padding: 0.5rem;
-        h5 {
+        label {
             font-size: 1rem;
             color: #fff;
             margin-left: 0.5rem;
@@ -22,6 +22,10 @@
             outline: none;
             border-radius: 0.5rem;
             padding: 0.5rem;
+        }
+        input[type='submit'] {
+            background-color: #765bac;
+            color: #fff;
         }
     }
 }
