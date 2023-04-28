@@ -9,7 +9,15 @@ const Payment = () => {
     const payBtn = useRef(null);
     const orderInfor = JSON.parse(sessionStorage.getItem("orderInfor"));
     const {shippingInfor, cartList} = useSelector((state) => state.cart);
-    const {} = useSelector((state) => state.user);
+    const {user} = useSelector((state) => state.user);
+    const order = {
+      shippingInfor,
+      orderItems: cartList,
+      itemsPrice: orderInfor.subtotal,
+      taxPrice: orderInfor.tax,
+      shippingPrice: orderInfor.shippingCharges,
+      totalPrice: orderInfor.totalPrice,
+    }
   return (
     <div className='payment'>
         <form>
