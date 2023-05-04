@@ -37,6 +37,7 @@
 .orderconfirm .shippingInfor .shippingInfor-content .cart-list .card-shipping .card-shipping-content .sum-price {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .orderconfirm .shippingInfor .shippingInfor-content .cart-list .card-shipping .card-shipping-content .sum-price h5 {
   font-size: 0.75rem;
@@ -68,4 +69,15 @@
   margin-top: 20px;
   border-radius: 5px;
   padding: 10px 20px;
+}
+
+@media (max-width: 992px) {
+  .orderconfirm {
+    flex-direction: column;
+  }
+  .orderconfirm .total {
+    align-self: flex-end;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+  }
 }/*# sourceMappingURL=OrderConfirm.css.map */

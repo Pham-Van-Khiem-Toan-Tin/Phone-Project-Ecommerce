@@ -40,19 +40,19 @@ const AllUser = () => {
         <Loader />
       ) : (
         <div className="alluser">
-          <div className="container">
-            <table>
+          <div className="container table-responsive">
+            <table class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th>Product ID</th>
-                  <th>Name</th>
-                  <th>Stock</th>
-                  <th>Price</th>
-                  <th>Action</th>
+                  <th scope="col">User ID</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Role</th>
+                  <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
-                {users ? (
+              {users ? (
                   users.map((item) => {
                     return (
                       <tr key={item.email}>
@@ -62,7 +62,7 @@ const AllUser = () => {
                         <td>{item.role}</td>
                         <td className="icon-handle_user">
                           <span>
-                            <Link to={`../admin/user/${item._id}`} >
+                            <Link to={`../admin/user/${item._id}`}>
                               <BsPencilFill />
                             </Link>
                           </span>

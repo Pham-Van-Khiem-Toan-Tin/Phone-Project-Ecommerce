@@ -31,6 +31,7 @@
                         .sum-price {
                             display: flex;
                             justify-content: space-between;
+                            flex-wrap: wrap;
                             h5 {
                                 font-size: 0.75rem;
                             }
@@ -68,5 +69,16 @@
         padding: 10px 20px;
         
        }
+    }
+}
+
+@media (max-width: 992px) {
+    .orderconfirm{
+        flex-direction: column;
+        .total {
+            align-self: flex-end;
+            margin-right: 2rem;
+            margin-bottom: 2rem;
+        }
     }
 }
