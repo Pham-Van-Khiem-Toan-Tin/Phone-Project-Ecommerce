@@ -30,6 +30,8 @@ const Categories = () => {
   const [maxValue, setMaxValue] = useState(50000000);
 
   const changeRating = (newRating, name) => {
+    console.log(newRating);
+    console.log(typeof(newRating));
     setRating(newRating);
   };
   console.log(ratings);
@@ -135,7 +137,8 @@ const Categories = () => {
                   <option value="Oppo">Oppo</option>
                   <option value="Apple">Iphone</option>
                 </select>
-                <select onChange={(e) => setRating(e.target.value)} value={ratings} defaultValue={5}>
+                <select onChange={(e) => setRating(parseFloat(e.target.value))} value={ratings} defaultValue={0}>
+                  <option value={0}>Chose star</option>
                   <option value={1}>1 star</option>
                   <option value={2}>2 star</option>
                   <option value={3}>3 star</option>

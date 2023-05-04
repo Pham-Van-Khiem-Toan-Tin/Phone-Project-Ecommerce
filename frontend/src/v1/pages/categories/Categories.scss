@@ -73,8 +73,8 @@
                 font-weight: 700;
             }
             .categories-controller-select {
-                width: 80%;
-                margin: 1rem 0;
+                max-width: 100%;
+                margin: 1rem 2rem;
                 display: none;
                 select {
                     font-size: 1rem;
