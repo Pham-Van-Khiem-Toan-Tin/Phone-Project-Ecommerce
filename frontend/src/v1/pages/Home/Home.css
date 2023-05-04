@@ -1,7 +1,6 @@
 .banner-slider {
-  height: 700px;
+  max-height: 700px;
   border-radius: 20px;
-  overflow: hidden;
 }
 .banner-slider .swiper {
   height: 100%;
@@ -13,7 +12,7 @@
 }
 
 .banner-img {
-  margin: 20px 0;
+  margin: 30px 0;
 }
 .banner-img img {
   width: 100%;

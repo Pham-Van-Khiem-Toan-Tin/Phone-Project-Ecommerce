@@ -1,6 +1,5 @@
 import SliderProduct from "../../components/layouts/SliderProduct";
 import "./Home.css";
-import { Data2, Data3, DATA4 } from "../../../data/Data";
 import {
   FaShippingFast,
   FaHandsHelping,
@@ -59,18 +58,18 @@ const Home = () => {
               className="Bannerswiper"
             >
               <SwiperSlide>
-                <img src="/assets/images/sliders/slider1.jpg" />
+                <img src="/assets/images/sliders/slider1.jpg"  alt=""/>
               </SwiperSlide>
               <SwiperSlide>
-                <img src="/assets/images/sliders/slider2.jpg" />
+                <img src="/assets/images/sliders/slider2.jpg"  alt=""/>
               </SwiperSlide>
               <SwiperSlide>
-                <img src="/assets/images/sliders/slider3.jpg" />
+                <img src="/assets/images/sliders/slider3.jpg" alt="" />
               </SwiperSlide>
             </Swiper>
           </div>
           <div className="container banner-img">
-            <img src="assets/images/sliders/banner.webp" />
+            <img src="assets/images/sliders/banner.webp" alt="" />
           </div>
           <div className="container mt-2">
             <div className="row">
@@ -153,7 +152,6 @@ const Home = () => {
             <button>Xem tiếp</button>
           </div>
           <SliderProduct data={xiaoproducts} />
-          <img src="" />
         </div>
       )}
     </>

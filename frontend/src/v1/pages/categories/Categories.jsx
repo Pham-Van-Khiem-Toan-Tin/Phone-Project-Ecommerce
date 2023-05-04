@@ -121,12 +121,15 @@ const Categories = () => {
             </div>
             <div className="categories-gird">
               <h1 className="categories-header">Products</h1>
+              <div className="categories-controller-select">
+                
+              </div>
               <div className="categories-gird-content">
                 <div className="row">
                   {products &&
                     products.map((product) => {
                       return (
-                        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6">
+                        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6">
                           <Card data={product} />
                         </div>
                       );

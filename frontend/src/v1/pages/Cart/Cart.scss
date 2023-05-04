@@ -10,4 +10,30 @@
             border: none;
         }
     }
+    .button-handle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-right: 1.5rem;
+        flex-wrap: wrap;
+        .button-checkout {
+            margin: 1rem 0;
+            a {
+                color: #ffff;
+                padding: 0.5rem 2rem;
+                border-radius: 0.5rem;
+                background-color: #8B1874;
+                font-weight: 500;
+            }
+        }
+        .button-shipping {
+            a {
+                background: #8B1874;
+                padding: 0.5rem 1rem;
+                border-radius: 0.5rem;
+                color: #ffff;
+                font-weight: 500;
+            }
+        }
+    }
 }
