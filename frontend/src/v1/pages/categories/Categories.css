@@ -71,6 +71,20 @@
   color: #fff;
   font-weight: 700;
 }
+.categories .categories-content .categories-gird .categories-controller-select {
+  width: 80%;
+  margin: 1rem 0;
+  display: none;
+}
+.categories .categories-content .categories-gird .categories-controller-select select {
+  font-size: 1rem;
+  font-weight: 500;
+  width: 10rem;
+  padding: 0.2rem 1rem;
+  border-radius: 0.5rem;
+  outline: none;
+  margin: 0.5rem;
+}
 .categories .categories-content .categories-gird .categories-gird-content {
   padding: 0px 30px 10px 10px;
   width: 100%;
@@ -101,37 +115,14 @@
   -moz-box-shadow: 0px 0px 6px 6px rgba(63, 31, 193, 0.52);
 }
 
-@media (max-width: 768px) {
-  .categories-content {
-    flex-direction: column;
-  }
+@media (max-width: 992px) {
   .categories-content .categories-controller {
-    flex: none;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-right: 30px !important;
-    margin-left: 10px;
-  }
-  .categories-content .categories-controller .categories-model {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .categories-content .categories-controller .categories-model h3 {
     display: none;
   }
-  .categories-content .categories-controller .categories-model .categories-model-item {
-    margin-left: 5px !important;
-    border: 1px solid #fff;
-    font-size: 15px !important;
-    padding: 5px;
-    border-radius: 20px;
-    background: hsl(0, 0%, 89%);
-    color: rgb(206, 124, 124);
-  }
-  .categories-content .categories-gird {
-    flex: none;
+  .categories-content .categories-gird .categories-controller-select {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
   }
 }/*# sourceMappingURL=Categories.css.map */

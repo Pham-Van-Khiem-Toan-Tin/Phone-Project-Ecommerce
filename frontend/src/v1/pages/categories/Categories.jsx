@@ -11,7 +11,6 @@ import { useParams } from "react-router-dom";
 import { getProducts } from "../../reduxToolkit/actions/productAction";
 import ClearToast from "./ClearToast";
 
-
 const Categories = () => {
   const dispatch = useDispatch();
   const {
@@ -22,7 +21,7 @@ const Categories = () => {
     filteredProductsCount,
     error,
   } = useSelector((state) => state.allproduct);
- 
+
   const listCategories = ["Samsung", "Xiaomi", "Apple", "Oppo"];
   const [currentPage, setCurrentPage] = useState(1);
   const [category, setCategory] = useState("");
@@ -66,7 +65,7 @@ const Categories = () => {
 
   return (
     <>
-    <ClearToast/>
+      <ClearToast />
       {isLoading ? (
         <Loader />
       ) : (
@@ -122,14 +121,36 @@ const Categories = () => {
             <div className="categories-gird">
               <h1 className="categories-header">Products</h1>
               <div className="categories-controller-select">
-                
+                <select>
+                  <option>Chose price</option>
+                  <option>10tr</option>
+                  <option>20tr</option>
+                  <option>30tr</option>
+                  <option>40tr</option>
+                  <option>50tr</option>
+                </select>
+                <select>
+                  <option>Chose model</option>
+                  <option>Xiaomi</option>
+                  <option>Samsung</option>
+                  <option>Oppo</option>
+                  <option>Iphone</option>
+                </select>
+                <select>
+                  <option>Chose star</option>
+                  <option>1 star</option>
+                  <option>2 star</option>
+                  <option>3 star</option>
+                  <option>4 star</option>
+                  <option>5 star</option>
+                </select>
               </div>
               <div className="categories-gird-content">
                 <div className="row">
                   {products &&
                     products.map((product) => {
                       return (
-                        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6">
                           <Card data={product} />
                         </div>
                       );
@@ -142,7 +163,7 @@ const Categories = () => {
                   <button
                     className=""
                     aria-label="Previous"
-                    disabled={currentPage == 1 ? true : false}
+                    disabled={currentPage === 1 ? true : false}
                     onClick={() => setCurrentPage(currentPage - 1)}
                   >
                     <span aria-hidden="true">&laquo;</span>
