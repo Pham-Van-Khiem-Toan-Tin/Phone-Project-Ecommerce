@@ -121,28 +121,26 @@ const Categories = () => {
             <div className="categories-gird">
               <h1 className="categories-header">Products</h1>
               <div className="categories-controller-select">
-                <select>
-                  <option>Chose price</option>
-                  <option>10tr</option>
-                  <option>20tr</option>
-                  <option>30tr</option>
-                  <option>40tr</option>
-                  <option>50tr</option>
+                <select onChange={(e) => setMaxValue(e.target.value)} value={maxValue} defaultValue={50000000}>
+                  <option value={10000000}>10tr</option>
+                  <option value={20000000}>20tr</option>
+                  <option value={30000000}>30tr</option>
+                  <option value={40000000}>40tr</option>
+                  <option value={50000000}>50tr</option>
                 </select>
-                <select>
-                  <option>Chose model</option>
-                  <option>Xiaomi</option>
-                  <option>Samsung</option>
-                  <option>Oppo</option>
-                  <option>Iphone</option>
+                <select onChange={(e) => setCategory(e.target.value)} value={category} defaultValue="">
+                  <option value="">Chose model</option>
+                  <option value="Xiaomi">Xiaomi</option>
+                  <option value="Samsung">Samsung</option>
+                  <option value="Oppo">Oppo</option>
+                  <option value="Apple">Iphone</option>
                 </select>
-                <select>
-                  <option>Chose star</option>
-                  <option>1 star</option>
-                  <option>2 star</option>
-                  <option>3 star</option>
-                  <option>4 star</option>
-                  <option>5 star</option>
+                <select onChange={(e) => setRating(e.target.value)} value={ratings} defaultValue={5}>
+                  <option value={1}>1 star</option>
+                  <option value={2}>2 star</option>
+                  <option value={3}>3 star</option>
+                  <option value={4}>4 star</option>
+                  <option value={5}>5 star</option>
                 </select>
               </div>
               <div className="categories-gird-content">
