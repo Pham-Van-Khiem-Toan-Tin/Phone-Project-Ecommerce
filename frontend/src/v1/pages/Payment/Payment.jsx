@@ -1,38 +1,119 @@
-import React, { useRef } from 'react'
+import React, { useRef } from "react";
 import "./Payment.css";
-import {useStripe, useElements, CardCvcElement, CardNumberElement,CardExpiryElement} from "@stripe/react-stripe-js"
-import { useDispatch, useSelector } from 'react-redux';
+import {
+  useStripe,
+  useElements,
+  CardCvcElement,
+  CardNumberElement,
+  CardExpiryElement,
+} from "@stripe/react-stripe-js";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { FaCreditCard, FaCalendarAlt, FaKey } from "react-icons/fa";
 const Payment = () => {
-    const dispatch = useDispatch();
-    const stripe = useStripe();
-    const elmements = useElements();
-    const payBtn = useRef(null);
-    const orderInfor = JSON.parse(sessionStorage.getItem("orderInfor"));
-    const {shippingInfor, cartList} = useSelector((state) => state.cart);
-    const {user} = useSelector((state) => state.user);
-    const order = {
-      shippingInfor,
-      orderItems: cartList,
-      itemsPrice: orderInfor.subtotal,
-      taxPrice: orderInfor.tax,
-      shippingPrice: orderInfor.shippingCharges,
-      totalPrice: orderInfor.totalPrice,
+  const dispatch = useDispatch();
+  const stripe = useStripe();
+  const elmements = useElements();
+  const navigate = useNavigate();
+  const payBtn = useRef(null);
+  const orderInfor = JSON.parse(sessionStorage.getItem("orderInfor"));
+  const { shippingInfor, cartList } = useSelector((state) => state.cart);
+  const { user } = useSelector((state) => state.user);
+  const order = {
+    shippingInfor,
+    orderItems: cartList,
+    itemsPrice: orderInfor.subtotal,
+    taxPrice: orderInfor.tax,
+    shippingPrice: orderInfor.shippingCharges,
+    totalPrice: orderInfor.totalPrice,
+  };
+  const paymentData = {
+    amount: Math.round(orderInfor.totalPrice / 23000),
+  };
+  const submitHandle = async (e) => {
+    e.preventDefault();
+    payBtn.current.disabled = true;
+    try {
+      const token = JSON.parse(localStorage.getItem("accessToken"));
+      const config = {
+        headers: {
+          Authorization: "Bearer " + token,
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      };
+      const { data } = await axios.post(
+        `http://localhost:8000/api/v1/payment/process`,
+        paymentData,
+        config
+      );
+      const client_secret = data.client_secret;
+      if (!stripe || !elmements) return;
+      const result = await stripe.confirmCardPayment(client_secret, {
+        payment_method: {
+          card: elmements.getElement(CardNumberElement),
+          billing_details: {
+            name: user.name,
+            email: user.email,
+            address: {
+              line1: shippingInfor.address,
+              city: shippingInfor.city,
+              state: shippingInfor.state,
+              postal_code: shippingInfor.pinCode,
+              country: shippingInfor.country,
+            },
+          },
+        },
+      });
+      if (result.error) {
+        payBtn.current.disabled = false;
+        toast.error(result.error.message);
+      } else {
+        if (result.paymentIntent.status === "succeeded") {
+          order.paymentInfo = {
+            id: result.paymentIntent.id,
+            status: result.paymentIntent.status,
+          };
+          dispatch();
+          navigate("/success");
+        } else {
+          toast.error("There's some issue while processing payment");
+        }
+      }
+    } catch (error) {
+      payBtn.current.disabled = false;
+      toast.error(error.response.data.message);
     }
+  };
   return (
-    <div className='payment'>
-        <form>
-            <label htmlFor='card-payment-num'>Card-number</label>
-            <input type='text' id="card-payment-num" name="card-num" placeholder="1234 5678 9012 3457" size="17" minlength="19" maxlength="19"/>
-            <label htmlFor='card-payment-name'>Card-name</label>
-            <input type="text" id='card-payment-name' name="name" placeholder="Name" size="17"/>
-            <label htmlFor='exp'>Card-month</label>
-            <input name="exp" placeholder="MM/YYYY" size="7" id="exp" minlength="7" maxlength="7"/>
-            <label htmlFor='card-payment-pass'>Card-pass</label>
-            <input type="password" id='card-payment-pass' name="cvv" placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
-            <input type='submit'/>
-        </form>
+    <div className="payment container">
+      <form onSubmit={submitHandle}>
+        <h5>Card Info</h5>
+        <div>
+          <FaCreditCard />
+          <CardNumberElement className="paymentInput" />
+        </div>
+        <div>
+          <FaCalendarAlt />
+          <CardExpiryElement className="paymentInput" />
+        </div>
+        <div>
+          <FaKey />
+          <CardCvcElement className="paymentInput" />
+        </div>
+        <input
+          type="submit"
+          value={`Pay - ${
+            orderInfor && Math.round(orderInfor.totalPrice / 23000)
+          }`}
+          ref={payBtn}
+          className="paymentFormBtn"
+        />
+      </form>
     </div>
-  )
-}
+  );
+};
 
-export default Payment
+export default Payment;

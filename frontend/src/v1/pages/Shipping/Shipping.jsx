@@ -9,6 +9,7 @@ const Shipping = () => {
   const {shippingInfor} = useSelector((state) => state.cart);
   const [address, setAddress] = useState(shippingInfor ? shippingInfor?.address : "");
   const [city, setCity] = useState(shippingInfor ? shippingInfor?.city : "");
+  const [state, setState] = useState(shippingInfor ? shippingInfor?.state : "");
   const [country, setCountry] = useState(shippingInfor ? shippingInfor?.country : "");
   const [pinCode, setPinCode] = useState(shippingInfor ? shippingInfor?.pinCode : "");
   const [phone, setPhone] = useState(shippingInfor ? shippingInfor?.phone : "");
@@ -18,6 +19,7 @@ const Shipping = () => {
     const formShipping = {
       address: address,
       city: city,
+      state: state,
       country: country,
       phoneNum: phone,
       pinCode: pinCode,
@@ -36,6 +38,10 @@ const Shipping = () => {
       <div>
       <FaRegBuilding />
         <input className='shipping-input' value={city} required onChange={(e) => setCity(e.target.value)} type='' placeholder='City' />
+      </div>
+      <div>
+      <FaRegBuilding />
+        <input className='shipping-input' value={state} required onChange={(e) => setState(e.target.value)} type='' placeholder='State' />
       </div>
       <div>
       <FaMapMarkerAlt />

@@ -5,27 +5,41 @@
   justify-content: center;
 }
 .payment form {
+  min-width: 12rem;
   display: flex;
   flex-direction: column;
-  min-width: 17rem;
-  background-color: #7532F9;
-  border-radius: 1rem;
-  padding: 0.5rem;
+  align-items: center;
+  border-radius: 9px;
+  background: #5565B4;
+  box-shadow: 20px 20px 60px #485699, -20px -20px 60px #6274cf;
+  padding: 1rem;
 }
-.payment form label {
-  font-size: 1rem;
+.payment form h5 {
   color: #fff;
-  margin-left: 0.5rem;
-  margin-bottom: 0;
+  text-align: center;
 }
-.payment form input {
-  margin: 0.5rem;
+.payment form div {
+  position: relative;
+  width: 100%;
+}
+.payment form div svg {
+  position: absolute;
+  top: 35%;
+  left: 0.5rem;
+  z-index: 99;
+  font-size: 1rem;
+  color: #ccc;
+}
+.payment form div .paymentInput {
+  background-color: #ffffff;
+  margin: 1rem 0;
+  border-radius: 0.2rem;
+  padding: 0.5rem 0.5rem 0.5rem 2rem;
+}
+.payment form .paymentFormBtn {
+  padding: 0.2rem 0.5rem;
+  background-color: #9384D1;
   border: none;
-  outline: none;
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-}
-.payment form input[type=submit] {
-  background-color: #765bac;
+  border-radius: 0.2rem;
   color: #fff;
 }/*# sourceMappingURL=Payment.css.map */
