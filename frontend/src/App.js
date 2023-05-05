@@ -1,5 +1,5 @@
 import Header from "./v1/components/layouts/Header";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Home from "./v1/pages/Home/Home";
 import Categories from "./v1/pages/categories/Categories";
 import Contact from "./v1/pages/Contact/Contact";
@@ -37,6 +37,9 @@ function App() {
   const stripePromise = loadStripe(
     "pk_test_51N1RFRJt1tz4StSkzTUdq8lq3KZC2XWUdkXxzMMooea7J3X3TdZlAVeKC3qM1p4MaA5KQjvpuLqT6hYDdsp1iiui00gYWdz4T1"
   );
+  const location = useLocation();
+  console.log(location);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   async function getStripeApikey() {
     const token = JSON.parse(localStorage.getItem("accessToken"));
@@ -47,7 +50,7 @@ function App() {
       withCredentials: true,
     };
     if(token) {
-      const { data } = axios.get(`http://localhost:8000/api/v1/stripeapikey`);
+      const { data } = await axios.get(`http://localhost:8000/api/v1/stripeapikey`);
     } else {
       return;
     }
@@ -56,6 +59,7 @@ function App() {
     const token = JSON.parse(localStorage.getItem("accessToken"));
     if(token) {
       dispatch(getAccount())
+      navigate(location);
     }
   }, []);
 
