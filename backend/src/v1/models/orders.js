@@ -65,7 +65,7 @@ const orderSchema = new mongoose.Schema(
         required: true,
       },
     },
-    paiAt: {
+    paidAt: {
       type: Date,
       required: true,
     },

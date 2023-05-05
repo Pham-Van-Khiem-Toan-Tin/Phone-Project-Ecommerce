@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import "./Payment.css";
 import {
   useStripe,
@@ -12,6 +12,8 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { FaCreditCard, FaCalendarAlt, FaKey } from "react-icons/fa";
+import { createOrder } from "../../reduxToolkit/actions/orderAction";
+import { clearError } from "../../reduxToolkit/reducer/order/newOrderSlice";
 const Payment = () => {
   const dispatch = useDispatch();
   const stripe = useStripe();
@@ -21,9 +23,20 @@ const Payment = () => {
   const orderInfor = JSON.parse(sessionStorage.getItem("orderInfor"));
   const { shippingInfor, cartList } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
+  const { error } = useSelector((state) => state.order);
+  const listOrder = []
+  for (let i in cartList) {
+    listOrder.push({
+      name: cartList[i].id_product.name,
+      price: cartList[i].id_product.price,
+      image: cartList[i].id_product.images[0].url,
+      product: cartList[i].id_product._id,
+      quantity: cartList[i].quantity
+    })
+  }
   const order = {
     shippingInfor,
-    orderItems: cartList,
+    orderItems: listOrder,
     itemsPrice: orderInfor.subtotal,
     taxPrice: orderInfor.tax,
     shippingPrice: orderInfor.shippingCharges,
@@ -72,11 +85,11 @@ const Payment = () => {
         toast.error(result.error.message);
       } else {
         if (result.paymentIntent.status === "succeeded") {
-          order.paymentInfo = {
+          order.paymentInfor = {
             id: result.paymentIntent.id,
             status: result.paymentIntent.status,
           };
-          dispatch();
+          dispatch(createOrder(order));
           navigate("/success");
         } else {
           toast.error("There's some issue while processing payment");
@@ -87,6 +100,13 @@ const Payment = () => {
       toast.error(error.response.data.message);
     }
   };
+  useEffect(() => {
+    if(error) {
+      toast.error(error);
+      dispatch(clearError());
+    }
+  }, [dispatch, error])
+  
   return (
     <div className="payment container">
       <form onSubmit={submitHandle}>
@@ -107,7 +127,7 @@ const Payment = () => {
           type="submit"
           value={`Pay - ${
             orderInfor && Math.round(orderInfor.totalPrice / 23000)
-          }`}
+          }$`}
           ref={payBtn}
           className="paymentFormBtn"
         />

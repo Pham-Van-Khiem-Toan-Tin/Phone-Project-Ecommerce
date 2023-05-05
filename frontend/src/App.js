@@ -17,18 +17,47 @@ import DashBoard from "./v1/pages/Admin/DashBoard";
 import AllProduct from "./v1/pages/Admin/AllProduct";
 import CreateProduct from "./v1/pages/Admin/CreateProduct";
 import UpdateProduct from "./v1/pages/Admin/UpdateProduct";
-import "./App.css"
-import Orders from "./v1/pages/Admin/Orders";
+import "./App.css";
+import OrdersAdmin from "./v1/pages/Admin/OrdersAdmin";
 import AllUser from "./v1/pages/Admin/AllUser";
 import UpdateUser from "./v1/pages/Admin/UpdateUser";
 import Productdetail from "./v1/pages/ProductDetail/Productdetail";
 import Shipping from "./v1/pages/Shipping/Shipping";
 import OrderConFirm from "./v1/pages/OrderConfirm/OrderConFirm";
 import Payment from "./v1/pages/Payment/Payment";
-
-
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import { useEffect } from "react";
+import axios from "axios";
+import OrderSuccess from "./v1/pages/Payment/OrderSuccess";
+import { useDispatch } from "react-redux";
+import { getAccount } from "./v1/reduxToolkit/actions/userAction";
+import MyOrders from "./v1/pages/Orders/MyOrders";
 function App() {
-
+  const stripePromise = loadStripe(
+    "pk_test_51N1RFRJt1tz4StSkzTUdq8lq3KZC2XWUdkXxzMMooea7J3X3TdZlAVeKC3qM1p4MaA5KQjvpuLqT6hYDdsp1iiui00gYWdz4T1"
+  );
+  const dispatch = useDispatch();
+  async function getStripeApikey() {
+    const token = JSON.parse(localStorage.getItem("accessToken"));
+    const config = {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+      withCredentials: true,
+    };
+    if(token) {
+      const { data } = axios.get(`http://localhost:8000/api/v1/stripeapikey`);
+    } else {
+      return;
+    }
+  }
+  useEffect(() => {
+    const token = JSON.parse(localStorage.getItem("accessToken"));
+    if(token) {
+      dispatch(getAccount())
+    }
+  }, []);
 
   return (
     <>
@@ -45,9 +74,31 @@ function App() {
           element={<ProtectRoute children={<Profile />} />}
         />
         <Route path="/cart" element={<ProtectRoute children={<Cart />} />} />
-        <Route path="/shipping" element={<ProtectRoute children={<Shipping />} />} />
-        <Route path="/order/confirm" element={<ProtectRoute children={<OrderConFirm />} />} />
-        <Route path="/payment" element={<ProtectRoute children={<Payment />} />} />
+        <Route
+          path="/shipping"
+          element={<ProtectRoute children={<Shipping />} />}
+        />
+        <Route
+          path="/order/confirm"
+          element={<ProtectRoute children={<OrderConFirm />} />}
+        />
+        <Route
+          path="/payment"
+          element={
+            <ProtectRoute
+              children={
+                <Elements stripe={stripePromise}>
+                  <Payment />
+                </Elements>
+              }
+            />
+          }
+        />
+        <Route
+          path="/success"
+          element={<ProtectRoute children={<OrderSuccess />} />}
+        />
+        <Route path="/orders" element={<MyOrders />} />
         <Route
           path="/admin/dashboard"
           element={<ProtectRoute isAdmin={true} children={<DashBoard />} />}
@@ -66,7 +117,7 @@ function App() {
         />
         <Route
           path="/admin/product/orders"
-          element={<ProtectRoute isAdmin={true} children={<Orders />} />}
+          element={<ProtectRoute isAdmin={true} children={<OrdersAdmin />} />}
         />
         <Route
           path="/admin/allusers"

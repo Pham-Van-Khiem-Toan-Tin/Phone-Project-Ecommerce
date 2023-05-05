@@ -1,0 +1,24 @@
+.order_success {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    svg {
+        font-size: 3rem;
+        fill: #FFDCB6;
+        color: #fff;
+    }
+    h5 {
+        color: #fff;
+        margin: 1rem 0;
+    }
+    a {
+        padding: 0.5rem 2rem;
+        color: #fff;
+        border-radius: 0.5rem;
+        background: #4F6AB5;
+        box-shadow:  20px 20px 60px #435a9a,
+             -20px -20px 60px #5b7ad0;
+    }
+}

@@ -7,18 +7,13 @@ import { useNavigate } from "react-router-dom";
 import { clearError } from "../../reduxToolkit/reducer/user/userSlice";
 const Profile = () => {
   const dispatch = useDispatch();
-  const { user, isLoading, error } = useSelector(
+  const { user, isLoading, error, isAuthenticated } = useSelector(
     (state) => state.user
   );
   const navigate = useNavigate();
   useEffect(() => {
-      if(!user) {
-        if(!error) {
-          dispatch(getAccount());
-        }
-        else {
+      if(isAuthenticated === false) {
           navigate("/login");
-        }
       }
   }, [dispatch, error]);
 

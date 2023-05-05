@@ -128,7 +128,7 @@ export const getAccount = createAsyncThunk(
     try {
       const token = JSON.parse(localStorage.getItem("accessToken"));
       const config = { headers: { "Authorization": "Bearer " + token } , withCredentials: true };
-      const {data} = await axios.post(`http://localhost:8000/api/v1/me`,null, config);
+      const {data} = await axios.get(`http://localhost:8000/api/v1/me`, config);
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {

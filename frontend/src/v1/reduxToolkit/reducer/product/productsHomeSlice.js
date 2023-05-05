@@ -20,7 +20,6 @@ const productsHomeSlice = createSlice({
         });
         builder.addCase(getHotProduct.fulfilled, (state, action) => {
             state.isLoading = false;
-            console.log(action.payload);
             state.ssproducts = action.payload.samsungProduct;
             state.xiaoproducts = action.payload.xiaomiProduct;
             state.approducts = action.payload.appleProduct;

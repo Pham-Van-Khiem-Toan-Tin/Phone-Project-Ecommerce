@@ -97,7 +97,7 @@ const Header = () => {
           ><FaTimes /></button>
         </div>
         <div className="offcanvas-body">
-          {localStorage.getItem("role") === "admin" && (
+          {user?.role === "admin" && (
             <>
               <div className="title-menu">Admin menu</div>
               <ul className="list-group list-group-flush">

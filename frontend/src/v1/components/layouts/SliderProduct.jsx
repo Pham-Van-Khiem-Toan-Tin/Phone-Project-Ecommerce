@@ -15,7 +15,6 @@ const SliderProduct = (props) => {
         spaceBetween={10}
         slidesPerView={1}
         grid={row ? { rows: 2, fill: "rows" } : { rows: 1, fill: "column" }}
-        onSwiper={(swiper) => console.log(swiper)}
         navigation={true}
         breakpoints={{
           640: {

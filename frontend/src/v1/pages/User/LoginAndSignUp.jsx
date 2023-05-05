@@ -70,19 +70,17 @@ const LoginAndSignUp = () => {
       setUser({ ...user, [e.target.name]: e.target.value });
     }
   };
-  // console.log({location: location, navigate1: navigate});
   const redirect = location.search ? location.search.split("=")[1] : "/account";
   useEffect(() => {
-    // console.log(error);
+    
     if (error) {
       toast.error(error);
-      // console.log("render");
       dispatch(clearError());
       if(localStorage.getItem("accessToken")) {
         localStorage.removeItem("accessToken");
       }
     }
-    if(localStorage.getItem("accessToken") && !error) {
+    if(isAuthenticated) {
       navigate(redirect);
     }
   }, [dispatch, error, navigate, isAuthenticated, toast, redirect]);

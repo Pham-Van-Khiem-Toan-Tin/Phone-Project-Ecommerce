@@ -20,7 +20,7 @@ const Shipping = () => {
       address: address,
       city: city,
       state: state,
-      country: country,
+      country: "VN",
       phoneNum: phone,
       pinCode: pinCode,
     }

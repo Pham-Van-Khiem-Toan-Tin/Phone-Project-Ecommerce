@@ -29,6 +29,7 @@ module.exports.newOrder = catchAsyncError(async (req, res, next) => {
     totalPrice,
     paidAt: Date.now(),
     user: req.user,
+    orderStatus: "Processing",
   });
 
   res.status(200).json({

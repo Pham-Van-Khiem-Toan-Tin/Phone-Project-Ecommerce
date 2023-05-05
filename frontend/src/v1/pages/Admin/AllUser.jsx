@@ -41,7 +41,7 @@ const AllUser = () => {
       ) : (
         <div className="alluser">
           <div className="container table-responsive">
-            <table class="table table-bordered table-hover">
+            <table className="table table-bordered table-hover">
               <thead>
                 <tr>
                   <th scope="col">User ID</th>
