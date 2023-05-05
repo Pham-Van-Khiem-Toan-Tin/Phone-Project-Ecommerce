@@ -5,10 +5,10 @@ import { Navigate } from "react-router-dom";
 
 const ProtectRoute = ({ isAdmin, children }) => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
-  if (isAuthenticated === false) {
+  if (isAuthenticated === false && !localStorage.getItem("accessToken")) {
     return <Navigate replace to="/login" />;
   }
-  if (isAdmin === true && user?.role !== "admin") {
+  if (isAdmin === true && user?.role !== "admin" && !localStorage.getItem("accessToken")) {
     return <Navigate replace to="/login" />;
   }
   return children;
