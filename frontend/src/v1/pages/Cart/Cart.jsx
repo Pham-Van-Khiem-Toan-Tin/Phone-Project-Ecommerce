@@ -35,8 +35,8 @@ const Cart = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <div style={{ width: "100vw" }} className="cart">
-          <section className="pt-5 pb-5">
+        <div className="cart">
+          <section className="pb-5">
             <div className="container">
               <div className="row w-100">
                 <div className="col-lg-12 col-md-12 col-12">

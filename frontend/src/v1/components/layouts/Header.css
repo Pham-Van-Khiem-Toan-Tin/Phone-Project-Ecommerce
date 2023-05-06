@@ -3,13 +3,12 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
   height: 60px;
-  width: 100vw;
   z-index: 999;
 }
 header .navbar-container {

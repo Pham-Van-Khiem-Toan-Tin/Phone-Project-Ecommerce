@@ -1,6 +1,6 @@
 .footer {
     background: linear-gradient(45deg, #49a09d, #5f2c82);
-    width: 100vw;
+    width: 100%;
 }
 footer li div {
     color: #fff !important;

@@ -42,7 +42,7 @@ const Home = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="Home" style={{ width: "100vw" }}>
+        <div className="Home">
           <div className="banner-slider container">
             <Swiper
               spaceBetween={30}
