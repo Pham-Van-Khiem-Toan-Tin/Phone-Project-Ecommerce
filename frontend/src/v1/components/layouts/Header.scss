@@ -3,7 +3,7 @@ header {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: calc(100vw - 16.6px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -139,6 +139,7 @@ header {
 
         }
         .offcanvas-body {
+            padding-top: 0;
             ul {
 	            background: transparent;
                 box-shadow: none !important;
@@ -171,6 +172,7 @@ header {
                             background: transparent;
                             border: none;
                             outline: none;
+                            padding: 0.5rem 1rem;
                             &:focus {
                                 box-shadow: none;
                             }

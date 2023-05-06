@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { BsPencilFill, BsFillTrashFill } from "react-icons/bs";
+import { FaTrashAlt, FaEdit } from "react-icons/fa";
 import {
   clearError,
   clearDeleteError,
@@ -63,11 +63,11 @@ const AllUser = () => {
                         <td className="icon-handle_user">
                           <span>
                             <Link to={`../admin/user/${item._id}`}>
-                              <BsPencilFill />
+                              <FaEdit />
                             </Link>
                           </span>
                           <span>
-                            <BsFillTrashFill />
+                            <FaTrashAlt />
                           </span>
                         </td>
                       </tr>

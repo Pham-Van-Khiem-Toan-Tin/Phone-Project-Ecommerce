@@ -46,7 +46,6 @@ module.exports.getSingleOrder = catchAsyncError(async (req, res, next) => {
   if (!order) {
     return next(new ErrorHandle("Order not found with this user", 404));
   }
-
   res.status(200).json({
     success: true,
     order,

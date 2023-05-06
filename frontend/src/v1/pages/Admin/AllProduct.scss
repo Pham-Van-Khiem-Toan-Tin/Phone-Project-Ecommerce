@@ -1,7 +1,7 @@
 .allproduct {
     font-family: sans-serif;
 	font-weight: 100;
-    width: 100vw;
+    width: 100%;
     margin: 0;
 	background: linear-gradient(45deg, #49a09d, #5f2c82);
 	font-weight: 100;
@@ -11,7 +11,7 @@
     justify-content: center;
     .container {
         table {
-            width: 800px;
+            min-width: 40rem;
             border-collapse: collapse;
             overflow: hidden;
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
@@ -30,25 +30,25 @@
                 text-align: left;
             }
             tbody {
-                tr {
-                    &:hover {
-                        background-color: rgba(255,255,255,0.3);
-                    }
-                }
-                td {
-                    position: relative;
-                    &:hover {
-                        &:before {
-                            content: "";
-                            position: absolute;
-                            left: 0;
-                            right: 0;
-                            top: -9999px;
-                            bottom: -9999px;
-                            background-color: rgba(255,255,255,0.2);
-                            z-index: -1;
+                .icon-handle_product {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    span {
+                        display: inline-block;
+                        flex: 1;
+                        text-align: center;
+                        &:hover {
+                            color: #49a09d;
                         }
+                        a {
+                            color: #fff;
+                            &:hover {
+                                color: #ccc;
+                            }
+                         }
                     }
+                    
                 }
             }
         }

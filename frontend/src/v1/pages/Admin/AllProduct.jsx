@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import "./AllProduct.css";
-
+import { FaTrashAlt, FaEdit } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { clearErrorAllProduct } from "../../reduxToolkit/reducer/product/allProductAdminSlice";
@@ -39,13 +40,22 @@ const AllProduct = () => {
                     <td>{item.name}</td>
                     <td>{item.stock}</td>
                     <td>{item.price}</td>
-                    <td>Cell 5</td>
+                    <td className="icon-handle_product">
+                      <span>
+                        <Link to={`/`}>
+                          <FaEdit />
+                        </Link>
+                      </span>
+                      <span>
+                        <FaTrashAlt />
+                      </span>
+                    </td>
                   </tr>
                 );
-              })) :
-            (<div>No product in your shop
-            </div>)
-            }
+              })
+            ) : (
+              <div>No product in your shop</div>
+            )}
           </tbody>
         </table>
       </div>

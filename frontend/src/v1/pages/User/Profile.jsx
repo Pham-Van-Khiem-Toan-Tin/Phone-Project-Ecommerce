@@ -3,19 +3,19 @@ import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader/Loader";
 import { getAccount } from "../../reduxToolkit/actions/userAction";
 import "./Profile.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { clearError } from "../../reduxToolkit/reducer/user/userSlice";
 const Profile = () => {
   const dispatch = useDispatch();
-  const { user, isLoading, error, isAuthenticated } = useSelector(
+  const { user, isLoading, isAuthenticated } = useSelector(
     (state) => state.user
   );
   const navigate = useNavigate();
   useEffect(() => {
-      if(isAuthenticated === false) {
-          navigate("/login");
-      }
-  }, [dispatch, error]);
+    if (isAuthenticated === false) {
+      navigate("/login");
+    }
+  }, [dispatch]);
 
   return (
     <>
@@ -35,7 +35,9 @@ const Profile = () => {
             <span className="user-email">{user?.email}</span>
             <h2 className="user-join-title">Joined at</h2>
             <span className="user-join">{user?.createdAt}</span>
-            <button>My order</button>
+            <Link to="/orders">
+              <button>My order</button>
+            </Link>
             <button>Change Password</button>
           </div>
         </div>

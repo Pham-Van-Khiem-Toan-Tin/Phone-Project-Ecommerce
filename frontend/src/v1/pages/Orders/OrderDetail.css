@@ -1,0 +1,37 @@
+.order_detail {
+  color: #fff;
+}
+.order_detail h5 {
+  font-weight: 700;
+}
+.order_detail .order_detail_box p {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.order_detail .order_detail_cart_item {
+  max-width: 40rem;
+}
+.order_detail .order_detail_cart_item img {
+  width: 80px;
+  height: 80px;
+  border-radius: 1rem;
+}
+.order_detail .order_detail_cart_item > div {
+  margin: 0.5rem 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.order_detail .order_detail_cart_item > div a {
+  color: #fff;
+  margin: 0 0.5rem;
+  width: 200px;
+}
+.order_detail .order_detail_cart_item > div a:hover {
+  color: aqua;
+}
+.order_detail .order_detail_cart_item > div span {
+  display: inline-block;
+  margin-left: auto;
+}/*# sourceMappingURL=OrderDetail.css.map */

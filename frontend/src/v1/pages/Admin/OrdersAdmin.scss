@@ -1,0 +1,48 @@
+.orders_admin {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    table {
+        min-width: 40rem;
+        border-collapse: collapse;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        margin: 0 auto;
+        thead {
+            th {
+                background-color: #55608f;
+            }
+        }
+        th,td {
+            padding: 15px;
+            background-color: rgba(255,255,255,0.2);
+            color: #fff;
+        }
+        th {
+            text-align: left;
+        }
+        tbody {
+            .icon-handle_user {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                span {
+                    display: inline-block;
+                    flex: 1;
+                    text-align: center;
+                    &:hover {
+                        color: #49a09d;
+                    }
+                    a {
+                        color: #fff;
+                        &:hover {
+                            color: #ccc;
+                        }
+                     }
+                }
+                
+            }
+        }
+    }
+}

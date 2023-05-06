@@ -33,6 +33,7 @@ import OrderSuccess from "./v1/pages/Payment/OrderSuccess";
 import { useDispatch } from "react-redux";
 import { getAccount } from "./v1/reduxToolkit/actions/userAction";
 import MyOrders from "./v1/pages/Orders/MyOrders";
+import OrderDetail from "./v1/pages/Orders/OrderDetail";
 function App() {
   const stripePromise = loadStripe(
     "pk_test_51N1RFRJt1tz4StSkzTUdq8lq3KZC2XWUdkXxzMMooea7J3X3TdZlAVeKC3qM1p4MaA5KQjvpuLqT6hYDdsp1iiui00gYWdz4T1"
@@ -102,7 +103,8 @@ function App() {
           path="/success"
           element={<ProtectRoute children={<OrderSuccess />} />}
         />
-        <Route path="/orders" element={<MyOrders />} />
+        <Route path="/orders" element={<ProtectRoute isAdmin={true} children={<MyOrders />} />} />
+        <Route path="/order/:id" element={<ProtectRoute isAdmin={true} children={<OrderDetail />} />} />
         <Route
           path="/admin/dashboard"
           element={<ProtectRoute isAdmin={true} children={<DashBoard />} />}

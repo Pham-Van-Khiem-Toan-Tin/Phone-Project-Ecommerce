@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { clearError } from "../../reduxToolkit/reducer/order/myOrderSlice";
 import { myOrders } from "../../reduxToolkit/actions/orderAction";
-import { BsPencilFill, BsFillTrashFill } from "react-icons/bs";
+import { FaExternalLinkAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 const MyOrders = () => {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const MyOrders = () => {
       dispatch(clearError());
     }
     dispatch(myOrders());
-  }, []);
+  }, [error, dispatch]);
 
   return (
     <>
@@ -57,10 +58,9 @@ const MyOrders = () => {
                         <td>{item.amount}</td>
                         <td className="icon-handle_user">
                           <span>
-                            <BsPencilFill />
-                          </span>
-                          <span>
-                            <BsFillTrashFill />
+                          <Link to={`/order/${item.id}`}>
+                            <FaExternalLinkAlt />
+                          </Link>
                           </span>
                         </td>
                       </tr>

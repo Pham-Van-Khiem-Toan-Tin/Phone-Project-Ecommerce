@@ -30,27 +30,77 @@ export const createOrder = createAsyncThunk(
 );
 
 export const myOrders = createAsyncThunk(
-    "MY_ORDERS",
-    async (_, { rejectWithValue }) => {
-      try {
-        const token = JSON.parse(localStorage.getItem("accessToken"));
-        const config = {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-          withCredentials: true,
-        };
-        const { data } = await axios.get(
-          `http://localhost:8000/api/v1/orders/me`,
-          config
-        );
-        return data;
-      } catch (error) {
-        if (error.response && error.response.data.message) {
-          return rejectWithValue(error.response.data.message);
-        } else {
-          return rejectWithValue(error.message);
-        }
+  "MY_ORDERS",
+  async (_, { rejectWithValue }) => {
+    try {
+      const token = JSON.parse(localStorage.getItem("accessToken"));
+      const config = {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+        withCredentials: true,
+      };
+      const { data } = await axios.get(
+        `http://localhost:8000/api/v1/orders/me`,
+        config
+      );
+      return data;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
       }
     }
-  );
+  }
+);
+export const orderDetail = createAsyncThunk(
+  "ORDERS_DETAIL",
+  async (id, { rejectWithValue }) => {
+    try {
+      const token = JSON.parse(localStorage.getItem("accessToken"));
+      const config = {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+        withCredentials: true,
+      };
+      const { data } = await axios.get(
+        `http://localhost:8000/api/v1/order/${id}`,
+        config
+      );
+      return data;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);
+export const getAllOrders = createAsyncThunk(
+  "ALL_ORDERS",
+  async (_, { rejectWithValue }) => {
+    try {
+      const token = JSON.parse(localStorage.getItem("accessToken"));
+      const config = {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+        withCredentials: true,
+      };
+      const { data } = await axios.get(
+        `http://localhost:8000/api/v1/admin/orders`,
+        config
+      );
+      return data;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);

@@ -1,0 +1,43 @@
+.orders_admin {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.orders_admin table {
+  min-width: 40rem;
+  border-collapse: collapse;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}
+.orders_admin table thead th {
+  background-color: #55608f;
+}
+.orders_admin table th, .orders_admin table td {
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+.orders_admin table th {
+  text-align: left;
+}
+.orders_admin table tbody .icon-handle_user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.orders_admin table tbody .icon-handle_user span {
+  display: inline-block;
+  flex: 1;
+  text-align: center;
+}
+.orders_admin table tbody .icon-handle_user span:hover {
+  color: #49a09d;
+}
+.orders_admin table tbody .icon-handle_user span a {
+  color: #fff;
+}
+.orders_admin table tbody .icon-handle_user span a:hover {
+  color: #ccc;
+}/*# sourceMappingURL=OrdersAdmin.css.map */

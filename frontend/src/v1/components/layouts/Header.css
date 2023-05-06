@@ -3,7 +3,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: calc(100vw - 16.6px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -131,6 +131,9 @@ header .offcanvas .offcanvas-header button:active {
   border: none;
   color: #ccc;
 }
+header .offcanvas .offcanvas-body {
+  padding-top: 0;
+}
 header .offcanvas .offcanvas-body ul {
   background: transparent;
   box-shadow: none !important;
@@ -163,6 +166,7 @@ header .offcanvas .offcanvas-body .accordion .accordion-item .accordion-header b
   background: transparent;
   border: none;
   outline: none;
+  padding: 0.5rem 1rem;
 }
 header .offcanvas .offcanvas-body .accordion .accordion-item .accordion-header button:focus {
   box-shadow: none;
