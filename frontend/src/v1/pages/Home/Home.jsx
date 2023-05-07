@@ -23,7 +23,6 @@ import {
   resetToCart,
 } from "../../reduxToolkit/reducer/product/cartProductSlice";
 import { Link } from "react-router-dom";
-import ClearToast from "../categories/ClearToast";
 const Home = () => {
   const THREE_DAYS_IN_MS = 3 * 24 * 60 * 60 * 1000;
   const NOW_IN_MS = new Date().getTime();

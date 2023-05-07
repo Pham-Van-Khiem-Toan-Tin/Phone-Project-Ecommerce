@@ -15,9 +15,11 @@ const OrderDetail = () => {
       toast.error(error);
       dispatch(clearError());
     }
+  }, [error, dispatch]);
+  useEffect(() => {
     dispatch(orderDetail(id));
-
-  }, [error, dispatch, id]);
+  }, [dispatch, id])
+  
   return (
     <>
       {isLoading ? (

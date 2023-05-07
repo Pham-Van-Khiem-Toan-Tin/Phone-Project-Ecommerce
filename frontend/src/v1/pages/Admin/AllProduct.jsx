@@ -14,9 +14,11 @@ const AllProduct = () => {
       toast.error(error);
       dispatch(clearErrorAllProduct);
     }
+  }, [dispatch, error]);
+  useEffect(() => {
     dispatch(getAdminProducts());
-  }, []);
-
+  }, [dispatch])
+  
   return (
     <div className="allproduct table-responsive">
       <div className="container">
