@@ -18,8 +18,10 @@ import { toast } from "react-toastify";
 import { useEffect } from "react";
 import { clearError } from "../../reduxToolkit/reducer/product/productsHomeSlice";
 import { getHotProduct } from "../../reduxToolkit/actions/productAction";
-import { getProducts } from "../../reduxToolkit/actions/productAction";
-
+import {
+  clearErrorCart,
+  resetToCart,
+} from "../../reduxToolkit/reducer/product/cartProductSlice";
 import { Link } from "react-router-dom";
 import ClearToast from "../categories/ClearToast";
 const Home = () => {
@@ -29,16 +31,29 @@ const Home = () => {
   const dispatch = useDispatch();
   const { isLoading, error, ssproducts, xiaoproducts, approducts, opproducts } =
     useSelector((state) => state.productshome);
+  const { error: errorCart, success: successCart } = useSelector(
+    (state) => state.cart
+  );
+
   useEffect(() => {
     if (error) {
       toast.error(error);
       dispatch(clearError);
     }
+    if (errorCart) {
+      toast.error(errorCart);
+      dispatch(clearErrorCart());
+    }
+    if (successCart) {
+      toast.success(successCart);
+      dispatch(resetToCart());
+    }
+  }, [dispatch, error, errorCart, successCart]);
+  useEffect(() => {
     dispatch(getHotProduct());
-  }, [dispatch, error, toast]);
+  }, [dispatch]);
   return (
     <>
-    <ClearToast />
       {isLoading ? (
         <Loader />
       ) : (
@@ -58,10 +73,10 @@ const Home = () => {
               className="Bannerswiper"
             >
               <SwiperSlide>
-                <img src="/assets/images/sliders/slider1.jpg"  alt=""/>
+                <img src="/assets/images/sliders/slider1.jpg" alt="" />
               </SwiperSlide>
               <SwiperSlide>
-                <img src="/assets/images/sliders/slider2.jpg"  alt=""/>
+                <img src="/assets/images/sliders/slider2.jpg" alt="" />
               </SwiperSlide>
               <SwiperSlide>
                 <img src="/assets/images/sliders/slider3.jpg" alt="" />

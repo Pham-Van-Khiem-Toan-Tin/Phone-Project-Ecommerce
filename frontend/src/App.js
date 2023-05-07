@@ -34,12 +34,11 @@ import { useDispatch } from "react-redux";
 import { getAccount } from "./v1/reduxToolkit/actions/userAction";
 import MyOrders from "./v1/pages/Orders/MyOrders";
 import OrderDetail from "./v1/pages/Orders/OrderDetail";
+import ProcessOrder from "./v1/pages/Admin/ProcessOrder";
 function App() {
   const stripePromise = loadStripe(
     "pk_test_51N1RFRJt1tz4StSkzTUdq8lq3KZC2XWUdkXxzMMooea7J3X3TdZlAVeKC3qM1p4MaA5KQjvpuLqT6hYDdsp1iiui00gYWdz4T1"
   );
-  const location = useLocation();
-  console.log(location);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   async function getStripeApikey() {
@@ -50,19 +49,22 @@ function App() {
       },
       withCredentials: true,
     };
-    if(token) {
-      const { data } = await axios.get(`http://localhost:8000/api/v1/stripeapikey`);
+    if (token) {
+      const { data } = await axios.get(
+        `http://localhost:8000/api/v1/stripeapikey`,
+        config
+      );
+      return data;
     } else {
       return;
     }
   }
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("accessToken"));
-    if(token) {
-      dispatch(getAccount())
-      navigate(location);
+    if (token) {
+      dispatch(getAccount());
     }
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
@@ -103,8 +105,14 @@ function App() {
           path="/success"
           element={<ProtectRoute children={<OrderSuccess />} />}
         />
-        <Route path="/orders" element={<ProtectRoute isAdmin={true} children={<MyOrders />} />} />
-        <Route path="/order/:id" element={<ProtectRoute isAdmin={true} children={<OrderDetail />} />} />
+        <Route
+          path="/orders"
+          element={<ProtectRoute children={<MyOrders />} />}
+        />
+        <Route
+          path="/order/:id"
+          element={<ProtectRoute children={<OrderDetail />} />}
+        />
         <Route
           path="/admin/dashboard"
           element={<ProtectRoute isAdmin={true} children={<DashBoard />} />}
@@ -124,6 +132,10 @@ function App() {
         <Route
           path="/admin/product/orders"
           element={<ProtectRoute isAdmin={true} children={<OrdersAdmin />} />}
+        />
+        <Route
+          path="/admin/order/:id"
+          element={<ProtectRoute isAdmin={true} children={<ProcessOrder />} />}
         />
         <Route
           path="/admin/allusers"

@@ -1,28 +1,30 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllOrders } from "../../actions/orderAction";
+import { deleteOrder } from "../../actions/orderAction";
 
-const allOrdersSlice = createSlice({
-    name: "newOrder",
+const orderSlice = createSlice({
+    name: "orderhandle",
     initialState: {
         isLoading: false,
         error: null,
-        orders: [],
+        isDelete: false,
+        isUpdate: false,
     },
     reducers: {
-        clearError: (state) => {state.error = null; console.log("chay vao day nua");}
+        clearErrorOrder: (state) => {state.error = null},
+        deleteReset: (state) => {state.isDelete = false}
     },
     extraReducers: (builder) => {
-        builder.addCase(getAllOrders.pending, (state) => {
+        builder.addCase(deleteOrder.pending, (state) => {
             state.isLoading = true;
         });
-        builder.addCase(getAllOrders.fulfilled, (state, action) => {
+        builder.addCase(deleteOrder.fulfilled, (state, action) => {
             state.isLoading = false;
-            state.orders = action.payload.orders;
+            state.isDelete = action.payload.success;
             if(action.payload.accessToken) {
                 localStorage.setItem('accessToken', JSON.stringify(action.payload.accessToken));
             }
         });
-        builder.addCase(getAllOrders.rejected, (state, action) => {
+        builder.addCase(deleteOrder.rejected, (state, action) => {
             state.isLoading = false;
             state.error = action.payload;
             if(action.payload.accessToken) {
@@ -32,5 +34,5 @@ const allOrdersSlice = createSlice({
     }
 });
 
-export const {clearError} = allOrdersSlice.actions;
-export default allOrdersSlice.reducer;
+export const {clearErrorOrder, deleteReset} = orderSlice.actions;
+export default orderSlice.reducer;

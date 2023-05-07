@@ -21,7 +21,6 @@ const MyOrders = () => {
         amount: item.totalPrice,
       });
     });
-  console.log(rows);
   useEffect(() => {
     if (error) {
       toast.error(error);

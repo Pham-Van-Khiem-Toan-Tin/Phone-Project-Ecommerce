@@ -83,7 +83,7 @@ const LoginAndSignUp = () => {
     if(isAuthenticated) {
       navigate(redirect);
     }
-  }, [dispatch, error, navigate, isAuthenticated, toast, redirect]);
+  }, [dispatch, error, navigate, isAuthenticated, redirect]);
 
   return (
     <>

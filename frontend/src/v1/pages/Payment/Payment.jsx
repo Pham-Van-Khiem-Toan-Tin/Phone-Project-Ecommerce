@@ -23,7 +23,7 @@ const Payment = () => {
   const orderInfor = JSON.parse(sessionStorage.getItem("orderInfor"));
   const { shippingInfor, cartList } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
-  const { error } = useSelector((state) => state.order);
+  const { error } = useSelector((state) => state.newOrder);
   const listOrder = []
   for (let i in cartList) {
     listOrder.push({

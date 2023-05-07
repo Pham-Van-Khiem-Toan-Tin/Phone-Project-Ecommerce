@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { FaTrashAlt, FaAngleDoubleLeft,  FaForward } from "react-icons/fa";
+import { FaTrashAlt, FaAngleDoubleLeft, FaForward } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import {
@@ -24,12 +24,15 @@ const Cart = () => {
       toast.error(error);
       dispatch(clearErrorCart());
     }
+  }, [error, dispatch]);
+  useEffect(() => {
     if (success) {
       toast.success(success);
       dispatch(resetToCart());
     }
     dispatch(getProductCart());
-  }, [error, dispatch, success]);
+  }, [dispatch, success]);
+
   return (
     <>
       {isLoading ? (
@@ -152,17 +155,12 @@ const Cart = () => {
               </div>
               <div className="button-handle">
                 <div className="button-shipping">
-                  <Link
-                    to="/categories"
-                  >
-                    <FaAngleDoubleLeft />{" "}
-                    Continue Shopping
+                  <Link to="/categories">
+                    <FaAngleDoubleLeft /> Continue Shopping
                   </Link>
                 </div>
                 <div className="button-checkout">
-                  <Link
-                    to="../shipping"
-                  >
+                  <Link to="../shipping">
                     Checkout <FaForward />
                   </Link>
                 </div>

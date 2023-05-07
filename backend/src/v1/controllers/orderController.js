@@ -31,7 +31,6 @@ module.exports.newOrder = catchAsyncError(async (req, res, next) => {
     user: req.user,
     orderStatus: "Processing",
   });
-
   res.status(200).json({
     success: true,
     order,
@@ -63,13 +62,11 @@ module.exports.myOrders = catchAsyncError(async (req, res, next) => {
 
 //get all orders -- admin
 module.exports.getAllOrders = catchAsyncError(async (req, res, next) => {
-  const orders = orderModel.find({});
-
+  const orders = await  orderModel.find({});
   let totalAmount = 0;
   orders.forEach((order) => {
     totalAmount += order.totalPrice;
   });
-
   res.status(200).json({
     success: true,
     totalAmount,

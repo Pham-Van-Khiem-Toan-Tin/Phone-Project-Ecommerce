@@ -7,13 +7,11 @@ import {
 import { allUser, deleteUser } from "../../reduxToolkit/actions/userAction";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 import { Link } from "react-router-dom";
 import "./AllUser.css";
 const AllUser = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { error, users, isLoading, isDelete, message, deleteError } =
     useSelector((state) => state.allUsers);
   const handleDeleteUser = (id) => {
@@ -32,8 +30,11 @@ const AllUser = () => {
       toast.success(message);
       dispatch(clearDeleteError());
     }
+  }, [dispatch, error, message, deleteError]);
+  useEffect(() => {
     dispatch(allUser());
-  }, [dispatch, toast, error, message, deleteError]);
+  }, [dispatch]);
+
   return (
     <>
       {isLoading ? (
@@ -52,7 +53,7 @@ const AllUser = () => {
                 </tr>
               </thead>
               <tbody>
-              {users ? (
+                {users ? (
                   users.map((item) => {
                     return (
                       <tr key={item.email}>
@@ -66,7 +67,7 @@ const AllUser = () => {
                               <FaEdit />
                             </Link>
                           </span>
-                          <span>
+                          <span onClick={() => handleDeleteUser(item._id)}>
                             <FaTrashAlt />
                           </span>
                         </td>

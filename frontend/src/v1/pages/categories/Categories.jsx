@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 import { clearError } from "../../reduxToolkit/reducer/product/productSlice";
 import { useParams } from "react-router-dom";
 import { getProducts } from "../../reduxToolkit/actions/productAction";
-import ClearToast from "./ClearToast";
+import { clearErrorCart, resetToCart } from "../../reduxToolkit/reducer/product/cartProductSlice";
 
 const Categories = () => {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const Categories = () => {
     filteredProductsCount,
     error,
   } = useSelector((state) => state.allproduct);
-
+  const { error: errorCart, success: successCart } = useSelector((state) => state.cart);
   const listCategories = ["Samsung", "Xiaomi", "Apple", "Oppo"];
   const [currentPage, setCurrentPage] = useState(1);
   const [category, setCategory] = useState("");
@@ -30,20 +30,26 @@ const Categories = () => {
   const [maxValue, setMaxValue] = useState(50000000);
 
   const changeRating = (newRating, name) => {
-    console.log(newRating);
-    console.log(typeof(newRating));
     setRating(newRating);
   };
-  console.log(ratings);
   const { keyword } = useParams();
   let count = filteredProductsCount;
   let pageCouts = [currentPage, currentPage + 1, currentPage + 2];
   useEffect(() => {
-    console.log("re-reder");
     if (error) {
       toast.error(error);
       dispatch(clearError());
     }
+    if (errorCart) {
+      toast.error(errorCart);
+      dispatch(clearErrorCart());
+    }
+    if (successCart) {
+      toast.success(successCart);
+      dispatch(resetToCart());
+    }
+  }, [dispatch, error,  errorCart, successCart]);
+  useEffect(() => {
     dispatch(
       getProducts({
         keyword,
@@ -54,20 +60,10 @@ const Categories = () => {
         ratings,
       })
     );
-  }, [
-    keyword,
-    currentPage,
-    minValue,
-    maxValue,
-    category,
-    ratings,
-    dispatch,
-    error,
-  ]);
+  }, [keyword, currentPage, minValue, maxValue, category, ratings, dispatch]);
 
   return (
     <>
-      <ClearToast />
       {isLoading ? (
         <Loader />
       ) : (
@@ -123,21 +119,33 @@ const Categories = () => {
             <div className="categories-gird">
               <h1 className="categories-header">Products</h1>
               <div className="categories-controller-select">
-                <select onChange={(e) => setMaxValue(e.target.value)} value={maxValue} defaultValue={50000000}>
+                <select
+                  onChange={(e) => setMaxValue(e.target.value)}
+                  value={maxValue}
+                  defaultValue={50000000}
+                >
                   <option value={10000000}>10tr</option>
                   <option value={20000000}>20tr</option>
                   <option value={30000000}>30tr</option>
                   <option value={40000000}>40tr</option>
                   <option value={50000000}>50tr</option>
                 </select>
-                <select onChange={(e) => setCategory(e.target.value)} value={category} defaultValue="">
+                <select
+                  onChange={(e) => setCategory(e.target.value)}
+                  value={category}
+                  defaultValue=""
+                >
                   <option value="">Chose model</option>
                   <option value="Xiaomi">Xiaomi</option>
                   <option value="Samsung">Samsung</option>
                   <option value="Oppo">Oppo</option>
                   <option value="Apple">Iphone</option>
                 </select>
-                <select onChange={(e) => setRating(parseFloat(e.target.value))} value={ratings} defaultValue={0}>
+                <select
+                  onChange={(e) => setRating(parseFloat(e.target.value))}
+                  value={ratings}
+                  defaultValue={0}
+                >
                   <option value={0}>Chose star</option>
                   <option value={1}>1 star</option>
                   <option value={2}>2 star</option>
@@ -171,10 +179,6 @@ const Categories = () => {
                   </button>
                 </li>
                 {pageCouts.map((pageCout) => {
-                  console.log(
-                    Math.round(filteredProductsCount / resultPerPage) + 1 <
-                      pageCout
-                  );
                   return (
                     <>
                       <li className="">

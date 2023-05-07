@@ -2,42 +2,44 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
+  background: transparent;
   justify-content: center;
 }
-.orders_admin table {
+.orders_admin .container table {
   min-width: 40rem;
   border-collapse: collapse;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   margin: 0 auto;
 }
-.orders_admin table thead th {
+.orders_admin .container table thead th {
   background-color: #55608f;
 }
-.orders_admin table th, .orders_admin table td {
+.orders_admin .container table th, .orders_admin .container table td {
   padding: 15px;
   background-color: rgba(255, 255, 255, 0.2);
   color: #fff;
 }
-.orders_admin table th {
+.orders_admin .container table th {
   text-align: left;
 }
-.orders_admin table tbody .icon-handle_user {
+.orders_admin .container table tbody .icon-handle_order {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.orders_admin table tbody .icon-handle_user span {
+.orders_admin .container table tbody .icon-handle_order span {
   display: inline-block;
   flex: 1;
   text-align: center;
 }
-.orders_admin table tbody .icon-handle_user span:hover {
-  color: #49a09d;
+.orders_admin .container table tbody .icon-handle_order span:hover {
+  color: #d13848;
+  cursor: pointer;
 }
-.orders_admin table tbody .icon-handle_user span a {
+.orders_admin .container table tbody .icon-handle_order span a {
   color: #fff;
 }
-.orders_admin table tbody .icon-handle_user span a:hover {
+.orders_admin .container table tbody .icon-handle_order span a:hover {
   color: #ccc;
 }/*# sourceMappingURL=OrdersAdmin.css.map */

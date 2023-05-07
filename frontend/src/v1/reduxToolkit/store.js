@@ -13,6 +13,8 @@ import addToCartReducer from "./reducer/product/cartProductSlice";
 import newOrderReducer from "./reducer/order/newOrderSlice";
 import myOrdersReducer from "./reducer/order/myOrderSlice";
 import getOrderDetailReducer from "./reducer/order/orderDetailSlice";
+import getAllOrdersReducer from "./reducer/order/allOrdersSlice";
+import orderReducer from "./reducer/order/orderSlice";
 
 const store = configureStore({
   reducer: {
@@ -27,9 +29,11 @@ const store = configureStore({
     productdetail: productDetailReducer,
     newReview: newProductReviewReducer,
     cart: addToCartReducer,
-    order: newOrderReducer,
+    newOrder: newOrderReducer,
     myOrders: myOrdersReducer,
-    orderDetail: getOrderDetailReducer
+    orderDetail: getOrderDetailReducer,
+    allOrders: getAllOrdersReducer,
+    order: orderReducer,
   },
 });
 export default store;
