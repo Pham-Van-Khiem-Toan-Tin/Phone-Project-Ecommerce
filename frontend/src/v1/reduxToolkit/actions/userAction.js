@@ -51,7 +51,6 @@ export const allUser = createAsyncThunk(
       const token = JSON.parse(localStorage.getItem("accessToken"));
       const config = { headers: { "Authorization": "Bearer " + token } , withCredentials: true };
       const { data } = await axios.get(`http://localhost:8000/api/v1/admin/users`, config);
-      // console.log(data);
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -99,9 +98,8 @@ export const getUserDetail = createAsyncThunk(
 
 export const updateUser = createAsyncThunk(
   "UPDATE_USER",
-  async ({id, myForm}, {rejectWithValue}) => {
+  async (dataUpdate, {rejectWithValue}) => {
     try {
-      const id = "636fe3a30df78277314ec60e"
       const token = JSON.parse(localStorage.getItem("accessToken"));
       const config = {
         headers: {
@@ -110,7 +108,7 @@ export const updateUser = createAsyncThunk(
         },
         withCredentials: true,
       };
-      const {data} = await axios.put(`http://localhost:8000/api/v1/admin/user/${id}`,myForm, config);
+      const {data} = await axios.put(`http://localhost:8000/api/v1/admin/user/${dataUpdate.id}`,dataUpdate.myForm, config);
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {

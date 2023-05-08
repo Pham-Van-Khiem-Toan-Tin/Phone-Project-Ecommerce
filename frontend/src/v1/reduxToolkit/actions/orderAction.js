@@ -130,3 +130,30 @@ export const deleteOrder = createAsyncThunk(
     }
   }
 );
+export const updateOrder = createAsyncThunk(
+  "UPDATE_ORDER",
+  async (order, { rejectWithValue }) => {
+    try {
+      const token = JSON.parse(localStorage.getItem("accessToken"));
+      const config = {
+        headers: {
+          Authorization: "Bearer " + token,
+          "Content-Type": "application/json"
+        },
+        withCredentials: true,
+      };
+      const { data } = await axios.put(
+        `http://localhost:8000/api/v1/admin/order/${order.id}`,
+        order.myForm,
+        config
+      );
+      return data;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);

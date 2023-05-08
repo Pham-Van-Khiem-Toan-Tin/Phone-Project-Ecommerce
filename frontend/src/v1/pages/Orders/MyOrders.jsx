@@ -26,8 +26,11 @@ const MyOrders = () => {
       toast.error(error);
       dispatch(clearError());
     }
-    dispatch(myOrders());
   }, [error, dispatch]);
+  useEffect(() => {
+    dispatch(myOrders());
+  }, [dispatch])
+  
 
   return (
     <>

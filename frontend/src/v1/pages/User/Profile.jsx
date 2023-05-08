@@ -4,15 +4,14 @@ import Loader from "../../components/Loader/Loader";
 import { getAccount } from "../../reduxToolkit/actions/userAction";
 import "./Profile.css";
 import { Link, useNavigate } from "react-router-dom";
-import { clearError } from "../../reduxToolkit/reducer/user/userSlice";
 const Profile = () => {
   const dispatch = useDispatch();
-  const { user, isLoading, isAuthenticated } = useSelector(
+  const { user, isLoading, isAuthenticated, error } = useSelector(
     (state) => state.user
   );
   const navigate = useNavigate();
   useEffect(() => {
-    if (isAuthenticated === false) {
+    if (error) {
       navigate("/login");
     }
   }, [dispatch]);

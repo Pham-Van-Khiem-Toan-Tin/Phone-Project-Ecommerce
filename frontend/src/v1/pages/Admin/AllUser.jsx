@@ -1,19 +1,25 @@
 import React, { useEffect } from "react";
 import { FaTrashAlt, FaEdit } from "react-icons/fa";
-import {
-  clearError,
-  clearDeleteError,
-} from "../../reduxToolkit/reducer/user/allUserSlice";
+import { clearError } from "../../reduxToolkit/reducer/user/allUserSlice";
 import { allUser, deleteUser } from "../../reduxToolkit/actions/userAction";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader/Loader";
 import { Link } from "react-router-dom";
 import "./AllUser.css";
+import {
+  clearErrorHandle,
+  deleteReset,
+} from "../../reduxToolkit/reducer/user/userHandle";
 const AllUser = () => {
   const dispatch = useDispatch();
-  const { error, users, isLoading, isDelete, message, deleteError } =
-    useSelector((state) => state.allUsers);
+  const { error, users, isLoading } = useSelector((state) => state.allUsers);
+  const {
+    isDelete,
+    error: errorDelete,
+    isLoading: isLoadingDelete,
+    message,
+  } = useSelector((state) => state.handleUser);
   const handleDeleteUser = (id) => {
     dispatch(deleteUser(id));
   };
@@ -22,18 +28,18 @@ const AllUser = () => {
       toast.error(error);
       dispatch(clearError());
     }
-    if (deleteError) {
-      toast.error(deleteError);
-      dispatch(clearDeleteError());
+    if (errorDelete) {
+      toast.error(errorDelete);
+      dispatch(clearErrorHandle());
     }
+  }, [dispatch, error, errorDelete]);
+  useEffect(() => {
     if (isDelete) {
       toast.success(message);
-      dispatch(clearDeleteError());
+      dispatch(deleteReset());
     }
-  }, [dispatch, error, message, deleteError]);
-  useEffect(() => {
     dispatch(allUser());
-  }, [dispatch]);
+  }, [dispatch, isDelete]);
 
   return (
     <>

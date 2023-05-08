@@ -9,6 +9,7 @@ html {
 body {
   background: linear-gradient(60deg, #2980b9, #8e44ad);  
   padding-top: 60px;
+  padding-right: 0 !important;
 }
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;500;700;900&family=Kreon&family=Poppins:wght@300;700&display=swap');
 .card {

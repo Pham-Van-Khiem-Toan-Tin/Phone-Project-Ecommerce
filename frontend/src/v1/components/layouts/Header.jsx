@@ -42,7 +42,7 @@ const Header = () => {
           </button>
         </div>
         {isOpenBrand && (<div className="navbar-brand">
-          <span>Khiem's Shop</span>
+          <span>Shop</span>
         </div>)}
         <div className="navbar_icon-group">
           <div className="navbar-search" onMouseEnter={() => setIsOpenBrand(false)} onMouseLeave={() => setIsOpenBrand(true)}>

@@ -6,7 +6,7 @@ import Contact from "./v1/pages/Contact/Contact";
 import Cart from "./v1/pages/Cart/Cart";
 import Footer from "./v1/components/layouts/Footer";
 import About from "./v1/pages/About/About";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import LoginAndSignUp from "./v1/pages/User/LoginAndSignUp";
 import Profile from "./v1/pages/User/Profile";
 import ProtectRoute from "./v1/Route/ProtectRoute";
@@ -28,9 +28,8 @@ import Payment from "./v1/pages/Payment/Payment";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { useEffect } from "react";
-import axios from "axios";
 import OrderSuccess from "./v1/pages/Payment/OrderSuccess";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getAccount } from "./v1/reduxToolkit/actions/userAction";
 import MyOrders from "./v1/pages/Orders/MyOrders";
 import OrderDetail from "./v1/pages/Orders/OrderDetail";
@@ -39,26 +38,7 @@ function App() {
   const stripePromise = loadStripe(
     "pk_test_51N1RFRJt1tz4StSkzTUdq8lq3KZC2XWUdkXxzMMooea7J3X3TdZlAVeKC3qM1p4MaA5KQjvpuLqT6hYDdsp1iiui00gYWdz4T1"
   );
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-  async function getStripeApikey() {
-    const token = JSON.parse(localStorage.getItem("accessToken"));
-    const config = {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-      withCredentials: true,
-    };
-    if (token) {
-      const { data } = await axios.get(
-        `http://localhost:8000/api/v1/stripeapikey`,
-        config
-      );
-      return data;
-    } else {
-      return;
-    }
-  }
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("accessToken"));
     if (token) {

@@ -263,12 +263,14 @@ module.exports.updateUserRole = catchAsyncError(async (req, res, next) => {
     email: req.body.email,
     role: req.body.role,
   };
-
+  console.log(newUserData);
+  console.log(req.params.id);
   await userModel.findByIdAndUpdate(req.params.id, newUserData, {
     new: true,
     runValidators: true,
     useFindAndModify: false,
   });
+  console.log("chay den day");
   if(req.token) {
     const newAccessToken = req.token;
     res.status(200).json({
