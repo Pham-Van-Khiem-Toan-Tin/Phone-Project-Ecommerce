@@ -41,18 +41,14 @@ const UpdateUser = () => {
     }
   }, [dispatch, isUpDate, error, errorHandle, navigate]);
   useEffect(() => {
-    if (user && user._id !== id) {
+    if (user && user._id !== id || !user) {
       dispatch(getUserDetail(id));
-    } else {
+    } if(user && user._id === id) {
       setName(user.name);
       setEmail(user.email);
       setRole(user.role);
     }
   }, [dispatch, user, id]);
-  useEffect(() => {
-    dispatch(getUserDetail(id));
-  }, [dispatch]);
-
   const updateUserSubmitHandle = (e) => {
     e.preventDefault();
     const myForm = new FormData();

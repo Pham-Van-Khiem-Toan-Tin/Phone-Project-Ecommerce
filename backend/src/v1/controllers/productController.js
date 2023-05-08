@@ -136,7 +136,7 @@ module.exports.updateProduct = catchAsyncError(async (req, res, next) => {
     const imagesLinks = [];
     for (let i = 0; i < images.length; i++) {
       const result = await cloudinary.v2.uploader.upload(images[i], {
-        folder: "product",
+        folder: "products",
       });
 
       imagesLinks.push({
@@ -156,7 +156,6 @@ module.exports.updateProduct = catchAsyncError(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
-    product,
   });
 });
 

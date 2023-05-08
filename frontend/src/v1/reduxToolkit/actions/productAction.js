@@ -135,6 +135,30 @@ export const newReview = createAsyncThunk(
     }
   }
 )
+export const updateProduct = createAsyncThunk(
+  "UPDATE_PRODUCT",
+  async (dataChange, {rejectWithValue}) => {
+    try {
+      console.log(dataChange);
+      const token = JSON.parse(localStorage.getItem("accessToken"));
+      const config = {
+        headers: {
+          Authorization: "Bearer " + token,
+          "Content-Type": "multipart/form-data",
+        },
+        withCredentials: true,
+      };
+      const {data} = await axios.put(`http://localhost:8000/api/v1/admin/product/${dataChange.id}`,dataChange.myForm , config);
+      return data;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+)
 
 export const deleteProduct = createAsyncThunk(
   "DELETE_PRODUCT",

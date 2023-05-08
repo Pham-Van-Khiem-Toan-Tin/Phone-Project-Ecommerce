@@ -26,7 +26,7 @@ const store = configureStore({
     handleUser: userHandle,
     allProducts: allProductReducer,
     productshome: allProductsHomeReducer,
-    productdetail: productDetailReducer,
+    productDetail: productDetailReducer,
     newReview: newProductReviewReducer,
     cart: addToCartReducer,
     newOrder: newOrderReducer,

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { deleteProduct } from "../../actions/productAction";
+import { deleteProduct, updateProduct } from "../../actions/productAction";
 
 const productSlice = createSlice({
     name: "producthandle",
@@ -12,6 +12,7 @@ const productSlice = createSlice({
     reducers: {
         clearErrorHandle: (state) => {state.error = null},
         resetDelete: (state) => {state.isDelete = false},
+        resetUpdate: (state) => {state.isUpdate = false},
     },
     extraReducers: (builder) => {
         builder.addCase(deleteProduct.pending, (state) => {
@@ -30,9 +31,26 @@ const productSlice = createSlice({
             if(action.payload.accessToken) {
                 localStorage.setItem('accessToken', JSON.stringify(action.payload.accessToken));
             }
+        });
+        builder.addCase(updateProduct.pending, (state) => {
+            state.isLoading = true;
+        });
+        builder.addCase(updateProduct.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.isUpdate = action.payload.success;
+            if(action.payload.accessToken) {
+                localStorage.setItem('accessToken', JSON.stringify(action.payload.accessToken));
+            }
+        })
+        builder.addCase(updateProduct.rejected, (state, action) => {
+            state.error = action.payload;
+            state.isLoading = false;
+            if(action.payload.accessToken) {
+                localStorage.setItem('accessToken', JSON.stringify(action.payload.accessToken));
+            }
         })
     }
 });
 
-export const {clearErrorHandle, resetDelete} = productSlice.actions;
+export const {clearErrorHandle, resetDelete, resetUpdate} = productSlice.actions;
 export default productSlice.reducer;

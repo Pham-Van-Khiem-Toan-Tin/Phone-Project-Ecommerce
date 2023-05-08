@@ -32,7 +32,7 @@ const SliderProduct = (props) => {
         }}
         modules={[Navigation, Autoplay, Grid]}
         autoplay={{
-          delay: 2500,
+          delay: 3000,
           disableOnInteraction: false,
         }}
       >

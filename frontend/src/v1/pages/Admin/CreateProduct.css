@@ -63,6 +63,11 @@
   border-radius: 10px;
   height: 45px;
 }
+.create-product form .imagesOldImages img {
+  width: 2rem;
+  height: 2rem;
+  margin: 0.2rem;
+}
 .create-product form .imagesPreview img {
   width: 2rem;
   height: 2rem;

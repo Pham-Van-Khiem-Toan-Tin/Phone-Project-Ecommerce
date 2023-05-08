@@ -16,16 +16,21 @@ import {
 } from "../../reduxToolkit/reducer/product/productReviewSlice";
 import Loader from "../../components/Loader/Loader";
 import { addItemToCart } from "../../reduxToolkit/actions/cartAction";
-import { clearErrorCart, resetToCart } from "../../reduxToolkit/reducer/product/cartProductSlice";
+import {
+  clearErrorCart,
+  resetToCart,
+} from "../../reduxToolkit/reducer/product/cartProductSlice";
 const Productdetail = () => {
   const dispatch = useDispatch();
   const { error, isLoading, product } = useSelector(
-    (state) => state.productdetail
+    (state) => state.productDetail
   );
   const { error: errorReview, success } = useSelector(
     (state) => state.newReview
   );
-  const {success: successCart, error: errorCart} = useSelector((state) => state.cart);
+  const { success: successCart, error: errorCart } = useSelector(
+    (state) => state.cart
+  );
   const { id } = useParams();
   const [quanlityCart, setQuanlityCart] = useState(1);
   const [ratings, setRatings] = useState(0);
@@ -42,8 +47,8 @@ const Productdetail = () => {
     setRatings(newRating);
   };
   const handleAddCart = () => {
-    dispatch(addItemToCart({id,quanlityCart}));
-  }
+    dispatch(addItemToCart({ id, quanlityCart }));
+  };
   useEffect(() => {
     if (error) {
       toast.error(error);
@@ -53,20 +58,22 @@ const Productdetail = () => {
       toast.error(errorReview);
       dispatch(clearErrorReview());
     }
-    if(errorCart) {
+    if (errorCart) {
       toast.error(errorCart);
       dispatch(clearErrorCart());
     }
-    if(successCart) {
+    if (successCart) {
       toast.success("Product added ro cart");
       dispatch(resetToCart());
     }
+  }, [dispatch, error, errorReview, errorCart, successCart]);
+  useEffect(() => {
     if (success) {
       toast.success("Your's review created!");
       dispatch(newReviewReset());
     }
     dispatch(getProductDetail(id));
-  }, [dispatch, id, error, toast, errorReview, success, errorCart, successCart]);
+  }, [dispatch, success, id]);
 
   return (
     <>
@@ -74,17 +81,8 @@ const Productdetail = () => {
         <Loader />
       ) : (
         <>
-          <div
-            className="container"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              flexDirection: "column",
-              minHeight: "100vh",
-              justifyContent: "center",
-            }}
-          >
-            <div className="productdetail">
+          <div className="container productdetail">
+            <div className="productdetail_section">
               <div className="productdetail-carousel">
                 <div id="productDetail" className="carousel slide">
                   <div className="carousel-indicators">
@@ -98,9 +96,7 @@ const Productdetail = () => {
                             className="active"
                             aria-current="true"
                             aria-label={`Slider ${index}`}
-                          >
-                            test
-                          </button>
+                          ></button>
                         </>
                       );
                     })}
@@ -122,81 +118,97 @@ const Productdetail = () => {
                   </div>
                 </div>
               </div>
-              <div className="productdetail-content">
-                <h2 className="productdetail-name">{product?.name}</h2>
-                <p className="productdetail-id"># {product?._id}</p>
-                <div className="productdetail-ratings">
-                  <StarRatings
-                    rating={product?.ratings ? product.ratings : 5}
-                    starRatedColor="#FFC107"
-                    numberOfStars={5}
-                    name="rating"
-                    starHoverColor="#FFC107"
-                    starDimension="20px"
-                    starSpacing="2px"
-                  />
-                  <span> ({product?.numOfReview} reviews)</span>
+              <div className="productdetail_content">
+                <div className="producdetail_content_container">
+                  <h2 className="productdetail-name">{product?.name}</h2>
+                  <p className="productdetail-id"># {product?._id}</p>
+                  <div className="productdetail-ratings">
+                    <StarRatings
+                      rating={product?.ratings ? product.ratings : 5}
+                      starRatedColor="#FFC107"
+                      numberOfStars={5}
+                      name="rating"
+                      starHoverColor="#FFC107"
+                      starDimension="20px"
+                      starSpacing="2px"
+                    />
+                    <span> ({product?.numOfReview} reviews)</span>
+                  </div>
+                  <div className="quanlity-cart">
+                    <button onClick={() => setQuanlityCart(quanlityCart + 1)}>
+                      +
+                    </button>
+                    <input type="number" value={quanlityCart} readOnly />
+                    <button
+                      onClick={() => {
+                        if (quanlityCart > 1) {
+                          setQuanlityCart(quanlityCart - 1);
+                        }
+                      }}
+                    >
+                      -
+                    </button>
+                    <button className="detail-to-cart" onClick={handleAddCart}>
+                      Add to cart
+                    </button>
+                  </div>
+                  <div className="productdetail-price">
+                    Price: {product?.price} đ
+                  </div>
+                  <div className="productdetail-name">
+                    Status: {product?.stock > 0 ? "Instock" : "OutOfstock"}
+                  </div>
+                  <div className="productdetail-description">
+                    Description: <p>{product?.description}</p>
+                  </div>
                 </div>
-                <div className="quanlity-cart">
-                  <button onClick={() => setQuanlityCart(quanlityCart + 1)}>
-                    +
-                  </button>
-                  <input type="number" value={quanlityCart} readOnly />
+                <div className="button-review-group">
                   <button
-                    onClick={() => {
-                      if (quanlityCart > 1) {
-                        setQuanlityCart(quanlityCart - 1);
-                      }
-                    }}
+                    className="button-review"
+                    data-bs-toggle="modal"
+                    data-bs-target="#submitReviewModal"
                   >
-                    -
+                    Submit review
                   </button>
-                  <button className="detail-to-cart" onClick={handleAddCart}>Add to cart</button>
+                  <button
+                    className="display-review"
+                    onClick={() => setIsOpen(!isOpen)}
+                  >
+                    CLick to {isOpen ? "close" : "open"} Review{" "}
+                    {isOpen ? <FaAngleDoubleUp /> : <FaAngleDoubleDown />}{" "}
+                  </button>
                 </div>
-                <div className="productdetail-price">{product?.price} đ</div>
-                <div className="productdetail-name">
-                  Status: {product?.stock > 0 ? "Instock" : "OutOfstock"}
-                </div>
-                <div className="productdetail-description">
-                  Description: <p>{product?.description}</p>
-                </div>
-                <button
-                  className="button-review"
-                  data-bs-toggle="modal"
-                  data-bs-target="#submitReviewModal"
-                >
-                  Submit review
-                </button>
               </div>
             </div>
-            
-            <button className="display-review" onClick={() => setIsOpen(!isOpen)}>CLick to {isOpen ? "close" : "open"} Review {isOpen ? <FaAngleDoubleUp /> : <FaAngleDoubleDown />} </button>
-            {isOpen && (<div className="listReviews">
+          </div>
+          {isOpen && (
+            <div className="listReviews container">
               {product?.reviews && product?.reviews[0] ? (
                 product.reviews.map((review) => {
                   return (
-                  <div className="listReview">
-                    <h4 className="listReview-header">{review.name}</h4>
-                    <div className="listReview-body">
-                      <StarRatings
-                        rating={review.rating}
-                        starRatedColor="#FFC107"
-                        numberOfStars={5}
-                        name="rating"
-                        starHoverColor="#FFC107"
-                        starDimension="20px"
-                        starSpacing="2px"
-                      />
-                      <h5 className="listReview-title">Comment: </h5>
-                      <p className="listReview-text">{review.comment}</p>
+                    <div className="listReview">
+                      <h4 className="listReview-header">{review.name}</h4>
+                      <div className="listReview-body">
+                        <StarRatings
+                          rating={review.rating}
+                          starRatedColor="#FFC107"
+                          numberOfStars={5}
+                          name="rating"
+                          starHoverColor="#FFC107"
+                          starDimension="20px"
+                          starSpacing="2px"
+                        />
+                        <h5 className="listReview-title">Comment: </h5>
+                        <p className="listReview-text">{review.comment}</p>
+                      </div>
                     </div>
-                  </div>)
+                  );
                 })
               ) : (
                 <h4 className="listReview-nocontent">No reviews</h4>
               )}
-            </div>)}
-          </div>
+            </div>
+          )}
           <div
             className="modal fade"
             id="submitReviewModal"
