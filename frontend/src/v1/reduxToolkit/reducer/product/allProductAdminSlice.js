@@ -6,10 +6,10 @@ const allProductAdminSlice = createSlice({
     initialState: {
         isLoading: false,
         error: null,
-        product: [],
+        products: [],
     },
     reducers: {
-        clearErrorAllProduct: (state) => {state.error = null},
+        clearError: (state) => {state.error = null},
     },
     extraReducers: (builder) => {
         builder.addCase(getAdminProducts.pending, (state) => {
@@ -17,7 +17,7 @@ const allProductAdminSlice = createSlice({
         });
         builder.addCase(getAdminProducts.fulfilled, (state, action) => {
             state.isLoading = false;
-            state.product = action.payload.products;
+            state.products = action.payload.products;
             if(action.payload.accessToken) {
                 localStorage.setItem('accessToken', JSON.stringify(action.payload.accessToken));
             }
@@ -32,5 +32,5 @@ const allProductAdminSlice = createSlice({
     }
 });
 
-export const {clearErrorAllProduct} = allProductAdminSlice.actions;
+export const {clearError} = allProductAdminSlice.actions;
 export default allProductAdminSlice.reducer;

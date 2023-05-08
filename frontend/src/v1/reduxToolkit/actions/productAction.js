@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 const axios = require("axios").default;
 
 //get all prooduct
-export const getProducts = createAsyncThunk(
+export const getAllProducts = createAsyncThunk(
   "REQUEST_GETALLPROCDUCTS",
   async (dataProduct, { rejectWithValue }) => {
     try {
@@ -76,7 +76,7 @@ export const newProduct = createAsyncThunk(
       const config = {
         headers: {
           Authorization: "Bearer " + token,
-          "Content-Type": "application/json",
+          "Content-Type": "multipart/form-data",
         },
         withCredentials: true,
       };
@@ -125,6 +125,29 @@ export const newReview = createAsyncThunk(
         withCredentials: true,
       };
       const {data} = await axios.put(`http://localhost:8000/api/v1/review`, newReview, config);
+      return data;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+)
+
+export const deleteProduct = createAsyncThunk(
+  "DELETE_PRODUCT",
+  async (id, {rejectWithValue}) => {
+    try {
+      const token = JSON.parse(localStorage.getItem("accessToken"));
+      const config = {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+        withCredentials: true,
+      };
+      const {data} = await axios.delete(`http://localhost:8000/api/v1/admin/product/${id}`, config);
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {

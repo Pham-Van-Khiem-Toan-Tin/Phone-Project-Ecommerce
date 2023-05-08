@@ -38,7 +38,7 @@ const SliderProduct = (props) => {
       >
         {data.map((data1, index) => {
           return (
-            <div key={data1.img}>
+            <div key={data1._id}>
               <SwiperSlide key={index}>
                 <Card data={data1} />
               </SwiperSlide>

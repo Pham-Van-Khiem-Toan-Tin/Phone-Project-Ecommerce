@@ -45,5 +45,13 @@
   color: #fff;
 }
 .allproduct .container table tbody .icon-handle_product span a:hover {
-  color: #ccc;
+  color: #49a09d;
+}
+.allproduct .container table tbody .icon-handle_product span button {
+  background: none;
+  border: none;
+  color: #fff;
+}
+.allproduct .container table tbody .icon-handle_product span button:hover {
+  color: #49a09d;
 }/*# sourceMappingURL=AllProduct.css.map */

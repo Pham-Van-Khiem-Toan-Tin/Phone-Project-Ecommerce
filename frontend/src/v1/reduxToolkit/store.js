@@ -2,10 +2,10 @@ import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./reducer/user/userSlice";
 import allUserReducer from "./reducer/user/allUserSlice";
 import userDetailReducer from "./reducer/user/userDetailSlice";
-import newProductReducer from "./reducer/product/productAdminSlice";
+import newProductReducer from "./reducer/product/newProductSlice";
 import allProductAdmin from "./reducer/product/allProductAdminSlice";
 import userHandle from "./reducer/user/userHandle";
-import allProductReducer from "./reducer/product/productSlice";
+import allProductReducer from "./reducer/product/allProductSlice";
 import allProductsHomeReducer from "./reducer/product/productsHomeSlice";
 import productDetailReducer from "./reducer/product/productDetailSlice";
 import newProductReviewReducer from "./reducer/product/productReviewSlice";
@@ -15,16 +15,16 @@ import myOrdersReducer from "./reducer/order/myOrderSlice";
 import getOrderDetailReducer from "./reducer/order/orderDetailSlice";
 import getAllOrdersReducer from "./reducer/order/allOrdersSlice";
 import orderReducer from "./reducer/order/orderSlice";
-
+import productReducer from "./reducer/product/productSlice"
 const store = configureStore({
   reducer: {
     user: userReducer,
     allUsers: allUserReducer,
     userDetail: userDetailReducer,
-    newproduct: newProductReducer,
-    alladminproduct: allProductAdmin,
+    newProduct: newProductReducer,
+    allProductAdmin: allProductAdmin,
     handleUser: userHandle,
-    allproduct: allProductReducer,
+    allProducts: allProductReducer,
     productshome: allProductsHomeReducer,
     productdetail: productDetailReducer,
     newReview: newProductReviewReducer,
@@ -34,6 +34,7 @@ const store = configureStore({
     orderDetail: getOrderDetailReducer,
     allOrders: getAllOrdersReducer,
     order: orderReducer,
+    product: productReducer,
   },
 });
 export default store;

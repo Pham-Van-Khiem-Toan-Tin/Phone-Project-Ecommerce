@@ -11,16 +11,16 @@ import {
 } from "react-icons/bs";
 import "./CreateProduct.css";
 import {
-  clearErrorNewProduct,
+  clearError,
   resetNewProduct,
-} from "../../reduxToolkit/reducer/product/productAdminSlice";
+} from "../../reduxToolkit/reducer/product/newProductSlice";
 import { useNavigate } from "react-router-dom";
 import { newProduct } from "../../reduxToolkit/actions/productAction";
 
 const CreateProduct = () => {
   const dispatch = useDispatch();
   const { error, isLoading, success } = useSelector(
-    (state) => state.newproduct
+    (state) => state.newProduct
   );
   const navigate = useNavigate();
   const [name, setName] = useState("");
@@ -30,10 +30,11 @@ const CreateProduct = () => {
   const [stock, setStock] = useState(20);
   const [images, setImages] = useState([]);
   const [imagePreview, setImagePreview] = useState([]);
+  
   useEffect(() => {
     if (error) {
       toast.error(error);
-      dispatch(clearErrorNewProduct());
+      dispatch(clearError());
     }
     if (success) {
       toast.success("Product created successfully");
@@ -53,9 +54,14 @@ const CreateProduct = () => {
     images.forEach((image) => {
       myForm.append("images", image);
     });
-    console.log(images);
+    console.log("Form data:");
+for (const pair of myForm.entries()) {
+  console.log(pair[0]+ ', ' + pair[1]); 
+  
+}
     dispatch(newProduct(myForm));
   };
+  
   const handleCreateProductImagesChange = (e) => {
     const files = Array.from(e.target.files);
     setImages([]);
@@ -68,9 +74,11 @@ const CreateProduct = () => {
           setImages((old) => [...old, reader.result]);
         }
       };
+      console.log(images);
       reader.readAsDataURL(file);
     });
   };
+  console.log({data: images});
 
   return (
     <div className="create-product">
@@ -144,17 +152,16 @@ const CreateProduct = () => {
         </label>
         <input
           type="file"
-          multiple={true}
+          multiple
           id="productImage"
           name="avatar"
           accept="image/*"
           onChange={handleCreateProductImagesChange}
           placeholder=""
         />
-        <div className="imgasPreview">
-          {imagePreview.map((image, index) => {
-            <img key={index} src={image} alt="Product Preview" />;
-          })}
+        <div className="imagesPreview">
+          {imagePreview.map((image, index) => { return (<img key={index} src={image} alt="Product Preview" />);}
+          )}
         </div>
         <button type="submit" >
           Create

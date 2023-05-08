@@ -4,63 +4,82 @@ import { FaTrashAlt, FaEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { clearErrorAllProduct } from "../../reduxToolkit/reducer/product/allProductAdminSlice";
-import { getAdminProducts } from "../../reduxToolkit/actions/productAction";
+import { clearError } from "../../reduxToolkit/reducer/product/allProductAdminSlice";
+import { deleteProduct, getAdminProducts } from "../../reduxToolkit/actions/productAction";
+import Loader from "../../components/Loader/Loader";
+import { clearErrorHandle, resetDelete } from "../../reduxToolkit/reducer/product/productSlice";
 const AllProduct = () => {
   const dispatch = useDispatch();
-  const { error, product } = useSelector((state) => state.alladminproduct);
+  const { error, isLoading, products } = useSelector(
+    (state) => state.allProductAdmin
+  );
+  const { error: errorDelete, isLoading: isLoadingDelete, isDelete } = useSelector(
+    (state) => state.product
+  );
   useEffect(() => {
     if (error) {
       toast.error(error);
-      dispatch(clearErrorAllProduct);
+      dispatch(clearError());
     }
-  }, [dispatch, error]);
+    if(errorDelete) {
+      toast.error(errorDelete);
+      dispatch(clearErrorHandle());
+    }
+  }, [dispatch, error, errorDelete]);
   useEffect(() => {
+    if(isDelete) {
+      toast.success("Product deleted successfully!");
+      dispatch(resetDelete());
+    }
     dispatch(getAdminProducts());
-  }, [dispatch])
-  
+  }, [dispatch, isDelete]);
   return (
-    <div className="allproduct table-responsive">
-      <div className="container">
-        <table>
-          <thead>
-            <tr>
-              <th>Product ID</th>
-              <th>Name</th>
-              <th>Stock</th>
-              <th>Price</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {product.length > 0 ? (
-              product.map((item) => {
-                return (
-                  <tr>
-                    <td>{item._id}</td>
-                    <td>{item.name}</td>
-                    <td>{item.stock}</td>
-                    <td>{item.price}</td>
-                    <td className="icon-handle_product">
-                      <span>
-                        <Link to={`/`}>
-                          <FaEdit />
-                        </Link>
-                      </span>
-                      <span>
-                        <FaTrashAlt />
-                      </span>
-                    </td>
-                  </tr>
-                );
-              })
-            ) : (
-              <div>No product in your shop</div>
-            )}
-          </tbody>
-        </table>
-      </div>
-    </div>
+    <>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div className="allproduct table-responsive">
+          <div className="container table-responsive">
+            <table className="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>Product ID</th>
+                  <th>Name</th>
+                  <th>Stock</th>
+                  <th>Price</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {products &&
+                  products.map((item) => {
+                    return (
+                      <tr key={item._id}>
+                        <td>{item._id}</td>
+                        <td>{item.name}</td>
+                        <td>{item.stock}</td>
+                        <td>{item.price}</td>
+                        <td className="icon-handle_product">
+                          <span>
+                            <Link to={`/admin/product/${item._id}`}>
+                              <FaEdit />
+                            </Link>
+                          </span>
+                          <span>
+                            <button onClick={() => dispatch(deleteProduct(item._id))} disabled={isLoadingDelete}>
+                              <FaTrashAlt />
+                            </button>
+                          </span>
+                        </td>
+                      </tr>
+                    );
+                  })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

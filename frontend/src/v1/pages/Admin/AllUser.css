@@ -46,5 +46,13 @@
   color: #fff;
 }
 .alluser .container table tbody .icon-handle_user span a:hover {
-  color: #ccc;
+  color: #49a09d;
+}
+.alluser .container table tbody .icon-handle_user span button {
+  background: none;
+  border: none;
+  color: #fff;
+}
+.alluser .container table tbody .icon-handle_user span button:hover {
+  color: #49a09d;
 }/*# sourceMappingURL=AllUser.css.map */

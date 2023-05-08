@@ -270,7 +270,6 @@ module.exports.updateUserRole = catchAsyncError(async (req, res, next) => {
     runValidators: true,
     useFindAndModify: false,
   });
-  console.log("chay den day");
   if(req.token) {
     const newAccessToken = req.token;
     res.status(200).json({

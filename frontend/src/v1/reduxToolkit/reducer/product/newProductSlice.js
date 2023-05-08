@@ -7,10 +7,9 @@ const newProductSlice = createSlice({
         isLoading: false,
         error: null,
         success: false,
-        
     },
     reducers: {
-        clearErrorNewProduct: (state) => {state.error = null;},
+        clearError: (state) => {state.error = null;},
         resetNewProduct: (state) => {state.success = false},
     },
     extraReducers: (builder) => {
@@ -34,5 +33,5 @@ const newProductSlice = createSlice({
     }
 });
 
-export const {clearErrorNewProduct, resetNewProduct} = newProductSlice.actions;
+export const {clearError, resetNewProduct} = newProductSlice.actions;
 export default newProductSlice.reducer;

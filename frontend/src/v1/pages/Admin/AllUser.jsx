@@ -73,8 +73,10 @@ const AllUser = () => {
                               <FaEdit />
                             </Link>
                           </span>
-                          <span onClick={() => handleDeleteUser(item._id)}>
-                            <FaTrashAlt />
+                          <span>
+                            <button onClick={() => handleDeleteUser(item._id)}>
+                              <FaTrashAlt />
+                            </button>
                           </span>
                         </td>
                       </tr>

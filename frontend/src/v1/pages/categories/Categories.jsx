@@ -6,10 +6,13 @@ import Card from "../../components/Card/Card";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader/Loader";
 import { toast } from "react-toastify";
-import { clearError } from "../../reduxToolkit/reducer/product/productSlice";
+import { clearError } from "../../reduxToolkit/reducer/product/allProductSlice";
 import { useParams } from "react-router-dom";
-import { getProducts } from "../../reduxToolkit/actions/productAction";
-import { clearErrorCart, resetToCart } from "../../reduxToolkit/reducer/product/cartProductSlice";
+import { getAllProducts } from "../../reduxToolkit/actions/productAction";
+import {
+  clearErrorCart,
+  resetToCart,
+} from "../../reduxToolkit/reducer/product/cartProductSlice";
 
 const Categories = () => {
   const dispatch = useDispatch();
@@ -20,8 +23,10 @@ const Categories = () => {
     resultPerPage,
     filteredProductsCount,
     error,
-  } = useSelector((state) => state.allproduct);
-  const { error: errorCart, success: successCart } = useSelector((state) => state.cart);
+  } = useSelector((state) => state.allProducts);
+  const { error: errorCart, success: successCart } = useSelector(
+    (state) => state.cart
+  );
   const listCategories = ["Samsung", "Xiaomi", "Apple", "Oppo"];
   const [currentPage, setCurrentPage] = useState(1);
   const [category, setCategory] = useState("");
@@ -48,10 +53,10 @@ const Categories = () => {
       toast.success(successCart);
       dispatch(resetToCart());
     }
-  }, [dispatch, error,  errorCart, successCart]);
+  }, [dispatch, error, errorCart, successCart]);
   useEffect(() => {
     dispatch(
-      getProducts({
+      getAllProducts({
         keyword,
         currentPage,
         minValue,
