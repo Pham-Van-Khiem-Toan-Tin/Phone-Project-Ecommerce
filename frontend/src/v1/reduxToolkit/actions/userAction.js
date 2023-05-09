@@ -43,6 +43,25 @@ export const login = createAsyncThunk(
     }
   }
 );
+export const logout = createAsyncThunk(
+  "USER_LOGOUT",
+  async (_, { rejectWithValue }) => {
+    try {
+      const config = {  withCredentials: true };
+      const { data } = await axios.get(
+        `http://localhost:8000/api/v1/logout`,
+        config
+      );
+      return data;
+    } catch (error) {
+        if (error.response && error.response.data.message) {
+            return rejectWithValue(error.response.data.message);
+          } else {
+            return rejectWithValue(error.message);
+          }
+    }
+  }
+);
 
 export const allUser = createAsyncThunk(
   "ALL_USER",

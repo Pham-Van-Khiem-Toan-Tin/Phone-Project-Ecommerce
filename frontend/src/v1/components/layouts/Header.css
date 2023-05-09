@@ -19,6 +19,12 @@ header .navbar-container {
 header .navbar-container .icon-toggle {
   flex: 1;
   padding-left: 2px;
+  display: flex;
+}
+header .navbar-container .icon-toggle .navbar-brand {
+  font-size: 1rem;
+  margin-left: 1rem;
+  font-weight: 700;
 }
 header .navbar-container .icon-toggle button {
   background-color: transparent;
@@ -32,83 +38,73 @@ header .navbar-container .icon-toggle button svg {
   vertical-align: baseline;
   font-weight: 700;
 }
-header .navbar-container .navbar-brand {
+header .navbar-container .navbar-search {
   flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 1s ease-in-out;
+  position: relative;
 }
-header .navbar-container .navbar-brand span {
-  text-align: center;
-  font-size: 30px;
-  font-weight: 700;
-  font-family: "Courier New", Courier, monospace;
+header .navbar-container .navbar-search input {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 0.1rem 0.2rem 0.1rem 1rem;
+  border-radius: 0.5rem;
+}
+header .navbar-container .navbar-search .icon_input-search {
+  position: absolute;
+  right: 2%;
+  top: 10%;
+  color: #ccc;
+}
+header .navbar-container .navbar-search .icon_input-search svg {
+  vertical-align: baseline;
 }
 header .navbar-container .navbar_icon-group {
   flex: 1;
   display: flex;
   justify-content: flex-end;
 }
-header .navbar-container .navbar_icon-group div a {
-  display: block;
-  margin: auto 5px;
-  border-radius: 5px;
-  padding: 2px;
+header .navbar-container .navbar_icon-group .icon-user {
+  margin: 0 0.5rem;
 }
-header .navbar-container .navbar_icon-group div a span {
-  text-align: center;
-}
-header .navbar-container .navbar_icon-group div a span svg {
-  font-size: 25px;
+header .navbar-container .navbar_icon-group .icon-user .dropdown button {
+  border: none;
+  background: transparent;
   color: #fff;
+  font-size: 1rem;
+}
+header .navbar-container .navbar_icon-group .icon-user .dropdown button svg {
   vertical-align: baseline;
 }
-header .navbar-container .navbar_icon-group .navbar-search {
-  margin: 0 10px;
-  background: #fff;
-  height: 30px;
-  border-radius: 30px;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+header .navbar-container .navbar_icon-group .icon-user .dropdown .dropdown-menu {
+  font-size: 0.8rem;
+  padding: 0;
+  overflow: hidden;
+}
+header .navbar-container .navbar_icon-group .icon-user .dropdown .dropdown-menu li {
   cursor: pointer;
-  transition: 0.8s;
-  box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.3), -4px -4px 6px 0 rgba(116, 125, 136, 0.2), inset -4px -4px 6px 0 rgba(255, 255, 255, 0.2), inset 4px 4px 6px 0 rgba(0, 0, 0, 0.2);
 }
-header .navbar-container .navbar_icon-group .navbar-search .search-input {
-  background: transparent;
-  border: none;
-  outline: none;
-  width: 0px;
-  font-weight: 500;
-  font-size: 16px;
-  transition: 0.8s;
+header .navbar-container .navbar_icon-group .icon-user .dropdown .dropdown-menu li a {
+  color: inherit;
 }
-header .navbar-container .navbar_icon-group .navbar-search .search-btn {
-  color: #5cbdbb;
-  font-weight: 300;
+header .navbar-container .navbar_icon-group .icon-user .dropdown .dropdown-menu li button {
+  color: inherit;
+  font-size: inherit;
 }
-header .navbar-container .navbar_icon-group .navbar-search:hover > .search-input {
-  width: 200px;
+header .navbar-container .navbar_icon-group .icon-user .dropdown .dropdown-menu li button:hover {
+  background: #e9ecef;
 }
-header .navbar-container .navbar_icon-group .navbar-search:hover {
-  animation: hoverShake 0.15s linear 3;
+header .navbar-container .navbar_icon-group .icon-cart,
+header .navbar-container .navbar_icon-group .icon-bell {
+  margin-right: 0.5rem;
 }
-@keyframes hoverShake {
-  0% {
-    transform: skew(0deg, 0deg);
-  }
-  25% {
-    transform: skew(5deg, 5deg);
-  }
-  75% {
-    transform: skew(-5deg, -5deg);
-  }
-  100% {
-    transform: skew(0deg, 0deg);
-  }
+header .navbar-container .navbar_icon-group .icon-cart a,
+header .navbar-container .navbar_icon-group .icon-bell a {
+  color: #fff;
+  font-size: 1rem;
+}
+header .navbar-container .navbar_icon-group .icon-cart a svg,
+header .navbar-container .navbar_icon-group .icon-bell a svg {
+  vertical-align: baseline;
 }
 header .offcanvas {
   background: linear-gradient(45deg, #49a09d, #5f2c82);

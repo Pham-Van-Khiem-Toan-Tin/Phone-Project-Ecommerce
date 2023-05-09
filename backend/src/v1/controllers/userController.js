@@ -58,13 +58,12 @@ module.exports.loginUser = catchAsyncError(async (req, res, next) => {
 
 //Logout user
 module.exports.logout = catchAsyncError(async (req, res, next) => {
-  req.cookie("token", null, {
+  res.cookie("refeshToken", null, {
     expires: new Date(Date.now()),
     httpOnly: true,
   });
   res.status(200).json({
     success: true,
-    message: "Logged Out",
   });
 });
 

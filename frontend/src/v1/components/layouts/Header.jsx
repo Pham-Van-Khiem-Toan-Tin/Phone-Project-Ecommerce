@@ -1,10 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import { FaBars, FaUserAlt, FaShoppingCart, FaBell, FaSearch, FaTimes } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import {
+  FaBars,
+  FaUserAlt,
+  FaShoppingCart,
+  FaBell,
+  FaSearch,
+  FaTimes,
+} from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
 
 import "./Header.css";
 import { Link } from "react-router-dom";
+import { logout } from "../../reduxToolkit/actions/userAction";
+import { toast } from "react-toastify";
+import { clearError, logoutReset } from "../../reduxToolkit/reducer/user/userSlice";
 
 const menus = [
   {
@@ -26,8 +36,19 @@ const menus = [
 ];
 
 const Header = () => {
-  const { isAuthenticated, user } = useSelector((state) => state.user);
-  const [isOpenBrand, setIsOpenBrand] = useState(true);
+  const { isAuthenticated, user, success, errorLogout } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if(success) {
+      toast.success("Log out");
+      dispatch(logoutReset());
+    }
+    if(errorLogout) {
+      toast.error("Error");
+      dispatch(clearError());
+    }
+  }, [success, dispatch, errorLogout])
+  
   return (
     <header>
       <div className="navbar-container container">
@@ -40,28 +61,59 @@ const Header = () => {
           >
             <FaBars />
           </button>
-        </div>
-        {isOpenBrand && (<div className="navbar-brand">
-          <span>Shop</span>
-        </div>)}
-        <div className="navbar_icon-group">
-          <div className="navbar-search" onMouseEnter={() => setIsOpenBrand(false)} onMouseLeave={() => setIsOpenBrand(true)}>
-            <input
-              type="text"
-              name="search"
-              placeholder="Search..."
-              className="search-input"
-            />
-            <div className="search-btn">
-              <FaSearch />
-            </div>
+          <div className="navbar-brand">
+            <span>Shop</span>
           </div>
+        </div>
+        <div className="navbar-search">
+          <input
+            type="text"
+            name="search"
+            placeholder="Search..."
+            className="search-input"
+          />
+          <div className="icon_input-search">
+            <FaSearch />
+          </div>
+        </div>
+        <div className="navbar_icon-group">
           <div className="icon-user">
-            <Link to="/login">
-              <span>
+            <div className="dropdown">
+              <button
+                className="dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
                 <FaUserAlt />
-              </span>
-            </Link>
+              </button>
+              <ul className="dropdown-menu">
+                {isAuthenticated ? (
+                  <>
+                    <li>
+                      <div className="dropdown-item">
+                        <Link to="/account">Account</Link>
+                      </div>
+                    </li>
+                    <li>
+                      <button className="dropdown-item" onClick={() => dispatch(logout())}>
+                        Log out
+                      </button>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li>
+                      <div className="dropdown-item">
+                        <Link to="/login">
+                          <span>Login/Sign up</span>
+                        </Link>
+                      </div>
+                    </li>
+                  </>
+                )}
+              </ul>
+            </div>
           </div>
           <div className="icon-cart">
             <Link to="/cart">
@@ -94,7 +146,9 @@ const Header = () => {
             className="btn"
             data-bs-dismiss="offcanvas"
             aria-label="Close"
-          ><FaTimes /></button>
+          >
+            <FaTimes />
+          </button>
         </div>
         <div className="offcanvas-body">
           {user?.role === "admin" && (

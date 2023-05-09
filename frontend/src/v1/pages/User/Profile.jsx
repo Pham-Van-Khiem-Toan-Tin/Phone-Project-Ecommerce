@@ -15,7 +15,9 @@ const Profile = () => {
       navigate("/login");
     }
   }, [dispatch]);
-
+  useEffect(() => {
+    dispatch(getAccount());
+  }, [dispatch])
   return (
     <>
       {isLoading ? (
@@ -25,7 +27,9 @@ const Profile = () => {
           <div className="user-avatar">
             <span>My Profile</span>
             <img src={user?.avatar?.url} alt={user?.name} />
-            <button className="user-edit">Edit Profile</button>
+            <Link to='/me/update'>
+              <button className="user-edit">Edit Profile</button>
+            </Link>
           </div>
           <div className="user-profile-detail">
             <h2 className="user-name-title">Full Name</h2>
@@ -37,7 +41,9 @@ const Profile = () => {
             <Link to="/orders">
               <button>My order</button>
             </Link>
-            <button>Change Password</button>
+            <Link to="/password/update">
+              <button>Change Password</button>
+            </Link>
           </div>
         </div>
       )}

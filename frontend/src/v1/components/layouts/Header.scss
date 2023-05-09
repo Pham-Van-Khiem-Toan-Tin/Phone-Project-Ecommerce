@@ -10,19 +10,28 @@ header {
     color: #fff;
     height: 60px;
     z-index: 999;
+
     .navbar-container {
         display: flex;
         align-items: center;
         justify-content: center;
+
         .icon-toggle {
             flex: 1;
             padding-left: 2px;
-            
+            display: flex;
+
+            .navbar-brand {
+                font-size: 1rem;
+                margin-left: 1rem;
+                font-weight: 700;
+            }
             button {
                 background-color: transparent;
                 border-radius: 10px;
                 height: 30px;
                 border: none;
+
                 svg {
                     color: #ffff;
                     font-size: 30px;
@@ -30,169 +39,183 @@ header {
                     font-weight: 700;
                 }
             }
-           
+
         }
-        .navbar-brand {
+
+        .navbar-search {
             flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 1s ease-in-out;
-            span {
-                text-align: center;
-                font-size: 30px;
-                font-weight: 700;
-                font-family: 'Courier New', Courier, monospace;
+            position: relative;
+            input {
+                width: 100%;
+                border: none;
+                outline: none;
+                padding: 0.1rem 0.2rem 0.1rem 1rem;
+                border-radius: 0.5rem;
             }
-            
+            .icon_input-search {
+                position: absolute;
+                right: 2%;
+                top: 10%;
+                color: #ccc;
+                svg {
+                    vertical-align: baseline;
+                }
+            }
         }
-        
+
         .navbar_icon-group {
             flex: 1;
             display: flex;
             justify-content: flex-end;
-            div {
+            .icon-user {
+                margin: 0 0.5rem;
 
-                a {
-                    display: block;
-                    margin: auto 5px;
-                    
-                    border-radius: 5px;
-                    padding: 2px;
-                    span {
-                        text-align: center;
+                .dropdown {
+                    button {
+                        border: none;
+                        background: transparent;
+                        color: #fff;
+                        font-size: 1rem;
+
                         svg {
-                            font-size: 25px;
-                            color: #fff;
-                            vertical-align:baseline;
+                            vertical-align: baseline;
+                        }
+                    }
+                    .dropdown-menu {
+                        font-size: 0.8rem;
+                        padding: 0;
+                        overflow: hidden;
+                        li {
+                            cursor: pointer;
+                            a {
+                                color: inherit;
+                            }
+                            button {
+                                color: inherit;
+                                font-size: inherit;
+                                &:hover {
+                                    background: #e9ecef;
+                                }
+                            }
                         }
                     }
                 }
             }
-            .navbar-search{
-                margin: 0 10px;
-                background: #fff;
-                height: 30px;
-                border-radius: 30px;
-                padding: 10px 20px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                cursor: pointer;
-                transition: 0.8s;
-                box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
-                          -4px -4px 6px 0 rgba(116, 125, 136, .2), 
-                inset -4px -4px 6px 0 rgba(255,255,255,.2),
-                inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
-                .search-input{
-                    background: transparent;
-                    border: none;
-                    outline:none;
-                    width: 0px;
-                    font-weight: 500;
-                    font-size: 16px;
-                    transition: 0.8s;
-                    
+            .icon-cart,
+            .icon-bell {
+                margin-right: 0.5rem;
+
+                a {
+                    color: #fff;
+                    font-size: 1rem;
+
+                    svg {
+                        vertical-align: baseline;
+                    }
                 }
-                .search-btn {
-                    color: #5cbdbb;
-                    font-weight: 300;
-                }
-                &:hover > .search-input{
-                    width: 200px;
-                }
-                
-                &:hover{
-                    animation: hoverShake 0.15s linear 3;
-                }
-            }
-            @keyframes hoverShake {
-              0% {transform: skew(0deg,0deg);}
-              25% {transform: skew(5deg, 5deg);}
-              75% {transform: skew(-5deg, -5deg);}
-              100% {transform: skew(0deg,0deg);}
             }
         }
     }
-    .offcanvas{
-	    background: linear-gradient(45deg, #49a09d, #5f2c82);
+
+    .offcanvas {
+        background: linear-gradient(45deg, #49a09d, #5f2c82);
         color: #fff;
+
         .offcanvas-header {
             button {
                 border: none;
+
                 svg {
                     transition: transform 0.5s ease-in;
                     color: #fff;
                     font-size: 30px;
                     vertical-align: baseline;
                     font-weight: 700;
+
                     &:hover {
-                    transform: rotate(40deg);
+                        transform: rotate(40deg);
+                    }
                 }
-                }
+
                 &:active {
                     border: none;
                     color: #ccc;
                 }
-                
+
             }
 
         }
+
         .offcanvas-body {
             padding-top: 0;
+
             ul {
-	            background: transparent;
+                background: transparent;
                 box-shadow: none !important;
                 border: none;
             }
+
             li {
                 font-weight: 700;
                 background: transparent;
                 border: none;
+
                 a {
                     color: #fff;
                 }
+
                 a:hover {
                     color: #5f2c82;
                 }
             }
+
             .list-group-item {
-                padding-left: 20px ;
+                padding-left: 20px;
             }
+
             .title-menu {
-                
+
                 font-size: 30px;
             }
+
             .accordion {
                 background: transparent;
+
                 .accordion-item {
                     background: transparent;
+
                     .accordion-header {
                         button {
                             background: transparent;
                             border: none;
                             outline: none;
                             padding: 0.5rem 1rem;
+
                             &:focus {
                                 box-shadow: none;
                             }
+
                             &:hover {
                                 color: #5f2c82;
                             }
                         }
+
                         .accordion-button::after {
                             background-image: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="30" height="30" viewBox="0 0 16 16"%3E%3Cg transform="rotate(180 8 8)"%3E%3Cpath fill="white" fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56L2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E');
-                            
+
                         }
                     }
+
                     .accordion-button {
                         font-weight: 700;
                         color: #fff;
                     }
+
                     .accordion-body {
                         li {
                             a {
                                 color: #fff;
+
                                 &:hover {
                                     color: #5f2c82;
 

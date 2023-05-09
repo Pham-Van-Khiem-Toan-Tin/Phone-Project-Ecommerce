@@ -17,7 +17,7 @@ const LoginAndSignUp = () => {
   const forms = useRef(null);
 
   const dispatch = useDispatch();
-  const { isLoading, error, isAuthenticated } = useSelector(
+  const { isLoading, error, isAuthenticated, success } = useSelector(
     (state) => state.user
   );
 
@@ -72,15 +72,11 @@ const LoginAndSignUp = () => {
   };
   const redirect = location.search ? location.search.split("=")[1] : "/account";
   useEffect(() => {
-    
     if (error) {
       toast.error(error);
       dispatch(clearError());
-      if(localStorage.getItem("accessToken")) {
-        localStorage.removeItem("accessToken");
-      }
     }
-    if(isAuthenticated) {
+    if (isAuthenticated) {
       navigate(redirect);
     }
   }, [dispatch, error, navigate, isAuthenticated, redirect]);
