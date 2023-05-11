@@ -8,7 +8,7 @@ const UserDetailSlice = createSlice({
     error: null,
   },
   reducers: {
-    clearError: (state) => (state.error = null),
+    clearError: (state) => {state.error = null},
   },
   extraReducers: (builder) => {
     builder.addCase(getUserDetail.pending, (state) => {

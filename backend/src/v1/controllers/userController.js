@@ -78,9 +78,10 @@ module.exports.forgotPassword = catchAsyncError(async (req, res, next) => {
     validateBeforeSave: false,
   });
 
-  const resetPasswordUrl = `${req.protocol}://${req.get(
-    "host"
-  )}/password/reset/${resetToken}`;
+  // const resetPasswordUrl = `${req.protocol}://${req.get(
+  //   "host"
+  // )}/password/reset/${resetToken}`;
+  const resetPasswordUrl = `http://localhost:3000/password/reset/${resetToken}`
   const message = `Your password reset token is:- \n\n ${resetPasswordUrl} \n\n If you have not this request email then, please ignore it.`;
 
   try {
@@ -107,17 +108,20 @@ module.exports.forgotPassword = catchAsyncError(async (req, res, next) => {
 
 //Reset password
 module.exports.resetPassword = catchAsyncError(async (req, res, next) => {
+  console.log(req.body);
+  console.log(req.params.token);
   const resetPasswordToken = crypto
     .createHash("sha256")
-    .update(req.param.token)
+    .update(req.params.token)
     .digest("hex");
+  console.log("chay den phan thu 2");
   const user = await userModel.findOne({
     resetPasswordToken,
     resetPasswordExpire: {
       $gt: Date.now(),
     },
   });
-
+  console.log("chay den day");
   if (!user) {
     return next(
       new ErrorHandle("Reset password token is invalid or has been expired"),
@@ -127,7 +131,6 @@ module.exports.resetPassword = catchAsyncError(async (req, res, next) => {
   if (req.body.password !== req.body.confirmPassword) {
     return next(new ErrorHandle("Password does not password", 400));
   }
-
   user.password = req.body.password;
   user.resetPasswordToken = undefined;
   user.resetPasswordExpire = undefined;
@@ -159,9 +162,8 @@ module.exports.updatePassword = catchAsyncError(async (req, res, next) => {
   if (!isPasswordMatched) {
     return next(new ErrorHandle("Old password is incorrect", 400));
   }
-
   if (req.body.newPassword !== req.body.confirmPassword) {
-    return next(new ErrorHandle("password does not match", 400));
+    return next(new ErrorHandle("Password does not match", 400));
   }
   user.password = req.body.newPassword;
   await user.save();

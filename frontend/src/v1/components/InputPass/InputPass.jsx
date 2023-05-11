@@ -15,6 +15,7 @@ const InputPass = (props) => {
         type={showPassword ? "text" : "password"}
         placeholder={props.placeholder}
         className="input"
+        minLength={8}
         name={props.name ? props.name : ""}
         value={props.value}
         onChange={handleChange}

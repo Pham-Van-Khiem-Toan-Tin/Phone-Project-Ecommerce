@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./reducer/user/userSlice";
 import allUserReducer from "./reducer/user/allUserSlice";
+import forgotPasswordReducer from "./reducer/user/forgotPasswordSlice";
 import userDetailReducer from "./reducer/user/userDetailSlice";
 import newProductReducer from "./reducer/product/newProductSlice";
 import allProductAdmin from "./reducer/product/allProductAdminSlice";
@@ -35,6 +36,7 @@ const store = configureStore({
     allOrders: getAllOrdersReducer,
     order: orderReducer,
     product: productReducer,
+    forgotPass: forgotPasswordReducer,
   },
 });
 export default store;

@@ -12,7 +12,7 @@ const allUserSlice = createSlice({
     deleteError: null,
   },
   reducers: {
-    clearError: (state) => (state.error = null),
+    clearError: (state) => {state.error = null},
    
   },
   extraReducers: (builder) => {

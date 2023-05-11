@@ -10,7 +10,7 @@ const UserHandleSlice = createSlice({
     message: null,
   },
   reducers: {
-    clearErrorHandle: (state) => (state.error = null),
+    clearErrorHandle: (state) => {state.error = null},
     updateReset: (state) => {state.isUpDate = false},
     deleteReset: (state) => {state.isDelete = false},
   },
@@ -76,7 +76,7 @@ const UserHandleSlice = createSlice({
     });
     builder.addCase(updatePassword.rejected, (state, action) => {
       state.isLoading = false;
-      state.error = action.payload.message;
+      state.error = action.payload;
       if(action.payload.accessToken) {
         localStorage.setItem('accessToken', JSON.stringify(action.payload.accessToken));
       }

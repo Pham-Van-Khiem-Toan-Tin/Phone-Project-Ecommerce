@@ -36,6 +36,8 @@ import OrderDetail from "./v1/pages/Orders/OrderDetail";
 import ProcessOrder from "./v1/pages/Admin/ProcessOrder";
 import UpdateProfile from "./v1/pages/User/UpdateProfile";
 import UpdatePassword from "./v1/pages/User/UpdatePassword";
+import ForgotPassword from "./v1/pages/User/ForgotPassword";
+import ResetPassword from "./v1/pages/User/ResetPassword";
 function App() {
   const stripePromise = loadStripe(
     "pk_test_51N1RFRJt1tz4StSkzTUdq8lq3KZC2XWUdkXxzMMooea7J3X3TdZlAVeKC3qM1p4MaA5KQjvpuLqT6hYDdsp1iiui00gYWdz4T1"
@@ -58,6 +60,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<LoginAndSignUp />} />
         <Route path="/about" element={<About />} />
+        <Route path="/password/forgot" element={<ForgotPassword />} />
+        <Route path="/password/reset/:token" element={<ResetPassword />} />
         <Route
           path="/account"
           element={<ProtectRoute children={<Profile />} />}

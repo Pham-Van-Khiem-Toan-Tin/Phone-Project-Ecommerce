@@ -7,7 +7,7 @@ import { register, login } from "../../reduxToolkit/actions/userAction";
 import { clearError, resetSuccess } from "../../reduxToolkit/reducer/user/userSlice";
 import { toast } from "react-toastify";
 import "./LoginAndSignUp.css";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import InputPass from "../../components/InputPass/InputPass";
 const LoginAndSignUp = () => {
   const navigate = useNavigate();
@@ -114,9 +114,9 @@ const LoginAndSignUp = () => {
                   />
                 </div>
                 <div className="form-link">
-                  <a href="#" className="forgot-pass">
+                  <Link to="/password/forgot" className="forgot-pass">
                     Forgot password?
-                  </a>
+                  </Link>
                 </div>
                 <div className="field input-field">
                   <button type="submit">Login</button>

@@ -219,6 +219,57 @@ export const updatePassword = createAsyncThunk(
     }
   }
 );
+export const forgotPassword = createAsyncThunk(
+  "FORGOT_PASSWORD",
+  async (dataUpdate, { rejectWithValue }) => {
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        }
+      };
+      const { data } = await axios.post(
+        `http://localhost:8000/api/v1/password/forgot`,
+        dataUpdate,
+        config
+      );
+      return data;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);
+export const resetPassword = createAsyncThunk(
+  "RESET_PASSWORD",
+  async (dataReset, { rejectWithValue }) => {
+    try {
+      console.log(dataReset);
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        }
+      };
+      console.log("chay den day");
+      const { data } = await axios.put(
+        `http://localhost:8000/api/v1/password/reset/${dataReset.token}`,
+        dataReset.myForm,
+        config
+      );
+      console.log("call");
+      return data;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);
 
 export const getAccount = createAsyncThunk(
   "USER_DETAIL",
