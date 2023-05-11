@@ -9,6 +9,9 @@ const UpdateProfile = () => {
     <div className='edit_profile'>
         <form>
             <h5>update profile</h5>
+            <input className='edit_profile_input' type='' />
+            <input className='edit_profile_input' type='' />
+            <input className='edit_profile_input' type='' />
         </form>
     </div>
   )
