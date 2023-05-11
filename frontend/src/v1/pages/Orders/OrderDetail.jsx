@@ -54,8 +54,8 @@ const OrderDetail = () => {
                 className={
                   order.paymentInfor &&
                   order.paymentInfor.status === "succeeded"
-                    ? "greenColor"
-                    : "redColor"
+                    ? "text-success"
+                    : "text-danger"
                 }
               >
                 {order.paymentInfor && order.paymentInfor.status === "succeeded"

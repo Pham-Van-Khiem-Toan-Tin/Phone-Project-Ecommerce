@@ -28,6 +28,7 @@
   border-radius: 50%;
 }
 .profile .user-avatar button {
+  min-width: 10rem;
   background: #643A6B;
   border: none;
   padding: 10px 40px;
@@ -48,6 +49,7 @@
 }
 .profile .user-profile-detail button {
   width: 50%;
+  min-width: 10rem;
   background-color: #643A6B;
   border: none;
   height: 40px;

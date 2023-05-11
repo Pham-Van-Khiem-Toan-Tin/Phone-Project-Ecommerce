@@ -4,7 +4,7 @@ import allUserReducer from "./reducer/user/allUserSlice";
 import userDetailReducer from "./reducer/user/userDetailSlice";
 import newProductReducer from "./reducer/product/newProductSlice";
 import allProductAdmin from "./reducer/product/allProductAdminSlice";
-import userHandle from "./reducer/user/userHandle";
+import userHandleReducer from "./reducer/user/userHandle";
 import allProductReducer from "./reducer/product/allProductSlice";
 import allProductsHomeReducer from "./reducer/product/productsHomeSlice";
 import productDetailReducer from "./reducer/product/productDetailSlice";
@@ -23,7 +23,7 @@ const store = configureStore({
     userDetail: userDetailReducer,
     newProduct: newProductReducer,
     allProductAdmin: allProductAdmin,
-    handleUser: userHandle,
+    handleUser: userHandleReducer,
     allProducts: allProductReducer,
     productshome: allProductsHomeReducer,
     productDetail: productDetailReducer,

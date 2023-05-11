@@ -10,7 +10,9 @@ const userSlice = createSlice({
     isAdmin: false,
     isAuthenticated: false,
     success: false,
+    successAu: false,
     errorLogout: null,
+    message: null,
   },
   reducers: {
     clearError: (state) => {
@@ -21,7 +23,11 @@ const userSlice = createSlice({
       state.isAuthenticated = true;
     },
     logoutReset: (state) => {
-      state.success = false;
+      state.success = false
+    },
+    resetSuccess: (state) => {
+      state.successAu = false;
+      state.message = null;
     },
   },
   extraReducers: (builder) => {
@@ -31,6 +37,8 @@ const userSlice = createSlice({
     builder.addCase(register.fulfilled, (state, action) => {
       state.isLoading = false;
       state.user = action.payload.user;
+      state.message = "Register successfully!"
+      state.successAu = action.payload.success;
       state.isAuthenticated = true;
       localStorage.setItem(
         "accessToken",
@@ -49,6 +57,8 @@ const userSlice = createSlice({
       state.isLoading = false;
       state.isAuthenticated = true;
       state.user = action.payload.user;
+      state.successAu = action.payload.success;
+      state.message = "Login successfully!"
       localStorage.setItem(
         "accessToken",
         JSON.stringify(action.payload.accessToken)
@@ -93,5 +103,5 @@ const userSlice = createSlice({
     });
   },
 });
-export const { clearError, reload, logoutReset } = userSlice.actions;
+export const { clearError, reload, resetSuccess, logoutReset } = userSlice.actions;
 export default userSlice.reducer;

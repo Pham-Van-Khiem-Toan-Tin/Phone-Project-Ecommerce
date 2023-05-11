@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { deleteUser, updateUser } from "../../actions/userAction";
+import { deleteUser, updatePassword, updateProfile, updateUser } from "../../actions/userAction";
 const UserHandleSlice = createSlice({
   name: "userHandle",
   initialState: {
@@ -12,7 +12,7 @@ const UserHandleSlice = createSlice({
   reducers: {
     clearErrorHandle: (state) => (state.error = null),
     updateReset: (state) => {state.isUpDate = false},
-    deleteReset: (state) => {state.isDelete = false}
+    deleteReset: (state) => {state.isDelete = false},
   },
   extraReducers: (builder) => {
     builder.addCase(updateUser.pending, (state) => {
@@ -43,6 +43,40 @@ const UserHandleSlice = createSlice({
     builder.addCase(deleteUser.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
+      if(action.payload.accessToken) {
+        localStorage.setItem('accessToken', JSON.stringify(action.payload.accessToken));
+      }
+    });
+    builder.addCase(updateProfile.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(updateProfile.fulfilled, (state, action) => {
+      state.isUpDate = action.payload.success;
+      state.isLoading = false;
+      if(action.payload.accessToken) {
+        localStorage.setItem('accessToken', JSON.stringify(action.payload.accessToken));
+      }
+    });
+    builder.addCase(updateProfile.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+      if(action.payload.accessToken) {
+        localStorage.setItem('accessToken', JSON.stringify(action.payload.accessToken));
+      }
+    });
+    builder.addCase(updatePassword.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(updatePassword.fulfilled, (state, action) => {
+      state.isUpDate = action.payload.success;
+      state.isLoading = false;
+      if(action.payload.accessToken) {
+        localStorage.setItem('accessToken', JSON.stringify(action.payload.accessToken));
+      }
+    });
+    builder.addCase(updatePassword.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload.message;
       if(action.payload.accessToken) {
         localStorage.setItem('accessToken', JSON.stringify(action.payload.accessToken));
       }

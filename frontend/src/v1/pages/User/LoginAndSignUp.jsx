@@ -1,23 +1,22 @@
 import React, { useEffect, useRef, useState } from "react";
-import { FaEyeSlash, FaEye, FaFacebookF } from "react-icons/fa";
+import { FaFacebookF } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader/Loader";
 import { register, login } from "../../reduxToolkit/actions/userAction";
-import { clearError } from "../../reduxToolkit/reducer/user/userSlice";
+import { clearError, resetSuccess } from "../../reduxToolkit/reducer/user/userSlice";
 import { toast } from "react-toastify";
 import "./LoginAndSignUp.css";
 import { useLocation, useNavigate } from "react-router-dom";
+import InputPass from "../../components/InputPass/InputPass";
 const LoginAndSignUp = () => {
-  const [type, setType] = useState("password");
-  const [iconEyeSlash, setIconEyeSlash] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
 
   const forms = useRef(null);
 
   const dispatch = useDispatch();
-  const { isLoading, error, isAuthenticated, success } = useSelector(
+  const { isLoading, error, isAuthenticated, successAu, message } = useSelector(
     (state) => state.user
   );
 
@@ -39,7 +38,9 @@ const LoginAndSignUp = () => {
   const [avatarPreview, setAvatarPreview] = useState(
     "/assets/images/Profile.png"
   );
-
+  const handleInputLoginCHange = (e) => {
+    setloginPassword(e.target.value);
+  };
   const loginSubmit = (e) => {
     e.preventDefault();
     dispatch(login({ loginEmail, loginPassword }));
@@ -76,10 +77,14 @@ const LoginAndSignUp = () => {
       toast.error(error);
       dispatch(clearError());
     }
+    if(successAu) {
+      toast.success(message);
+      dispatch(resetSuccess());
+    }
     if (isAuthenticated) {
       navigate(redirect);
     }
-  }, [dispatch, error, navigate, isAuthenticated, redirect]);
+  }, [dispatch, error, navigate, isAuthenticated, redirect, successAu ]);
 
   return (
     <>
@@ -102,31 +107,11 @@ const LoginAndSignUp = () => {
                   />
                 </div>
                 <div className="field input-field">
-                  <input
-                    type={type}
-                    placeholder="Password"
-                    className="input"
+                  <InputPass
                     value={loginPassword}
-                    onChange={(e) => setloginPassword(e.target.value)}
-                    required
+                    onChange={handleInputLoginCHange}
+                    placeholder="Password"
                   />
-                  {iconEyeSlash ? (
-                    <FaEyeSlash
-                      className="eye-icon"
-                      onClick={() => {
-                        setIconEyeSlash(false);
-                        setType("text");
-                      }}
-                    />
-                  ) : (
-                    <FaEye
-                      className="eye-icon"
-                      onClick={() => {
-                        setIconEyeSlash(true);
-                        setType("password");
-                      }}
-                    />
-                  )}
                 </div>
                 <div className="form-link">
                   <a href="#" className="forgot-pass">
@@ -193,32 +178,12 @@ const LoginAndSignUp = () => {
                   />
                 </div>
                 <div className="field input-field">
-                  <input
-                    type={type}
-                    placeholder="Password"
-                    className="input"
-                    name="password"
+                  <InputPass
                     value={password}
-                    required
+                    name="password"
                     onChange={registerDataChange}
+                    placeholder="Password"
                   />
-                  {iconEyeSlash ? (
-                    <FaEyeSlash
-                      className="eye-icon"
-                      onClick={() => {
-                        setIconEyeSlash(false);
-                        setType("text");
-                      }}
-                    />
-                  ) : (
-                    <FaEye
-                      className="eye-icon"
-                      onClick={() => {
-                        setIconEyeSlash(true);
-                        setType("password");
-                      }}
-                    />
-                  )}
                 </div>
                 <div className="chose-avatar">
                   <img src={avatarPreview} alt="" />
