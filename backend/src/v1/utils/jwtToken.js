@@ -11,6 +11,7 @@ const sendToken = async (user, status, res) => {
     sameSite: "none",
     secure: true,
     httpOnly: true,
+    domain: process.env.CLIENT_URL,
   };
   res
     .status(status)
