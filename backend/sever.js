@@ -27,7 +27,7 @@ app.use(fileUpLoad());
 
 app.use(
   cors({
-    origin: 'https://645fa77d73abc750485ce4aa--cheerful-lily-46186d.netlify.app',
+    origin: process.env.CLIENT_URL,
     credentials: true,
     exposedHeaders: ["set-cookie"],
   })
