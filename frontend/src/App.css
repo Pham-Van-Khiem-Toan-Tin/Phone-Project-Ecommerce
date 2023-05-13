@@ -25,4 +25,8 @@ a {
 .active {
   border-bottom: 1px solid #91b156;
 }
-
+@media (max-width: 365px) {
+  html {
+    width: 100vw;
+  }
+}
