@@ -4,8 +4,10 @@
   "description": "Nodejs",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon --inspect ./app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "rundev": "nodemon --inspect ./app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm i",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",

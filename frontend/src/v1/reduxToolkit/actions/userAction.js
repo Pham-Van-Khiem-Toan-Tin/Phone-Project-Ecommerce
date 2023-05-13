@@ -9,7 +9,7 @@ export const register = createAsyncThunk(
     try {
       const config = { headers: { "Content-Type": "multipart/form-data" } };
       const { data } = await axios.post(
-        `http://localhost:8000/api/v1/register`,
+        `${process.env.REACT_APP_SERVER}/register`,
         userForm,
         config
       );
@@ -32,7 +32,7 @@ export const login = createAsyncThunk(
         withCredentials: true,
       };
       const { data } = await axios.post(
-        `http://localhost:8000/api/v1/login`,
+        `${process.env.REACT_APP_SERVER}/login`,
         { email: dataLogin.loginEmail, password: dataLogin.loginPassword },
         config
       );
@@ -52,7 +52,7 @@ export const logout = createAsyncThunk(
     try {
       const config = { withCredentials: true };
       const { data } = await axios.get(
-        `http://localhost:8000/api/v1/logout`,
+        `${process.env.REACT_APP_SERVER}/logout`,
         config
       );
       return data;
@@ -76,7 +76,7 @@ export const allUser = createAsyncThunk(
         withCredentials: true,
       };
       const { data } = await axios.get(
-        `http://localhost:8000/api/v1/admin/users`,
+        `${process.env.REACT_APP_SERVER}/admin/users`,
         config
       );
       return data;
@@ -99,7 +99,7 @@ export const deleteUser = createAsyncThunk(
         withCredentials: true,
       };
       const { data } = await axios.delete(
-        `http://localhost:8000/api/v1/admin/user/${id}`,
+        `${process.env.REACT_APP_SERVER}/admin/user/${id}`,
         config
       );
       return data;
@@ -122,7 +122,7 @@ export const getUserDetail = createAsyncThunk(
         withCredentials: true,
       };
       const { data } = await axios.get(
-        `http://localhost:8000/api/v1/admin/user/${id}`,
+        `${process.env.REACT_APP_SERVER}/admin/user/${id}`,
         config
       );
       return data;
@@ -149,7 +149,7 @@ export const updateUser = createAsyncThunk(
         withCredentials: true,
       };
       const { data } = await axios.put(
-        `http://localhost:8000/api/v1/admin/user/${dataUpdate.id}`,
+        `${process.env.REACT_APP_SERVER}/admin/user/${dataUpdate.id}`,
         dataUpdate.myForm,
         config
       );
@@ -177,7 +177,7 @@ export const updateProfile = createAsyncThunk(
         withCredentials: true,
       };
       const { data } = await axios.put(
-        `http://localhost:8000/api/v1/me/update`,
+        `${process.env.REACT_APP_SERVER}/me/update`,
         dataUpdate,
         config
       );
@@ -205,7 +205,7 @@ export const updatePassword = createAsyncThunk(
         withCredentials: true,
       };
       const { data } = await axios.put(
-        `http://localhost:8000/api/v1/password/update`,
+        `${process.env.REACT_APP_SERVER}/password/update`,
         dataUpdate,
         config
       );
@@ -229,7 +229,7 @@ export const forgotPassword = createAsyncThunk(
         }
       };
       const { data } = await axios.post(
-        `http://localhost:8000/api/v1/password/forgot`,
+        `${process.env.REACT_APP_SERVER}/password/forgot`,
         dataUpdate,
         config
       );
@@ -255,7 +255,7 @@ export const resetPassword = createAsyncThunk(
       };
       console.log("chay den day");
       const { data } = await axios.put(
-        `http://localhost:8000/api/v1/password/reset/${dataReset.token}`,
+        `${process.env.REACT_APP_SERVER}/password/reset/${dataReset.token}`,
         dataReset.myForm,
         config
       );
@@ -281,7 +281,7 @@ export const getAccount = createAsyncThunk(
         withCredentials: true,
       };
       const { data } = await axios.get(
-        `http://localhost:8000/api/v1/me`,
+        `${process.env.REACT_APP_SERVER}/me`,
         config
       );
       return data;

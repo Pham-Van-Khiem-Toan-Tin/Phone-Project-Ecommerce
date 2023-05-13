@@ -14,7 +14,7 @@ export const createOrder = createAsyncThunk(
         withCredentials: true,
       };
       const { data } = await axios.post(
-        `http://localhost:8000/api/v1/order/new`,
+        `${process.env.REACT_APP_SERVER}/order/new`,
         order,
         config
       );
@@ -41,7 +41,7 @@ export const myOrders = createAsyncThunk(
         withCredentials: true,
       };
       const { data } = await axios.get(
-        `http://localhost:8000/api/v1/orders/me`,
+        `${process.env.REACT_APP_SERVER}/orders/me`,
         config
       );
       return data;
@@ -66,7 +66,7 @@ export const orderDetail = createAsyncThunk(
         withCredentials: true,
       };
       const { data } = await axios.get(
-        `http://localhost:8000/api/v1/order/${id}`,
+        `${process.env.REACT_APP_SERVER}/order/${id}`,
         config
       );
       return data;
@@ -91,7 +91,7 @@ export const getAllOrders = createAsyncThunk(
         withCredentials: true,
       };
       const { data } = await axios.get(
-        `http://localhost:8000/api/v1/admin/orders`,
+        `${process.env.REACT_APP_SERVER}/admin/orders`,
         config
       );
       return data;
@@ -117,7 +117,7 @@ export const deleteOrder = createAsyncThunk(
         withCredentials: true,
       };
       const { data } = await axios.delete(
-        `http://localhost:8000/api/v1/admin/order/${id}`,
+        `${process.env.REACT_APP_SERVER}/admin/order/${id}`,
         config
       );
       return data;
@@ -143,7 +143,7 @@ export const updateOrder = createAsyncThunk(
         withCredentials: true,
       };
       const { data } = await axios.put(
-        `http://localhost:8000/api/v1/admin/order/${order.id}`,
+        `${process.env.REACT_APP_SERVER}/admin/order/${order.id}`,
         order.myForm,
         config
       );

@@ -1,5 +1,4 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-
 const axios = require("axios").default;
 
 export const addItemToCart = createAsyncThunk(
@@ -15,7 +14,7 @@ export const addItemToCart = createAsyncThunk(
         withCredentials: true,
       };
       const { data } = await axios.put(
-        `http://localhost:8000/api/v1/addcart`,
+        `${process.env.REACT_APP_SERVER}/addcart`,
         { producId: dataCart.id, quanlityProduct: dataCart.quanlityCart },
         config
       );
@@ -42,7 +41,7 @@ export const getProductCart = createAsyncThunk(
         withCredentials: true,
       };
       const { data } = await axios.get(
-        `http://localhost:8000/api/v1/cart`,
+        `${process.env.REACT_APP_SERVER}/cart`,
         config
       );
       return data;
@@ -68,7 +67,7 @@ export const deleteItemCart = createAsyncThunk(
         withCredentials: true,
       };
       const { data } = await axios.delete(
-        `http://localhost:8000/api/v1/cart/${id}`,
+        `${process.env.REACT_APP_SERVER}/cart/${id}`,
         config
       );
       return data;

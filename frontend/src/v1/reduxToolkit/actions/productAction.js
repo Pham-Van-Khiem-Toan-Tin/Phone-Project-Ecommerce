@@ -9,9 +9,9 @@ export const getAllProducts = createAsyncThunk(
       if (!dataProduct.keyword) {
         dataProduct.keyword = "";
       }
-      let link = `http://localhost:8000/api/v1/products?keyword=${dataProduct.keyword}&page=${dataProduct.currentPage}&price[gte]=${dataProduct.minValue}&price[lte]=${dataProduct.maxValue}&ratings[gte]=${dataProduct.ratings}`;
+      let link = `${process.env.REACT_APP_SERVER}/products?keyword=${dataProduct.keyword}&page=${dataProduct.currentPage}&price[gte]=${dataProduct.minValue}&price[lte]=${dataProduct.maxValue}&ratings[gte]=${dataProduct.ratings}`;
       if (dataProduct.category) {
-        link = `http://localhost:8000/api/v1/products?keyword=${dataProduct.keyword}&page=${dataProduct.currentPage}&price[gte]=${dataProduct.minValue}&price[lte]=${dataProduct.maxValue}&category=${dataProduct.category}&ratings[gte]=${dataProduct.ratings}`;
+        link = `${process.env.REACT_APP_SERVER}/products?keyword=${dataProduct.keyword}&page=${dataProduct.currentPage}&price[gte]=${dataProduct.minValue}&price[lte]=${dataProduct.maxValue}&category=${dataProduct.category}&ratings[gte]=${dataProduct.ratings}`;
       }
       const { data } = await axios.get(link);
       return data;
@@ -29,7 +29,7 @@ export const getHotProduct = createAsyncThunk(
   "REQUEST_GETHOTPRODUCTS",
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get("http://localhost:8000/api/v1/hotproducts");
+      const { data } = await axios.get(`${process.env.REACT_APP_SERVER}/hotproducts`);
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -54,7 +54,7 @@ export const getAdminProducts = createAsyncThunk(
         withCredentials: true,
       };
       const { data } = await axios.get(
-        `http://localhost:8000/api/v1/admin/products`,
+        `${process.env.REACT_APP_SERVER}/admin/products`,
         config
       );
       return data;
@@ -81,7 +81,7 @@ export const newProduct = createAsyncThunk(
         withCredentials: true,
       };
       const { data } = await axios.post(
-        `http://localhost:8000/api/v1/admin/product/new`,
+        `${process.env.REACT_APP_SERVER}/admin/product/new`,
         productData,
         config
       );
@@ -100,7 +100,7 @@ export const getProductDetail = createAsyncThunk(
   "PRODUCT_DETAIL",
   async (id, {rejectWithValue}) => {
     try {
-      const {data} = await axios.get(`http://localhost:8000/api/v1/product/${id}`);
+      const {data} = await axios.get(`${process.env.REACT_APP_SERVER}/product/${id}`);
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -124,7 +124,7 @@ export const newReview = createAsyncThunk(
         },
         withCredentials: true,
       };
-      const {data} = await axios.put(`http://localhost:8000/api/v1/review`, newReview, config);
+      const {data} = await axios.put(`${process.env.REACT_APP_SERVER}/review`, newReview, config);
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -139,7 +139,7 @@ export const getAllReviews = createAsyncThunk(
   "ALL_REVIEWS",
   async (id, {rejectWithValue}) => {
     try {
-      const {data} = await axios.get(`http://localhost:8000/api/v1/reviews/?id=${id}`);
+      const {data} = await axios.get(`${process.env.REACT_APP_SERVER}/reviews/?id=${id}`);
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -161,7 +161,7 @@ export const deleteReview = createAsyncThunk(
         },
         withCredentials: true,
       };
-      const {data} = await axios.delete(`http://localhost:8000/api/v1/reviews/?id=${reviewDelete.reviewId}&productId=${reviewDelete.productId}`, config);
+      const {data} = await axios.delete(`${process.env.REACT_APP_SERVER}/reviews/?id=${reviewDelete.reviewId}&productId=${reviewDelete.productId}`, config);
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -185,7 +185,7 @@ export const updateProduct = createAsyncThunk(
         },
         withCredentials: true,
       };
-      const {data} = await axios.put(`http://localhost:8000/api/v1/admin/product/${dataChange.id}`,dataChange.myForm , config);
+      const {data} = await axios.put(`${process.env.REACT_APP_SERVER}/admin/product/${dataChange.id}`,dataChange.myForm , config);
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -208,7 +208,7 @@ export const deleteProduct = createAsyncThunk(
         },
         withCredentials: true,
       };
-      const {data} = await axios.delete(`http://localhost:8000/api/v1/admin/product/${id}`, config);
+      const {data} = await axios.delete(`${process.env.REACT_APP_SERVER}/admin/product/${id}`, config);
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {
