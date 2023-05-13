@@ -27,7 +27,7 @@ app.use(fileUpLoad());
 
 app.use(
   cors({
-    origin: 'https://645fab39f61024571ca1d40e--cheerful-lily-46186d.netlify.app/',
+    origin: 'https://phone-app-huster.netlify.app/',
     credentials: true,
     exposedHeaders: ["set-cookie"],
   })
