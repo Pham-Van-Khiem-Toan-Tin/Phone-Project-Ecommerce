@@ -9,14 +9,17 @@ import userHandleReducer from "./reducer/user/userHandle";
 import allProductReducer from "./reducer/product/allProductSlice";
 import allProductsHomeReducer from "./reducer/product/productsHomeSlice";
 import productDetailReducer from "./reducer/product/productDetailSlice";
-import newProductReviewReducer from "./reducer/product/productReviewSlice";
+import newProductReviewReducer from "./reducer/product/newReviewSlice";
 import addToCartReducer from "./reducer/product/cartProductSlice";
 import newOrderReducer from "./reducer/order/newOrderSlice";
 import myOrdersReducer from "./reducer/order/myOrderSlice";
 import getOrderDetailReducer from "./reducer/order/orderDetailSlice";
 import getAllOrdersReducer from "./reducer/order/allOrdersSlice";
 import orderReducer from "./reducer/order/orderSlice";
-import productReducer from "./reducer/product/productSlice"
+import productReducer from "./reducer/product/productSlice";
+import allReviewsReducer from "./reducer/product/productReviewSlice";
+import reviewReducer from "./reducer/product/reviewSlice";
+
 const store = configureStore({
   reducer: {
     user: userReducer,
@@ -37,6 +40,8 @@ const store = configureStore({
     order: orderReducer,
     product: productReducer,
     forgotPass: forgotPasswordReducer,
+    allReviews: allReviewsReducer,
+    review: reviewReducer,
   },
 });
 export default store;

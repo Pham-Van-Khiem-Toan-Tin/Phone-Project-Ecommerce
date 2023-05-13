@@ -36,6 +36,6 @@ router.route("/review").put(isAuthenticatedUser, createProductReviews);
 router
   .route("/reviews")
   .get(getProductReviews)
-  .delete(isAuthenticatedUser, deleteReview);
+  .delete(isAuthenticatedUser,isAuthorizeRoles("admin"), deleteReview);
 
 module.exports = router;

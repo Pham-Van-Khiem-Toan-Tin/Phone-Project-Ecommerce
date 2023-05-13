@@ -1,5 +1,5 @@
 header {
-    background: linear-gradient(45deg, #49a09d, #5f2c82);
+    background: #654E92;
     position: fixed;
     top: 0;
     left: 0;
@@ -42,7 +42,7 @@ header {
 
         }
 
-        .navbar-search {
+        .search_keyword {
             flex: 1;
             position: relative;
             input {
@@ -52,8 +52,11 @@ header {
                 padding: 0.1rem 0.2rem 0.1rem 1rem;
                 border-radius: 0.5rem;
             }
-            .icon_input-search {
+            button {
                 position: absolute;
+                border: none;
+                background: transparent;
+                outline: none;
                 right: 2%;
                 top: 10%;
                 color: #ccc;

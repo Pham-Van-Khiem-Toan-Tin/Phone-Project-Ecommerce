@@ -1,5 +1,5 @@
 import Header from "./v1/components/layouts/Header";
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import {  Route, Routes } from "react-router-dom";
 import Home from "./v1/pages/Home/Home";
 import Categories from "./v1/pages/categories/Categories";
 import Contact from "./v1/pages/Contact/Contact";
@@ -38,6 +38,8 @@ import UpdateProfile from "./v1/pages/User/UpdateProfile";
 import UpdatePassword from "./v1/pages/User/UpdatePassword";
 import ForgotPassword from "./v1/pages/User/ForgotPassword";
 import ResetPassword from "./v1/pages/User/ResetPassword";
+import ProductReview from "./v1/pages/Admin/ProductReview";
+import NotFound from "./v1/pages/NotFound/NotFound";
 function App() {
   const stripePromise = loadStripe(
     "pk_test_51N1RFRJt1tz4StSkzTUdq8lq3KZC2XWUdkXxzMMooea7J3X3TdZlAVeKC3qM1p4MaA5KQjvpuLqT6hYDdsp1iiui00gYWdz4T1"
@@ -56,6 +58,7 @@ function App() {
       <Routes>
         <Route path="/" index element={<Home />} />
         <Route path="/categories" element={<Categories />} />
+        <Route path="/product/:keyword" element={<Categories />} />
         <Route path="/categories/:id" element={<Productdetail />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<LoginAndSignUp />} />
@@ -139,6 +142,11 @@ function App() {
           path="/admin/user/:id"
           element={<ProtectRoute isAdmin={true} children={<UpdateUser />} />}
         />
+        <Route
+          path="/admin/reviews"
+          element={<ProtectRoute isAdmin={true} children={<ProductReview />} />}
+        />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <ToastContainer
         position="top-right"

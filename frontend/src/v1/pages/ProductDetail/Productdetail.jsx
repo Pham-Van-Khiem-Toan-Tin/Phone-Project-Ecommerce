@@ -13,7 +13,7 @@ import { clearError } from "../../reduxToolkit/reducer/product/productDetailSlic
 import {
   clearErrorReview,
   newReviewReset,
-} from "../../reduxToolkit/reducer/product/productReviewSlice";
+} from "../../reduxToolkit/reducer/product/newReviewSlice";
 import Loader from "../../components/Loader/Loader";
 import { addItemToCart } from "../../reduxToolkit/actions/cartAction";
 import {

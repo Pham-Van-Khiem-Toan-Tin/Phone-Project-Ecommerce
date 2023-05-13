@@ -135,6 +135,43 @@ export const newReview = createAsyncThunk(
     }
   }
 )
+export const getAllReviews = createAsyncThunk(
+  "ALL_REVIEWS",
+  async (id, {rejectWithValue}) => {
+    try {
+      const {data} = await axios.get(`http://localhost:8000/api/v1/reviews/?id=${id}`);
+      return data;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+)
+export const deleteReview = createAsyncThunk(
+  "DELETE_REVIEW",
+  async (reviewDelete, {rejectWithValue}) => {
+    try {
+      const token = JSON.parse(localStorage.getItem("accessToken"));
+      const config = {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+        withCredentials: true,
+      };
+      const {data} = await axios.delete(`http://localhost:8000/api/v1/reviews/?id=${reviewDelete.reviewId}&productId=${reviewDelete.productId}`, config);
+      return data;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+)
 export const updateProduct = createAsyncThunk(
   "UPDATE_PRODUCT",
   async (dataChange, {rejectWithValue}) => {

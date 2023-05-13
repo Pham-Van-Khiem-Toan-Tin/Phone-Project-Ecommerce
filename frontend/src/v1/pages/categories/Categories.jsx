@@ -76,7 +76,7 @@ const Categories = () => {
           <div className="categories-content">
             <div className="categories-controller">
               <div className="categories-range">
-                <h3>Price</h3>
+                <h3>Price:</h3>
                 <MultiRangeSlider
                   min={0}
                   max={50000000}
@@ -90,7 +90,7 @@ const Categories = () => {
                 ></MultiRangeSlider>
               </div>
               <div className="categories-model">
-                <h3 className="categories-model-title">Model</h3>
+                <h5>Model: </h5>
                 {listCategories.map((item, index) => {
                   return (
                     <>
@@ -109,6 +109,7 @@ const Categories = () => {
                 })}
               </div>
               <div className="categories-rating">
+                <h5>Rating:</h5>
                 <StarRatings
                   rating={ratings}
                   starRatedColor="rgb(255, 255, 0)"

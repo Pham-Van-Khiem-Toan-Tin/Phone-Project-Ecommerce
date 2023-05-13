@@ -142,7 +142,7 @@ for (const pair of myForm.entries()) {
           type="number"
           id="productStock"
           required
-          min={1}
+          min={0}
           value={stock}
           placeholder="Stock"
           onChange={(e) => setStock(e.target.value)}
@@ -163,7 +163,7 @@ for (const pair of myForm.entries()) {
           {imagePreview.map((image, index) => { return (<img key={index} src={image} alt="Product Preview" />);}
           )}
         </div>
-        <button type="submit" >
+        <button type="submit" disabled={isLoading} >
           Create
         </button>
       </form>

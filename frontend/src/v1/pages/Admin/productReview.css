@@ -1,0 +1,85 @@
+.admin_review {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  color: #fff;
+}
+.admin_review form {
+  margin: 1rem 0;
+}
+.admin_review form h3 {
+  text-align: center;
+}
+.admin_review form .admin_review-search {
+  position: relative;
+  min-width: 10rem;
+}
+.admin_review form .admin_review-search svg {
+  position: absolute;
+  fill: #ccc;
+  top: 24%;
+  left: 3%;
+}
+.admin_review form .admin_review-search input {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+  padding: 0.2rem 1rem 0.2rem 2rem;
+}
+.admin_review form input[type=submit] {
+  width: 100%;
+  padding: 0.2rem;
+  margin: 0.5rem 0;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #f79540;
+  color: white;
+}
+.admin_review .container table {
+  min-width: 40rem;
+  border-collapse: collapse;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}
+.admin_review .container table thead th {
+  background-color: #55608f;
+}
+.admin_review .container table th, .admin_review .container table td {
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+.admin_review .container table th {
+  text-align: left;
+}
+.admin_review .container table tbody .icon-handle_user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.admin_review .container table tbody .icon-handle_user span {
+  display: inline-block;
+  flex: 1;
+  text-align: center;
+}
+.admin_review .container table tbody .icon-handle_user span:hover {
+  color: #49a09d;
+  cursor: pointer;
+}
+.admin_review .container table tbody .icon-handle_user span a {
+  color: #fff;
+}
+.admin_review .container table tbody .icon-handle_user span a:hover {
+  color: #49a09d;
+}
+.admin_review .container table tbody .icon-handle_user span button {
+  background: none;
+  border: none;
+  color: #fff;
+}
+.admin_review .container table tbody .icon-handle_user span button:hover {
+  color: #49a09d;
+}/*# sourceMappingURL=productReview.css.map */

@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-
 import {
   FaBars,
   FaUserAlt,
   FaShoppingCart,
   FaBell,
-  FaSearch,
   FaTimes,
 } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,7 +12,11 @@ import "./Header.css";
 import { Link } from "react-router-dom";
 import { logout } from "../../reduxToolkit/actions/userAction";
 import { toast } from "react-toastify";
-import { clearError, logoutReset } from "../../reduxToolkit/reducer/user/userSlice";
+import {
+  clearError,
+  logoutReset,
+} from "../../reduxToolkit/reducer/user/userSlice";
+import CategoriesSearch from "../../pages/categories/CategoriesSearch";
 
 const menus = [
   {
@@ -36,19 +38,21 @@ const menus = [
 ];
 
 const Header = () => {
-  const { isAuthenticated, user, success, errorLogout } = useSelector((state) => state.user);
+  const { isAuthenticated, user, success, errorLogout } = useSelector(
+    (state) => state.user
+  );
   const dispatch = useDispatch();
   useEffect(() => {
-    if(success) {
+    if (success) {
       toast.success("Log out");
       dispatch(logoutReset());
     }
-    if(errorLogout) {
+    if (errorLogout) {
       toast.error("Error");
       dispatch(clearError());
     }
-  }, [success, dispatch, errorLogout])
-  
+  }, [success, dispatch, errorLogout]);
+
   return (
     <header>
       <div className="navbar-container container">
@@ -65,17 +69,7 @@ const Header = () => {
             <span>Shop</span>
           </div>
         </div>
-        <div className="navbar-search">
-          <input
-            type="text"
-            name="search"
-            placeholder="Search..."
-            className="search-input"
-          />
-          <div className="icon_input-search">
-            <FaSearch />
-          </div>
-        </div>
+        <CategoriesSearch />
         <div className="navbar_icon-group">
           <div className="icon-user">
             <div className="dropdown">
@@ -96,7 +90,10 @@ const Header = () => {
                       </div>
                     </li>
                     <li>
-                      <button className="dropdown-item" onClick={() => dispatch(logout())}>
+                      <button
+                        className="dropdown-item"
+                        onClick={() => dispatch(logout())}
+                      >
                         Log out
                       </button>
                     </li>
@@ -163,6 +160,9 @@ const Header = () => {
                 </li>
                 <li className="list-group-item">
                   <Link to="/admin/allusers">User</Link>
+                </li>
+                <li className="list-group-item">
+                  <Link to="/admin/reviews">Reviews</Link>
                 </li>
               </ul>
               <div className="accordion accordion-flush" id="menuAdmin">

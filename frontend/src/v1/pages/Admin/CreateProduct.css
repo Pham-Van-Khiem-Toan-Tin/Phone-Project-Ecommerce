@@ -10,9 +10,11 @@
   flex-direction: column;
   background: #fff;
   border-radius: 20px;
+  color: #fff;
   margin: 0 10px;
   padding: 20px;
-  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.75);
+  background: #5764B3;
+  box-shadow: 20px 20px 60px #4a5598, -20px -20px 60px #6473ce;
 }
 .create-product form label {
   font-size: 20px;
@@ -48,7 +50,8 @@
 .create-product form input[type=file]::before {
   content: "Chose file";
   -webkit-user-select: none;
-  border: 1px solid #999;
+  cursor: pointer;
+  border: none;
   display: inline-block;
   padding: 5px 10px;
   border-radius: 10px;
@@ -57,7 +60,7 @@
 }
 .create-product form button {
   border: none;
-  background-color: rgb(14, 140, 241);
+  background-color: #F79540;
   color: #fff;
   font-size: 20px;
   border-radius: 10px;

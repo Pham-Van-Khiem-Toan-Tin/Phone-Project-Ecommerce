@@ -26,15 +26,14 @@ module.exports.createProduct = catchAsyncError(async (req, res, next) => {
 
   const product = await productModel.create(req.body);
 
-  if(req.token) {
+  if (req.token) {
     const newAccessToken = req.token;
     res.status(200).json({
       success: true,
       product: product,
       accessToken: newAccessToken,
     });
-  }
-  else {
+  } else {
     res.status(200).json({
       success: true,
       product: product,
@@ -65,33 +64,35 @@ module.exports.getAllProducts = catchAsyncError(async (req, res, next) => {
 //get hort product home
 module.exports.getHotProducts = catchAsyncError(async (req, res, next) => {
   const models = ["Samsung", "Xiaomi", "Apple", "Oppo"];
-  const samsungProduct = await productModel.find({category: "Samsung"}).limit(12);
-  const appleProduct = await productModel.find({category: "Apple"}).limit(8);
-  const xiaomiProduct = await productModel.find({category: "Xiaomi"}).limit(8);
-  const oppoProduct = await productModel.find({category: "Oppo"}).limit(8);
+  const samsungProduct = await productModel
+    .find({ category: "Samsung" })
+    .limit(12);
+  const appleProduct = await productModel.find({ category: "Apple" }).limit(8);
+  const xiaomiProduct = await productModel
+    .find({ category: "Xiaomi" })
+    .limit(8);
+  const oppoProduct = await productModel.find({ category: "Oppo" }).limit(8);
   res.status(200).json({
     success: true,
     samsungProduct,
     appleProduct,
     xiaomiProduct,
-    oppoProduct
-  })
-})
+    oppoProduct,
+  });
+});
 
 //get all product -- admin
 
 module.exports.getAdminProducts = catchAsyncError(async (req, res, next) => {
   const products = await productModel.find({});
-  if(req.token) {
+  if (req.token) {
     const newAccessToken = req.token;
     res.status(200).json({
       success: true,
       products,
       accessToken: newAccessToken,
-      
     });
-  }
-  else {
+  } else {
     res.status(200).json({
       success: true,
       products,
@@ -172,7 +173,7 @@ module.exports.deleteProduct = catchAsyncError(async (req, res, next) => {
   }
   await product.remove();
   res.status(200).json({
-    success: true
+    success: true,
   });
 });
 
@@ -215,12 +216,10 @@ module.exports.createProductReviews = catchAsyncError(
 );
 //get all review of product
 module.exports.getProductReviews = catchAsyncError(async (req, res, next) => {
-  const product = productModel.findById(req.query.id);
-
+  const product = await productModel.findById(req.query.id);
   if (!product) {
     return next(new ErrorHandle("Product not found", 404));
   }
-
   res.status(200).json({
     success: true,
     reviews: product.reviews,
@@ -265,4 +264,3 @@ module.exports.deleteReview = catchAsyncError(async (req, res, next) => {
     success: true,
   });
 });
-

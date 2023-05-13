@@ -1,5 +1,5 @@
 header {
-  background: linear-gradient(45deg, #49a09d, #5f2c82);
+  background: #654E92;
   position: fixed;
   top: 0;
   left: 0;
@@ -38,24 +38,27 @@ header .navbar-container .icon-toggle button svg {
   vertical-align: baseline;
   font-weight: 700;
 }
-header .navbar-container .navbar-search {
+header .navbar-container .search_keyword {
   flex: 1;
   position: relative;
 }
-header .navbar-container .navbar-search input {
+header .navbar-container .search_keyword input {
   width: 100%;
   border: none;
   outline: none;
   padding: 0.1rem 0.2rem 0.1rem 1rem;
   border-radius: 0.5rem;
 }
-header .navbar-container .navbar-search .icon_input-search {
+header .navbar-container .search_keyword button {
   position: absolute;
+  border: none;
+  background: transparent;
+  outline: none;
   right: 2%;
   top: 10%;
   color: #ccc;
 }
-header .navbar-container .navbar-search .icon_input-search svg {
+header .navbar-container .search_keyword button svg {
   vertical-align: baseline;
 }
 header .navbar-container .navbar_icon-group {

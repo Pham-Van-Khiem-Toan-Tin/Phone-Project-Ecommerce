@@ -1,42 +1,32 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { newReview } from "../../actions/productAction";
+import {  getAllProducts, getAllReviews } from "../../actions/productAction";
 
-const newProductReviewSlice = createSlice({
-  name: "newreview",
+const allReviewsSlice = createSlice({
+  name: "allreviews",
   initialState: {
     isLoading: false,
+    reviews: [],
     error: null,
-    success: false,
   },
   reducers: {
-    clearErrorReview: (state) => {
+    clearError: (state) => {
       state.error = null;
-    },
-    newReviewReset: (state) => {
-      state.success = false;
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(newReview.pending, (state) => {
+    builder.addCase(getAllReviews.pending, (state) => {
       state.isLoading = true;
     });
-    builder.addCase(newReview.fulfilled, (state, action) => {
+    builder.addCase(getAllReviews.fulfilled, (state, action) => {
       state.isLoading = false;
-      state.success = action.payload.success;
-      if (action.payload.accessToken) {
-        localStorage.setItem(
-          "accessToken",
-          JSON.stringify(action.payload.accessToken)
-        );
-      }
+      state.reviews = action.payload.reviews;
     });
-    builder.addCase(newReview.rejected, (state, action) => {
+    builder.addCase(getAllReviews.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     });
   },
 });
 
-export const { clearErrorReview, newReviewReset } =
-  newProductReviewSlice.actions;
-export default newProductReviewSlice.reducer;
+export const { clearError } = allReviewsSlice.actions;
+export default allReviewsSlice.reducer;

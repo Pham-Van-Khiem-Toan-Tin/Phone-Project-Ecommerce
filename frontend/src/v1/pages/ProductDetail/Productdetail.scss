@@ -6,6 +6,7 @@
     color: #fff;
     margin-top: 2rem;
     margin-bottom: 2rem;
+    
     .productdetail_section {
         display: flex;
         justify-content: center;
@@ -115,6 +116,13 @@
             svg {
                 vertical-align: baseline;
             }
+        }
+    }
+}
+.modal {
+    .newRatings{
+        svg {
+            vertical-align: baseline;
         }
     }
 }

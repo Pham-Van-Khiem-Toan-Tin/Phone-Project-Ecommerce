@@ -1,0 +1,93 @@
+.admin_review {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    color: #fff;
+    form {
+        margin: 1rem 0;
+        h3 {
+            text-align: center;
+        }
+        .admin_review-search {
+            position: relative;
+            min-width: 10rem;
+            
+            svg {
+                position: absolute;
+                fill: #ccc;
+                top: 24%;
+                left: 3%;
+            }
+            input {
+                width: 100%;
+                border: none;
+                outline: none;
+                border-radius: 0.5rem;
+                padding: 0.2rem 1rem 0.2rem 2rem;
+            }
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 0.2rem;
+            margin: 0.5rem 0;
+            border: none;
+            border-radius: 0.5rem;
+            background-color: #f79540;
+            color: #ffff;
+        }
+    }
+    .container {
+        table {
+            min-width: 40rem;
+            border-collapse: collapse;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            margin: 0 auto;
+            thead {
+                th {
+                    background-color: #55608f;
+                }
+            }
+            th,td {
+                padding: 15px;
+                background-color: rgba(255,255,255,0.2);
+                color: #fff;
+            }
+            th {
+                text-align: left;
+            }
+            tbody {
+                .icon-handle_user {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    span {
+                        display: inline-block;
+                        flex: 1;
+                        text-align: center;
+                        &:hover {
+                            color: #49a09d;
+                            cursor: pointer;
+                        }
+                        a {
+                            color: #fff;
+                            &:hover {
+                                color: #49a09d;
+                            }
+                         }
+                         button {
+                            background: none;
+                            border: none;
+                            color: #fff;
+                            &:hover {
+                                color: #49a09d;
+                            }
+                         }
+                    }
+                    
+                }
+            }
+        }
+    }
+}

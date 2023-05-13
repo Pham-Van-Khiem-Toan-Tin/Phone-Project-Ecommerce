@@ -1,18 +1,26 @@
 .categories {
     width: 100vw;
-    margin-top: 80px;
-    
+
     .categories-content {
         display: flex;
         flex-wrap: wrap !important;
         width: 100%;
+
         .categories-controller {
             flex: 2;
-            margin: 10px 0 0 30px;
+            margin: 4rem 0 0 1rem;
             padding: 5px;
+            border-radius: 0.5rem;
+            background: #5764B3;
+            box-shadow: 20px 20px 60px #4a5598,
+                -20px -20px 60px #6473ce;
             .categories-range {
                 border-bottom: 1px solid rgb(230, 222, 222);
                 padding: 5px 10px;
+                h3 {
+                    color: #fff;
+                    margin-bottom: 2rem;
+                }
                 .multi-range-slider {
                     border: none;
                     box-shadow: none;
@@ -40,8 +48,8 @@
                 margin-bottom: 10px;
                 color: #fff;
                 text-transform: uppercase;
-                font-family: 'Courier New', Courier, monospace;
                 font-weight: 400;
+                padding: 5px 10px;
                 .categories-model-item {
                     font-family: sans-serif;
                     font-size: 16px;
@@ -57,8 +65,11 @@
             .categories-rating {
                 border-top: 1px solid rgb(230, 222, 222);
                 padding: 5px;
-                text-align: center;
-                
+                padding: 5px 10px;
+                h5 {
+                    color: #fff;
+                    text-align: start;
+                }
             }
         }
         .categories-gird {
@@ -66,16 +77,19 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+
             .categories-header {
                 text-align: center;
                 font-family: 'Courier New', Courier, monospace;
                 color: #fff;
                 font-weight: 700;
             }
+
             .categories-controller-select {
                 max-width: 100%;
                 margin: 1rem 2rem;
                 display: none;
+
                 select {
                     font-size: 1rem;
                     font-weight: 500;
@@ -86,39 +100,42 @@
                     margin: 0.5rem;
                 }
             }
+
             .categories-gird-content {
                 padding: 0px 30px 10px 10px;
                 width: 100%;
+
                 .card {
                     margin-top: 10px;
                 }
             }
-            
-                .pagination-list {
-                    background-color: transparent;
-                    display: flex;
-                    align-items: center;
-                    list-style: none;
-                    padding: 0;
-                    
-                    li {
-                        margin: 0 5px;
-                        button {
-                            padding: 5px;
-                            text-decoration: solid;
-                            background: transparent;
-                            color: #fff;
-                            border: none;
-                            font-size: 20px;
-                            box-shadow: 0px 0px 6px 6px rgba(63,31,193,0.52);
-                            -webkit-box-shadow: 0px 0px 6px 6px rgba(63,31,193,0.52);
-                            -moz-box-shadow: 0px 0px 6px 6px rgba(63,31,193,0.52);
-                        }
+
+            .pagination-list {
+                background-color: transparent;
+                display: flex;
+                align-items: center;
+                list-style: none;
+                padding: 0;
+
+                li {
+                    margin: 0 5px;
+
+                    button {
+                        padding: 5px;
+                        text-decoration: solid;
+                        background: transparent;
+                        color: #fff;
+                        border: none;
+                        font-size: 20px;
+                        box-shadow: 0px 0px 6px 6px rgba(63, 31, 193, 0.52);
+                        -webkit-box-shadow: 0px 0px 6px 6px rgba(63, 31, 193, 0.52);
+                        -moz-box-shadow: 0px 0px 6px 6px rgba(63, 31, 193, 0.52);
                     }
                 }
-            
+            }
+
         }
-    } 
+    }
 }
 
 @media (max-width: 992px) {
@@ -126,6 +143,7 @@
         .categories-controller {
             display: none;
         }
+
         .categories-gird {
             .categories-controller-select {
                 display: flex !important;
