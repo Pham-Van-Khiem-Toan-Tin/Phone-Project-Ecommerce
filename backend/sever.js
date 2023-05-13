@@ -21,18 +21,22 @@ app.use(morgan("dev"));
 app.use(cookieParser());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.json({ limit: "10mb" }));
 app.use(fileUpLoad());
 // app.use(express.static(path.join(__dirname, "../frontend/public")));
 
-app.use(cors({ origin: process.env.CLIENT_URL, credentials: true,
-    exposedHeaders: ["set-cookie"] }));
-
+app.use(
+  cors({
+    origin: 'https://cheerful-lily-46186d.netlify.app',
+    credentials: true,
+    exposedHeaders: ["set-cookie"],
+  })
+);
 
 app.use("/api/v1", user);
 app.use("/api/v1", product);
 app.use("/api/v1", order);
-app.use("/api/v1", cart)
+app.use("/api/v1", cart);
 app.use("/api/v1", payment);
 app.use(erorMiddleware);
 
