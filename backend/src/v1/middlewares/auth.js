@@ -4,7 +4,6 @@ require("dotenv").config();
 
 module.exports.isAuthenticatedUser = async (req, res, next) => {
   const accessToken = req.headers.authorization.split(" ")[1];
-  console.log(req.cookies);
   if (!accessToken) {
     return next(new ErrorHandle("Please login to access this resource"));
   } else {
