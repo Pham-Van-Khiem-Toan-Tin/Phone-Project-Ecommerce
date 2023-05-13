@@ -32,6 +32,7 @@ app.use(
     exposedHeaders: ["set-cookie"],
   })
 );
+app.set("trust proxy", 1);
 
 app.use("/api/v1", user);
 app.use("/api/v1", product);
