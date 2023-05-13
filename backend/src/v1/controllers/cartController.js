@@ -77,8 +77,6 @@ module.exports.getProductInCart = catchAsyncError(async (req, res, next) => {
       path: "caProduct.id_product",
       select: "name price images category",
     });
-    console.log(listProductCart);
-    console.log(listProductCart.caProduct.length);
     var total = 0;
     if (listProductCart) {
       for (let i = 0; i < listProductCart.caProduct.length; i++) {
