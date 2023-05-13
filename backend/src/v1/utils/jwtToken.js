@@ -8,6 +8,7 @@ const sendToken = async (user, status, res) => {
     expires: new Date(
       Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 *1000
     ),
+    sameSite: 'none',
     httpOnly: true,
   };
   res.status(status).cookie(`refeshToken`, refeshToken, optionRefeshToken).json({
