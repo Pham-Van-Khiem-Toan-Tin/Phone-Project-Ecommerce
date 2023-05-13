@@ -17,7 +17,7 @@ const AllUser = () => {
   const {
     isDelete,
     error: errorDelete,
-    isLoading: isLoadingDelete,
+    
     message,
   } = useSelector((state) => state.handleUser);
   const handleDeleteUser = (id) => {

@@ -29,7 +29,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { useEffect } from "react";
 import OrderSuccess from "./v1/pages/Payment/OrderSuccess";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getAccount } from "./v1/reduxToolkit/actions/userAction";
 import MyOrders from "./v1/pages/Orders/MyOrders";
 import OrderDetail from "./v1/pages/Orders/OrderDetail";

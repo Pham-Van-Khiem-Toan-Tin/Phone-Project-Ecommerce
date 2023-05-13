@@ -1,7 +1,7 @@
 import React from "react";
 import StarRatings from "react-star-ratings";
 import { addItemToCart } from "../../reduxToolkit/actions/cartAction";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { FaEye, FaHeart, FaCartPlus } from "react-icons/fa";
 
