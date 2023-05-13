@@ -6,17 +6,21 @@ const sendToken = async (user, status, res) => {
   //options cookie
   const optionRefeshToken = {
     expires: new Date(
-      Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 *1000
+      Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000
     ),
-    sameSite: 'none',
+    sameSite: "none",
+    secure: true,
     httpOnly: true,
   };
-  res.status(status).cookie(`refeshToken`, refeshToken, optionRefeshToken).json({
-    success: true,
-    role: user.role,
-    user,
-    accessToken: accessToken,
-  });
+  res
+    .status(status)
+    .cookie(`refeshToken`, refeshToken, optionRefeshToken)
+    .json({
+      success: true,
+      role: user.role,
+      user,
+      accessToken: accessToken,
+    });
 };
 
 module.exports = sendToken;
