@@ -23,10 +23,11 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({ limit: "10mb" }));
 app.use(fileUpLoad());
+// app.use(express.static(path.join(__dirname, "../frontend/public")));
 
 app.use(
   cors({
-    origin: `${process.env.CLIENT_URL}`,
+    origin: 'https://645fa77d73abc750485ce4aa--cheerful-lily-46186d.netlify.app',
     credentials: true,
     exposedHeaders: ["set-cookie"],
   })
