@@ -11,7 +11,6 @@ const sendToken = async (user, status, res) => {
     sameSite: "none",
     secure: true,
     httpOnly: true,
-    domain: 'phone-app-huster.netlify.app',
   };
   res
     .status(status)
