@@ -58,7 +58,7 @@ const Payment = () => {
         withCredentials: true,
       };
       const { data } = await axios.post(
-        `http://localhost:8000/api/v1/payment/process`,
+        `https://phone-app-server.onrender.com/api/v1/payment/process`,
         paymentData,
         config
       );
