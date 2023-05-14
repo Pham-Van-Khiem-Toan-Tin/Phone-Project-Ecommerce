@@ -1,6 +1,6 @@
 .footer {
     background: #654E92;
-    width: calc(100vw - 16.4px);
+    width: 100vw;
 }
 footer li div {
     color: #fff !important;

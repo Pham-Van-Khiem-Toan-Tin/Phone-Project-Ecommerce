@@ -5,7 +5,7 @@
 }
 html {
   font-size: 20px;
-  width: calc(100vw - 16.4px);
+  width: 100vw;
 }
 body {
   background: #5764B3;  
