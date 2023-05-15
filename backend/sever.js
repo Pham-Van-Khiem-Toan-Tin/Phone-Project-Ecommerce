@@ -25,7 +25,7 @@ app.use(bodyParser.json({ limit: "10mb" }));
 app.use(fileUpLoad());
 // app.use(express.static(path.join(__dirname, "../frontend/public")));
 
-app.set("trust proxy", 1);
+// app.set("trust proxy", 1);
 app.use(
   cors({
     origin: 'https://phone-app-huster.netlify.app',
