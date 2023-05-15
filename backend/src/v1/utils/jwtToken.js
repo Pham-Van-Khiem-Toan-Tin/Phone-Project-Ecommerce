@@ -11,7 +11,7 @@ const sendToken = async (user, status, res) => {
     // secure: true,
     // httpOnly: true,
     sameSite: 'lax',
-    // domain: '.phone-app-huster.netlify.app',
+    domain: 'phone-app-server.onrender.com',
   };
   res
     .status(status)
