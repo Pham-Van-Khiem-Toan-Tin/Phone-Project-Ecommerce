@@ -9,8 +9,8 @@ const sendToken = async (user, status, res) => {
       Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000
     ),
     secure: true,
-    httpOnly: true,
-    sameSite: 'Strict',
+    // httpOnly: true,
+    // sameSite: 'Strict',
     domain: 'phone-app-huster.netlify.app',
   };
   res
