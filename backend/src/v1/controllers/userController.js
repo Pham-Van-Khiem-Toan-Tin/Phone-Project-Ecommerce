@@ -55,7 +55,7 @@ module.exports.loginUser = catchAsyncError(async (req, res, next) => {
 module.exports.logout = catchAsyncError(async (req, res, next) => {
   res.cookie("refeshToken", null, {
     expires: new Date(Date.now()),
-    // httpOnly: true,
+    httpOnly: true,
     sameSite: 'none',
     // domain: '.phone-app-huster.netlify.app',
   });
