@@ -56,6 +56,7 @@ module.exports.logout = catchAsyncError(async (req, res, next) => {
   res.cookie("refeshToken", null, {
     expires: new Date(Date.now()),
     httpOnly: true,
+    domain: '.phone-app-huster.netlify.app',
   });
   res.status(200).json({
     success: true,
@@ -108,8 +109,6 @@ module.exports.forgotPassword = catchAsyncError(async (req, res, next) => {
 
 //Reset password
 module.exports.resetPassword = catchAsyncError(async (req, res, next) => {
-  console.log(req.body);
-  console.log(req.params.token);
   const resetPasswordToken = crypto
     .createHash("sha256")
     .update(req.params.token)
