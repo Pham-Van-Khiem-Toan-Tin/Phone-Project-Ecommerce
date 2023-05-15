@@ -25,14 +25,14 @@ app.use(bodyParser.json({ limit: "10mb" }));
 app.use(fileUpLoad());
 // app.use(express.static(path.join(__dirname, "../frontend/public")));
 
-// app.set("trust proxy", 1);
 app.use(
   cors({
-    origin: 'https://phone-app-huster.netlify.app',
+    origin: "https://phone-app-huster.netlify.app",
     credentials: true,
     exposedHeaders: ["set-cookie"],
   })
 );
+app.set("trust proxy", 1);
 
 app.use("/api/v1", user);
 app.use("/api/v1", product);
