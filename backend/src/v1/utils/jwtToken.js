@@ -8,10 +8,10 @@ const sendToken = async (user, status, res) => {
     expires: new Date(
       Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000
     ),
-    // secure: true,
-    // httpOnly: true,
-    sameSite: 'lax',
-    domain: 'phone-app-server.onrender.com',
+    secure: true,
+    httpOnly: true,
+    // sameSite: 'lax',
+    domain: 'phone-app-huster.netlify.app',
   };
   res
     .status(status)
