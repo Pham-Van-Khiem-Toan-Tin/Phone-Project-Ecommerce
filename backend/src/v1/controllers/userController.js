@@ -57,7 +57,7 @@ module.exports.logout = catchAsyncError(async (req, res, next) => {
     expires: new Date(Date.now()),
     // httpOnly: true,
     sameSite: 'none',
-    domain: '.phone-app-huster.netlify.app',
+    // domain: '.phone-app-huster.netlify.app',
   });
   res.status(200).json({
     success: true,
