@@ -10,7 +10,7 @@ const sendToken = async (user, status, res) => {
     ),
     // secure: true,
     // httpOnly: true,
-    // sameSite: 'Strict',
+    sameSite: 'none',
     domain: '.phone-app-huster.netlify.app',
   };
   res
