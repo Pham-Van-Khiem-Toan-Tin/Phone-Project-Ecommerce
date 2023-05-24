@@ -42,5 +42,5 @@
     "stripe": "^12.4.0",
     "validator": "^13.7.0"
   },
-  "proxy": "https://phone-app-server.onrender.com"
+  "proxy": "http://localhost:8000"
 }
