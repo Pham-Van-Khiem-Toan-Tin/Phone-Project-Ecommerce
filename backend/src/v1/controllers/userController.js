@@ -114,14 +114,14 @@ module.exports.resetPassword = catchAsyncError(async (req, res, next) => {
     .createHash("sha256")
     .update(req.params.token)
     .digest("hex");
-  console.log("chay den phan thu 2");
+  // console.log("chay den phan thu 2");
   const user = await userModel.findOne({
     resetPasswordToken,
     resetPasswordExpire: {
       $gt: Date.now(),
     },
   });
-  console.log("chay den day");
+  // console.log("chay den day");
   if (!user) {
     return next(
       new ErrorHandle("Reset password token is invalid or has been expired"),
