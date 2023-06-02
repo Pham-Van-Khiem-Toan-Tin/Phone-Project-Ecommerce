@@ -14,7 +14,7 @@ const Profile = () => {
     if (error) {
       navigate("/login");
     }
-  }, [dispatch]);
+  }, [error]);
   useEffect(() => {
     dispatch(getAccount());
   }, [dispatch])
