@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import { DATA } from "../../../data/Data";
+import "./inputSearch.css";
 import useDebounce from "../../hooks/useDebounce";
 const InputSearch = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -24,8 +24,7 @@ const InputSearch = () => {
         setIsSearching(false);
         setResults(results);
       });
-    }
-    else {
+    } else {
       setResults([]);
       setIsSearching(false);
     }
@@ -34,17 +33,18 @@ const InputSearch = () => {
   }, []);
 
   return (
-    <>
+    <div className="input-search">
       <form>
-        <input
-          type="text"
-          value={searchTerm}
-          placeholder="Search..."
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
         <button>
           <FaSearch />
         </button>
+        <input
+        className="rounded form-control"
+          type="text"
+          value={searchTerm}
+          placeholder="Search key word ..."
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
       </form>
       {isSearching && <div>Searching ...</div>}
       {results.length !== 0 && (
@@ -60,7 +60,7 @@ const InputSearch = () => {
           </ul>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

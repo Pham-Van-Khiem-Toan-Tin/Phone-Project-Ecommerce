@@ -1,0 +1,28 @@
+.product-carousel {
+  margin-top: 3rem;
+}
+.product-carousel .product-carousel-title {
+  color: #6a6a6a;
+  margin-bottom: 1rem;
+  border-bottom: 3px solid #f4f4f4;
+}
+.product-carousel .product-carousel-title > span {
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: 0.8rem 0;
+  margin: 0;
+  display: inline-block;
+  border-bottom: 3px solid #018ecc;
+}
+.product-carousel .product-carousel-title > span > span {
+  color: #018ecc;
+}
+.product-carousel .product-carousel-title a {
+  color: #6a6a6a;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+.product-carousel .product-carousel-title a svg {
+  display: inline-block;
+  fill: #018ecc;
+}/*# sourceMappingURL=productCarousel.css.map */

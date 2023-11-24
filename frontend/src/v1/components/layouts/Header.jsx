@@ -1,14 +1,16 @@
 import React, { useEffect } from "react";
 import {
-  FaBars,
-  FaUserAlt,
-  FaShoppingCart,
-  FaBell,
-  FaTimes,
+  FaMapMarkerAlt,
+  FaShippingFast,
+  FaAlignLeft,
+  FaAmazonPay,
+  FaRegUser,
+  FaEllipsisV 
 } from "react-icons/fa";
+import { BiSolidDiscount, BiCartAdd } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 
-import "./Header.css";
+import "./header.css";
 import { Link } from "react-router-dom";
 import { logout } from "../../reduxToolkit/actions/userAction";
 import { toast } from "react-toastify";
@@ -17,6 +19,7 @@ import {
   logoutReset,
 } from "../../reduxToolkit/reducer/user/userSlice";
 import CategoriesSearch from "../../pages/categories/CategoriesSearch";
+import InputSearch from "../InputSearch/InputSearch";
 
 const menus = [
   {
@@ -55,161 +58,212 @@ const Header = () => {
 
   return (
     <header>
-      <div className="navbar-container container">
-        <div className="icon-toggle">
-          <button
-            type="button"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#navSidebar"
-            aria-controls="Sidebar"
-          >
-            <FaBars />
-          </button>
-          <div className="navbar-brand">
-            <span>Shop</span>
-          </div>
-        </div>
-        <CategoriesSearch />
-        <div className="navbar_icon-group">
-          <div className="icon-user">
-            <div className="dropdown">
-              <button
-                className="dropdown-toggle"
-                type="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <FaUserAlt />
-              </button>
-              <ul className="dropdown-menu">
-                {isAuthenticated ? (
-                  <>
-                    <li>
-                      <div className="dropdown-item">
-                        <Link to="/account">Account</Link>
-                      </div>
-                    </li>
-                    <li>
-                      <button
-                        className="dropdown-item"
-                        onClick={() => dispatch(logout())}
-                      >
-                        Log out
-                      </button>
-                    </li>
-                  </>
-                ) : (
-                  <>
-                    <li>
-                      <div className="dropdown-item">
-                        <Link to="/login">
-                          <span>Login/Sign up</span>
-                        </Link>
-                      </div>
-                    </li>
-                  </>
-                )}
-              </ul>
+      {/*top-menu*/}
+      <div className="top-header">
+        <div className="container d-flex align-items-center justify-content-between">
+          <span className="welcome">Welcome to phone Shop!</span>
+          <div className="info">
+            <div>
+              <FaMapMarkerAlt />
+              <span>
+                Deliver to <span className="fw-bold">423651</span>
+              </span>
             </div>
-          </div>
-          <div className="icon-cart">
-            <Link to="/cart">
-              <span>
-                <FaShoppingCart />
-              </span>
+            <Link to="/orders">
+              <FaShippingFast /> Track your order
             </Link>
-          </div>
-          <div className="icon-bell">
-            <Link to="/">
-              <span>
-                <FaBell />
-              </span>
+            <Link to="/discount">
+              <BiSolidDiscount /> All Offers
             </Link>
           </div>
         </div>
       </div>
+
+      {/* bottom menu */}
+      <div className="middle-header">
+        <div className="container d-flex align-items-center justify-content-between">
+          <div className="toogle-menu-home d-flex align-items-center justify-content-center gap-2">
+            <button
+              className="btn"
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#menuCanvas"
+              aria-controls="menuCanvas"
+            >
+              <FaAlignLeft />
+            </button>
+            <Link to="/" className="logo">
+              <FaAmazonPay />
+            </Link>
+          </div>
+          <InputSearch />
+          <div className="group-account-cart d-flex align-items-center justify-content-center gap-3">
+            <Link to="/login">
+              <FaRegUser /> <span className="fw-bold">Sign Up/Sign In</span>
+            </Link>
+            <div className="line my-auto"></div>
+            <Link to="/cart">
+              <BiCartAdd /> <span className="fw-bold">Cart</span>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* menu-group-categories */}
+      <div className="bottom-header">
+        <div className="container d-flex align-items-center justify-content-between gap-2 flex-wrap pt-2 pb-2">
+          
+        <div className="dropdown">
+            <button
+              className="btn btn-sm rounded-pill dropdown-toggle active"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Iphone
+            </button>
+            <ul className="dropdown-menu">
+              <li>
+                <div className="dropdown-item">IphoneXs</div>
+              </li>
+              <li>
+                <div className="dropdown-item">Iphone 14</div>
+              </li>
+              <li>
+                <div className="dropdown-item">Iphone 15</div>
+              </li>
+            </ul>
+          </div>
+          <div className="dropdown">
+            <button
+              className="btn btn-sm rounded-pill dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              SamSung
+            </button>
+            <ul className="dropdown-menu">
+              <li>
+                <div className="dropdown-item">Galaxy</div>
+              </li>
+              <li>
+                <div className="dropdown-item">Note</div>
+              </li>
+              <li>
+                <div className="dropdown-item">Flip</div>
+              </li>
+            </ul>
+          </div>
+          <div className="dropdown">
+            <button
+              className="btn btn-sm rounded-pill dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Oppo
+            </button>
+            <ul className="dropdown-menu">
+              <li>
+                <div className="dropdown-item">Note</div>
+              </li>
+              <li>
+                <div className="dropdown-item">Another action</div>
+              </li>
+              <li>
+                <div className="dropdown-item">Something else here</div>
+              </li>
+            </ul>
+          </div>
+          <div className="dropdown">
+            <button
+              className="btn btn-sm rounded-pill dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Xiaomi
+            </button>
+            <ul className="dropdown-menu">
+              <li>
+                <div className="dropdown-item">gamming</div>
+              </li>
+              <li>
+                <div className="dropdown-item">Note</div>
+              </li>
+              <li>
+                <div className="dropdown-item">Pro</div>
+              </li>
+            </ul>
+          </div>
+          <div className="dropdown">
+            <button
+              className="btn btn-sm rounded-pill dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Huawei
+            </button>
+            <ul className="dropdown-menu">
+              <li>
+                <div className="dropdown-item">Mate</div>
+              </li>
+              <li>
+                <div className="dropdown-item">Another action</div>
+              </li>
+              <li>
+                <div className="dropdown-item">Something else here</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/*menu canvas */}
       <div
         className="offcanvas offcanvas-start"
-        tabIndex="-1"
-        id="navSidebar"
-        aria-labelledby="SidebarLabel"
+        tabindex="-1"
+        id="menuCanvas"
+        aria-labelledby="menuCanvasLabel"
       >
         <div className="offcanvas-header">
-          <h5 className="offcanvas-title" id="SidebarLabel">
-            Hello, {user?.name ? user?.name : "User"}
+          <h5 className="offcanvas-title" id="menuCanvasLabel">
+            Offcanvas
           </h5>
           <button
             type="button"
-            className="btn"
+            className="btn-close"
             data-bs-dismiss="offcanvas"
             aria-label="Close"
-          >
-            <FaTimes />
-          </button>
+          ></button>
         </div>
         <div className="offcanvas-body">
-          {user?.role === "admin" && (
-            <>
-              <div className="title-menu">Admin menu</div>
-              <ul className="list-group list-group-flush">
-                <li className="list-group-item">
-                  <Link to="/admin/dashboard">DashBoard</Link>
-                </li>
-                <li className="list-group-item">
-                  <Link to="/admin/product/orders">Orders</Link>
-                </li>
-                <li className="list-group-item">
-                  <Link to="/admin/allusers">User</Link>
-                </li>
-                <li className="list-group-item">
-                  <Link to="/admin/reviews">Reviews</Link>
-                </li>
-              </ul>
-              <div className="accordion accordion-flush" id="menuAdmin">
-                <div className="accordion-item">
-                  <h2 className="accordion-header" id="flush-menuAdminTwo">
-                    <button
-                      className="accordion-button collapsed"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#flush-menuAdminItemTwo"
-                      aria-expanded="false"
-                      aria-controls="flush-menuAdminItemTwo"
-                    >
-                      Product
-                    </button>
-                  </h2>
-                  <div
-                    id="flush-menuAdminItemTwo"
-                    className="accordion-collapse collapse"
-                    aria-labelledby="flush-menuAdminTwo"
-                    data-bs-parent="#menuAdmin"
-                  >
-                    <div className="accordion-body">
-                      <ul className="list-group list-group-flush">
-                        <li className="list-group-item">
-                          <Link to="/admin/allproducts">All Product</Link>
-                        </li>
-                        <li className="list-group-item">
-                          <Link to="/admin/newproduct">Create Product</Link>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </>
-          )}
-          <div className="title-menu">User Menu</div>
-          <ul className="list-group list-group-flush">
-            {menus.map((menu) => {
-              return (
-                <li className="list-group-item" key={menu.path}>
-                  <Link to={menu.path}>{menu.display}</Link>
-                </li>
-              );
-            })}
-          </ul>
+          <div>
+            Some text as placeholder. In real life you can have the elements you
+            have chosen. Like, text, images, lists, etc.
+          </div>
+          <div className="dropdown mt-3">
+            <button
+              className="btn btn-secondary dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+            >
+              Dropdown button
+            </button>
+            <ul className="dropdown-menu">
+              <li>
+                <div className="dropdown-item">Action</div>
+              </li>
+              <li>
+                <div className="dropdown-item">Another action</div>
+              </li>
+              <li>
+                <div className="dropdown-item">Something else here</div>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </header>

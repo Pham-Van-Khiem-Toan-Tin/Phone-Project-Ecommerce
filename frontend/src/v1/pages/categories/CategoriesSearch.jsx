@@ -9,7 +9,7 @@ const CategoriesSearch = () => {
         if(keyword.trim()) {
             navigate(`/product/${keyword}`);
         } else {
-            return;
+            navigate("/categories");
         }
     }
   return (

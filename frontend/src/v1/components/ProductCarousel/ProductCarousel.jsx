@@ -1,21 +1,25 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Grid } from "swiper";
+import { FaAngleRight } from "react-icons/fa";
 import "swiper/css";
 import "swiper/css/grid";
 import "swiper/css/navigation";
-import "./SliderProduct.css";
+import "./productCarousel.css";
 import Card from "../Card/Card";
-
+import {Link} from "react-router-dom";
 const SliderProduct = (props) => {
-  const { data, row } = props;
+  const { datas, row } = props;
   return (
-    <div className="container product-slider">
+    <div className="product-carousel">
+      <div className="product-carousel-title d-flex align-items-center justify-content-between">
+        <span>Grab the best deal on <span>Smartphones</span></span>
+        <Link to="/categories">View All <FaAngleRight/></Link>
+      </div>
       <Swiper
         spaceBetween={10}
         slidesPerView={1}
         grid={row ? { rows: 2, fill: "rows" } : { rows: 1, fill: "column" }}
-        navigation={true}
         breakpoints={{
           640: {
             slidesPerView: 2,
@@ -36,11 +40,11 @@ const SliderProduct = (props) => {
           disableOnInteraction: false,
         }}
       >
-        {data.map((data1, index) => {
-          return (
-            <div key={data1._id}>
-              <SwiperSlide key={index}>
-                <Card data={data1} />
+        {datas && datas.map((data) => {
+          return data && (
+            <div key={data._id}>
+              <SwiperSlide key={data._id}>
+                <Card data={data} />
               </SwiperSlide>
             </div>
           );

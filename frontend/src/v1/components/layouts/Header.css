@@ -1,188 +1,91 @@
 header {
-  background: #654E92;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
+  right: 0;
+}
+header .top-header {
+  font-size: 0.6rem;
+  color: #a7a7a7;
+  padding: 0.5rem 0;
+  background-color: #f5f5f5;
+}
+header .top-header .info {
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: #fff;
-  height: 60px;
-  z-index: 999;
 }
-header .navbar-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+header .top-header .info > a, header .top-header .info > div {
+  padding: 0 0.6rem;
 }
-header .navbar-container .icon-toggle {
-  flex: 1;
-  padding-left: 2px;
-  display: flex;
+header .top-header .info svg {
+  fill: #36a4d5;
 }
-header .navbar-container .icon-toggle .navbar-brand {
-  font-size: 1rem;
-  margin-left: 1rem;
-  font-weight: 700;
+header .top-header .info a {
+  color: #a7a7a7;
+  border-left: 1px solid #e8e8e8;
 }
-header .navbar-container .icon-toggle button {
-  background-color: transparent;
-  border-radius: 10px;
-  height: 30px;
-  border: none;
+header .middle-header {
+  border-bottom: 1px solid #f5f5f5;
 }
-header .navbar-container .icon-toggle button svg {
-  color: white;
-  font-size: 30px;
-  vertical-align: baseline;
-  font-weight: 700;
+header .middle-header svg {
+  fill: #36a4d5;
+  display: inline-block;
 }
-header .navbar-container .search_keyword {
-  flex: 1;
-  position: relative;
+header .middle-header .toogle-menu-home button {
+  background-color: #f3f9fb;
 }
-header .navbar-container .search_keyword input {
-  width: 100%;
-  border: none;
-  outline: none;
-  padding: 0.1rem 0.2rem 0.1rem 1rem;
-  border-radius: 0.5rem;
+header .middle-header .toogle-menu-home .logo {
+  font-size: 3rem;
 }
-header .navbar-container .search_keyword button {
-  position: absolute;
-  border: none;
-  background: transparent;
-  outline: none;
-  right: 2%;
-  top: 10%;
-  color: #ccc;
+header .middle-header .group-account-cart .line {
+  width: 1px;
+  height: 1.1rem;
+  background-color: #a7a7a7;
 }
-header .navbar-container .search_keyword button svg {
-  vertical-align: baseline;
+header .middle-header .group-account-cart a {
+  font-size: 1.2rem;
 }
-header .navbar-container .navbar_icon-group {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
+header .middle-header .group-account-cart a svg {
+  display: inline-block;
 }
-header .navbar-container .navbar_icon-group .icon-user {
-  margin: 0 0.5rem;
-}
-header .navbar-container .navbar_icon-group .icon-user .dropdown button {
-  border: none;
-  background: transparent;
-  color: #fff;
-  font-size: 1rem;
-}
-header .navbar-container .navbar_icon-group .icon-user .dropdown button svg {
-  vertical-align: baseline;
-}
-header .navbar-container .navbar_icon-group .icon-user .dropdown .dropdown-menu {
+header .middle-header .group-account-cart a span {
+  color: #a7a7a7;
   font-size: 0.8rem;
-  padding: 0;
-  overflow: hidden;
 }
-header .navbar-container .navbar_icon-group .icon-user .dropdown .dropdown-menu li {
-  cursor: pointer;
+header .bottom-header {
+  border-bottom: 1px solid #f5f5f5;
 }
-header .navbar-container .navbar_icon-group .icon-user .dropdown .dropdown-menu li a {
-  color: inherit;
-}
-header .navbar-container .navbar_icon-group .icon-user .dropdown .dropdown-menu li button {
-  color: inherit;
-  font-size: inherit;
-}
-header .navbar-container .navbar_icon-group .icon-user .dropdown .dropdown-menu li button:hover {
-  background: #e9ecef;
-}
-header .navbar-container .navbar_icon-group .icon-cart,
-header .navbar-container .navbar_icon-group .icon-bell {
-  margin-right: 0.5rem;
-}
-header .navbar-container .navbar_icon-group .icon-cart a,
-header .navbar-container .navbar_icon-group .icon-bell a {
-  color: #fff;
-  font-size: 1rem;
-}
-header .navbar-container .navbar_icon-group .icon-cart a svg,
-header .navbar-container .navbar_icon-group .icon-bell a svg {
-  vertical-align: baseline;
-}
-header .offcanvas {
-  background: linear-gradient(45deg, #49a09d, #5f2c82);
-  color: #fff;
-}
-header .offcanvas .offcanvas-header button {
-  border: none;
-}
-header .offcanvas .offcanvas-header button svg {
-  transition: transform 0.5s ease-in;
-  color: #fff;
-  font-size: 30px;
-  vertical-align: baseline;
-  font-weight: 700;
-}
-header .offcanvas .offcanvas-header button svg:hover {
-  transform: rotate(40deg);
-}
-header .offcanvas .offcanvas-header button:active {
-  border: none;
-  color: #ccc;
-}
-header .offcanvas .offcanvas-body {
-  padding-top: 0;
-}
-header .offcanvas .offcanvas-body ul {
-  background: transparent;
-  box-shadow: none !important;
-  border: none;
-}
-header .offcanvas .offcanvas-body li {
-  font-weight: 700;
-  background: transparent;
-  border: none;
-}
-header .offcanvas .offcanvas-body li a {
-  color: #fff;
-}
-header .offcanvas .offcanvas-body li a:hover {
-  color: #5f2c82;
-}
-header .offcanvas .offcanvas-body .list-group-item {
-  padding-left: 20px;
-}
-header .offcanvas .offcanvas-body .title-menu {
-  font-size: 30px;
-}
-header .offcanvas .offcanvas-body .accordion {
-  background: transparent;
-}
-header .offcanvas .offcanvas-body .accordion .accordion-item {
-  background: transparent;
-}
-header .offcanvas .offcanvas-body .accordion .accordion-item .accordion-header button {
-  background: transparent;
+header .bottom-header button {
+  width: 100%;
+  background-color: #f3f9fb;
   border: none;
   outline: none;
-  padding: 0.5rem 1rem;
+  color: #313131;
+  padding: 0.4rem 2.2rem !important;
+  font-size: 0.8rem;
+  font-weight: 600;
 }
-header .offcanvas .offcanvas-body .accordion .accordion-item .accordion-header button:focus {
-  box-shadow: none;
+header .bottom-header button::after {
+  content: "";
+  display: inline-block;
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  border-top: 0.3em solid #36a4d5 !important;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
 }
-header .offcanvas .offcanvas-body .accordion .accordion-item .accordion-header button:hover {
-  color: #5f2c82;
+header .bottom-header button:hover, header .bottom-header button.show {
+  background-color: #008ecc;
+  color: #ddf0f7;
 }
-header .offcanvas .offcanvas-body .accordion .accordion-item .accordion-header .accordion-button::after {
-  background-image: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="30" height="30" viewBox="0 0 16 16"%3E%3Cg transform="rotate(180 8 8)"%3E%3Cpath fill="white" fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56L2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E');
+header .bottom-header button:hover::after, header .bottom-header button.show::after {
+  border-top: 0.3em solid #ddf0f7 !important;
 }
-header .offcanvas .offcanvas-body .accordion .accordion-item .accordion-button {
-  font-weight: 700;
-  color: #fff;
+header .bottom-header .active {
+  color: #ddf0f7 !important;
+  background-color: #008ecc !important;
 }
-header .offcanvas .offcanvas-body .accordion .accordion-item .accordion-body li a {
-  color: #fff;
-}
-header .offcanvas .offcanvas-body .accordion .accordion-item .accordion-body li a:hover {
-  color: #5f2c82;
-}/*# sourceMappingURL=Header.css.map */
+header .bottom-header .active::after {
+  border-top: 0.3em solid #ddf0f7 !important;
+}/*# sourceMappingURL=header.css.map */
