@@ -1,0 +1,39 @@
+$color-categories: #313131;
+$border: #36a4d5;
+.card-tech-deal {
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+      .card-tech-title {
+        img {
+          border: 2px solid $border;
+        }
+      }
+    }
+    .card-tech-title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1rem;
+      padding: 0.2rem;
+      img {
+        box-shadow: 5px 5px 17px #d5d5d5, -5px -5px 17px #ebebeb;
+        border: 2px solid transparent;
+        width: 8rem;
+        height: 8rem;
+      }
+    }
+    .card-tech-body {
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      span {
+        color: $color-categories;
+      }
+    }
+  }
+}

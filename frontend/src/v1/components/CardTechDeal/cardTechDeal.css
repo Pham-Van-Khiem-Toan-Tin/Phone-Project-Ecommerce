@@ -1,0 +1,31 @@
+.card-tech-deal a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.card-tech-deal a:hover .card-tech-title img {
+  border: 2px solid #36a4d5;
+}
+.card-tech-deal a .card-tech-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  padding: 0.2rem;
+}
+.card-tech-deal a .card-tech-title img {
+  box-shadow: 5px 5px 17px #d5d5d5, -5px -5px 17px #ebebeb;
+  border: 2px solid transparent;
+  width: 8rem;
+  height: 8rem;
+}
+.card-tech-deal a .card-tech-body {
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.card-tech-deal a .card-tech-body span {
+  color: #313131;
+}/*# sourceMappingURL=cardTechDeal.css.map */
