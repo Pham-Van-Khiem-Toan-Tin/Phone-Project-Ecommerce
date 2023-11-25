@@ -1,0 +1,22 @@
+$background-toggle-search: #f3f9fb;
+.input-search {
+    form {
+        position: relative;
+        button {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            position: absolute;
+            top: 0.4rem;
+            left: 0.5rem;
+            font-weight: 200;
+        }
+        input {
+            min-width: 18rem;
+            padding: 0.7rem 0.7rem 0.7rem 2rem !important;
+            border: none !important;
+            background-color: $background-toggle-search;
+            font-size: 0.7rem;
+        }
+    }
+}
