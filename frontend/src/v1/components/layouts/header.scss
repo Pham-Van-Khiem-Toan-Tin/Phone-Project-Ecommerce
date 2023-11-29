@@ -8,10 +8,12 @@ $color-categories: #313131;
 $active-color: #ddf0f7;
 $active-background: #008ecc;
 header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  z-index: 999;
+  background-color: #ffff;
   .top-header {
     font-size: 0.6rem;
     color: $color-primary;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MultiRangeSlider from "multi-range-slider-react";
 import StarRatings from "react-star-ratings";
-import "./Categories.css";
+import { FaTh, FaThList } from "react-icons/fa";
 import Card from "../../components/Card/Card";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader/Loader";
@@ -13,6 +13,7 @@ import {
   clearErrorCart,
   resetToCart,
 } from "../../reduxToolkit/reducer/product/cartProductSlice";
+import "./categories.css";
 
 const Categories = () => {
   const dispatch = useDispatch();
@@ -32,7 +33,8 @@ const Categories = () => {
   const [category, setCategory] = useState("");
   const [ratings, setRating] = useState(0);
   const [minValue, setMinValue] = useState(0);
-  const [maxValue, setMaxValue] = useState(50000000);
+  const [maxValue, setMaxValue] = useState(500);
+  const [maxValue1, setMaxValue1] = useState(50000000);
 
   const changeRating = (newRating, name) => {
     setRating(newRating);
@@ -60,7 +62,7 @@ const Categories = () => {
         keyword,
         currentPage,
         minValue,
-        maxValue,
+        maxValue1,
         category,
         ratings,
       })
@@ -73,156 +75,191 @@ const Categories = () => {
         <Loader />
       ) : (
         <div className="categories">
-          <div className="categories-content">
-            <div className="categories-controller">
-              <div className="categories-range">
-                <h3>Price:</h3>
-                <MultiRangeSlider
-                  min={0}
-                  max={50000000}
-                  step={1000000}
-                  minValue={minValue}
-                  maxValue={maxValue}
-                  onChange={(e) => {
-                    setMinValue(e.minValue);
-                    setMaxValue(e.maxValue);
-                  }}
-                ></MultiRangeSlider>
-              </div>
-              <div className="categories-model">
-                <h5>Model: </h5>
-                {listCategories.map((item, index) => {
-                  return (
-                    <>
-                      <div
-                        className="categories-model-item"
-                        key={item._id}
-                        onClick={() => {
-                          setCategory(item);
-                          setCurrentPage(1);
-                        }}
-                      >
-                        {item}
-                      </div>
-                    </>
-                  );
-                })}
-              </div>
-              <div className="categories-rating">
-                <h5>Rating:</h5>
-                <StarRatings
-                  rating={ratings}
-                  starRatedColor="rgb(255, 255, 0)"
-                  changeRating={changeRating}
-                  numberOfStars={5}
-                  name="rating"
-                  starHoverColor="rgb(255, 191, 0)"
-                  starDimension="20px"
-                  starSpacing="2px"
-                />
-              </div>
+          <div className="container">
+            <div>
+              <nav aria-label="breadcrumb">
+                <ol className="breadcrumb">
+                  <li className="breadcrumb-item">
+                    <span className="fw-bold">Home</span>
+                  </li>
+                  <li className="breadcrumb-item" aria-current="page">
+                    Data
+                  </li>
+                </ol>
+              </nav>
             </div>
-            <div className="categories-gird">
-              <h1 className="categories-header">Products</h1>
-              <div className="categories-controller-select">
-                <select
-                  onChange={(e) => setMaxValue(e.target.value)}
-                  value={maxValue}
-                  defaultValue={50000000}
-                >
-                  <option value={10000000}>10tr</option>
-                  <option value={20000000}>20tr</option>
-                  <option value={30000000}>30tr</option>
-                  <option value={40000000}>40tr</option>
-                  <option value={50000000}>50tr</option>
-                </select>
-                <select
-                  onChange={(e) => setCategory(e.target.value)}
-                  value={category}
-                  defaultValue=""
-                >
-                  <option value="">Chose model</option>
-                  <option value="Xiaomi">Xiaomi</option>
-                  <option value="Samsung">Samsung</option>
-                  <option value="Oppo">Oppo</option>
-                  <option value="Apple">Iphone</option>
-                </select>
-                <select
-                  onChange={(e) => setRating(parseFloat(e.target.value))}
-                  value={ratings}
-                  defaultValue={0}
-                >
-                  <option value={0}>Chose star</option>
-                  <option value={1}>1 star</option>
-                  <option value={2}>2 star</option>
-                  <option value={3}>3 star</option>
-                  <option value={4}>4 star</option>
-                  <option value={5}>5 star</option>
-                </select>
-              </div>
-              <div className="categories-gird-content">
-                <div className="row">
-                  {products &&
-                    products.map((product) => {
-                      return (
-                        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6">
-                          <Card data={product} />
-                        </div>
-                      );
-                    })}
+            <div className="row">
+              <div className="col-3">
+                <div className="product-categories rounded">
+                  <p className="fw-bold">Product categories</p>
+                  <ul className="product-categories-list">
+                    <li className="product-categories-item">
+                      <input type="checkbox" /> <span>Gamming</span>
+                    </li>
+                    <li className="product-categories-item">
+                      <input type="checkbox" /> <span>Selfie</span>
+                    </li>
+                    <li className="product-categories-item">
+                      <input type="checkbox" /> <span>Gamming</span>
+                    </li>
+                    <li className="product-categories-item">
+                      <input type="checkbox" /> <span>Selfie</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="filter-by-price rounded">
+                  <p className="fw-bold">Filter By Price</p>
+                  <MultiRangeSlider
+                    min={0}
+                    max={500}
+                    step={1}
+                    minValue={minValue}
+                    maxValue={maxValue}
+                    onChange={(e) => {
+                      setMinValue(e.minValue);
+                      setMaxValue(e.maxValue);
+                    }}
+                  ></MultiRangeSlider>
+                  <p className="price-display">
+                    Price: <span>${minValue}</span> - <span>${maxValue}</span>
+                  </p>
+                </div>
+                <div className="filter-by-ratings rounded">
+                  <p className="fw-bold">Ratings</p>
+                  <ul className="rating-list">
+                    <li className="rating-item">
+                      <StarRatings
+                        rating={5}
+                        starRatedColor="rgb(211 118 26)"
+                        numberOfStars={5}
+                        name="rating"
+                        starDimension="15px"
+                        starSpacing="1px"
+                      />
+                      <span> (9)</span>
+                    </li>
+                    <li className="rating-item">
+                      <StarRatings
+                        rating={4}
+                        starRatedColor="rgb(211 118 26)"
+                        numberOfStars={5}
+                        name="rating"
+                        starDimension="15px"
+                        starSpacing="1px"
+                      />
+                      <span> (20)</span>
+                    </li>
+                    <li className="rating-item">
+                      <StarRatings
+                        rating={3}
+                        starRatedColor="rgb(211 118 26)"
+                        numberOfStars={5}
+                        name="rating"
+                        starDimension="15px"
+                        starSpacing="1px"
+                      />
+                      <span> (12)</span>
+                    </li>
+                    <li className="rating-item">
+                      <StarRatings
+                        rating={2}
+                        starRatedColor="rgb(211 118 26)"
+                        numberOfStars={5}
+                        name="rating"
+                        starDimension="15px"
+                        starSpacing="1px"
+                      />
+                      <span> (9)</span>
+                    </li>
+                    <li className="rating-item">
+                      <StarRatings
+                        rating={1}
+                        starRatedColor="rgb(211 118 26)"
+                        numberOfStars={5}
+                        name="rating"
+                        starDimension="15px"
+                        starSpacing="1px"
+                      />
+                      <span> (4)</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="filter-by-brand rounded">
+                  <p className="fw-bold">Brands</p>
+                  <ul className="brand-list">
+                    <li className="brand-item">
+                      <input type="checkbox" /> <span>SamSung</span>
+                    </li>
+                    <li className="brand-item">
+                      <input type="checkbox" /> <span>Xiaomi</span>
+                    </li>
+                    <li className="brand-item">
+                      <input type="checkbox" /> <span>Apple</span>
+                    </li>
+                    <li className="brand-item">
+                      <input type="checkbox" /> <span>Huwai</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
-
-              <ul className="pagination-list">
-                <li>
-                  <button
-                    className=""
-                    aria-label="Previous"
-                    disabled={currentPage === 1 ? true : false}
-                    onClick={() => setCurrentPage(currentPage - 1)}
-                  >
-                    <span aria-hidden="true">&laquo;</span>
-                  </button>
-                </li>
-                {pageCouts.map((pageCout) => {
-                  return (
-                    <>
-                      <li className="">
-                        <button
-                          className=""
-                          disabled={
-                            filteredProductsCount < resultPerPage ||
-                            Math.round(filteredProductsCount / resultPerPage) +
-                              1 <
-                              pageCout
-                              ? true
-                              : false
-                          }
-                          onClick={() => setCurrentPage(pageCout)}
-                        >
-                          {pageCout}
-                        </button>
-                      </li>
-                    </>
-                  );
-                })}
-                <li className="page-">
-                  <button
-                    className=""
-                    aria-label="Next"
-                    disabled={
-                      filteredProductsCount < resultPerPage ||
-                      Math.round(filteredProductsCount / resultPerPage) <
-                        currentPage + 1
-                        ? true
-                        : false
-                    }
-                    onClick={() => setCurrentPage(currentPage + 1)}
-                  >
-                    <span aria-hidden="true">&raquo;</span>
-                  </button>
-                </li>
-              </ul>
+              <div className="col-9 products-content">
+                <div className="sorting d-flex align-items-center justify-content-between rounded">
+                  <div className="sorting-group d-flex">
+                    <button className="btn btn-sm">
+                      <FaTh />
+                    </button>
+                    <button className="btn btn-sm">
+                      <FaThList />
+                    </button>
+                    <select className="form-select" placeholder="Sort By">
+                      <option>Sort By</option>
+                    </select>
+                  </div>
+                  <div className="number-of-products">
+                    <span>Showing 1-12 of 32 results</span>
+                  </div>
+                </div>
+                <div className="products-gird-content">
+                  <div className="row">
+                    {products &&
+                      products.map((product) => {
+                        console.log(product);
+                        return (
+                          <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-6 p-1">
+                            <Card data={product} />
+                          </div>
+                        );
+                      })}
+                  </div>
+                  <ul className="pagination">
+                    <li className="page-item">
+                      <a className="page-link" href="#">
+                        Previous
+                      </a>
+                    </li>
+                    <li className="page-item">
+                      <a className="page-link active" href="#">
+                        1
+                      </a>
+                    </li>
+                    <li className="page-item">
+                      <a className="page-link" href="#">
+                        2
+                      </a>
+                    </li>
+                    <li className="page-item">
+                      <a className="page-link" href="#">
+                        3
+                      </a>
+                    </li>
+                    <li className="page-item">
+                      <a className="page-link" href="#">
+                        Next
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
