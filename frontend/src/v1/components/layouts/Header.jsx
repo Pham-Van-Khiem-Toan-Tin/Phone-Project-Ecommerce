@@ -5,7 +5,7 @@ import {
   FaAlignLeft,
   FaAmazonPay,
   FaRegUser,
-  FaEllipsisV 
+  FaEllipsisV,
 } from "react-icons/fa";
 import { BiSolidDiscount, BiCartAdd } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
@@ -111,112 +111,123 @@ const Header = () => {
 
       {/* menu-group-categories */}
       <div className="bottom-header">
-        <div className="container d-flex align-items-center justify-content-between gap-2 flex-wrap pt-2 pb-2">
-          
-        <div className="dropdown">
-            <button
-              className="btn btn-sm rounded-pill dropdown-toggle active"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Iphone
-            </button>
-            <ul className="dropdown-menu">
-              <li>
-                <div className="dropdown-item">IphoneXs</div>
-              </li>
-              <li>
-                <div className="dropdown-item">Iphone 14</div>
-              </li>
-              <li>
-                <div className="dropdown-item">Iphone 15</div>
-              </li>
-            </ul>
-          </div>
-          <div className="dropdown">
-            <button
-              className="btn btn-sm rounded-pill dropdown-toggle"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              SamSung
-            </button>
-            <ul className="dropdown-menu">
-              <li>
-                <div className="dropdown-item">Galaxy</div>
-              </li>
-              <li>
-                <div className="dropdown-item">Note</div>
-              </li>
-              <li>
-                <div className="dropdown-item">Flip</div>
-              </li>
-            </ul>
-          </div>
-          <div className="dropdown">
-            <button
-              className="btn btn-sm rounded-pill dropdown-toggle"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Oppo
-            </button>
-            <ul className="dropdown-menu">
-              <li>
-                <div className="dropdown-item">Note</div>
-              </li>
-              <li>
-                <div className="dropdown-item">Another action</div>
-              </li>
-              <li>
-                <div className="dropdown-item">Something else here</div>
-              </li>
-            </ul>
-          </div>
-          <div className="dropdown">
-            <button
-              className="btn btn-sm rounded-pill dropdown-toggle"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Xiaomi
-            </button>
-            <ul className="dropdown-menu">
-              <li>
-                <div className="dropdown-item">gamming</div>
-              </li>
-              <li>
-                <div className="dropdown-item">Note</div>
-              </li>
-              <li>
-                <div className="dropdown-item">Pro</div>
-              </li>
-            </ul>
-          </div>
-          <div className="dropdown">
-            <button
-              className="btn btn-sm rounded-pill dropdown-toggle"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Huawei
-            </button>
-            <ul className="dropdown-menu">
-              <li>
-                <div className="dropdown-item">Mate</div>
-              </li>
-              <li>
-                <div className="dropdown-item">Another action</div>
-              </li>
-              <li>
-                <div className="dropdown-item">Something else here</div>
-              </li>
-            </ul>
+        <div className="container">
+          <div className="row">
+            <div className="col p-1">
+              <div className="dropdown">
+                <button
+                  className="btn btn-sm rounded-pill dropdown-toggle active"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Iphone
+                </button>
+                <ul className="dropdown-menu">
+                  <li>
+                    <div className="dropdown-item">IphoneXs</div>
+                  </li>
+                  <li>
+                    <div className="dropdown-item">Iphone 14</div>
+                  </li>
+                  <li>
+                    <div className="dropdown-item">Iphone 15</div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="col p-1">
+              <div className="dropdown">
+                <button
+                  className="btn btn-sm rounded-pill dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  SamSung
+                </button>
+                <ul className="dropdown-menu">
+                  <li>
+                    <div className="dropdown-item">Galaxy</div>
+                  </li>
+                  <li>
+                    <div className="dropdown-item">Note</div>
+                  </li>
+                  <li>
+                    <div className="dropdown-item">Flip</div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="col p-1">
+              <div className="dropdown">
+                <button
+                  className="btn btn-sm rounded-pill dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Oppo
+                </button>
+                <ul className="dropdown-menu">
+                  <li>
+                    <div className="dropdown-item">Note</div>
+                  </li>
+                  <li>
+                    <div className="dropdown-item">Another action</div>
+                  </li>
+                  <li>
+                    <div className="dropdown-item">Something else here</div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="col p-1">
+              <div className="dropdown">
+                <button
+                  className="btn btn-sm rounded-pill dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Xiaomi
+                </button>
+                <ul className="dropdown-menu">
+                  <li>
+                    <div className="dropdown-item">gamming</div>
+                  </li>
+                  <li>
+                    <div className="dropdown-item">Note</div>
+                  </li>
+                  <li>
+                    <div className="dropdown-item">Pro</div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="col p-1">
+              <div className="dropdown">
+                <button
+                  className="btn btn-sm rounded-pill dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Huawei
+                </button>
+                <ul className="dropdown-menu">
+                  <li>
+                    <div className="dropdown-item">Mate</div>
+                  </li>
+                  <li>
+                    <div className="dropdown-item">Another action</div>
+                  </li>
+                  <li>
+                    <div className="dropdown-item">Something else here</div>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>

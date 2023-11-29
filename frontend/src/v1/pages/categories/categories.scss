@@ -1,0 +1,145 @@
+$background-filter: #118fcc;
+$color: #111215;
+$color-filter-price: #a7adb6;
+.categories {
+  margin-top: 180px;
+  .breadcrumb {
+    .breadcrumb-item {
+      font-size: 0.8rem;
+    }
+  }
+  .number-of-products {
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+  }
+  .product-categories {
+    padding: 1rem;
+    background: #ffffff;
+    box-shadow: 5px 5px 23px #e3e3e3, -5px -5px 23px #ffffff;
+    .product-categories-list {
+      list-style: none;
+      padding-left: 0;
+      .product-categories-item {
+        font-size: 0.8rem;
+        span {
+          display: inline-block;
+          margin-left: 0.5rem;
+        }
+      }
+    }
+  }
+  .filter-by-price {
+    margin-top: 0.5rem;
+    padding: 1rem;
+    background: #ffffff;
+    box-shadow: 5px 5px 23px #e3e3e3, -5px -5px 23px #ffffff;
+    .multi-range-slider {
+      border: none;
+      box-shadow: none;
+      .bar {
+        .bar-inner {
+          background-color: #111215;
+        }
+        .thumb {
+          .min-caption {
+            background-color: #ccc;
+            color: #ffffff;
+          }
+          .max-caption {
+            background-color: #ccc;
+            color: #ffffff;
+          }
+        }
+        .thumb::before {
+          top: 50%;
+          box-shadow: none;
+          width: 15px;
+          height: 15px;
+        }
+      }
+      .ruler {
+        display: none;
+      }
+      .labels {
+        display: none;
+      }
+    }
+    .price-display {
+      font-size: 0.8rem;
+      color: $color-filter-price;
+      font-weight: 500;
+    }
+  }
+  .filter-by-ratings {
+    margin-top: 0.5rem;
+    padding: 1rem;
+    background: #ffffff;
+    box-shadow: 5px 5px 23px #e3e3e3, -5px -5px 23px #ffffff;
+    .rating-list {
+      list-style: none;
+      padding-left: 0;
+      .rating-item {
+        .star-ratings {
+          .widget-svg {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+  .filter-by-brand {
+    margin-top: 0.5rem;
+    padding: 1rem;
+    background: #ffffff;
+    box-shadow: 5px 5px 23px #e3e3e3, -5px -5px 23px #ffffff;
+    .brand-list {
+      list-style: none;
+      padding-left: 0;
+      .brand-item {
+        font-size: 0.8rem;
+        span {
+          display: inline-block;
+          margin-left: 0.5rem;
+        }
+      }
+    }
+  }
+  .sorting {
+    padding: 0.5rem;
+    background: #ffffff;
+    box-shadow: 5px 5px 23px #e3e3e3, -5px -5px 23px #ffffff;
+    .sorting-group {
+      button {
+        svg {
+          display: block;
+        }
+      }
+      select {
+        width: 10rem;
+        font-size: 0.8rem;
+        margin-left: 0.5rem;
+      }
+    }
+    .number-of-products {
+      span {
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+    }
+  }
+  .pagination {
+        li {
+            a {
+                border: none;
+                color: $color;
+                font-size: 0.8rem;
+                font-weight: 500;
+            }
+        }
+        a.active {
+            text-decoration: underline;
+            background-color: #ffffff;
+        }
+  }
+}
