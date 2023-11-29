@@ -12,6 +12,8 @@ import {
 } from "../../reduxToolkit/reducer/product/cartProductSlice";
 import { Link } from "react-router-dom";
 import HomeBannerCarousel from "../../components/homeBannerCarousel/HomeBannerCarousel";
+import TechDealCarousel from "../../components/TechDealCarousel/TechDealCarousel";
+import BrandCarousel from "../../components/BrandCarousel/BrandCarousel";
 const Home = () => {
   const dispatch = useDispatch();
   const { isLoading, error, ssproducts, xiaoproducts, approducts, opproducts } =
@@ -46,6 +48,8 @@ const Home = () => {
           <div className="container">
             <HomeBannerCarousel />
             <SliderProduct datas={approducts} />
+            <TechDealCarousel datas={approducts} />
+            <BrandCarousel datas={approducts}/>
           </div>
         </div>
       )}
