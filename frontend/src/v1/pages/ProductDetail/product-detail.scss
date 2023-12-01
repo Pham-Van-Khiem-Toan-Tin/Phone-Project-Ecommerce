@@ -1,3 +1,85 @@
+$price: #ff3333;
+$border-header: #dad1d1;
+$background-input: #f3f9fb;
 .product-detail {
-    margin-top: 150px;
+  margin-top: 150px;
+  .product-detail-image {
+  }
+  .product-detail-content {
+    .name {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .ratings {
+      margin-bottom: 1rem;
+      svg {
+        display: block;
+      }
+      .number-rating {
+        font-size: 0.8rem;
+      }
+    }
+    .price {
+      color: $price;
+      font-weight: 700;
+    }
+    .quality {
+      margin-bottom: 1rem;
+
+        span {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        input {
+            display: inline-block;
+            margin-left: 0.5rem;
+            width: 3rem;
+            padding-left: 0.5rem;
+            background-color: $background-input;
+        }
+    }
+    .colors {
+      margin-bottom: 1rem;
+
+        span {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        .color-item {
+            width: 2rem;
+            height: 1rem;
+            background-color: #ff3333;
+            margin-right: 0.5rem;
+        }
+    }
+    button.btn-add-cart {
+        font-weight: 500;
+        margin-bottom: 1rem;
+    }
+    .trust-signal {
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+        svg {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+    .wish-and-compare {
+        button {
+            font-size: 0.8rem;
+            background-color: $background-input;
+            padding: 0.5rem;
+            border: none;
+            outline: none;
+            margin-right: 0.5rem;
+            svg {
+                display: inline-block;
+            }
+        }
+        .wish-button:hover {
+            color: #ff3333;
+        }
+    }
+  }
 }

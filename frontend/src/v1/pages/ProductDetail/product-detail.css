@@ -1,3 +1,74 @@
 .product-detail {
   margin-top: 150px;
+}
+.product-detail .product-detail-content .name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.product-detail .product-detail-content .ratings {
+  margin-bottom: 1rem;
+}
+.product-detail .product-detail-content .ratings svg {
+  display: block;
+}
+.product-detail .product-detail-content .ratings .number-rating {
+  font-size: 0.8rem;
+}
+.product-detail .product-detail-content .price {
+  color: #ff3333;
+  font-weight: 700;
+}
+.product-detail .product-detail-content .quality {
+  margin-bottom: 1rem;
+}
+.product-detail .product-detail-content .quality span {
+  font-weight: 600;
+  font-size: 1rem;
+}
+.product-detail .product-detail-content .quality input {
+  display: inline-block;
+  margin-left: 0.5rem;
+  width: 3rem;
+  padding-left: 0.5rem;
+  background-color: #f3f9fb;
+}
+.product-detail .product-detail-content .colors {
+  margin-bottom: 1rem;
+}
+.product-detail .product-detail-content .colors span {
+  font-weight: 600;
+  font-size: 1rem;
+}
+.product-detail .product-detail-content .colors .color-item {
+  width: 2rem;
+  height: 1rem;
+  background-color: #ff3333;
+  margin-right: 0.5rem;
+}
+.product-detail .product-detail-content button.btn-add-cart {
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+.product-detail .product-detail-content .trust-signal {
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+.product-detail .product-detail-content .trust-signal svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+.product-detail .product-detail-content .wish-and-compare button {
+  font-size: 0.8rem;
+  background-color: #f3f9fb;
+  padding: 0.5rem;
+  border: none;
+  outline: none;
+  margin-right: 0.5rem;
+}
+.product-detail .product-detail-content .wish-and-compare button svg {
+  display: inline-block;
+}
+.product-detail .product-detail-content .wish-and-compare .wish-button:hover {
+  color: #ff3333;
 }/*# sourceMappingURL=product-detail.css.map */

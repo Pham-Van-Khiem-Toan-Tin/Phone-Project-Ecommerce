@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import StarRatings from "react-star-ratings";
-import { FaAngleDoubleDown, FaAngleDoubleUp } from "react-icons/fa";
+import { FaCheckCircle, FaHeart } from "react-icons/fa";
+import { BiGitCompare } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getProductDetail,
@@ -98,15 +99,54 @@ const Productdetail = () => {
               </nav>
             </div>
             <div className="row">
-              <div className="col-6">
+              <div className="col-6 product-detail-image">
                 <div className="image-primary">
-                  <img src={product?.images[0].url} alt={product?.images[0]._id}/>
+                  <img
+                    src={product?.images[0].url}
+                    alt={product?.images[0]._id}
+                  />
                 </div>
-                <div className="image-detail-carousel">
-                  
+                <div className="image-detail-carousel"></div>
+              </div>
+              <div className="col-6 product-detail-content">
+                <p className="name">{product?.name}</p>
+                <div className="ratings">
+                  <StarRatings
+                    rating={product?.ratings ? product.ratings : 5}
+                    starRatedColor="#FFC107"
+                    numberOfStars={5}
+                    name="rating"
+                    starHoverColor="#FFC107"
+                    starDimension="20px"
+                    starSpacing="2px"
+                  />
+                  <span className="number-rating">
+                    {" "}
+                    ({product?.numOfReview} reviews)
+                  </span>
+                </div>
+                <p className="price">
+                 $ {product?.price}
+                </p>
+                <div className="quality">
+                  <span>QTY:</span>
+                  <input className="form-control" type="number" min={0} />
+                </div>
+                <div className="colors">
+                  <span>Color: </span>
+                  <button className="btn btn-sm color-item"></button>
+                  <button className="btn btn-sm color-item"></button>
+                  <button className="btn btn-sm color-item"></button>
+                </div>
+                <button className="btn btn-sm btn-primary btn-add-cart text-uppercase">Add to cart</button>
+                <div className="trust-signal">
+                  <FaCheckCircle /> <span>Shop secure, Free return</span>
+                </div>
+                <div className="wish-and-compare">
+                  <button className="btn btn-sm wish-button"><FaHeart /> Add wish list</button>
+                  <button className="btn btn-sm compare-button"><BiGitCompare /> Add to compare</button>
                 </div>
               </div>
-              <div className="col-6"></div>
             </div>
           </div>
         </div>
