@@ -1,0 +1,56 @@
+$color-primary: #6a6a6a;
+$color-categories: #018ecc;
+$border-title: #f4f4f4;
+$border: #36a4d5;
+.carousel-swiper {
+  margin-top: 3rem;
+  .carousel-swiper-title {
+    color: $color-primary;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid $border-title;
+    .title-content {
+      font-weight: 700;
+      font-size: 1.2rem;
+      padding: 0.8rem 0;
+      margin: 0;
+      display: inline-block;
+      position: relative;
+      span {
+        display: inline-block;
+        color: $color-categories;
+      }
+      .line {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -3px;
+        height: 3px;
+        background-color: $color-categories;
+      }
+    }
+    a {
+      color: $color-primary;
+      font-size: 0.8rem;
+      font-weight: 500;
+      svg {
+        display: inline-block;
+        // vertical-align: middle;
+        fill: $color-categories;
+      }
+    }
+  }
+  .swiper {
+    padding-bottom: 2rem !important;
+    .swiper-pagination {
+      .swiper-pagination-bullet {
+        background-color: rgba(173, 171, 171, 0.753);
+        opacity: 1;
+      }
+      .swiper-pagination-bullet-active {
+        width: 2rem;
+        background-color: $border;
+        border-radius: 0.2rem;
+      }
+    }
+  }
+}

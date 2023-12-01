@@ -24,6 +24,11 @@ a {
 .active {
   border-bottom: 1px solid #91b156;
 }
+.breadcrumb {
+  .breadcrumb-item {
+    font-size: 0.8rem;
+  }
+}
 @media (max-width: 365px) {
   html {
     width: 100vw;

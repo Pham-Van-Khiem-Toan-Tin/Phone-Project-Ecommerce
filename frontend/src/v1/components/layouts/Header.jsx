@@ -4,8 +4,9 @@ import {
   FaShippingFast,
   FaAlignLeft,
   FaAmazonPay,
-  FaRegUser,
-  FaEllipsisV,
+  FaHeart,
+  FaUser,
+  FaShoppingCart,
 } from "react-icons/fa";
 import { BiSolidDiscount, BiCartAdd } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
@@ -63,16 +64,16 @@ const Header = () => {
         <div className="container d-flex align-items-center justify-content-between">
           <span className="welcome">Welcome to phone Shop!</span>
           <div className="info">
-            <div>
+            <div className="d-flex align-items-center justify-content-center gap-1">
               <FaMapMarkerAlt />
               <span>
                 Deliver to <span className="fw-bold">423651</span>
               </span>
             </div>
-            <Link to="/orders">
+            <Link to="/orders" className="d-flex align-items-center justify-content-center gap-1">
               <FaShippingFast /> Track your order
             </Link>
-            <Link to="/discount">
+            <Link to="/discount" className="d-flex align-items-center justify-content-center gap-1">
               <BiSolidDiscount /> All Offers
             </Link>
           </div>
@@ -97,13 +98,15 @@ const Header = () => {
             </Link>
           </div>
           <InputSearch />
-          <div className="group-account-cart d-flex align-items-center justify-content-center gap-3">
-            <Link to="/login">
-              <FaRegUser /> <span className="fw-bold">Sign Up/Sign In</span>
+          <div className="group-account-cart d-flex align-items-center justify-content-center">
+            <Link to="/login" className="rounded">
+              <FaUser />
             </Link>
-            <div className="line my-auto"></div>
-            <Link to="/cart">
-              <BiCartAdd /> <span className="fw-bold">Cart</span>
+            <Link to="/wishlist" className="rounded">
+              <FaHeart />
+            </Link>
+            <Link to="/cart" className="rounded">
+              <FaShoppingCart />
             </Link>
           </div>
         </div>
@@ -116,7 +119,7 @@ const Header = () => {
             <div className="col p-1">
               <div className="dropdown">
                 <button
-                  className="btn btn-sm rounded-pill dropdown-toggle active"
+                  className="btn btn-sm btn-primary rounded dropdown-toggle active"
                   type="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
@@ -139,7 +142,7 @@ const Header = () => {
             <div className="col p-1">
               <div className="dropdown">
                 <button
-                  className="btn btn-sm rounded-pill dropdown-toggle"
+                  className="btn btn-sm rounded dropdown-toggle"
                   type="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
@@ -162,7 +165,7 @@ const Header = () => {
             <div className="col p-1">
               <div className="dropdown">
                 <button
-                  className="btn btn-sm rounded-pill dropdown-toggle"
+                  className="btn btn-sm rounded dropdown-toggle"
                   type="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
@@ -185,7 +188,7 @@ const Header = () => {
             <div className="col p-1">
               <div className="dropdown">
                 <button
-                  className="btn btn-sm rounded-pill dropdown-toggle"
+                  className="btn btn-sm rounded dropdown-toggle"
                   type="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
@@ -208,7 +211,7 @@ const Header = () => {
             <div className="col p-1">
               <div className="dropdown">
                 <button
-                  className="btn btn-sm rounded-pill dropdown-toggle"
+                  className="btn btn-sm rounded dropdown-toggle"
                   type="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"

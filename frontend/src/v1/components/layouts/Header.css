@@ -21,6 +21,7 @@ header .top-header .info > a, header .top-header .info > div {
 }
 header .top-header .info svg {
   fill: #36a4d5;
+  display: block;
 }
 header .top-header .info a {
   color: #a7a7a7;
@@ -28,12 +29,14 @@ header .top-header .info a {
 }
 header .middle-header {
   border-bottom: 1px solid #f5f5f5;
+  padding: 0.5rem 0;
 }
 header .middle-header svg {
   fill: #36a4d5;
-  display: inline-block;
+  display: block;
 }
 header .middle-header .toogle-menu-home button {
+  display: none;
   background-color: #f3f9fb;
 }
 header .middle-header .toogle-menu-home .logo {
@@ -46,13 +49,13 @@ header .middle-header .group-account-cart .line {
 }
 header .middle-header .group-account-cart a {
   font-size: 1.2rem;
+  padding: 0.5rem;
+}
+header .middle-header .group-account-cart a:hover {
+  background-color: #f5f5f5;
 }
 header .middle-header .group-account-cart a svg {
-  display: inline-block;
-}
-header .middle-header .group-account-cart a span {
-  color: #a7a7a7;
-  font-size: 0.8rem;
+  display: block;
 }
 header .bottom-header {
   border-bottom: 1px solid #f5f5f5;
@@ -83,6 +86,13 @@ header .bottom-header button:hover, header .bottom-header button.show {
 }
 header .bottom-header button:hover::after, header .bottom-header button.show::after {
   border-top: 0.3em solid #ddf0f7 !important;
+}
+header .bottom-header .dropdown-menu {
+  padding: 0;
+}
+header .bottom-header .dropdown-menu .dropdown-item {
+  font-size: 0.8rem;
+  font-weight: 400;
 }
 header .bottom-header .active {
   color: #ddf0f7 !important;

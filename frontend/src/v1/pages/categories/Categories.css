@@ -1,9 +1,6 @@
 .categories {
   margin-top: 180px;
 }
-.categories .breadcrumb .breadcrumb-item {
-  font-size: 0.8rem;
-}
 .categories .number-of-products {
   display: inline-block;
   width: 100%;

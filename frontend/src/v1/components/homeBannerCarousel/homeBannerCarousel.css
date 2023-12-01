@@ -43,7 +43,7 @@
   outline: none;
   background-color: white;
   top: 42%;
-  z-index: 999;
+  z-index: 99;
 }
 .home-banner-carousel .button-navigation > div {
   width: 3rem;
