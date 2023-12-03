@@ -7,8 +7,8 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./homeBannerCarousel.css";
 const HomeBannerCarousel = () => {
-    const [isBegin, setIsBegin] = useState(true);
-    const [isEnd, setIsEnd] = useState(false);
+  const [isBegin, setIsBegin] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
   const sliderRef = useRef(null);
   const handlePrev = useCallback(() => {
     if (!sliderRef.current) return;
@@ -23,7 +23,7 @@ const HomeBannerCarousel = () => {
   const handleSlideChange = (swiper) => {
     setIsBegin(swiper.isBeginning);
     setIsEnd(swiper.isEnd);
-  }
+  };
   return (
     <div className="home-banner-carousel">
       <Swiper

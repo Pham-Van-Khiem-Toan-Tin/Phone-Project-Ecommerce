@@ -32,6 +32,7 @@ import "./product-detail.css";
 import Carousel from "../../components/Carousel/Carousel";
 import CardProductDetail from "../../components/CardProductDetail/CardProductDetail";
 import ProductDetailTabs from "./ProductDetailTabs";
+import ProductDetailCarousel from "./ProductDetailCarousel";
 const Productdetail = () => {
   const dispatch = useDispatch();
   const { error, isLoading, product } = useSelector(
@@ -126,20 +127,7 @@ const Productdetail = () => {
             </div>
             <div className="row">
               <div className="col-6 product-detail-image d-flex flex-column align-items-center justify-content-center">
-                <div className="image-primary">
-                  <img
-                    src={product?.images[0].url}
-                    alt={product?.images[0]._id}
-                  />
-                </div>
-                <div className="image-detail-carousel mt-2 w-100">
-                  <Carousel
-                    ChildComponent={CardProductDetail}
-                    datas={product?.images}
-                    responsive={detailCarouselResponsive}
-                    modules={detailCarouselModule}
-                  />
-                </div>
+                <ProductDetailCarousel datas={product?.images}/>
               </div>
               <div className="col-6 product-detail-content">
                 <p className="name">{product?.name}</p>
@@ -161,13 +149,13 @@ const Productdetail = () => {
                 <p className="price">$ {product?.price}</p>
                 <div className="quality">
                   <span>QTY:</span>
-                  <input className="form-control" type="number" min={0} />
+                  <input className="form-control" disabled defaultValue={1} type="number" min={0} />
                 </div>
                 <div className="colors">
                   <span>Color: </span>
                   <button className="btn btn-sm color-item"></button>
-                  <button className="btn btn-sm color-item"></button>
-                  <button className="btn btn-sm color-item"></button>
+                  <button className="btn btn-sm color-item" style={{backgroundColor: "black"}}></button>
+                  <button className="btn btn-sm color-item"  style={{backgroundColor: "#cec2c2"}}></button>
                 </div>
                 <button className="btn btn-sm btn-primary btn-add-cart text-uppercase">
                   Add to cart

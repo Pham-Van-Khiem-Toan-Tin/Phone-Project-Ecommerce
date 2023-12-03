@@ -1,0 +1,48 @@
+.detail-carousel {
+  position: relative;
+}
+.detail-carousel .image-primary .swiper-slide img {
+  width: 100%;
+  height: auto;
+}
+.detail-carousel .image-primary .swiper-button-prev, .detail-carousel .image-primary .swiper-button-next {
+  color: #000;
+}
+.detail-carousel .image-navigation {
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+.detail-carousel .image-navigation .swiper-slide img {
+  width: 100%;
+  height: auto;
+}
+.detail-carousel .image-navigation .swiper-slide-visible {
+  opacity: 0.5;
+}
+.detail-carousel .image-navigation .swiper-slide-thumb-active {
+  opacity: 1;
+}
+.detail-carousel .prev-arrow, .detail-carousel .next-arrow {
+  font-size: 2rem;
+  border: none;
+  outline: none;
+  padding: 0;
+  background-color: transparent;
+  position: absolute;
+  bottom: 3rem;
+  z-index: 999;
+}
+.detail-carousel .prev-arrow svg, .detail-carousel .next-arrow svg {
+  display: block;
+}
+.detail-carousel .prev-arrow:hover, .detail-carousel .next-arrow:hover {
+  background-color: #f3f9fb;
+  color: #008ecc;
+}
+.detail-carousel .prev-arrow {
+  left: -0.8rem;
+}
+.detail-carousel .next-arrow {
+  right: -0.8rem;
+}/*# sourceMappingURL=product-detail-carousel.css.map */

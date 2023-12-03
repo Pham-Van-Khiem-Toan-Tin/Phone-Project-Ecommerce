@@ -1,0 +1,56 @@
+$background-navigation: #f3f9fb;
+$active-background: #008ecc;
+.detail-carousel {
+    position: relative;
+    .image-primary {
+        .swiper-slide {
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+        .swiper-button-prev, .swiper-button-next {
+            color: #000;
+        }
+    }
+    .image-navigation {
+        margin-top: 0.5rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+        .swiper-slide {
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+        .swiper-slide-visible {
+            opacity: 0.5;
+        }
+        .swiper-slide-thumb-active {
+            opacity: 1.0;
+        }
+    }
+    .prev-arrow, .next-arrow {
+        font-size: 2rem;
+        border: none;
+        outline: none;
+        padding: 0;
+        background-color: transparent;
+        position: absolute;
+        bottom: 3rem;
+        z-index: 999;
+        svg {
+            display: block;
+        }
+    }
+    .prev-arrow:hover, .next-arrow:hover {
+        background-color: $background-navigation;
+        color: $active-background;
+    }
+    .prev-arrow {
+        left: -0.8rem;
+    }
+    .next-arrow {
+        right: -0.8rem;
+    }
+}
