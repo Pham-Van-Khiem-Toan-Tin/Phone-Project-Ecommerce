@@ -238,7 +238,7 @@ const Header = () => {
       {/*menu canvas */}
       <div
         className="offcanvas offcanvas-start"
-        tabindex="-1"
+        tabIndex="-1"
         id="menuCanvas"
         aria-labelledby="menuCanvasLabel"
       >

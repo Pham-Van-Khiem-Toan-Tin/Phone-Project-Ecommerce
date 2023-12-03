@@ -276,6 +276,7 @@ export const getAccount = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const token = JSON.parse(localStorage.getItem("accessToken"));
+      console.log(token);
       const config = {
         headers: { Authorization: "Bearer " + token },
         withCredentials: true,

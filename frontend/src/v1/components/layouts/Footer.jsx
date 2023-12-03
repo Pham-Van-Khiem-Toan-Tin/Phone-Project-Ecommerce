@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <footer className="footer" style={{ color: "#fff" }}>
       <div className="container">
-        <div className="row">
+        <div className="row mb-5">
           <div className="col-6">
             <div className="footer-brand">
               <FaAmazonPay />
@@ -49,13 +49,30 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="col-3">
-            
+          <div className="col-3 column-footer">
+            <p>Most Popular Categories</p>
+            <ul>
+              <li>Gaming</li>
+              <li>Selfie</li>
+              <li>Read Book</li>
+              <li>Movie</li>
+            </ul>
           </div>
-          <div className="col-3"></div>
+          <div className="col-3 column-footer">
+          <p>Customer Services</p>
+            <ul>
+              <li>About Us</li>
+              <li>Term & Conditions</li>
+              <li>FAQ</li>
+              <li>Privacy Police</li>
+              <li>Privacy Police</li>
+              <li>E waste Police</li>
+              <li>Cancellation & Return Police</li>
+            </ul>
+          </div>
         </div>
         <div className="row">
-          <span className="col text-center pt-1">
+          <span className="col text-center copy-right">
             <BsCCircle /> 2023 All rights reversed. Reliance Retail Ltd.
           </span>
         </div>

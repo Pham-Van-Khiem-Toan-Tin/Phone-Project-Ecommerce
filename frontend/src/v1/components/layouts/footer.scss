@@ -1,44 +1,70 @@
-$background: #008ECC;
+$background: #008ecc;
 footer {
-    background-color: $background;
-    .footer-brand {
-        font-size: 4rem;
+  background-color: $background;
+  .footer-brand {
+    font-size: 4rem;
+  }
+  .footer-contact {
+    .title {
+      font-size: 1rem;
+      font-weight: 500;
     }
-    .footer-contact {
-        .title {
-            font-size: 1rem;
-            font-weight: 500;
+    .info-item {
+      svg {
+        display: block;
+        margin-top: 0.3rem;
+      }
+      .item-content {
+        font-size: 0.8rem;
+        span:nth-child(1) {
+          font-weight: 400;
         }
-        .info-item {
-            svg {
-                display: block;
-                margin-top: 0.3rem;
-            }
-            .item-content {
-                font-size: 0.8rem;
-                span:nth-child(1) {
-                    font-weight: 400;
-                }
-                span:nth-child(2) {
-                    font-weight: 500;
-                }
-            }
+        span:nth-child(2) {
+          font-weight: 500;
         }
+      }
     }
-    .footer-apps {
-        .title {
-            font-size: 1rem;
-            font-weight: 500;
-        }
-        .app-button-group {
-            button {
-                border: none;
-                padding-left: 0;
-                img {
-                    width: 8rem;
-                    height: 2.5rem;
-                }
-            }
-        }
+  }
+  .footer-apps {
+    .title {
+      font-size: 1rem;
+      font-weight: 500;
     }
+    .app-button-group {
+      button {
+        border: none;
+        padding-left: 0;
+        img {
+          width: 8rem;
+          height: 2.5rem;
+        }
+      }
+    }
+  }
+  .column-footer {
+    margin-top: 70px;
+    p {
+      display: inline-block;
+      border-bottom: 3px solid #ffff;
+    }
+    ul {
+      list-style-type: circle;
+      li {
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+      li::before {
+        content: "\2022"; /* Unicode cho dấu chấm circle */
+        color: #ffff; /* Màu của dấu chấm */
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+      }
+    }
+  }
+  .copy-right {
+    border-top: 1px solid #ffff;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
 }

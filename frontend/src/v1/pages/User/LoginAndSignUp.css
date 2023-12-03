@@ -16,6 +16,8 @@
   max-width: 430px;
   padding: 30px;
   width: 100%;
+  box-shadow:  5px 5px 17px #cecece,
+             -5px -5px 17px #f2f2f2;
 }
 .form .form-content span.login-link:hover, .form .form-content span.signup-link:hover {
   text-decoration: underline;

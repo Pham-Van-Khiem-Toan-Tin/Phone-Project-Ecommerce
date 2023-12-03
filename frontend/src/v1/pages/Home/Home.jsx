@@ -24,7 +24,7 @@ const Home = () => {
   const { error: errorCart, success: successCart } = useSelector(
     (state) => state.cart
   );
-  const hotProductReponsive = {
+  const hotProductResponsive = {
     640: {
       slidesPerView: 2,
       spaceBetween: 5,
@@ -39,7 +39,7 @@ const Home = () => {
     },
   }
   const hotProductModule = [ "Autoplay", "Grid"];
-  const techReponsive = {
+  const techResponsive = {
     640: {
       slidesPerView: 2,
       spaceBetween: 5,
@@ -95,10 +95,9 @@ const Home = () => {
         <div className="Home">
           <div className="container">
             <HomeBannerCarousel />
-            <Carousel ChildComponent={Card} datas={approducts} responsive={hotProductReponsive} modules={hotProductModule} />
-            <Carousel ChildComponent={CardTechDeal} datas={approducts} responsive={techReponsive} modules={techModule} />
-            <Carousel ChildComponent={CardBrand} datas={approducts} responsive={brandResponsive} modules={brandModule} />
-
+            <Carousel ChildComponent={Card} title={true} datas={approducts} responsive={hotProductResponsive} modules={hotProductModule} />
+            <Carousel ChildComponent={CardTechDeal} title={true} datas={approducts} responsive={techResponsive} modules={techModule} />
+            <Carousel ChildComponent={CardBrand} title={true} datas={approducts} responsive={brandResponsive} modules={brandModule} />
           </div>
         </div>
       )}

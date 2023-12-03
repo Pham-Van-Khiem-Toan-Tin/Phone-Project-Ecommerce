@@ -1,5 +1,6 @@
+@charset "UTF-8";
 footer {
-  background-color: #008ECC;
+  background-color: #008ecc;
 }
 footer .footer-brand {
   font-size: 4rem;
@@ -32,4 +33,30 @@ footer .footer-apps .app-button-group button {
 footer .footer-apps .app-button-group button img {
   width: 8rem;
   height: 2.5rem;
+}
+footer .column-footer {
+  margin-top: 70px;
+}
+footer .column-footer p {
+  display: inline-block;
+  border-bottom: 3px solid white;
+}
+footer .column-footer ul {
+  list-style-type: circle;
+}
+footer .column-footer ul li {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+footer .column-footer ul li::before {
+  content: "•"; /* Unicode cho dấu chấm circle */
+  color: white; /* Màu của dấu chấm */
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+footer .copy-right {
+  border-top: 1px solid white;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }/*# sourceMappingURL=footer.css.map */

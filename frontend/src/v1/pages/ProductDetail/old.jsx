@@ -212,7 +212,7 @@ const Productdetail = () => {
           <div
             className="modal fade"
             id="submitReviewModal"
-            tabindex="-1"
+            tabIndex="-1"
             aria-labelledby="exampleModalLabel"
             aria-hidden="true"
           >

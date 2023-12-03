@@ -1,9 +1,15 @@
 $price: #ff3333;
 $border-header: #dad1d1;
 $background-input: #f3f9fb;
+$active-background: #008ecc;
 .product-detail {
   margin-top: 150px;
   .product-detail-image {
+    .image-detail-carousel {
+      .swiper {
+        padding-bottom: 0 !important;
+      }
+    }
   }
   .product-detail-content {
     .name {
@@ -27,59 +33,80 @@ $background-input: #f3f9fb;
     .quality {
       margin-bottom: 1rem;
 
-        span {
-            font-weight: 600;
-            font-size: 1rem;
-        }
-        input {
-            display: inline-block;
-            margin-left: 0.5rem;
-            width: 3rem;
-            padding-left: 0.5rem;
-            background-color: $background-input;
-        }
+      span {
+        font-weight: 600;
+        font-size: 1rem;
+      }
+      input {
+        display: inline-block;
+        margin-left: 0.5rem;
+        width: 3rem;
+        padding-left: 0.5rem;
+        background-color: $background-input;
+      }
     }
     .colors {
       margin-bottom: 1rem;
 
-        span {
-            font-weight: 600;
-            font-size: 1rem;
-        }
-        .color-item {
-            width: 2rem;
-            height: 1rem;
-            background-color: #ff3333;
-            margin-right: 0.5rem;
-        }
+      span {
+        font-weight: 600;
+        font-size: 1rem;
+      }
+      .color-item {
+        width: 2rem;
+        height: 1rem;
+        background-color: #ff3333;
+        margin-right: 0.5rem;
+      }
     }
     button.btn-add-cart {
-        font-weight: 500;
-        margin-bottom: 1rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      background-color: $active-background;
     }
     .trust-signal {
-        font-size: 0.8rem;
-        margin-bottom: 1rem;
-        svg {
-            display: inline-block;
-            vertical-align: middle;
-        }
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+      svg {
+        display: inline-block;
+        vertical-align: middle;
+      }
     }
     .wish-and-compare {
-        button {
-            font-size: 0.8rem;
-            background-color: $background-input;
-            padding: 0.5rem;
-            border: none;
-            outline: none;
-            margin-right: 0.5rem;
-            svg {
-                display: inline-block;
-            }
+      button {
+        font-size: 0.8rem;
+        background-color: $background-input;
+        padding: 0.5rem;
+        border: none;
+        outline: none;
+        margin-right: 0.5rem;
+        margin-bottom: 1rem;
+        svg {
+          display: inline-block;
         }
-        .wish-button:hover {
-            color: #ff3333;
-        }
+      }
+      .wish-button:hover {
+        color: #ff3333;
+      }
+    }
+    .share-group {
+      span {
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+      button {
+        border: none;
+        outline: none;
+        background-color: transparent;
+        margin-left: 0.5rem;
+
+      }
+    }
+  }
+  .related-products {
+    p {
+      font-size: 1.5rem;
+      font-weight: 700;
     }
   }
 }

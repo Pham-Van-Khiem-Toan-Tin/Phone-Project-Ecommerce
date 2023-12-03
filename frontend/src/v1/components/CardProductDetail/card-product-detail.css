@@ -1,0 +1,10 @@
+.card-product-detail {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-product-detail img {
+  width: 40%;
+  height: auto;
+}/*# sourceMappingURL=card-product-detail.css.map */

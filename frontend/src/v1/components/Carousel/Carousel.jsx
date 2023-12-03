@@ -12,7 +12,14 @@ import "./carousel.css";
 import { Link } from "react-router-dom";
 import { FaAngleRight } from "react-icons/fa";
 
-const Carousel = ({ ChildComponent, datas, row, responsive, modules }) => {
+const Carousel = ({
+  ChildComponent,
+  datas,
+  row,
+  responsive,
+  modules,
+  title,
+}) => {
   const moduleAccess = [];
   for (let i = 0; i < modules.length; i++) {
     if (modules[i] === "Navigation") moduleAccess.push(Navigation);
@@ -22,16 +29,19 @@ const Carousel = ({ ChildComponent, datas, row, responsive, modules }) => {
   }
   return (
     <div className="carousel-swiper">
-      <div className="carousel-swiper-title d-flex align-items-center justify-content-between">
-        <span className="title-content">
-          Grab the best deal on <span>SamSung</span>
-          <div className="line"></div>
-        </span>
-        <Link to="/categories">
-          View All <FaAngleRight />
-        </Link>
-      </div>
+      {title && (
+        <div className="carousel-swiper-title d-flex align-items-center justify-content-between">
+          <span className="title-content">
+            Grab the best deal on <span>Iphone</span>
+            <div className="line"></div>
+          </span>
+          <Link to="/categories">
+            View All <FaAngleRight />
+          </Link>
+        </div>
+      )}
       {console.log(moduleAccess)}
+      {console.log(modules.includes("Navigation"))}
       <Swiper
         spaceBetween={10}
         slidesPerView={1}
