@@ -38,7 +38,7 @@ const Profile = () => {
               </nav>
             </div>
             <div className="row mb-5">
-              <div className="col-8">
+              <div className="col-12 col-md-8 order-2 order-md-1">
                 <label htmlFor="full-name" className="mb-1">
                   Full name: <span className="text-danger">*</span>
                 </label>
@@ -66,14 +66,14 @@ const Profile = () => {
                   id="created-at"
                   value={user?.createdAt}
                 />
-                <div className="d-flex align-items-center justify-content-center gap-3">
+                <div className="d-flex flex-column flex-md-row align-items-center justify-content-center gap-3">
                   <Link to="/me/update" className="btn btn-sm btn-primary">Edit</Link>
                   <Link to="/password/update" className="btn btn-sm btn-primary">
                     Change password
                   </Link>
                 </div>
               </div>
-              <div className="col-4 d-flex flex-column align-items-center">
+              <div className="col-12 col-md-4 order-1 order-md-2 d-flex flex-column align-items-center">
                 <img
                   className="avatar rounded-5"
                   src={user?.avatar?.url}

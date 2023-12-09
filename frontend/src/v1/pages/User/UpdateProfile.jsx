@@ -78,8 +78,8 @@ const UpdateProfile = () => {
             </ol>
           </nav>
         </div>
-        <form className="row" onSubmit={updateProfileSubmit}>
-          <div className="col-8">
+        <form className="row mb-3" onSubmit={updateProfileSubmit}>
+          <div className="col-12 col-md-8 order-2 order-md-1">
             <label htmlFor="full-name" className="mb-1">
               Full name: <span className="text-danger">*</span>
             </label>
@@ -113,7 +113,7 @@ const UpdateProfile = () => {
               />
             </div>
           </div>
-          <div className="col-4 d-flex flex-column align-items-center">
+          <div className="col-12 col-md-4 order-1 order-md-2 d-flex flex-column align-items-center">
             <img
               className="avatar rounded-5"
               src={user?.avatar?.url}
