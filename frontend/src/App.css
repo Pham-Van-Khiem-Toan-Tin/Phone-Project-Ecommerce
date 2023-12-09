@@ -29,6 +29,9 @@ a {
     font-size: 0.8rem;
   }
 }
+.Toastify__toast-body {
+  font-size: 0.8rem;
+}
 @media (max-width: 365px) {
   html {
     width: 100vw;
