@@ -1,6 +1,6 @@
 .orderconfirm {
   display: flex;
-  color: #fff;
+  color: #000;
 }
 .orderconfirm .shippingInfor {
   padding: 20px 0 20px 20px;
@@ -9,7 +9,7 @@
   justify-content: space-between;
 }
 .orderconfirm .shippingInfor .shippingInfor-content {
-  color: #fff;
+  color: #000;
   width: 100%;
 }
 .orderconfirm .shippingInfor .shippingInfor-content .userInfor {

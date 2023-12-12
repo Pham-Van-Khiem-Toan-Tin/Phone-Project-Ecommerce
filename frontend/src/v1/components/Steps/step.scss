@@ -1,0 +1,40 @@
+$background-default: #cbcbcb;
+$background-success: #0d6efd;
+.steps {
+    width: 100%;
+    position: relative;
+    height: 3rem;
+    padding: 1.5rem 0;
+    .progress {
+        height: 4px;
+        position: absolute;
+        width: 100%;
+        top: 1.5rem;
+    }
+    .step {
+        position: absolute;
+        top: 0;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        background-color: $background-default;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.6rem;
+        font-weight: 600;
+    }
+    .shipping-step {
+        left: 10%;
+    }
+    .checkout-step {
+        left: 47%;
+    }
+    .payment-step {
+        right: 10%;
+    }
+    .active {
+        background-color: $background-success;
+    }
+}

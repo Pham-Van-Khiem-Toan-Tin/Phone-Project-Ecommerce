@@ -1,0 +1,52 @@
+.order-confirm {
+  margin-top: 150px;
+}
+.order-confirm .shipping-info {
+  box-shadow: 5px 5px 17px #cecece, -5px -5px 17px #f2f2f2;
+  padding: 1rem;
+  font-size: 0.8rem;
+}
+.order-confirm .shipping-info label {
+  font-weight: 700;
+}
+.order-confirm .shipping-info input, .order-confirm .shipping-info textarea {
+  font-size: inherit;
+  margin-bottom: 1rem;
+}
+.order-confirm .total {
+  box-shadow: 5px 5px 17px #cecece, -5px -5px 17px #f2f2f2;
+  padding: 1rem;
+  height: 100%;
+}
+.order-confirm .total .total-field {
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.order-confirm .total .total-field > span:nth-child(1) {
+  font-weight: 700;
+}
+.order-confirm .total .total-field > span:nth-child(2) {
+  color: red;
+  font-weight: 500;
+}
+.order-confirm .total .line {
+  margin: 0.5rem 0;
+  height: 2px;
+  width: 100%;
+  background-color: #cecece;
+}
+.order-confirm .product-list {
+  margin-top: 1rem;
+  box-shadow: 5px 5px 17px #cecece, -5px -5px 17px #f2f2f2;
+  padding: 1rem;
+}
+.order-confirm .product-list tbody tr td {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.order-confirm .product-list tbody tr td img {
+  width: 2.5rem;
+  height: 2.5rem;
+}/*# sourceMappingURL=order-confirm.css.map */

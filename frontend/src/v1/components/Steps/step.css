@@ -1,0 +1,38 @@
+.steps {
+  width: 100%;
+  position: relative;
+  height: 3rem;
+  padding: 1.5rem 0;
+}
+.steps .progress {
+  height: 4px;
+  position: absolute;
+  width: 100%;
+  top: 1.5rem;
+}
+.steps .step {
+  position: absolute;
+  top: 0;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: #cbcbcb;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  font-weight: 600;
+}
+.steps .shipping-step {
+  left: 10%;
+}
+.steps .checkout-step {
+  left: 47%;
+}
+.steps .payment-step {
+  right: 10%;
+}
+.steps .active {
+  background-color: #0d6efd;
+}/*# sourceMappingURL=step.css.map */

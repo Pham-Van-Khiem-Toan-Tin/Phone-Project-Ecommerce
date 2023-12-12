@@ -1,0 +1,56 @@
+.order-confirm {
+    margin-top: 150px;
+    .shipping-info {
+        box-shadow: 5px 5px 17px #cecece, -5px -5px 17px #f2f2f2;
+        padding: 1rem;
+        font-size: 0.8rem;
+        label {
+            font-weight: 700;
+        }
+        input, textarea {
+            font-size: inherit;
+            margin-bottom: 1rem;
+        }
+    }
+    .total {
+        box-shadow: 5px 5px 17px #cecece, -5px -5px 17px #f2f2f2;
+        padding: 1rem;
+        height: 100%;
+        .total-field {
+            font-size: 0.8rem;
+            display:  flex;
+            align-items: center;
+            justify-content: space-between;
+            &>span:nth-child(1) {
+                font-weight: 700;
+            }
+            &>span:nth-child(2) {
+                color: red;
+                font-weight: 500;
+            }
+        }
+        .line {
+            margin: 0.5rem 0;
+            height: 2px;
+            width: 100%;
+            background-color: #cecece;
+        }
+    }
+    .product-list {
+        margin-top: 1rem;
+        box-shadow: 5px 5px 17px #cecece, -5px -5px 17px #f2f2f2;
+        padding: 1rem;
+        tbody {
+            tr {
+                td {
+                    font-size: 0.8rem;
+                    font-weight: 600;
+                    img {
+                        width: 2.5rem;
+                        height: 2.5rem;
+                    }
+                }
+            }
+        }
+    }
+}
