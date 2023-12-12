@@ -1,0 +1,27 @@
+
+.edit-profile {
+  margin-top: 150px;
+  .avatar {
+    width: 11rem;
+  }
+  .name {
+    margin-top: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  label {
+    font-weight: 700;
+    font-size: 0.8rem;
+  }
+  input {
+    font-size: 0.8rem;
+    font-weight: 400;
+  }
+  a {
+    width: 10rem;
+    font-weight: 600;
+  }
+  .errors {
+    font-size: 0.8rem;
+  }
+}

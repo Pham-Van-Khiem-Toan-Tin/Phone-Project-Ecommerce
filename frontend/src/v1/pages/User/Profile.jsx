@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader/Loader";
 import { getAccount } from "../../reduxToolkit/actions/userAction";
-import "./Profile.css";
+import "./profile.css";
 import { Link, useNavigate } from "react-router-dom";
 const Profile = () => {
   const dispatch = useDispatch();
@@ -17,33 +17,71 @@ const Profile = () => {
   }, [error]);
   useEffect(() => {
     dispatch(getAccount());
-  }, [dispatch])
+  }, [dispatch]);
   return (
     <>
       {isLoading ? (
         <Loader />
       ) : (
         <div className="profile">
-          <div className="user-avatar">
-            <span>My Profile</span>
-            <img src={user?.avatar?.url} alt={user?.name} />
-            <Link to='/me/update'>
-              <button className="user-edit">Edit Profile</button>
-            </Link>
-          </div>
-          <div className="user-profile-detail">
-            <h2 className="user-name-title">Full Name</h2>
-            <span className="user-name">{user?.name}</span>
-            <h2 className="user-email-title">Email</h2>
-            <span className="user-email">{user?.email}</span>
-            <h2 className="user-join-title">Joined at</h2>
-            <span className="user-join">{user?.createdAt}</span>
-            <Link to="/orders">
-              <button>My order</button>
-            </Link>
-            <Link to="/password/update">
-              <button>Change Password</button>
-            </Link>
+          <div className="container">
+            <div>
+              <nav aria-label="breadcrumb">
+                <ol className="breadcrumb">
+                  <li className="breadcrumb-item">
+                    <span className="fw-bold">Home</span>
+                  </li>
+                  <li className="breadcrumb-item" aria-current="page">
+                    account
+                  </li>
+                </ol>
+              </nav>
+            </div>
+            <div className="row mb-5">
+              <div className="col-12 col-md-8 order-2 order-md-1">
+                <label htmlFor="full-name" className="mb-1">
+                  Full name: <span className="text-danger">*</span>
+                </label>
+                <input
+                  className="form-control mb-3"
+                  disabled
+                  id="full-name"
+                  value={user?.name}
+                />
+                <label htmlFor="email" className="mb-1">
+                  Email: <span className="text-danger">*</span>
+                </label>
+                <input
+                  className="form-control mb-3"
+                  disabled
+                  id="email"
+                  value={user?.email}
+                />
+                <label htmlFor="created-at" className="mb-1">
+                  Create At: <span className="text-danger">*</span>
+                </label>
+                <input
+                  className="form-control mb-3"
+                  disabled
+                  id="created-at"
+                  value={user?.createdAt}
+                />
+                <div className="d-flex flex-column flex-md-row align-items-center justify-content-center gap-3">
+                  <Link to="/me/update" className="btn btn-sm btn-primary">Edit</Link>
+                  <Link to="/password/update" className="btn btn-sm btn-primary">
+                    Change password
+                  </Link>
+                </div>
+              </div>
+              <div className="col-12 col-md-4 order-1 order-md-2 d-flex flex-column align-items-center">
+                <img
+                  className="avatar rounded-5"
+                  src={user?.avatar?.url}
+                  alt={user?.name}
+                />
+                <p className="name">{user?.name}</p>
+              </div>
+            </div>
           </div>
         </div>
       )}

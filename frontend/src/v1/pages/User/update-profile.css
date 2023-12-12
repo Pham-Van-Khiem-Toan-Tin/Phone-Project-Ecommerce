@@ -1,23 +1,26 @@
-.profile {
+.edit-profile {
   margin-top: 150px;
 }
-.profile .avatar {
+.edit-profile .avatar {
   width: 11rem;
 }
-.profile .name {
+.edit-profile .name {
   margin-top: 0.5rem;
   font-size: 1.5rem;
   font-weight: 700;
 }
-.profile label {
+.edit-profile label {
   font-weight: 700;
   font-size: 0.8rem;
 }
-.profile input {
+.edit-profile input {
   font-size: 0.8rem;
   font-weight: 400;
 }
-.profile a {
+.edit-profile a {
   width: 10rem;
   font-weight: 600;
-}/*# sourceMappingURL=profile.css.map */
+}
+.edit-profile .errors {
+  font-size: 0.8rem;
+}/*# sourceMappingURL=update-profile.css.map */
