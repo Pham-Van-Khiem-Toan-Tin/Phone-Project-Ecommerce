@@ -1,33 +1,39 @@
-.cart .Quantity input {
-  outline: none;
-  border-radius: 10px;
+.cart {
+  margin-top: 150px;
+  font-size: 0.8rem;
 }
-.cart .Quantity button {
-  background: transparent;
-  color: white;
+.cart .cart-content {
+  padding: 0.5rem;
+  background: #ffffff;
+  box-shadow: 5px 5px 23px #e3e3e3, -5px -5px 23px #ffffff;
+  margin-bottom: 2rem;
+}
+.cart .cart-content span {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+.cart table {
+  box-shadow: 5px 5px 23px #e3e3e3, -5px -5px 23px #ffffff;
+}
+.cart table tbody td .name {
+  font-weight: 600;
+}
+.cart table tbody td input.quanlity-value {
+  text-align: right;
+}
+.cart table tbody td .subtraction, .cart table tbody td .summation {
+  background-color: transparent;
   border: none;
+  outline: none;
+  font-weight: 700;
+  line-height: 24px;
+  vertical-align: top;
 }
-.cart .button-handle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-right: 1.5rem;
-  flex-wrap: wrap;
+.cart table tbody td .subtraction:hover, .cart table tbody td .summation:hover {
+  color: #ffffff;
+  background-color: #118fcc;
 }
-.cart .button-handle .button-checkout {
-  margin: 1rem 0;
-}
-.cart .button-handle .button-checkout a {
-  color: white;
-  padding: 0.5rem 2rem;
-  border-radius: 0.5rem;
-  background-color: #8B1874;
-  font-weight: 500;
-}
-.cart .button-handle .button-shipping a {
-  background: #8B1874;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  color: white;
-  font-weight: 500;
-}/*# sourceMappingURL=Cart.css.map */
+.cart table tbody td .btn-delete svg {
+  display: block;
+  fill: red;
+}/*# sourceMappingURL=cart.css.map */

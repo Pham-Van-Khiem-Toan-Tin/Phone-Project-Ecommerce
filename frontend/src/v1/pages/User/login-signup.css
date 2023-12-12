@@ -1,0 +1,91 @@
+.login-signup {
+  margin-top: 150px;
+  min-height: 100vh;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  -moz-column-gap: 30px;
+  column-gap: 30px;
+  width: 100vw;
+}
+.login-signup .form {
+  position: absolute;
+  background-color: #fff;
+  max-width: 430px;
+  padding: 2rem;
+  width: 100%;
+  box-shadow: 5px 5px 17px #cecece, -5px -5px 17px #f2f2f2;
+}
+.login-signup .form .form-header {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.login-signup .form .form-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.login-signup .form .form-content form {
+  width: 100%;
+}
+.login-signup .form .form-content form .field {
+  margin-bottom: 0.8rem;
+}
+.login-signup .form .form-content form .field label {
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+.login-signup .form .form-content form .field input {
+  font-size: 0.8rem;
+  display: block;
+}
+.login-signup .form .form-content form .avatar {
+  margin-bottom: 0.8rem;
+}
+.login-signup .form .form-content form .avatar img {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+}
+.login-signup .form .form-content form .avatar input {
+  display: none;
+}
+.login-signup .form .form-content .form-link {
+  margin-bottom: 0.5rem;
+}
+.login-signup .form .form-content .form-link a {
+  font-size: 0.8rem;
+}
+.login-signup .form .form-content .form-link a:hover {
+  text-decoration: underline;
+}
+.login-signup .form .form-content .form-link span {
+  font-size: 0.8rem;
+}
+.login-signup .form .form-content .form-link .signup-link,
+.login-signup .form .form-content .form-link .login-link {
+  color: #0171d3;
+  cursor: pointer;
+}
+.login-signup .form .form-content .form-link .signup-link:hover,
+.login-signup .form .form-content .form-link .login-link:hover {
+  text-decoration: underline;
+}
+.login-signup .form.sign-up {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.forms.show-signup .form.sign-up {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.forms.show-signup .form.login {
+  opacity: 1;
+  pointer-events: auto;
+}/*# sourceMappingURL=login-signup.css.map */
