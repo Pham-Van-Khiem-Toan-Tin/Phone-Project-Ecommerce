@@ -83,13 +83,13 @@ userSchema.methods.getAccessToken = function () {
   return accessToken;
 };
 
-userSchema.methods.getRefeshToken = function () {
-  const refeshToken = jwt.sign(
+userSchema.methods.getRefreshToken = function () {
+  const refreshToken = jwt.sign(
     { id: this._id, role: this.role, name: this.name, cart: this.cartId },
-    process.env.REFESHTOKEN_SECRET,
-    { expiresIn: process.env.REFESHTOKEN_EXPIRES }
+    process.env.REFRESHTOKEN_SECRET,
+    { expiresIn: process.env.REFRESHTOKEN_EXPIRES }
   );
-  return refeshToken;
+  return refreshToken;
 };
 
 userSchema.methods.comparePassword = async function (password) {

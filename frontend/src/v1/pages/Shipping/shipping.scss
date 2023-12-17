@@ -1,0 +1,31 @@
+.shipping {
+    margin-top: 150px;
+    min-height: 100vh;
+    padding-top: 1rem;
+    margin-bottom: 2rem;
+    form {
+        margin-top: 2rem;
+        padding: 1.5rem;
+        box-shadow: 5px 5px 17px #cecece, -5px -5px 17px #f2f2f2;
+        label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .field {
+            position: relative;
+            margin-bottom: 1rem;
+            svg {
+                display: block;
+                position: absolute;
+                top: 25%;
+                left: 5%;
+            }
+            input {
+                min-width: 340px;
+                padding-left: 2rem;
+                font-size: 0.8rem;
+            }
+        }
+    }
+}

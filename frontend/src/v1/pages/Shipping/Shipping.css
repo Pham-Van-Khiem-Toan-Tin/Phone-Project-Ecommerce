@@ -1,38 +1,31 @@
 .shipping {
+  margin-top: 150px;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  padding-top: 1rem;
+  margin-bottom: 2rem;
 }
 .shipping form {
-  display: flex;
-  flex-direction: column;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  box-shadow: 5px 5px 17px #cecece, -5px -5px 17px #f2f2f2;
 }
-.shipping form div {
+.shipping form label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.shipping form .field {
   position: relative;
+  margin-bottom: 1rem;
 }
-.shipping form div svg {
+.shipping form .field svg {
+  display: block;
   position: absolute;
-  top: 55%;
+  top: 25%;
   left: 5%;
-  fill: #605F60;
-  vertical-align: baseline;
 }
-.shipping form div .shipping-input {
-  min-width: 250px;
-  height: 45px;
-  margin-top: 20px;
-  border: none;
-  border-radius: 20px;
-  outline: none;
-  padding: 20px 20px 20px 40px;
-}
-.shipping form .shipping-submit {
-  border: none;
-  border-radius: 20px;
-  height: 45px;
-  margin-top: 20px;
-  color: white;
-  background-color: #712CF9;
-}/*# sourceMappingURL=Shipping.css.map */
+.shipping form .field input {
+  min-width: 340px;
+  padding-left: 2rem;
+  font-size: 0.8rem;
+}/*# sourceMappingURL=shipping.css.map */

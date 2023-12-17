@@ -11,7 +11,7 @@ import {
   deleteItemCart,
   getProductCart,
 } from "../../reduxToolkit/actions/cartAction";
-import "./Cart.css";
+import "./cart.css";
 import { Link } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 const Cart = () => {
@@ -41,15 +41,24 @@ const Cart = () => {
         <div className="cart">
           <section className="pb-5">
             <div className="container">
-              <div className="row w-100">
+              <div>
+                <nav aria-label="breadcrumb">
+                  <ol className="breadcrumb">
+                    <li className="breadcrumb-item">
+                      <span className="fw-bold">Home</span>
+                    </li>
+                    <li className="breadcrumb-item" aria-current="page">
+                      Cart
+                    </li>
+                  </ol>
+                </nav>
+              </div>
+              <div className="row">
                 <div className="col-lg-12 col-md-12 col-12">
-                  <h3 className="display-5 mb-2 text-center">Shopping Cart</h3>
-                  <p className="mb-5 text-center">
-                    <i className="text-info font-weight-bold">
-                      {cartList?.length}
-                    </i>{" "}
-                    items in your cart
-                  </p>
+                  <div className="cart-content rounded d-flex align-items-center justify-content-between">
+                    <span className="text-uppercase">Shopping cart</span>
+                    <span>{cartList?.length} items in your cart</span>
+                  </div>
                   <table
                     id="shoppingCart"
                     className="table table-condensed table-responsive"
@@ -73,11 +82,13 @@ const Cart = () => {
                                     <img
                                       src={item?.id_product.images[0].url}
                                       alt=""
-                                      className="img-fluid d-none d-md-block rounded mb-2 shadow"
+                                      className="img-fluid rounded d-none d-md-block rounded mb-2 shadow"
                                     />
                                   </div>
                                   <div className="col-md-9 text-left mt-sm-2">
-                                    <h4>{item?.id_product.name}</h4>
+                                    <p className="name">
+                                      {item?.id_product.name}
+                                    </p>
                                     <p className="font-weight-light">
                                       {item?.id_product.category}
                                     </p>
@@ -87,9 +98,9 @@ const Cart = () => {
                               <td data-th="Price">
                                 {item?.id_product.price} đ
                               </td>
-                              <td data-th="Quantity" className="Quantity">
+                              <td data-th="Quantity" className="quality">
                                 <button
-                                  className="w-25"
+                                  className="w-25 subtraction"
                                   disabled={
                                     item.quantity > 1 && !isLoading
                                       ? false
@@ -108,13 +119,13 @@ const Cart = () => {
                                 </button>
                                 <input
                                   type="number"
-                                  className="text-center w-50"
+                                  className="w-50 border-0 fw-bold quanlity-value"
                                   value={item?.quantity}
                                   min={1}
                                   readOnly
                                 />
                                 <button
-                                  className="w-25"
+                                  className="w-25 summation"
                                   disabled={isLoading ? true : false}
                                   onClick={(e) => {
                                     dispatch(
@@ -136,7 +147,7 @@ const Cart = () => {
                                         deleteItemCart(item.id_product._id)
                                       );
                                     }}
-                                    className="btn btn-white border-secondary bg-white btn-md mb-2"
+                                    className="btn btn-delete btn-white border-0 btn-sm"
                                   >
                                     <FaTrashAlt />
                                   </button>
@@ -147,23 +158,21 @@ const Cart = () => {
                         })}
                     </tbody>
                   </table>
-                  <div className="float-right text-right">
-                    <h4>Subtotal:</h4>
-                    <h1>{total} đ</h1>
-                  </div>
                 </div>
               </div>
-              <div className="button-handle">
-                <div className="button-shipping">
-                  <Link to="/categories">
-                    <FaAngleDoubleLeft /> Continue Shopping
-                  </Link>
-                </div>
-                <div className="button-checkout">
-                  <Link to="../shipping">
-                    Checkout <FaForward />
-                  </Link>
-                </div>
+              <div className="button-handle d-flex align-items-center justify-content-between">
+                <Link
+                  to="/categories"
+                  className="text-white btn btn-sm btn-primary d-flex align-items-center gap-1"
+                >
+                  <FaAngleDoubleLeft className="d-block" /> Continue Shopping
+                </Link>
+                <Link
+                  to="../shipping"
+                  className="text-white btn btn-sm btn-danger"
+                >
+                  Checkout {total} đ
+                </Link>
               </div>
             </div>
           </section>

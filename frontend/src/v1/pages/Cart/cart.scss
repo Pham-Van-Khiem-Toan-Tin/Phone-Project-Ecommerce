@@ -1,0 +1,49 @@
+$background-quanlity: #118fcc;
+.cart {
+  margin-top: 150px;
+  font-size: 0.8rem;
+  .cart-content {
+    padding: 0.5rem;
+    background: #ffffff;
+    box-shadow: 5px 5px 23px #e3e3e3, -5px -5px 23px #ffffff;
+    margin-bottom: 2rem;
+    span {
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+  }
+  table {
+    box-shadow: 5px 5px 23px #e3e3e3, -5px -5px 23px #ffffff;
+    thead {
+
+    }
+    tbody {
+        td {
+            .name {
+                font-weight: 600;
+            }
+            input.quanlity-value {
+                text-align: right;
+            }
+            .subtraction, .summation {
+                background-color: transparent;
+                border: none;
+                outline: none;
+                font-weight: 700;
+                line-height: 24px;
+                vertical-align: top;
+                &:hover {
+                    color: #ffffff;
+                    background-color: $background-quanlity;
+                }
+            }
+            .btn-delete {
+                svg {
+                    display: block;
+                    fill: red;
+                }
+            }
+        }
+    }
+  }
+}
