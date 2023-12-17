@@ -23,7 +23,8 @@ const UpdateProfile = () => {
   const [errors, setErrors] = useState({});
   const updateProfileSubmit = (e) => {
     e.preventDefault();
-    if(name != user.name && email != user.email) {
+    console.log();
+    if(name !== user.name || email !== user.email) {
       setErrors(Validation({name: name, email: email}))
       const myForm = new FormData();
       myForm.set("name", name);

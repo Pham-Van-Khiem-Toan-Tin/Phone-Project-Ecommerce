@@ -17,7 +17,7 @@
 .myorders .container table th, .myorders .container table td {
   padding: 15px;
   background-color: rgba(255, 255, 255, 0.2);
-  color: #fff;
+  color: black;
 }
 .myorders .container table th {
   text-align: left;
@@ -31,12 +31,13 @@
   display: inline-block;
   flex: 1;
   text-align: center;
+  color: black;
 }
 .myorders .container table tbody .icon-handle_user span:hover {
   color: #49a09d;
 }
 .myorders .container table tbody .icon-handle_user span a {
-  color: #fff;
+  color: black;
 }
 .myorders .container table tbody .icon-handle_user span a:hover {
   color: #ccc;

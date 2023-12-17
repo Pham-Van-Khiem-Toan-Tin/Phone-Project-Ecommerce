@@ -29,7 +29,7 @@ module.exports.isAuthenticatedUser = async (req, res, next) => {
           const newAccessToken = jwt.sign(
             { id: decoded.id, role: decoded.role, cart: decoded.cart},
             process.env.ACESSTOKEN_SECRET,
-            { expiresIn: process.env.ACESSTOKEN_EXPIRES }
+            { expiresIn: process.env.ACESSTOKEN_EXPIRES * 24 * 60 * 60 * 1000 }
           );
           req.token = newAccessToken;
           req.user = decoded.id;
