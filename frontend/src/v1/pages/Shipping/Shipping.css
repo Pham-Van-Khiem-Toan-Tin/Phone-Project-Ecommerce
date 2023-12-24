@@ -22,7 +22,7 @@
   display: block;
   position: absolute;
   top: 25%;
-  left: 5%;
+  left: 0.4rem;
 }
 .shipping form .field input {
   min-width: 340px;

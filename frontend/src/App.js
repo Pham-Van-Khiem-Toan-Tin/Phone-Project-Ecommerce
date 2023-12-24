@@ -27,7 +27,7 @@ import OrderConFirm from "./v1/pages/OrderConfirm/OrderConFirm";
 import Payment from "./v1/pages/Payment/Payment";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import OrderSuccess from "./v1/pages/Payment/OrderSuccess";
 import { useDispatch } from "react-redux";
 import { getAccount } from "./v1/reduxToolkit/actions/userAction";
@@ -40,7 +40,10 @@ import ForgotPassword from "./v1/pages/User/ForgotPassword";
 import ResetPassword from "./v1/pages/User/ResetPassword";
 import ProductReview from "./v1/pages/Admin/ProductReview";
 import NotFound from "./v1/pages/NotFound/NotFound";
+import { socket } from "./socket";
 function App() {
+  const [isConnected, setIsConnected] = useState(socket.connected);
+  const [fooEvents, setFooEvents] = useState([]);
   const stripePromise = loadStripe(
     "pk_test_51N1RFRJt1tz4StSkzTUdq8lq3KZC2XWUdkXxzMMooea7J3X3TdZlAVeKC3qM1p4MaA5KQjvpuLqT6hYDdsp1iiui00gYWdz4T1"
   );
@@ -51,7 +54,29 @@ function App() {
       dispatch(getAccount());
     }
   }, [dispatch]);
+  useEffect(() => {
+    function onConnect() {
+      setIsConnected(true);
+    }
 
+    function onDisconnect() {
+      setIsConnected(false);
+    }
+
+    function onFooEvent(value) {
+      setFooEvents(previous => [...previous, value]);
+    }
+
+    socket.on('connect', onConnect);
+    socket.on('disconnect', onDisconnect);
+    socket.on('foo', onFooEvent);
+
+    return () => {
+      socket.off('connect', onConnect);
+      socket.off('disconnect', onDisconnect);
+      socket.off('foo', onFooEvent);
+    };
+  }, []);
   return (
     <>
       <Header />

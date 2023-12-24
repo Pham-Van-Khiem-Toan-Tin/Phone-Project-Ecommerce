@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import "./Payment.css";
+import "./payment.css";
 import {
   useStripe,
   useElements,
@@ -24,15 +24,15 @@ const Payment = () => {
   const { shippingInfor, cartList } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
   const { error } = useSelector((state) => state.newOrder);
-  const listOrder = []
+  const listOrder = [];
   for (let i in cartList) {
     listOrder.push({
       name: cartList[i].id_product.name,
       price: cartList[i].id_product.price,
       image: cartList[i].id_product.images[0].url,
       product: cartList[i].id_product._id,
-      quantity: cartList[i].quantity
-    })
+      quantity: cartList[i].quantity,
+    });
   }
   const order = {
     shippingInfor,
@@ -101,37 +101,39 @@ const Payment = () => {
     }
   };
   useEffect(() => {
-    if(error) {
+    if (error) {
       toast.error(error);
       dispatch(clearError());
     }
-  }, [dispatch, error])
-  
+  }, [dispatch, error]);
+
   return (
-    <div className="payment container">
-      <form onSubmit={submitHandle}>
-        <h5>Card Info</h5>
-        <div>
-          <FaCreditCard />
-          <CardNumberElement className="paymentInput" />
-        </div>
-        <div>
-          <FaCalendarAlt />
-          <CardExpiryElement className="paymentInput" />
-        </div>
-        <div>
-          <FaKey />
-          <CardCvcElement className="paymentInput" />
-        </div>
-        <input
-          type="submit"
-          value={`Pay - ${
-            orderInfor && Math.round(orderInfor.totalPrice / 23000)
-          }$`}
-          ref={payBtn}
-          className="paymentFormBtn"
-        />
-      </form>
+    <div className="payment">
+      <div className="container d-flex align-items-center justify-content-center">
+        <form onSubmit={submitHandle} className="rounded">
+          <p>Card Info</p>
+          <div className="field">
+            <FaCreditCard />
+            <CardNumberElement className="paymentInput form-control" />
+          </div>
+          <div className="field">
+            <FaCalendarAlt />
+            <CardExpiryElement className="paymentInput form-control" />
+          </div>
+          <div className="field">
+            <FaKey />
+            <CardCvcElement className="paymentInput form-control" />
+          </div>
+          <input
+            type="submit"
+            value={`Pay - ${
+              orderInfor && Math.round(orderInfor.totalPrice / 23000)
+            }$`}
+            ref={payBtn}
+            className="btn btn-submit btn-sm btn-warning text-danger"
+          />
+        </form>
+      </div>
     </div>
   );
 };

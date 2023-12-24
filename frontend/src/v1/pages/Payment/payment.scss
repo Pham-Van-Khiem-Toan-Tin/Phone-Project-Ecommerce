@@ -1,16 +1,14 @@
-.shipping {
+.payment {
     margin-top: 150px;
-    min-height: 100vh;
-    padding-top: 1rem;
-    margin-bottom: 2rem;
     form {
-        margin-top: 2rem;
-        padding: 1.5rem;
         box-shadow: 5px 5px 17px #cecece, -5px -5px 17px #f2f2f2;
-        label {
-            font-size: 0.8rem;
-            font-weight: 700;
-            cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0.5rem;
+        margin-bottom: 2rem;
+        p {
+            text-align: center;
         }
         .field {
             position: relative;
@@ -21,10 +19,13 @@
                 top: 25%;
                 left: 0.4rem;
             }
-            input {
-                min-width: 340px;
+            .paymentInput {
+                min-width: 20rem;
                 padding-left: 2rem;
                 font-size: 0.8rem;
+            }
+            .InputContainer .InputElement   {
+                font-weight: 700;
             }
         }
     }

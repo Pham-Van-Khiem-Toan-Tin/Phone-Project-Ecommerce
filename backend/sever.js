@@ -6,10 +6,10 @@ const cors = require("cors");
 const path = require("path");
 const helmet = require("helmet");
 const fileUpLoad = require("express-fileupload");
+const erorMiddleware = require("./src/v1/middlewares/error");
 require("dotenv").config();
 const app = express();
 
-const erorMiddleware = require("./src/v1/middlewares/error");
 
 const user = require("./src/v1/routers/userRouter");
 const product = require("./src/v1/routers/productRouter");
