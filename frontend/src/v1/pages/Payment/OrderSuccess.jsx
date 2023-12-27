@@ -1,6 +1,6 @@
 import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
-import "./OrderSuccess.css";
+import "./orderSuccess.css";
 import { Link } from "react-router-dom";
 const OrderSuccess = () => {
   return (

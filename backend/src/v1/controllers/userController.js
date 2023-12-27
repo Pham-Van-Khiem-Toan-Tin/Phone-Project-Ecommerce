@@ -7,15 +7,19 @@ const catchAsyncError = require("../middlewares/catchAsyncError");
 const ErrorHandle = require("../utils/errorHandle");
 const sendEmail = require("../utils/sendEmail");
 const jwt = require("jsonwebtoken");
-
+require("dotenv").config();
 module.exports.register = catchAsyncError(async (req, res, next) => {
+  console.log("chay den day");
   const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
     folder: "avatar",
     width: 150,
     crop: "scale",
   });
+  console.log(req.body);
+  console.log(myCloud);
+  console.log(process.env.ACESSTOKEN_SECRET);
   let { name, email, password } = req.body;
-  const user = await userModel.create({
+  console.log({
     name,
     email,
     password,
@@ -24,6 +28,17 @@ module.exports.register = catchAsyncError(async (req, res, next) => {
       url: myCloud.secure_url,
     },
   });
+  const user = await userModel.create({
+    name,
+    email,
+    password,
+    role: "USER",
+    avatar: {
+      public_id: myCloud.public_id,
+      url: myCloud.secure_url,
+    },
+  });
+  console.log("chay den day 2");
   sendToken(user, 201, res);
 });
 
