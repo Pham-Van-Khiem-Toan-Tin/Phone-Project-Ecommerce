@@ -20,16 +20,17 @@ module.exports.isAuthenticatedUser = async (req, res, next) => {
       next();
     } catch (error) {
       const { refeshToken } = req.cookies;
+      console.log({refeshToken});
       if (refeshToken) {
         try {
           const decoded = await jwt.verify(
             refeshToken,
-            process.env.REFESHTOKEN_SECRET
+            process.env.REFRESHTOKEN_SECRET 
           );
           const newAccessToken = jwt.sign(
             { id: decoded.id, role: decoded.role, cart: decoded.cart},
-            process.env.ACESSTOKEN_SECRET,
-            { expiresIn: process.env.ACESSTOKEN_EXPIRES * 24 * 60 * 60 * 1000 }
+            process.env.ACCESSTOKEN_SECRET,
+            { expiresIn: process.env.ACCESSTOKEN_EXPIRES}
           );
           req.token = newAccessToken;
           req.user = decoded.id;

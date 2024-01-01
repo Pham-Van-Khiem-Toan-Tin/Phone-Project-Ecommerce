@@ -1,4 +1,65 @@
 .dashboard {
   min-height: 100vh;
   background-color: #383854;
+  color: #fff;
+}
+.dashboard .date-picker select {
+  color: #fff;
+  max-width: 10rem;
+  font-size: 0.8rem;
+  background-color: #2e2e48;
+  border: none;
+  outline: none;
+}
+.dashboard .card-dashboard {
+  font-size: 0.6rem;
+  margin-top: 2rem;
+}
+.dashboard .card-dashboard .item {
+  padding: 1rem;
+  background-color: #2e2e48;
+  width: 32%;
+}
+.dashboard .card-dashboard .item .item-content p {
+  margin-bottom: 0.2rem;
+}
+.dashboard .card-dashboard .item .item-content .title {
+  font-weight: 500;
+}
+.dashboard .card-dashboard .item .item-content .total {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+.dashboard .card-dashboard .item .item-content .notify {
+  font-weight: 300;
+}
+.dashboard .revenue-sold .revenue-chart {
+  background-color: #2e2e48;
+  width: 66%;
+}
+.dashboard .revenue-sold .sold-chart {
+  background-color: #2e2e48;
+  width: 32%;
+  font-size: 0.6rem;
+  font-weight: 600;
+}
+.dashboard .revenue-sold .sold-chart .title {
+  font-size: 0.8rem;
+}
+.dashboard .last-orders {
+  background-color: #2e2e48;
+}
+.dashboard .last-orders .title {
+  font-weight: 600;
+}
+.dashboard .last-orders table {
+  color: #fff;
+  font-size: 0.6rem;
+}
+.dashboard .last-orders table thead {
+  background-color: #383854;
+  font-size: 0.8rem;
+}
+.dashboard .last-orders table thead tr th {
+  font-weight: 400;
 }/*# sourceMappingURL=dashBoard.css.map */

@@ -76,8 +76,8 @@ userSchema.pre("save", async function (next) {
 userSchema.methods.getAccessToken = function () {
   const accessToken = jwt.sign(
     { id: this._id, role: this.role, name: this.name, cart: this.cartId },
-    process.env.ACESSTOKEN_SECRET,
-    { expiresIn: process.env.ACESSTOKEN_EXPIRES }
+    process.env.ACCESSTOKEN_SECRET,
+    { expiresIn: process.env.ACCESSTOKEN_EXPIRES }
   );
   console.log(this.role);
   return accessToken;

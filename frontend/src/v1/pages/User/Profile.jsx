@@ -16,7 +16,8 @@ const Profile = () => {
     }
   }, [error]);
   useEffect(() => {
-    dispatch(getAccount());
+    const token = JSON.parse(localStorage.getItem("accessToken"));
+    if(!token) dispatch(getAccount());
   }, [dispatch]);
   return (
     <>

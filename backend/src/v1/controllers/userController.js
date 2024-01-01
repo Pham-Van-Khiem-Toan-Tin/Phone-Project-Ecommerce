@@ -220,6 +220,7 @@ module.exports.updateProfile = catchAsyncError(async (req, res, next) => {
 //get all user(admin)
 module.exports.getAllUser = catchAsyncError(async (req, res, next) => {
   const users = await userModel.find({});
+  console.log({token: req.token});
   if (req.token) {
     const newAccessToken = req.token;
     res.status(200).json({
