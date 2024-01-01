@@ -1,11 +1,11 @@
 const nodemailer = require("nodemailer");
-const sendgridTransport = require("nodemailer-sendgrid-transport")
+const sendgridTransport = require("nodemailer-sendgrid-transport");
+require("dotenv").config();
 //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
 const sendEmail = async (options) => {
   const transporter = nodemailer.createTransport(sendgridTransport({
     auth: {
-
-      api_key: "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"
+      api_key: process.env.SENDGRID_APIKEY
     }
   }));
   var mailOptions = {
