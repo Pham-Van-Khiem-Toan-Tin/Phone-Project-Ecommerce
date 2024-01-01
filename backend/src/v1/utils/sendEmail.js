@@ -4,6 +4,7 @@ const sendgridTransport = require("nodemailer-sendgrid-transport")
 const sendEmail = async (options) => {
   const transporter = nodemailer.createTransport(sendgridTransport({
     auth: {
+
       api_key: "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"
     }
   }));
@@ -14,7 +15,12 @@ const sendEmail = async (options) => {
     text: options.message,
   };
   console.log("chay den day");
-  await transporter.sendMail(mailOptions);
+  await transporter.sendMail(mailOptions, function(err, res) {
+    if(err) {
+      console.log(err);
+    }
+    console.log(res);
+  });
 };
 
 module.exports = sendEmail;

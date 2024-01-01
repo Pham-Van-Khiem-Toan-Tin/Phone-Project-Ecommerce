@@ -23,84 +23,84 @@ const DashBoard = () => {
     orders.forEach((item) => {
       totalAmount += item.totalPrice;
     });
-  const lineState = {
-    labels: ["InitialAmount", "Amount Earn"],
-    datasets: [
-      {
-        backgroundColor: "#FF6D60",
-        label: "TOTAL AMOUNT",
-        data: [0, totalAmount],
-        fill: false,
-        borderColor: "#fff",
-      },
-    ],
-  };
-  const doughState = {
-    labels: ["Out of Stock", "InStock"],
-    datasets: [
-      {
-        label: 'Quanlity:',
-        data: [outOfStock, products.length - outOfStock], // Đưa dữ liệu vào đây, ví dụ có 12 và 18 là 2 giá trị
-        backgroundColor: [
-          '#F45050',
-          '#9384D1',
-        ],
-        borderWidth: [0, 0]
-      },
-    ],
-  };
-  const optionsDoughnut = {
-    maintainAspectRatio: true,
-    responsive: true,
-    plugins: {
-      legend: {
-        labels: {
-          color: 'white',
-        },
-      },
-    },
-  };
-  const optionsLine = {
-    responsive: true,
-    plugins: {
-      legend: {
-        labels: {
-          font: {
-            size: 16, // kích thước chữ
-            family: "Arial", // font chữ
-          },
-          color: "#fff", // màu chữ
-        },
-      },
-    },
-    scales: {
-      x: {
-        grid: {
-          color: "#fff", // màu của đường kẻ trên trục x
-        },
-        ticks: {
-          font: {
-            size: 14, // kích thước chữ trên trục x
-            family: "Arial", // font chữ trên trục x
-          },
-          color: "#fff", // màu của chữ trên trục x
-        },
-      },
-      y: {
-        grid: {
-          color: "#fff", // màu của đường kẻ trên trục y
-        },
-        ticks: {
-          font: {
-            size: 14, // kích thước chữ trên trục y
-            family: "Arial", // font chữ trên trục y
-          },
-          color: "#fff", // màu của chữ trên trục y
-        },
-        beginAtZero: true,
-      },
-    },
-  };
+  // const lineState = {
+  //   labels: ["InitialAmount", "Amount Earn"],
+  //   datasets: [
+  //     {
+  //       backgroundColor: "#FF6D60",
+  //       label: "TOTAL AMOUNT",
+  //       data: [0, totalAmount],
+  //       fill: false,
+  //       borderColor: "#fff",
+  //     },
+  //   ],
+  // };
+  // const doughState = {
+  //   labels: ["Out of Stock", "InStock"],
+  //   datasets: [
+  //     {
+  //       label: 'Quanlity:',
+  //       data: [outOfStock, products.length - outOfStock], // Đưa dữ liệu vào đây, ví dụ có 12 và 18 là 2 giá trị
+  //       backgroundColor: [
+  //         '#F45050',
+  //         '#9384D1',
+  //       ],
+  //       borderWidth: [0, 0]
+  //     },
+  //   ],
+  // };
+  // const optionsDoughnut = {
+  //   maintainAspectRatio: true,
+  //   responsive: true,
+  //   plugins: {
+  //     legend: {
+  //       labels: {
+  //         color: 'white',
+  //       },
+  //     },
+  //   },
+  // };
+  // const optionsLine = {
+  //   responsive: true,
+  //   plugins: {
+  //     legend: {
+  //       labels: {
+  //         font: {
+  //           size: 16, // kích thước chữ
+  //           family: "Arial", // font chữ
+  //         },
+  //         color: "#fff", // màu chữ
+  //       },
+  //     },
+  //   },
+  //   scales: {
+  //     x: {
+  //       grid: {
+  //         color: "#fff", // màu của đường kẻ trên trục x
+  //       },
+  //       ticks: {
+  //         font: {
+  //           size: 14, // kích thước chữ trên trục x
+  //           family: "Arial", // font chữ trên trục x
+  //         },
+  //         color: "#fff", // màu của chữ trên trục x
+  //       },
+  //     },
+  //     y: {
+  //       grid: {
+  //         color: "#fff", // màu của đường kẻ trên trục y
+  //       },
+  //       ticks: {
+  //         font: {
+  //           size: 14, // kích thước chữ trên trục y
+  //           family: "Arial", // font chữ trên trục y
+  //         },
+  //         color: "#fff", // màu của chữ trên trục y
+  //       },
+  //       beginAtZero: true,
+  //     },
+  //   },
+  // };
   useEffect(() => {
     dispatch(allUser());
     dispatch(getAdminProducts());
@@ -109,8 +109,16 @@ const DashBoard = () => {
 
   return (
     <div className="dashboard">
-      <div className="container">
-        <div className="dashboard_summary">
+      <div className="row">
+        <div className="col-3"></div>
+        <div className="col-9">
+          <div className="container">
+            
+          </div>
+        </div>
+      </div>
+      {/* <div className="container"> */}
+        {/* <div className="dashboard_summary">
           <p>
             Total Amount: <br /> {totalAmount} VND
           </p>
@@ -135,7 +143,8 @@ const DashBoard = () => {
         <div className="doughnutChart">
           <Doughnut data={doughState} options={optionsDoughnut} />
         </div>
-      </div>
+      </div> */}
+
     </div>
   );
 };

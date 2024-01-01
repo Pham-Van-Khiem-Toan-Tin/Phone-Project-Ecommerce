@@ -1,0 +1,64 @@
+$background-header: #2e2e48;
+$background-active: #475be8;
+.admin-header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: $background-header;
+    color: #fff;
+    .brand {
+        font-weight: 700;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    .menus {
+        margin-top: 1.5rem;
+        .menu-link {
+            padding: 0.5rem 0.5rem;
+            display: block;
+            a {
+                display: block;
+                border: none;
+                padding: 0.5rem 0.75rem;
+                font-size: 0.8rem;
+                font-weight: 700;
+                color: #fff;
+            }
+        }
+        .menu-dropdown {
+            border-bottom: none;
+        }
+        .menu-sub-link {
+            padding: 1rem 1.25rem;
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: #fff;
+            display: block;
+        }
+        .active {
+            background-color: $background-active;
+        }
+        .accordion {
+            .accordion-item {
+                background-color: transparent;
+                .accordion-header {
+                    .accordion-button {
+                        color: #fff;
+                        font-size: 0.8rem;
+                        font-weight: 700;
+                        background-color: transparent;
+                        &:focus {
+                            border: none;
+                            outline: none;
+                            box-shadow: none;
+                        }
+                        &::after {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

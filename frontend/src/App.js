@@ -41,6 +41,7 @@ import ResetPassword from "./v1/pages/User/ResetPassword";
 import ProductReview from "./v1/pages/Admin/ProductReview";
 import NotFound from "./v1/pages/NotFound/NotFound";
 import { socket } from "./socket";
+import AdminHeader from "./v1/components/layouts/AdminHeader";
 function App() {
   const [isConnected, setIsConnected] = useState(socket.connected);
   const [fooEvents, setFooEvents] = useState([]);
@@ -79,7 +80,8 @@ function App() {
   }, []);
   return (
     <>
-      <Header />
+      {/* <Header /> */}
+      <AdminHeader />
       <Routes>
         <Route path="/" index element={<Home />} />
         <Route path="/categories" element={<Categories />} />
@@ -140,11 +142,11 @@ function App() {
           element={<ProtectRoute isAdmin={true} children={<DashBoard />} />}
         />
         <Route
-          path="/admin/allproducts"
+          path="/admin/all-products"
           element={<ProtectRoute isAdmin={true} children={<AllProduct />} />}
         />
         <Route
-          path="/admin/newproduct"
+          path="/admin/new-product"
           element={<ProtectRoute isAdmin={true} children={<CreateProduct />} />}
         />
         <Route
@@ -152,7 +154,7 @@ function App() {
           element={<ProtectRoute isAdmin={true} children={<UpdateProduct />} />}
         />
         <Route
-          path="/admin/product/orders"
+          path="/admin/all-orders"
           element={<ProtectRoute isAdmin={true} children={<OrdersAdmin />} />}
         />
         <Route
@@ -160,7 +162,7 @@ function App() {
           element={<ProtectRoute isAdmin={true} children={<ProcessOrder />} />}
         />
         <Route
-          path="/admin/allusers"
+          path="/admin/all-users"
           element={<ProtectRoute isAdmin={true} children={<AllUser />} />}
         />
         <Route
@@ -186,7 +188,7 @@ function App() {
       />
       {/* Same as */}
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
