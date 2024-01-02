@@ -1,0 +1,68 @@
+$background-dashboard: #383854;
+$background-neu: #2e2e48;
+$background-thead: #383854;
+.all-users {
+    min-height: 100vh;
+    padding: 2rem;
+    background-color: $background-dashboard;
+    color: #fff;
+    .date-picker {
+        select{
+            color: #fff;
+            max-width: 10rem;
+            font-size: 0.8rem;
+            background-color: $background-neu;
+            border: none;
+            outline: none;
+        }
+    }
+    .card-dashboard {
+        font-size: 0.6rem;
+        margin-top: 2rem;
+        .item {
+            padding: 1rem;
+            background-color: $background-neu;
+            width: 32%;
+            .item-content {
+                p {
+                    margin-bottom: 0.2rem;
+                }
+                .title {
+                    font-weight: 500;
+                }
+                .total {
+                    font-weight: 700;
+                    font-size: 1.5rem;
+                }
+                .notify {
+                    font-weight: 300;
+                }
+            }
+        }
+    }
+    .insights-sold {
+        .insights-chart {
+            background-color: $background-neu;
+            width: 100%;
+        }
+    }
+    .last-users {
+        background-color: $background-neu;
+        .title {
+            font-weight: 600;
+        }
+        table {
+            color: #fff;
+            font-size: 0.6rem;
+            thead {
+                background-color: $background-thead;
+                font-size: 0.8rem;
+                tr {
+                    th {
+                        font-weight: 400;
+                    }
+                }
+            }
+        }
+    }
+}

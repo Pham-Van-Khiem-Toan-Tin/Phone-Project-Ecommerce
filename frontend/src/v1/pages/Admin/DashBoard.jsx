@@ -67,7 +67,7 @@ const DashBoard = () => {
         borderRadius: 2,
         hoverBackgroundColor: "#36429e",
         // hoverBorderColor: "rgba(75,192,192,1)",
-        data: [60, 80, 100, 60, 20, 70],
+        data: [40,60, 80, 100, 60, 20, 70, 90, 30],
       },
       {
         label: "Lose",
@@ -75,7 +75,7 @@ const DashBoard = () => {
         borderRadius: 2,
         hoverBackgroundColor: "#989aa5",
         // hoverBorderColor: "rgba(255,99,132,1)",
-        data: [60, 80, 100, 60, 20, 70],
+        data: [60,10,20,60, 80, 100, 60, 20, 70, ],
       },
     ],
   };
@@ -207,7 +207,7 @@ const DashBoard = () => {
             </div>
             <div className="item rounded d-flex align-items-center">
               <div className="item-content col-7">
-                <p className="title">Today Sales</p>
+                <p className="title">Today Revenue</p>
                 <p className="total">$100.0K</p>
                 <p className="notify">We have sold 123 items</p>
               </div>
@@ -217,7 +217,7 @@ const DashBoard = () => {
             </div>
             <div className="item rounded d-flex align-items-center">
               <div className="item-content col-7">
-                <p className="title">Today Sales</p>
+                <p className="title">In Escrow</p>
                 <p className="total">$100.0K</p>
                 <p className="notify">We have sold 123 items</p>
               </div>
@@ -345,33 +345,6 @@ const DashBoard = () => {
           </div>
         </div>
       </div>
-      {/* <div className="container"> */}
-      {/* <div className="dashboard_summary">
-          <p>
-            Total Amount: <br /> {totalAmount} VND
-          </p>
-        </div>
-        <div className="dashboard_summary2">
-          <Link to="/admin/allproducts">
-            <p>Products</p>
-            <p>{products?.length}</p>
-          </Link>
-          <Link to="/admin/product/orders">
-            <p>Orders</p>
-            <p>{orders?.length}</p>
-          </Link>
-          <Link to="/admin/allusers">
-            <p>Users</p>
-            <p>{users?.length}</p>
-          </Link>
-        </div>
-        <div className="lineChart">
-          <Line data={lineState} options={optionsLine} />
-        </div>
-        <div className="doughnutChart">
-          <Doughnut data={doughState} options={optionsDoughnut} />
-        </div>
-      </div> */}
     </div>
   );
 };

@@ -1,0 +1,57 @@
+.all-orders {
+  min-height: 100vh;
+  padding: 2rem;
+  background-color: #383854;
+  color: #fff;
+}
+.all-orders .date-picker select {
+  color: #fff;
+  max-width: 10rem;
+  font-size: 0.8rem;
+  background-color: #2e2e48;
+  border: none;
+  outline: none;
+}
+.all-orders .card-dashboard {
+  font-size: 0.6rem;
+  margin-top: 2rem;
+}
+.all-orders .card-dashboard .item {
+  padding: 1rem;
+  background-color: #2e2e48;
+  width: 32%;
+}
+.all-orders .card-dashboard .item .item-content p {
+  margin-bottom: 0.2rem;
+}
+.all-orders .card-dashboard .item .item-content .title {
+  font-weight: 500;
+}
+.all-orders .card-dashboard .item .item-content .total {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+.all-orders .card-dashboard .item .item-content .notify {
+  font-weight: 300;
+}
+.all-orders .insights-sold .insights-chart {
+  background-color: #2e2e48;
+  width: 100%;
+}
+.all-orders .last-orders {
+  background-color: #2e2e48;
+}
+.all-orders .last-orders .title {
+  font-weight: 600;
+}
+.all-orders .last-orders table {
+  color: #fff;
+  font-size: 0.6rem;
+}
+.all-orders .last-orders table thead {
+  background-color: #383854;
+  font-size: 0.8rem;
+}
+.all-orders .last-orders table thead tr th {
+  font-weight: 400;
+}/*# sourceMappingURL=all-orders.css.map */

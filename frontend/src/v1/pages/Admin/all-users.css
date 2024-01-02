@@ -1,0 +1,57 @@
+.all-users {
+  min-height: 100vh;
+  padding: 2rem;
+  background-color: #383854;
+  color: #fff;
+}
+.all-users .date-picker select {
+  color: #fff;
+  max-width: 10rem;
+  font-size: 0.8rem;
+  background-color: #2e2e48;
+  border: none;
+  outline: none;
+}
+.all-users .card-dashboard {
+  font-size: 0.6rem;
+  margin-top: 2rem;
+}
+.all-users .card-dashboard .item {
+  padding: 1rem;
+  background-color: #2e2e48;
+  width: 32%;
+}
+.all-users .card-dashboard .item .item-content p {
+  margin-bottom: 0.2rem;
+}
+.all-users .card-dashboard .item .item-content .title {
+  font-weight: 500;
+}
+.all-users .card-dashboard .item .item-content .total {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+.all-users .card-dashboard .item .item-content .notify {
+  font-weight: 300;
+}
+.all-users .insights-sold .insights-chart {
+  background-color: #2e2e48;
+  width: 100%;
+}
+.all-users .last-users {
+  background-color: #2e2e48;
+}
+.all-users .last-users .title {
+  font-weight: 600;
+}
+.all-users .last-users table {
+  color: #fff;
+  font-size: 0.6rem;
+}
+.all-users .last-users table thead {
+  background-color: #383854;
+  font-size: 0.8rem;
+}
+.all-users .last-users table thead tr th {
+  font-weight: 400;
+}/*# sourceMappingURL=all-users.css.map */
