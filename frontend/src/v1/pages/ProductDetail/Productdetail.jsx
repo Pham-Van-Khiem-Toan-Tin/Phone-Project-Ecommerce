@@ -33,7 +33,7 @@ import Carousel from "../../components/Carousel/Carousel";
 import CardProductDetail from "../../components/CardProductDetail/CardProductDetail";
 import ProductDetailTabs from "./ProductDetailTabs";
 import ProductDetailCarousel from "./ProductDetailCarousel";
-const Productdetail = () => {
+const Productdetail = ({HeaderComponent, FooterComponent}) => {
   const dispatch = useDispatch();
   const { error, isLoading, product } = useSelector(
     (state) => state.productDetail
@@ -105,6 +105,7 @@ const Productdetail = () => {
   console.log(product);
   return (
     <>
+    <HeaderComponent />
       {isLoading ? (
         <Loader />
       ) : (
@@ -189,6 +190,7 @@ const Productdetail = () => {
           </div>
         </div>
       )}
+      <FooterComponent />
     </>
   );
 };

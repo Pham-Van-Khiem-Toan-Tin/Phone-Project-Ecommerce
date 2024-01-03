@@ -17,7 +17,7 @@ import Card from "../../components/Card/Card";
 import CardTechDeal from "../../components/CardTechDeal/CardTechDeal";
 import CardBrand from "../../components/CardBrand/CardBrand";
 
-const Home = () => {
+const Home = ({HeaderComponent, FooterComponent}) => {
   const dispatch = useDispatch();
   const { isLoading, error, ssproducts, xiaoproducts, approducts, opproducts } =
     useSelector((state) => state.productshome);
@@ -89,6 +89,7 @@ const Home = () => {
   }, [dispatch]);
   return (
     <>
+    <HeaderComponent />
       {isLoading ? (
         <Loader />
       ) : (
@@ -101,6 +102,7 @@ const Home = () => {
           </div>
         </div>
       )}
+      <FooterComponent />
     </>
   );
 };

@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { FaCreditCard, FaCalendarAlt, FaKey } from "react-icons/fa";
 import { createOrder } from "../../reduxToolkit/actions/orderAction";
 import { clearError } from "../../reduxToolkit/reducer/order/newOrderSlice";
-const Payment = () => {
+const Payment = ({ HeaderComponent, FooterComponent }) => {
   const dispatch = useDispatch();
   const stripe = useStripe();
   const elmements = useElements();
@@ -108,33 +108,37 @@ const Payment = () => {
   }, [dispatch, error]);
 
   return (
-    <div className="payment">
-      <div className="container d-flex align-items-center justify-content-center">
-        <form onSubmit={submitHandle} className="rounded">
-          <p>Card Info</p>
-          <div className="field">
-            <FaCreditCard />
-            <CardNumberElement className="paymentInput form-control" />
-          </div>
-          <div className="field">
-            <FaCalendarAlt />
-            <CardExpiryElement className="paymentInput form-control" />
-          </div>
-          <div className="field">
-            <FaKey />
-            <CardCvcElement className="paymentInput form-control" />
-          </div>
-          <input
-            type="submit"
-            value={`Pay - ${
-              orderInfor && Math.round(orderInfor.totalPrice / 23000)
-            }$`}
-            ref={payBtn}
-            className="btn btn-submit btn-sm btn-warning text-danger"
-          />
-        </form>
+    <>
+      <HeaderComponent />
+      <div className="payment">
+        <div className="container d-flex align-items-center justify-content-center">
+          <form onSubmit={submitHandle} className="rounded">
+            <p>Card Info</p>
+            <div className="field">
+              <FaCreditCard />
+              <CardNumberElement className="paymentInput form-control" />
+            </div>
+            <div className="field">
+              <FaCalendarAlt />
+              <CardExpiryElement className="paymentInput form-control" />
+            </div>
+            <div className="field">
+              <FaKey />
+              <CardCvcElement className="paymentInput form-control" />
+            </div>
+            <input
+              type="submit"
+              value={`Pay - ${
+                orderInfor && Math.round(orderInfor.totalPrice / 23000)
+              }$`}
+              ref={payBtn}
+              className="btn btn-submit btn-sm btn-warning text-danger"
+            />
+          </form>
+        </div>
       </div>
-    </div>
+      <FooterComponent />
+    </>
   );
 };
 

@@ -7,7 +7,7 @@ import { resetPassword } from "../../reduxToolkit/actions/userAction";
 import { toast } from "react-toastify";
 import { clearError } from "../../reduxToolkit/reducer/user/forgotPasswordSlice";
 
-const ResetPassword = () => {
+const ResetPassword = ({HeaderComponent, FooterComponent}) => {
   const dispatch = useDispatch();
   const { error, message, isLoading, success } = useSelector(
     (state) => state.forgotPass

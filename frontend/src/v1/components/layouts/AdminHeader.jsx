@@ -1,6 +1,7 @@
 import React from "react";
 import "./admin-header.css";
 import { Link } from "react-router-dom";
+import { FaComment, FaLuggageCart, FaMicrosoft, FaShoppingBag, FaUser } from "react-icons/fa";
 
 const AdminHeader = () => {
   return (
@@ -8,8 +9,8 @@ const AdminHeader = () => {
       <div className="brand">Shop phone</div>
       <div className="menus">
         <div className="menu-link">
-          <Link to="admin/dashboard" className="rounded active">
-            Dashboard
+          <Link to="../../admin/dashboard" className="rounded active">
+            <FaMicrosoft /> <span>Dashboard</span> 
           </Link>
         </div>
         <div className="accordion accordion-flush" id="adminHeader">
@@ -23,7 +24,7 @@ const AdminHeader = () => {
                 aria-expanded="false"
                 aria-controls="item-one"
               >
-                Products
+              <FaShoppingBag /> {" Products"}
               </button>
             </h2>
             <div
@@ -43,18 +44,18 @@ const AdminHeader = () => {
           </div>
         </div>
         <div className="menu-link">
-          <Link to="admin/all-orders" className="menu-link rounded">
-            All Orders
+          <Link to="../../admin/all-orders" className="menu-link rounded">
+           <FaLuggageCart /> <span>All Orders</span> 
           </Link>
         </div>
         <div className="menu-link">
-          <Link to="admin/all-users" className="menu-link rounded">
-            All Users
+          <Link to="../../admin/all-users" className="menu-link rounded">
+            <FaUser /> <span>All Users</span> 
           </Link>
         </div>
         <div className="menu-link">
-          <Link to="admin/all-users" className="menu-link rounded">
-            Reviews
+          <Link to="../../admin/all-users" className="menu-link rounded">
+           <FaComment /> <span>Reviews</span>
           </Link>
         </div>
       </div>

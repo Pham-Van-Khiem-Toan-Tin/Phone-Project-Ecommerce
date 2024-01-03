@@ -6,7 +6,7 @@ import { forgotPassword } from "../../reduxToolkit/actions/userAction";
 import { toast } from "react-toastify";
 import { clearError } from "../../reduxToolkit/reducer/user/forgotPasswordSlice";
 
-const ForgotPassword = () => {
+const ForgotPassword = ({HeaderComponent, FooterComponent}) => {
     const dispatch = useDispatch();
     const {error, message, íLoading} = useSelector((state) => state.forgotPass);
     const [email, setEmail] = useState("");
@@ -27,6 +27,8 @@ const ForgotPassword = () => {
     }, [dispatch, error, message])
     
   return (
+    <>
+    <HeaderComponent />
     <div className="forgot_password">
       <form onSubmit={forgotPasswordSubmit}>
         <h5>forgot password</h5>
@@ -39,6 +41,8 @@ const ForgotPassword = () => {
         <input type="submit" value="Send Code" />
       </form>
     </div>
+    <FooterComponent />
+    </>
   );
 };
 

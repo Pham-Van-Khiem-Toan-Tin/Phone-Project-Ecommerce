@@ -80,38 +80,36 @@ function App() {
   }, []);
   return (
     <>
-      {/* <Header /> */}
-      <AdminHeader />
       <Routes>
-        <Route path="/" index element={<Home />} />
-        <Route path="/categories" element={<Categories />} />
-        <Route path="/product/:keyword" element={<Categories />} />
-        <Route path="/categories/:id" element={<Productdetail />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/login" element={<LoginAndSignUp />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/password/forgot" element={<ForgotPassword />} />
-        <Route path="/password/reset/:token" element={<ResetPassword />} />
+        <Route path="/" index element={<Home HeaderComponent={Header} FooterComponent={Footer}/>} />
+        <Route path="/categories" element={<Categories HeaderComponent={Header} FooterComponent={Footer}/>} />
+        <Route path="/product/:keyword" element={<Categories HeaderComponent={Header} FooterComponent={Footer}/>} />
+        <Route path="/categories/:id" element={<Productdetail HeaderComponent={Header} FooterComponent={Footer}/>} />
+        <Route path="/contact" element={<Contact HeaderComponent={Header} FooterComponent={Footer}/>} />
+        <Route path="/login" element={<LoginAndSignUp HeaderComponent={Header} FooterComponent={Footer}/>} />
+        <Route path="/about" element={<About HeaderComponent={Header} FooterComponent={Footer}/>} />
+        <Route path="/password/forgot" element={<ForgotPassword HeaderComponent={Header} FooterComponent={Footer}/>} />
+        <Route path="/password/reset/:token" element={<ResetPassword HeaderComponent={Header} FooterComponent={Footer}/>} />
         <Route
           path="/account"
-          element={<ProtectRoute children={<Profile />} />}
+          element={<ProtectRoute children={<Profile HeaderComponent={Header} FooterComponent={Footer}/>} />}
         />
         <Route
           path="/me/update"
-          element={<ProtectRoute children={<UpdateProfile />} />}
+          element={<ProtectRoute children={<UpdateProfile HeaderComponent={Header} FooterComponent={Footer}/>} />}
         />
         <Route
           path="/password/update"
-          element={<ProtectRoute children={<UpdatePassword />} />}
+          element={<ProtectRoute children={<UpdatePassword HeaderComponent={Header} FooterComponent={Footer}/>} />}
         />
-        <Route path="/cart" element={<ProtectRoute children={<Cart />} />} />
+        <Route path="/cart" element={<ProtectRoute children={<Cart HeaderComponent={Header} FooterComponent={Footer}/>} />} />
         <Route
           path="/shipping"
-          element={<ProtectRoute children={<Shipping />} />}
+          element={<ProtectRoute children={<Shipping HeaderComponent={Header} FooterComponent={Footer}/>} />}
         />
         <Route
           path="/order/confirm"
-          element={<ProtectRoute children={<OrderConFirm />} />}
+          element={<ProtectRoute children={<OrderConFirm HeaderComponent={Header} FooterComponent={Footer}/>} />}
         />
         <Route
           path="/payment"
@@ -119,7 +117,7 @@ function App() {
             <ProtectRoute
               children={
                 <Elements stripe={stripePromise}>
-                  <Payment />
+                  <Payment HeaderComponent={Header} FooterComponent={Footer}/>
                 </Elements>
               }
             />
@@ -127,51 +125,51 @@ function App() {
         />
         <Route
           path="/success"
-          element={<ProtectRoute children={<OrderSuccess />} />}
+          element={<ProtectRoute children={<OrderSuccess HeaderComponent={Header} FooterComponent={Footer}/>} />}
         />
         <Route
           path="/orders"
-          element={<ProtectRoute children={<MyOrders />} />}
+          element={<ProtectRoute children={<MyOrders HeaderComponent={Header} FooterComponent={Footer}/>} />}
         />
         <Route
           path="/order/:id"
-          element={<ProtectRoute children={<OrderDetail />} />}
+          element={<ProtectRoute children={<OrderDetail HeaderComponent={Header} FooterComponent={Footer}/>} />}
         />
         <Route
-          path="/admin/dashboard"
-          element={<ProtectRoute isAdmin={true} children={<DashBoard />} />}
+          path="/admin/dashboard" 
+          element={<ProtectRoute isAdmin={true} children={<DashBoard ChildrenComponent={AdminHeader}/>} />}
         />
         <Route
-          path="/admin/all-products"
-          element={<ProtectRoute isAdmin={true} children={<AllProduct />} />}
+          path="/admin/all-products" 
+          element={<ProtectRoute isAdmin={true} children={<AllProduct ChildrenComponent={AdminHeader}/>} />}
         />
         <Route
-          path="/admin/new-product"
-          element={<ProtectRoute isAdmin={true} children={<CreateProduct />} />}
+          path="/admin/new-product" 
+          element={<ProtectRoute isAdmin={true} children={<CreateProduct ChildrenComponent={AdminHeader}/>} />}
         />
         <Route
-          path="/admin/product/:id"
-          element={<ProtectRoute isAdmin={true} children={<UpdateProduct />} />}
+          path="/admin/product/:id" 
+          element={<ProtectRoute isAdmin={true} children={<UpdateProduct ChildrenComponent={AdminHeader}/>} />}
         />
         <Route
-          path="/admin/all-orders"
-          element={<ProtectRoute isAdmin={true} children={<OrdersAdmin />} />}
+          path="/admin/all-orders" 
+          element={<ProtectRoute isAdmin={true} children={<OrdersAdmin ChildrenComponent={AdminHeader}/>} />}
         />
         <Route
           path="/admin/order/:id"
-          element={<ProtectRoute isAdmin={true} children={<ProcessOrder />} />}
+          element={<ProtectRoute isAdmin={true} children={<ProcessOrder ChildrenComponent={AdminHeader}/>} />}
         />
         <Route
-          path="/admin/all-users"
-          element={<ProtectRoute isAdmin={true} children={<AllUser />} />}
+          path="/admin/all-users" 
+          element={<ProtectRoute isAdmin={true} children={<AllUser ChildrenComponent={AdminHeader}/>} />}
         />
         <Route
-          path="/admin/user/:id"
-          element={<ProtectRoute isAdmin={true} children={<UpdateUser />} />}
+          path="/admin/user/:id" 
+          element={<ProtectRoute isAdmin={true} children={<UpdateUser ChildrenComponent={AdminHeader}/>} />}
         />
         <Route
-          path="/admin/reviews"
-          element={<ProtectRoute isAdmin={true} children={<ProductReview />} />}
+          path="/admin/reviews" 
+          element={<ProtectRoute isAdmin={true} children={<ProductReview ChildrenComponent={AdminHeader}/>} />}
         />
         <Route path="*" element={<NotFound />} />
       </Routes>
@@ -186,9 +184,6 @@ function App() {
         draggable
         pauseOnHover
       />
-      {/* Same as */}
-
-      {/* <Footer /> */}
     </>
   );
 }

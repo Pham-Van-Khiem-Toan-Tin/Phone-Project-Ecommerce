@@ -9,7 +9,7 @@ import {
 } from "../../reduxToolkit/reducer/user/userHandle";
 import Validation from "../../utils/Validation";
 import { useNavigate } from "react-router-dom";
-const UpdateProfile = () => {
+const UpdateProfile = ({HeaderComponent, FooterComponent}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.user);
@@ -62,6 +62,9 @@ const UpdateProfile = () => {
     }
   }, [user, dispatch, error, isUpDate, navigate]);
   return (
+    <>
+    <HeaderComponent />
+
     <div className="edit-profile">
       <div className="container">
         <div>
@@ -136,6 +139,8 @@ const UpdateProfile = () => {
         <input className="edit_profile_submit" type="submit" value="Submit" />
       </form> */}
     </div>
+    <FooterComponent />
+    </>
   );
 };
 

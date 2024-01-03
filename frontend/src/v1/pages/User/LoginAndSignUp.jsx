@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 import "./login-signup.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import InputPass from "../../components/InputPass/InputPass";
-const LoginAndSignUp = () => {
+const LoginAndSignUp = ({HeaderComponent, FooterComponent}) => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -91,6 +91,7 @@ const LoginAndSignUp = () => {
 
   return (
     <>
+    <HeaderComponent />
       {isLoading ? (
         <Loader />
       ) : (
@@ -231,6 +232,7 @@ const LoginAndSignUp = () => {
           </div>
         </div>
       )}
+      <FooterComponent />
     </>
   );
 };

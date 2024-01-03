@@ -14,7 +14,7 @@ import {
 import "./cart.css";
 import { Link } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
-const Cart = () => {
+const Cart = ({HeaderComponent, FooterComponent}) => {
   const dispatch = useDispatch();
   const { isLoading, error, cartList, success, total } = useSelector(
     (state) => state.cart
@@ -35,6 +35,7 @@ const Cart = () => {
 
   return (
     <>
+    <HeaderComponent />
       {isLoading ? (
         <Loader />
       ) : (
@@ -178,6 +179,7 @@ const Cart = () => {
           </section>
         </div>
       )}
+      <FooterComponent />
     </>
   );
 };

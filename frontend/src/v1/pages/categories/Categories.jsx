@@ -15,7 +15,7 @@ import {
 } from "../../reduxToolkit/reducer/product/cartProductSlice";
 import "./categories.css";
 
-const Categories = () => {
+const Categories = ({ HeaderComponent, FooterComponent }) => {
   const dispatch = useDispatch();
   const {
     isLoading,
@@ -25,16 +25,24 @@ const Categories = () => {
     filteredProductsCount,
     error,
   } = useSelector((state) => state.allProducts);
+  console.log( {
+    isLoading,
+    products,
+    productsCount,
+    resultPerPage,
+    filteredProductsCount,
+    error,
+  });
   const { error: errorCart, success: successCart } = useSelector(
     (state) => state.cart
   );
-  const listCategories = ["Samsung", "Xiaomi", "Apple", "Oppo"];
+  const listCategories = ["Gaming", "Selfie", "Movie", "Study"];
+  const brand = ["Samsung", "Apple", "Xiaomi", "Oppo"];
   const [currentPage, setCurrentPage] = useState(1);
   const [category, setCategory] = useState("");
   const [ratings, setRating] = useState(0);
   const [minValue, setMinValue] = useState(0);
-  const [maxValue, setMaxValue] = useState(500);
-  const [maxValue1, setMaxValue1] = useState(50000000);
+  const [maxValue, setMaxValue] = useState(2200);
 
   const changeRating = (newRating, name) => {
     setRating(newRating);
@@ -57,12 +65,30 @@ const Categories = () => {
     }
   }, [dispatch, error, errorCart, successCart]);
   useEffect(() => {
+    const storedCurrentPage = JSON.parse(localStorage.getItem("currentPage"));
+    const storedCategory = localStorage.getItem("category");
+    const storedRatings = JSON.parse(localStorage.getItem("ratings"));
+    const storedMinValue = JSON.parse(localStorage.getItem("minValue"));
+    const storedMaxValue = JSON.parse(localStorage.getItem("maxValue"));
+    setCurrentPage(storedCurrentPage || 1);
+    setCategory(storedCategory || "");
+    setRating(storedRatings || 0);
+    setMinValue(storedMinValue || 0);
+    setMaxValue(storedMaxValue || 2200);
+    console.log({
+      keyword,
+      currentPage,
+      minValue,
+      maxValue,
+      category,
+      ratings,
+    });
     dispatch(
       getAllProducts({
         keyword,
         currentPage,
         minValue,
-        maxValue1,
+        maxValue,
         category,
         ratings,
       })
@@ -71,6 +97,7 @@ const Categories = () => {
 
   return (
     <>
+      <HeaderComponent />
       {isLoading ? (
         <Loader />
       ) : (
@@ -93,29 +120,33 @@ const Categories = () => {
                 <div className="product-categories rounded">
                   <p className="fw-bold">Product categories</p>
                   <ul className="product-categories-list">
-                    <li className="product-categories-item">
-                      <input type="checkbox" /> <span>Gamming</span>
-                    </li>
-                    <li className="product-categories-item">
-                      <input type="checkbox" /> <span>Selfie</span>
-                    </li>
-                    <li className="product-categories-item">
-                      <input type="checkbox" /> <span>Gamming</span>
-                    </li>
-                    <li className="product-categories-item">
-                      <input type="checkbox" /> <span>Selfie</span>
-                    </li>
+                    {listCategories.map((cate) => {
+                      return (
+                        <li className="product-categories-item">
+                          <input
+                            type="checkbox"
+                            onChange={(e) => {
+                              // localStorage.setItem("category", cate);
+                              // setCategory(cate);
+                            }}
+                          />{" "}
+                          <span>{cate}</span>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
                 <div className="filter-by-price rounded">
                   <p className="fw-bold">Filter By Price</p>
                   <MultiRangeSlider
                     min={0}
-                    max={500}
-                    step={1}
+                    max={2200}
+                    step={10}
                     minValue={minValue}
                     maxValue={maxValue}
                     onChange={(e) => {
+                      localStorage.setItem("minValue", e.minValue);
+                      localStorage.setItem("maxValue", e.maxValue);
                       setMinValue(e.minValue);
                       setMaxValue(e.maxValue);
                     }}
@@ -127,78 +158,45 @@ const Categories = () => {
                 <div className="filter-by-ratings rounded">
                   <p className="fw-bold">Ratings</p>
                   <ul className="rating-list">
-                    <li className="rating-item">
-                      <StarRatings
-                        rating={5}
-                        starRatedColor="rgb(211 118 26)"
-                        numberOfStars={5}
-                        name="rating"
-                        starDimension="15px"
-                        starSpacing="1px"
-                      />
-                      <span> (9)</span>
-                    </li>
-                    <li className="rating-item">
-                      <StarRatings
-                        rating={4}
-                        starRatedColor="rgb(211 118 26)"
-                        numberOfStars={5}
-                        name="rating"
-                        starDimension="15px"
-                        starSpacing="1px"
-                      />
-                      <span> (20)</span>
-                    </li>
-                    <li className="rating-item">
-                      <StarRatings
-                        rating={3}
-                        starRatedColor="rgb(211 118 26)"
-                        numberOfStars={5}
-                        name="rating"
-                        starDimension="15px"
-                        starSpacing="1px"
-                      />
-                      <span> (12)</span>
-                    </li>
-                    <li className="rating-item">
-                      <StarRatings
-                        rating={2}
-                        starRatedColor="rgb(211 118 26)"
-                        numberOfStars={5}
-                        name="rating"
-                        starDimension="15px"
-                        starSpacing="1px"
-                      />
-                      <span> (9)</span>
-                    </li>
-                    <li className="rating-item">
-                      <StarRatings
-                        rating={1}
-                        starRatedColor="rgb(211 118 26)"
-                        numberOfStars={5}
-                        name="rating"
-                        starDimension="15px"
-                        starSpacing="1px"
-                      />
-                      <span> (4)</span>
-                    </li>
+                    {[1, 2, 3, 4, 5].reverse().map((item) => {
+                      return (
+                        <li
+                          className="rating-item"
+                          onClick={() => {
+                            localStorage.setItem("ratings", item);
+                            setRating(item);
+                          }}
+                        >
+                          <StarRatings
+                            rating={item}
+                            starRatedColor="rgb(211 118 26)"
+                            numberOfStars={5}
+                            name="rating"
+                            starDimension="15px"
+                            starSpacing="1px"
+                          />
+                          <span> (9)</span>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
                 <div className="filter-by-brand rounded">
                   <p className="fw-bold">Brands</p>
                   <ul className="brand-list">
-                    <li className="brand-item">
-                      <input type="checkbox" /> <span>SamSung</span>
-                    </li>
-                    <li className="brand-item">
-                      <input type="checkbox" /> <span>Xiaomi</span>
-                    </li>
-                    <li className="brand-item">
-                      <input type="checkbox" /> <span>Apple</span>
-                    </li>
-                    <li className="brand-item">
-                      <input type="checkbox" /> <span>Huwai</span>
-                    </li>
+                    {brand.map((br) => {
+                      return (
+                        <li
+                          className="brand-item"
+                          onClick={() => {
+                            localStorage.setItem("category", br);
+                            setCategory(br);
+                          }}
+                        >
+                          <input type="checkbox" checked={br === localStorage.getItem("category")}/> <span>{br}</span>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               </div>
@@ -216,14 +214,13 @@ const Categories = () => {
                     </select>
                   </div>
                   <div className="number-of-products">
-                    <span>Showing 1-12 of 32 results</span>
+                    <span>Showing 1-{resultPerPage} of {filteredProductsCount} results</span>
                   </div>
                 </div>
                 <div className="products-gird-content">
                   <div className="row">
                     {products &&
                       products.map((product) => {
-                        console.log(product);
                         return (
                           <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-6 p-1">
                             <Card data={product} />
@@ -232,30 +229,44 @@ const Categories = () => {
                       })}
                   </div>
                   <ul className="pagination">
-                    <li className="page-item">
-                      <a className="page-link" href="#">
+                    <li className="page-item" >
+                      <button
+                        className="page-link"
+                        disabled={currentPage > 1 ? false : true}
+                        onClick={() => {
+                          if (currentPage > 1) {
+                            localStorage.setItem(
+                              "currentPage",
+                              currentPage - 1
+                            );
+                            setCurrentPage(currentPage - 1);
+                          }
+                        }}
+                      >
                         Previous
-                      </a>
+                      </button>
                     </li>
                     <li className="page-item">
-                      <a className="page-link active" href="#">
-                        1
-                      </a>
+                      <button className="page-link active" disabled={true}>
+                        {currentPage}
+                      </button>
                     </li>
-                    <li className="page-item">
-                      <a className="page-link" href="#">
-                        2
-                      </a>
-                    </li>
-                    <li className="page-item">
-                      <a className="page-link" href="#">
-                        3
-                      </a>
-                    </li>
-                    <li className="page-item">
-                      <a className="page-link" href="#">
+                    <li className="page-item"  >
+                      <button
+                        className="page-link"
+                        disabled={products?.length != resultPerPage && filteredProductsCount - currentPage * resultPerPage <= 0}
+                        onClick={() => {
+                          if (products?.length == resultPerPage && filteredProductsCount - currentPage * resultPerPage > 0) {
+                            localStorage.setItem(
+                              "currentPage",
+                              currentPage + 1
+                            );
+                            setCurrentPage(currentPage + 1);
+                          }
+                        }}
+                      >
                         Next
-                      </a>
+                      </button>
                     </li>
                   </ul>
                 </div>
@@ -264,6 +275,7 @@ const Categories = () => {
           </div>
         </div>
       )}
+      <FooterComponent />
     </>
   );
 };

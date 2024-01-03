@@ -3,7 +3,6 @@ $background-neu: #2e2e48;
 $background-thead: #383854;
 .all-orders {
     min-height: 100vh;
-    padding: 2rem;
     background-color: $background-dashboard;
     color: #fff;
     .date-picker {
@@ -60,6 +59,16 @@ $background-thead: #383854;
                 tr {
                     th {
                         font-weight: 400;
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    .action {
+                        a {
+                            color: #fff;
+                            margin-right: 0.5rem;
+                        }
                     }
                 }
             }

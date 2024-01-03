@@ -126,16 +126,16 @@ $color-filter-price: #a7adb6;
   }
   .pagination {
         li {
-            a {
+            button {
                 border: none;
                 color: $color;
                 font-size: 0.8rem;
                 font-weight: 500;
             }
         }
-        a.active {
+        button.active {
             text-decoration: underline;
-            background-color: #ffffff;
+            background-color: #ccc;
         }
   }
 }

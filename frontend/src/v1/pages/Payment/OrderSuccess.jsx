@@ -2,13 +2,17 @@ import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import "./orderSuccess.css";
 import { Link } from "react-router-dom";
-const OrderSuccess = () => {
+const OrderSuccess = ({ HeaderComponent, FooterComponent }) => {
   return (
-    <div className="order_success">
-      <FaCheckCircle />
-      <h5>Your Order has been Placed successfully</h5>
-      <Link to="/orders">View Order</Link>
-    </div>
+    <>
+      <HeaderComponent />
+      <div className="order_success">
+        <FaCheckCircle />
+        <h5>Your Order has been Placed successfully</h5>
+        <Link to="/orders">View Order</Link>
+      </div>
+      <FooterComponent />
+    </>
   );
 };
 

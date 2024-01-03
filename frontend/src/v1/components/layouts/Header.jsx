@@ -19,7 +19,6 @@ import {
   clearError,
   logoutReset,
 } from "../../reduxToolkit/reducer/user/userSlice";
-import CategoriesSearch from "../../pages/categories/CategoriesSearch";
 import InputSearch from "../InputSearch/InputSearch";
 
 const menus = [

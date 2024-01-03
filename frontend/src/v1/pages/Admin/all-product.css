@@ -1,0 +1,70 @@
+.all-products {
+  min-height: 100vh;
+  background-color: #383854;
+  color: #fff;
+}
+.all-products .top-product {
+  background-color: #2e2e48;
+}
+.all-products .top-product .search {
+  margin: 1rem 0;
+}
+.all-products .top-product .search span {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.all-products .top-product .search select {
+  max-width: 10rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.all-products .top-product table {
+  color: #fff;
+  vertical-align: middle;
+  font-size: 0.6rem;
+}
+.all-products .top-product table thead {
+  background-color: #383854;
+  font-size: 0.8rem;
+}
+.all-products .top-product table thead tr th {
+  font-weight: 400;
+}
+.all-products .top-product table tbody tr .action a {
+  color: #fff;
+  margin-right: 0.5rem;
+}
+.all-products .top-product table tbody tr .action button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+.all-products .last-products {
+  background-color: #2e2e48;
+}
+.all-products .last-products .title {
+  font-weight: 600;
+}
+.all-products .last-products .search input {
+  font-size: 0.8rem;
+}
+.all-products .last-products table {
+  color: #fff;
+  font-size: 0.6rem;
+}
+.all-products .last-products table thead {
+  background-color: #383854;
+  font-size: 0.8rem;
+}
+.all-products .last-products table thead tr th {
+  font-weight: 400;
+}
+.all-products .last-products table tbody tr .action a {
+  color: #fff;
+  margin-right: 0.5rem;
+}
+.all-products .last-products table tbody tr .action button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+}/*# sourceMappingURL=all-product.css.map */

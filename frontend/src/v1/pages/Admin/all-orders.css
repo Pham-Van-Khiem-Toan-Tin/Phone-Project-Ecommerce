@@ -1,6 +1,5 @@
 .all-orders {
   min-height: 100vh;
-  padding: 2rem;
   background-color: #383854;
   color: #fff;
 }
@@ -54,4 +53,8 @@
 }
 .all-orders .last-orders table thead tr th {
   font-weight: 400;
+}
+.all-orders .last-orders table tbody tr .action a {
+  color: #fff;
+  margin-right: 0.5rem;
 }/*# sourceMappingURL=all-orders.css.map */

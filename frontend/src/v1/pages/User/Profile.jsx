@@ -4,7 +4,7 @@ import Loader from "../../components/Loader/Loader";
 import { getAccount } from "../../reduxToolkit/actions/userAction";
 import "./profile.css";
 import { Link, useNavigate } from "react-router-dom";
-const Profile = () => {
+const Profile = ({HeaderComponent, FooterComponent}) => {
   const dispatch = useDispatch();
   const { user, isLoading, isAuthenticated, error } = useSelector(
     (state) => state.user
@@ -21,6 +21,7 @@ const Profile = () => {
   }, [dispatch]);
   return (
     <>
+    <HeaderComponent />
       {isLoading ? (
         <Loader />
       ) : (
@@ -86,6 +87,7 @@ const Profile = () => {
           </div>
         </div>
       )}
+      <FooterComponent/>
     </>
   );
 };

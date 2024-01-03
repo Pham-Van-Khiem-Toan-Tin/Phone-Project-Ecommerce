@@ -14,7 +14,7 @@ import {
   clearErrorHandle,
   deleteReset,
 } from "../../reduxToolkit/reducer/user/userHandle";
-const AllUser = () => {
+const AllUser = ({ChildrenComponent}) => {
   const dispatch = useDispatch();
   const { error, users, isLoading } = useSelector((state) => state.allUsers);
   const {
@@ -204,8 +204,8 @@ const AllUser = () => {
       ) : (
         <div className="all-users">
           <div className="row">
-            <div className="col-3"></div>
-            <div className="col-9" >
+            <div className="col-3"><ChildrenComponent/></div>
+            <div className="col-9 p-5" >
             <div className="d-flex align-items-center justify-content-between date-picker">
             <span>Dashboard</span>
             <select className="form-select">

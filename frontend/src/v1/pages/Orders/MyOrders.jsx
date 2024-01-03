@@ -7,7 +7,7 @@ import { myOrders } from "../../reduxToolkit/actions/orderAction";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
-const MyOrders = () => {
+const MyOrders = ({HeaderComponent, FooterComponent}) => {
   const dispatch = useDispatch();
   const { isLoading, error, orders } = useSelector((state) => state.myOrders);
   const { user } = useSelector((state) => state.user);
@@ -34,6 +34,7 @@ const MyOrders = () => {
 
   return (
     <>
+    <HeaderComponent />
       {isLoading ? (
         <Loader />
       ) : (
@@ -76,6 +77,7 @@ const MyOrders = () => {
           </div>
         </div>
       )}
+      <FooterComponent />
     </>
   );
 };

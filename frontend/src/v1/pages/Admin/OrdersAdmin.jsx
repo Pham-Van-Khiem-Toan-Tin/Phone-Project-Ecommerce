@@ -17,7 +17,7 @@ import {
   clearErrorOrder,
   deleteReset,
 } from "../../reduxToolkit/reducer/order/orderSlice";
-const OrdersAdmin = () => {
+const OrdersAdmin = ({ChildrenComponent}) => {
   const dispatch = useDispatch();
   const { error, orders, isLoading } = useSelector((state) => state.allOrders);
   const {
@@ -55,14 +55,14 @@ const OrdersAdmin = () => {
         backgroundColor: "#475be8",
         borderRadius: 2,
         hoverBackgroundColor: "#36429e",
-        data: [40,60, 80, 100, 60, 20, 70, 90, 30],
+        data: [40, 60, 80, 100, 60, 20, 70, 90, 30],
       },
       {
         label: "New Order",
         backgroundColor: "#e3e6fc",
         borderRadius: 2,
         hoverBackgroundColor: "#989aa5",
-        data: [60,10,20,60, 80, 100, 60, 20, 70,],
+        data: [60, 10, 20, 60, 80, 100, 60, 20, 70],
       },
     ],
   };
@@ -165,30 +165,30 @@ const OrdersAdmin = () => {
     labels: ["jan", "Feb", "Mar"],
     datasets: [
       {
-        label: 'All Orders',
-        data: [20,14,36],
+        label: "All Orders",
+        data: [20, 14, 36],
         backgroundColor: "#475be8",
         borderColor: "#475be8",
       },
       {
-        label: 'Delivered',
+        label: "Delivered",
         data: [12, 8, 15],
         backgroundColor: "#e3e6fc",
         borderColor: "#e3e6fc",
       },
       {
-        label: 'Shipping',
+        label: "Shipping",
         data: [14, 6, 12],
         backgroundColor: "#198754",
         borderColor: "#198754",
       },
       {
-        label: 'Canceled',
+        label: "Canceled",
         data: [1, 3, 2],
         backgroundColor: "#fe1330",
         borderColor: "#fe1330",
-      }
-    ]
+      },
+    ],
   };
   useEffect(() => {
     if (error) {
@@ -215,8 +215,8 @@ const OrdersAdmin = () => {
       ) : (
         <div className="all-orders">
           <div className="row">
-            <div className="col-3"></div>
-            <div className="col-9">
+            <div className="col-3"><ChildrenComponent /></div>
+            <div className="col-9 p-5">
               <div className="d-flex align-items-center justify-content-between date-picker">
                 <span>Dashboard</span>
                 <select className="form-select">
@@ -266,80 +266,59 @@ const OrdersAdmin = () => {
                 </div>
               </div>
               <div className="last-orders p-2 mt-2 rounded">
-            <div className="table-responsive">
-              <p className="title">Last Orders</p>
-              <table className="table table-borderless">
-                <thead>
-                  <tr>
-                    <th scope="col">Order ID</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Customer name</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Amount</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {orders &&
-                    orders.map((order) => {
-                      return (
-                        <tr>
-                          <th scope="row">{order?._id}</th>
-                          <td>{order?.orderItems.length}</td>
-                          <td>{format(new Date(order?.createdAt), "dd/MM/yyyy")}</td>
-                          <td>{order.user}</td>
-                          <td>{order?.orderStatus}</td>
-                          <td>{order?.totalPrice}</td>
-                          <td>@mdo</td>
-                        </tr>
-                      );
-                    })}
-                </tbody>
-              </table>
-            </div>
-          </div>
-            </div>
-          </div>
-          {/* <div className="container table-responsive">
-            <table className="table table-bordered table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">Order ID</th>
-                  <th scope="col">Items Qty</th>
-                  <th scope="col">Amount</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {orders ? (
-                  orders.map((item) => {
-                    return (
-                      <tr key={item._id}>
-                        <td>{item._id}</td>
-                        <td>{item.orderItems.length}</td>
-                        <td>{item.totalPrice}</td>
-                        <td>{item.orderStatus}</td>
-                        <td className="icon-handle_order">
-                          <span>
-                            <Link to={`../admin/order/${item._id}`}>
-                              <FaEdit />
-                            </Link>
-                          </span>
-                          <span onClick={() => dispatch(deleteOrder(item._id))}>
-                            <FaTrashAlt />
-                          </span>
-                        </td>
+                <div className="table-responsive">
+                  <p className="title">Last Orders</p>
+                  <table className="table table-borderless">
+                    <thead>
+                      <tr>
+                        <th scope="col">Order ID</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Customer name</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Action</th>
                       </tr>
-                    );
-                  })
-                ) : (
-                  <div>No product in your shop</div>
-                )}
-              </tbody>
-            </table>
-          </div> */}
+                    </thead>
+                    <tbody>
+                      {orders &&
+                        orders.map((order) => {
+                          return (
+                            <tr>
+                              <th scope="row">{order?._id}</th>
+                              <td>{order?.orderItems.length}</td>
+                              <td>
+                                {format(
+                                  new Date(order?.createdAt),
+                                  "dd/MM/yyyy"
+                                )}
+                              </td>
+                              <td>{order.user}</td>
+                              <td>{order?.orderStatus}</td>
+                              <td>{order?.totalPrice}</td>
+                              <td className="action">
+                                <span>
+                                  <Link to={`../admin/order/${order?._id}`}>
+                                    <FaEdit />
+                                  </Link>
+                                </span>
+                                <span className="text-danger"
+                                  onClick={() =>
+                                    dispatch(deleteOrder(order?._id))
+                                  }
+                                >
+                                  <FaTrashAlt />
+                                </span>
+                              </td>
+                            </tr>
+                          );
+                        })}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </>

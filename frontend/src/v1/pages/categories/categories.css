@@ -107,13 +107,13 @@
   font-size: 0.8rem;
   font-weight: 500;
 }
-.categories .pagination li a {
+.categories .pagination li button {
   border: none;
   color: #111215;
   font-size: 0.8rem;
   font-weight: 500;
 }
-.categories .pagination a.active {
+.categories .pagination button.active {
   text-decoration: underline;
-  background-color: #ffffff;
+  background-color: #ccc;
 }/*# sourceMappingURL=categories.css.map */

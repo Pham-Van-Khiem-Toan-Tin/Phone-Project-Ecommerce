@@ -1,6 +1,6 @@
 import React from 'react'
 import "./Contact.css";
-const Contact = () => {
+const Contact = ({HeaderComponent, FooterComponent}) => {
   return (
     <div className='contact'>
       <a className='contact-email' href='mailto:phamkhiemhust2001@gmail.com'>

@@ -21,7 +21,7 @@ const Card = (props) => {
         <span>{data.name}</span>
       </div>
       <div className="product_price">
-        <span>{data.price} đ</span>
+        <span>{Math.round(data.price / 23000)} $</span>
       </div>
       <div className="ratings">
         <StarRatings

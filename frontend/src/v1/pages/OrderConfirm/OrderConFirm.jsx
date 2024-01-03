@@ -4,7 +4,7 @@ import "./order-confirm.css";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-const OrderConFirm = () => {
+const OrderConFirm = ({ HeaderComponent, FooterComponent }) => {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.user);
   const { shippingInfor, cartList } = useSelector((state) => state.cart);
@@ -26,100 +26,102 @@ const OrderConFirm = () => {
     navigate("../payment");
   };
   return (
-    <div className="order-confirm mb-5 container">
-      <Steps step={2} />
-      <div className="row mt-3">
-        <div className="col-12 col-md-6 order-1 ps-0">
-          <div className="shipping-info rounded ">
-            <p className="fw-bold text-center">Shipping Info</p>
-            <label htmlFor="name">
-              Name: <span className="text-danger">*</span>
-            </label>
-            <input
-              id="name"
-              disabled
-              value={user?.name}
-              className="form-control"
-            />
-            <label htmlFor="phone">
-              Phone: <span className="text-danger">*</span>
-            </label>
-            <input
-              id="phone"
-              disabled
-              value={shippingInfor?.phoneNum}
-              className="form-control"
-            />
-            <label htmlFor="address">
-              Address: <span className="text-danger">*</span>
-            </label>
-            <textarea
-              id="address"
-              disabled
-              value={address}
-              className="form-control"
-            />
+    <>
+      <HeaderComponent />
+      <div className="order-confirm mb-5 container">
+        <Steps step={2} />
+        <div className="row mt-3">
+          <div className="col-12 col-md-6 order-1 ps-0">
+            <div className="shipping-info rounded ">
+              <p className="fw-bold text-center">Shipping Info</p>
+              <label htmlFor="name">
+                Name: <span className="text-danger">*</span>
+              </label>
+              <input
+                id="name"
+                disabled
+                value={user?.name}
+                className="form-control"
+              />
+              <label htmlFor="phone">
+                Phone: <span className="text-danger">*</span>
+              </label>
+              <input
+                id="phone"
+                disabled
+                value={shippingInfor?.phoneNum}
+                className="form-control"
+              />
+              <label htmlFor="address">
+                Address: <span className="text-danger">*</span>
+              </label>
+              <textarea
+                id="address"
+                disabled
+                value={address}
+                className="form-control"
+              />
+            </div>
+          </div>
+          <div className="col-12 col-md-6 order-3 order-md-2 pe-0">
+            <div className="total rounded">
+              <p className="fw-bold text-center">Total</p>
+              <div className="total-field">
+                <span>Total price: </span>
+                <span>{subtotal} đ</span>
+              </div>
+              <div className="total-field">
+                <span>Shipping charges: </span>
+                <span>{shippingCharges} đ</span>
+              </div>
+              <div className="total-field">
+                <span>Tax price: </span>
+                <span>{tax} đ</span>
+              </div>
+              <div className="line"></div>
+              <div className="total-field">
+                <span>Total:</span>
+                <span>{totalPrice} đ</span>
+              </div>
+              <button
+                className="btn btn-primary btn-sm w-100 mt-2"
+                onClick={processToPayment}
+              >
+                Payment
+              </button>
+            </div>
+          </div>
+          <div className="product-list col-12 order-2 order-md-3 rounded">
+            <table className="table table-condensed table-responsive">
+              <thead>
+                <tr>
+                  <th style={{ width: "20%" }}>Product</th>
+                  <th style={{ width: "70%" }}>Name</th>
+                  <th style={{ width: "10%" }}>Quantity</th>
+                </tr>
+              </thead>
+              <tbody>
+                {cartList &&
+                  cartList.map((item) => {
+                    return (
+                      <tr key={item.id_product.name}>
+                        <td data-th="Product">
+                          <img
+                            src={item.id_product.images[0].url}
+                            className="rounded"
+                            alt=""
+                          />
+                        </td>
+                        <td data-th="Name">{item.id_product.name}</td>
+                        <td data-th="Quanlity">{item.quantity}</td>
+                      </tr>
+                    );
+                  })}
+              </tbody>
+            </table>
           </div>
         </div>
-        <div className="col-12 col-md-6 order-3 order-md-2 pe-0">
-          <div className="total rounded">
-            <p className="fw-bold text-center">Total</p>
-            <div className="total-field">
-              <span>Total price: </span>
-              <span>{subtotal} đ</span>
-            </div>
-            <div className="total-field">
-              <span>Shipping charges: </span>
-              <span>{shippingCharges} đ</span>
-            </div>
-            <div className="total-field">
-              <span>Tax price: </span>
-              <span>{tax} đ</span>
-            </div>
-            <div className="line"></div>
-            <div className="total-field">
-              <span>Total:</span>
-              <span>{totalPrice} đ</span>
-            </div>
-            <button
-              className="btn btn-primary btn-sm w-100 mt-2"
-              onClick={processToPayment}
-            >
-              Payment
-            </button>
-          </div>
-        </div>
-      <div className="product-list col-12 order-2 order-md-3 rounded">
-        <table className="table table-condensed table-responsive">
-          <thead>
-            <tr>
-              <th style={{ width: "20%" }}>Product</th>
-              <th style={{ width: "70%" }}>Name</th>
-              <th style={{ width: "10%" }}>Quantity</th>
-            </tr>
-          </thead>
-          <tbody>
-          {cartList &&
-              cartList.map((item) => {
-                return (
-                  <tr key={item.id_product.name}>
-                    <td data-th="Product">
-                      <img src={item.id_product.images[0].url} className="rounded" alt=""/>
-                    </td>
-                    <td data-th="Name">
-                      {item.id_product.name}
-                    </td>
-                    <td data-th="Quanlity">
-                      {item.quantity}
-                    </td>
-                  </tr>
-                );
-              })}
-          </tbody>
-        </table>
-      </div>
-      </div>
-      {/* <div className="shippingInfor">
+        {/* <div className="shippingInfor">
         <div className="shippingInfor-content">
           <h4>Shipping Infor:</h4>
           <div className="userInfor">
@@ -176,7 +178,9 @@ const OrderConFirm = () => {
           Payment
         </button>
       </div> */}
-    </div>
+      </div>
+      <FooterComponent />
+    </>
   );
 };
 

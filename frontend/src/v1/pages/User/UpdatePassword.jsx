@@ -11,7 +11,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 import { FaKey } from "react-icons/fa";
-const UpdatePassword = () => {
+const UpdatePassword = ({HeaderComponent, FooterComponent}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isUpDate, error, isLoading } = useSelector(
@@ -51,6 +51,7 @@ const UpdatePassword = () => {
 
   return (
     <>
+    <HeaderComponent />
       {isLoading ? (
         <Loader />
       ) : (
@@ -99,6 +100,7 @@ const UpdatePassword = () => {
           </form>
         </div>
       )}
+      <FooterComponent />
     </>
   );
 };

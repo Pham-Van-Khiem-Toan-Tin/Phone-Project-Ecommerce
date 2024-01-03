@@ -1,37 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import "./inputSearch.css";
 import useDebounce from "../../hooks/useDebounce";
 const InputSearch = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState([]);
-  const [isSearching, setIsSearching] = useState(false);
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
   const searchCharacters = async (search) => {
-    const apikey = "http://localhost:8888/";
-    return fetch(apikey, { method: "GET" })
-      .then((r) => r.json())
-      .then((r) => r.data.title)
-      .catch((err) => {
-        console.error(err);
-        return [];
-      });
+    
   };
-  useEffect(() => {
-    if (debouncedSearchTerm) {
-      setIsSearching(true);
-      searchCharacters(debouncedSearchTerm).then((results) => {
-        setIsSearching(false);
-        setResults(results);
-      });
-    } else {
-      setResults([]);
-      setIsSearching(false);
+  const [keyword, setKeyword] = useState("");
+    const navigate = useNavigate();
+    const searchSubmitHandle = (e) => {
+        e.preventDefault();
+        if(keyword.trim()) {
+            navigate(`/product/${keyword}`);
+        } else {
+            navigate("/categories");
+        }
     }
-
-    return () => {};
-  }, []);
-
   return (
     <div className="input-search">
       <form>
@@ -43,23 +31,9 @@ const InputSearch = () => {
           type="text"
           value={searchTerm}
           placeholder="Search key word ..."
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={searchSubmitHandle}
         />
       </form>
-      {isSearching && <div>Searching ...</div>}
-      {results.length !== 0 && (
-        <div className="table-search">
-          <ul className="search-list">
-            {results.map((data) => {
-              return (
-                <li className="serach-list-items" key={data.title}>
-                  {data.title}
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      )}
     </div>
   );
 };

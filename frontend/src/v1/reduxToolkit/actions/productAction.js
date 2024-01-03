@@ -9,9 +9,9 @@ export const getAllProducts = createAsyncThunk(
       if (!dataProduct.keyword) {
         dataProduct.keyword = "";
       }
-      let link = `${process.env.REACT_APP_SERVER}/products?keyword=${dataProduct.keyword}&page=${dataProduct.currentPage}&price[gte]=${dataProduct.minValue}&price[lte]=${dataProduct.maxValue1}&ratings[gte]=${dataProduct.ratings}`;
+      let link = `${process.env.REACT_APP_SERVER}/products?keyword=${dataProduct.keyword}&page=${dataProduct.currentPage}&price[gte]=${dataProduct.minValue *23000}&price[lte]=${dataProduct.maxValue * 23000}&ratings[gte]=${dataProduct.ratings}`;
       if (dataProduct.category) {
-        link = `${process.env.REACT_APP_SERVER}/products?keyword=${dataProduct.keyword}&page=${dataProduct.currentPage}&price[gte]=${dataProduct.minValue}&price[lte]=${dataProduct.maxValue1}&category=${dataProduct.category}&ratings[gte]=${dataProduct.ratings}`;
+        link = `${process.env.REACT_APP_SERVER}/products?keyword=${dataProduct.keyword}&page=${dataProduct.currentPage}&price[gte]=${dataProduct.minValue *23000}&price[lte]=${dataProduct.maxValue * 23000}&category=${dataProduct.category}&ratings[gte]=${dataProduct.ratings}`;
       }
       const { data } = await axios.get(link);
       return data;
