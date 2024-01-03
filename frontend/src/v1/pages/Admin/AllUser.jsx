@@ -26,12 +26,21 @@ const AllUser = ({ChildrenComponent}) => {
   const handleDeleteUser = (id) => {
     dispatch(deleteUser(id));
   };
-  const doughState = {
-    // labels: ["Out of Stock", "InStock"],
+  const doughState1 = {
     datasets: [
       {
         label: "Quanlity:",
-        data: [70, 100], // Đưa dữ liệu vào đây, ví dụ có 12 và 18 là 2 giá trị
+        data: [5, 10], // Đưa dữ liệu vào đây, ví dụ có 12 và 18 là 2 giá trị
+        backgroundColor: ["#F45050", "#9384D1"],
+        borderWidth: [0, 0],
+      },
+    ],
+  };
+  const doughState2 = {
+    datasets: [
+      {
+        label: "Quanlity:",
+        data: [1, 10], // Đưa dữ liệu vào đây, ví dụ có 12 và 18 là 2 giá trị
         backgroundColor: ["#F45050", "#9384D1"],
         borderWidth: [0, 0],
       },
@@ -56,14 +65,14 @@ const AllUser = ({ChildrenComponent}) => {
         backgroundColor: "#475be8",
         borderRadius: 2,
         hoverBackgroundColor: "#36429e",
-        data: [40,60, 80, 100, 60, 20, 70, 90, 30],
+        data: [10,8, 6, 15, 30, 40, 70, 90, 5],
       },
       {
         label: "User visited",
         backgroundColor: "#e3e6fc",
         borderRadius: 2,
         hoverBackgroundColor: "#989aa5",
-        data: [60,10,20,60, 80, 100, 60, 20, 70,],
+        data: [60,10,20,60, 80, 100, 80, 120, 10],
       },
     ],
   };
@@ -218,31 +227,31 @@ const AllUser = ({ChildrenComponent}) => {
             <div className="item rounded d-flex align-items-center">
               <div className="item-content col-7">
                 <p className="title">New Users</p>
-                <p className="total">$100.0K</p>
-                <p className="notify">We have sold 123 items</p>
+                <p className="total">5 User</p>
+                <p className="notify">We have 5 new user</p>
               </div>
               <div className="item-chart col-5">
-                <Doughnut data={doughState} options={optionsDoughnut} />
+                <Doughnut data={doughState1} options={optionsDoughnut} />
               </div>
             </div>
             <div className="item rounded d-flex align-items-center">
               <div className="item-content col-7">
                 <p className="title">User paid</p>
-                <p className="total">$100.0K</p>
-                <p className="notify">We have sold 123 items</p>
+                <p className="total">1 User</p>
+                <p className="notify">We have 1 user paid</p>
               </div>
               <div className="item-chart col-5">
-                <Doughnut data={doughState} options={optionsDoughnut} />
+                <Doughnut data={doughState2} options={optionsDoughnut} />
               </div>
             </div>
             <div className="item rounded d-flex align-items-center">
               <div className="item-content col-7">
                 <p className="title">Conversion Insights</p>
-                <p className="total">$100.0K</p>
-                <p className="notify">We have sold 123 items</p>
+                <p className="total">1 User</p>
+                <p className="notify">We have 1 user insights</p>
               </div>
               <div className="item-chart col-5">
-                <Doughnut data={doughState} options={optionsDoughnut} />
+                <Doughnut data={doughState2} options={optionsDoughnut} />
               </div>
             </div>
           </div>

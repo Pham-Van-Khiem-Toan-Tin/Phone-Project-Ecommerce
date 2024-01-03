@@ -1,6 +1,8 @@
 const catchAsyncError = require("../middlewares/catchAsyncError");
+const cartModel = require("../models/cart");
 const orderModel = require("../models/orders");
 const productModel = require("../models/products");
+const userModel = require("../models/users");
 const ErrorHandle = require("../utils/errorHandle");
 
 async function updateStock(id, quantity) {
@@ -19,6 +21,8 @@ module.exports.newOrder = catchAsyncError(async (req, res, next) => {
     shippingPrice,
     totalPrice,
   } = req.body;
+  const user = await userModel.findOneAndUpdate({_id: req.user}, {cartId: ""});
+  await cartModel.deleteOne({_id: user.cartId})
   const order = await orderModel.create({
     shippingInfor,
     orderItems,

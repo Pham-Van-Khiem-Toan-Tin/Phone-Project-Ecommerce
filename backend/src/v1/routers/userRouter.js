@@ -18,6 +18,7 @@ const {
   isAuthenticatedUser,
   isAuthorizeRoles,
 } = require("../middlewares/auth");
+const { allUsers } = require("../controllers/dashboardController");
 
 const router = express.Router();
 

@@ -145,7 +145,7 @@ const DashBoard = ({ChildrenComponent}) => {
             <div className="item rounded d-flex align-items-center">
               <div className="item-content col-7">
                 <p className="title">Today Sales</p>
-                <p className="total">$100.0K</p>
+                <p className="total">$21.5K</p>
                 <p className="notify">We have sold 123 items</p>
               </div>
               <div className="item-chart col-5">
@@ -155,7 +155,7 @@ const DashBoard = ({ChildrenComponent}) => {
             <div className="item rounded d-flex align-items-center">
               <div className="item-content col-7">
                 <p className="title">Today Revenue</p>
-                <p className="total">$100.0K</p>
+                <p className="total">$10.7K</p>
                 <p className="notify">We have sold 123 items</p>
               </div>
               <div className="item-chart col-5">
@@ -165,7 +165,7 @@ const DashBoard = ({ChildrenComponent}) => {
             <div className="item rounded d-flex align-items-center">
               <div className="item-content col-7">
                 <p className="title">In Escrow</p>
-                <p className="total">$100.0K</p>
+                <p className="total">$111.5K</p>
                 <p className="notify">We have sold 123 items</p>
               </div>
               <div className="item-chart col-5">
@@ -180,7 +180,7 @@ const DashBoard = ({ChildrenComponent}) => {
             <div className="sold-chart rounded p-2">
               <p className="title">Most Sold Items</p>
               <div className="d-flex justify-content-between mb-1">
-                <span>SAMSUNG</span>
+                <span>Xiaomi</span>
                 <span>70%</span>
               </div>
               <div
@@ -210,23 +210,8 @@ const DashBoard = ({ChildrenComponent}) => {
                 <div className="progress-bar" style={{ width: "25%" }}></div>
               </div>
               <div className="d-flex justify-content-between mb-1">
-                <span>SAMSUNG</span>
-                <span>70%</span>
-              </div>
-              <div
-                className="progress mb-3"
-                role="progressbar"
-                aria-label="Example 1px high"
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-                style={{ height: "7px" }}
-              >
-                <div className="progress-bar" style={{ width: "35%" }}></div>
-              </div>
-              <div className="d-flex justify-content-between mb-1">
-                <span>SAMSUNG</span>
-                <span>70%</span>
+                <span>Apple</span>
+                <span>25%</span>
               </div>
               <div
                 className="progress mb-3"
@@ -240,8 +225,8 @@ const DashBoard = ({ChildrenComponent}) => {
                 <div className="progress-bar" style={{ width: "40%" }}></div>
               </div>
               <div className="d-flex justify-content-between mb-1">
-                <span>SAMSUNG</span>
-                <span>70%</span>
+                <span>Oppo</span>
+                <span>40%</span>
               </div>
               <div
                 className="progress mb-3"

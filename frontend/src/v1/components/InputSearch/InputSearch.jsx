@@ -4,32 +4,29 @@ import { useNavigate } from "react-router-dom";
 import "./inputSearch.css";
 import useDebounce from "../../hooks/useDebounce";
 const InputSearch = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [results, setResults] = useState([]);
-  const debouncedSearchTerm = useDebounce(searchTerm, 500);
-  const searchCharacters = async (search) => {
-    
-  };
+  // const debouncedSearchTerm = useDebounce(searchTerm, 500);
   const [keyword, setKeyword] = useState("");
-    const navigate = useNavigate();
-    const searchSubmitHandle = (e) => {
-        e.preventDefault();
-        if(keyword.trim()) {
-            navigate(`/product/${keyword}`);
-        } else {
-            navigate("/categories");
-        }
-    }
+  const navigate = useNavigate();
+  const searchSubmitHandle = (e) => {
+    console.log("chay vao day");
+    e.preventDefault();
+    console.log(e.target.value);
+    setKeyword(e.target.value);
+    console.log(keyword);
+  };
+  const handleSearch = () => {
+    navigate(`../../product/${keyword}`)
+  }
   return (
     <div className="input-search">
       <form>
-        <button>
+        <button onClick={handleSearch}>
           <FaSearch />
         </button>
         <input
-        className="rounded form-control"
+          className="rounded form-control"
           type="text"
-          value={searchTerm}
+          value={keyword}
           placeholder="Search key word ..."
           onChange={searchSubmitHandle}
         />

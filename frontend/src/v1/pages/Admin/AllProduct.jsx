@@ -73,7 +73,7 @@ const AllProduct = ({ChildrenComponent}) => {
                     <tbody>
                       <tr>
                         <td>01</td>
-                        <td>Home</td>
+                        <td>Iphone 11</td>
                         <td >
                           <div
                             className="progress"
@@ -84,14 +84,14 @@ const AllProduct = ({ChildrenComponent}) => {
                             aria-valuemax="100"
                             style={{height: "7px",}}
                           >
-                            <div className="progress-bar" style={{width: "25%"}}></div>
+                            <div className="progress-bar" style={{width: "40%"}}></div>
                           </div>
                         </td>
                         <td>40%</td>
                       </tr>
                       <tr>
-                        <td>01</td>
-                        <td>Home</td>
+                        <td>02</td>
+                        <td>Xiaomi 10A</td>
                         <td >
                           <div
                             className="progress"
@@ -105,12 +105,12 @@ const AllProduct = ({ChildrenComponent}) => {
                             <div className="progress-bar" style={{width: "25%"}}></div>
                           </div>
                         </td>
-                        <td>40%</td>
+                        <td>25%</td>
                       </tr>
                       <tr>
-                        <td>01</td>
-                        <td>Home</td>
-                        <td >
+                        <td>03</td>
+                        <td>Oppo Find N2</td>
+                        <td>
                           <div
                             className="progress"
                             role="progressbar"
@@ -120,10 +120,10 @@ const AllProduct = ({ChildrenComponent}) => {
                             aria-valuemax="100"
                             style={{height: "7px",}}
                           >
-                            <div className="progress-bar" style={{width: "25%"}}></div>
+                            <div className="progress-bar" style={{width: "27%"}}></div>
                           </div>
                         </td>
-                        <td>40%</td>
+                        <td>27%</td>
                       </tr>
                     </tbody>
                   </table>
@@ -131,7 +131,7 @@ const AllProduct = ({ChildrenComponent}) => {
               </div>
               <div className="last-products p-2 mt-2 rounded">
                 <div className="table-responsive">
-                  <p className="title">Last Orders</p>
+                  <p className="title">All Products</p>
                   <div className="search d-flex align-items-center gap-2 mb-2">
                     <input className="form-control w-50" placeholder="input search"/>
                     <button className="btn btn-sm btn-primary">Search</button>

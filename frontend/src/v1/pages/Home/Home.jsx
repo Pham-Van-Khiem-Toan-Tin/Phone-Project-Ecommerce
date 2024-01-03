@@ -97,6 +97,8 @@ const Home = ({HeaderComponent, FooterComponent}) => {
           <div className="container">
             <HomeBannerCarousel />
             <Carousel ChildComponent={Card} title={true} datas={approducts} responsive={hotProductResponsive} modules={hotProductModule} />
+            <Carousel ChildComponent={Card} title={true} datas={ssproducts} responsive={hotProductResponsive} modules={hotProductModule} />
+            <Carousel ChildComponent={Card} title={true} datas={xiaoproducts} responsive={hotProductResponsive} modules={hotProductModule} />
             <Carousel ChildComponent={CardTechDeal} title={true} datas={approducts} responsive={techResponsive} modules={techModule} />
             <Carousel ChildComponent={CardBrand} title={true} datas={approducts} responsive={brandResponsive} modules={brandModule} />
           </div>

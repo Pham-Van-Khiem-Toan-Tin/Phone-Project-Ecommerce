@@ -36,6 +36,28 @@ const OrdersAdmin = ({ChildrenComponent}) => {
       },
     ],
   };
+  const doughState2 = {
+    // labels: ["Out of Stock", "InStock"],
+    datasets: [
+      {
+        label: "Quality:",
+        data: [30, 100], // Đưa dữ liệu vào đây, ví dụ có 12 và 18 là 2 giá trị
+        backgroundColor: ["#F45050", "#9384D1"],
+        borderWidth: [0, 0],
+      },
+    ],
+  };
+  const doughState3 = {
+    // labels: ["Out of Stock", "InStock"],
+    datasets: [
+      {
+        label: "Quality:",
+        data: [90, 10], // Đưa dữ liệu vào đây, ví dụ có 12 và 18 là 2 giá trị
+        backgroundColor: ["#F45050", "#9384D1"],
+        borderWidth: [0, 0],
+      },
+    ],
+  };
   const optionsDoughnut = {
     maintainAspectRatio: true,
     responsive: true,
@@ -229,8 +251,8 @@ const OrdersAdmin = ({ChildrenComponent}) => {
                 <div className="item rounded d-flex align-items-center">
                   <div className="item-content col-7">
                     <p className="title">New Orders</p>
-                    <p className="total">$100.0K</p>
-                    <p className="notify">We have sold 123 items</p>
+                    <p className="total">4 Order</p>
+                    <p className="notify">We have 4 new orders</p>
                   </div>
                   <div className="item-chart col-5">
                     <Doughnut data={doughState} options={optionsDoughnut} />
@@ -240,20 +262,20 @@ const OrdersAdmin = ({ChildrenComponent}) => {
                   <div className="item-content col-7">
                     <p className="title">Today Sales</p>
                     <p className="total">$100.0K</p>
-                    <p className="notify">We have sold 123 items</p>
+                    <p className="notify">We have sold 18 items</p>
                   </div>
                   <div className="item-chart col-5">
-                    <Doughnut data={doughState} options={optionsDoughnut} />
+                    <Doughnut data={doughState2} options={optionsDoughnut} />
                   </div>
                 </div>
                 <div className="item rounded d-flex align-items-center">
                   <div className="item-content col-7">
                     <p className="title">Conversion Insights</p>
-                    <p className="total">$100.0K</p>
+                    <p className="total">$120.1K</p>
                     <p className="notify">We have sold 123 items</p>
                   </div>
                   <div className="item-chart col-5">
-                    <Doughnut data={doughState} options={optionsDoughnut} />
+                    <Doughnut data={doughState3} options={optionsDoughnut} />
                   </div>
                 </div>
               </div>
