@@ -79,7 +79,6 @@ userSchema.methods.getAccessToken = function () {
     process.env.ACCESSTOKEN_SECRET,
     { expiresIn: process.env.ACCESSTOKEN_EXPIRES }
   );
-  console.log(this.role);
   return accessToken;
 };
 
