@@ -38,9 +38,9 @@ const Payment = ({ HeaderComponent, FooterComponent }) => {
     shippingInfor,
     orderItems: listOrder,
     itemsPrice: orderInfor.subtotal,
-    taxPrice: orderInfor.tax,
+    taxPrice: Math.round( orderInfor.tax / 23000),
     shippingPrice: orderInfor.shippingCharges,
-    totalPrice: orderInfor.totalPrice,
+    totalPrice: Math.round( orderInfor.totalPrice / 23000),
   };
   const paymentData = {
     amount: Math.round(orderInfor.totalPrice / 23000),

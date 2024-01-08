@@ -24,7 +24,91 @@ export const getAllProducts = createAsyncThunk(
     }
   }
 );
-
+export const addWishList = createAsyncThunk(
+  "REQUEST_ADD_WISH",
+  async (product_id, { rejectWithValue }) => {
+    try {
+      let link = `${process.env.REACT_APP_SERVER}/wish/add`;
+      const { data } = await axios.post(link, product_id);
+      return data;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);
+export const getCompareList = createAsyncThunk(
+  "REQUEST_GET_COMPARE",
+  async (_, { rejectWithValue }) => {
+    try {
+      let link = `${process.env.REACT_APP_SERVER}/compare`;
+      const token = JSON.parse(localStorage.getItem("accessToken"));
+      const config = {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+        withCredentials: true,
+      };
+      const { data } = await axios.get(link,config);
+      return data;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);
+export const addCompareList = createAsyncThunk(
+  "REQUEST_ADD_COMPARE",
+  async (product_id, { rejectWithValue }) => {
+    try {
+      let link = `${process.env.REACT_APP_SERVER}/compare/${product_id}`;
+      const token = JSON.parse(localStorage.getItem("accessToken"));
+      const config = {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+        withCredentials: true,
+      };
+      const { data } = await axios.put(link, null, config);
+      return data;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);
+export const deleteCompare = createAsyncThunk(
+  "REQUEST_DELETE_COMPARE",
+  async (id, { rejectWithValue }) => {
+    try {
+      let link = `${process.env.REACT_APP_SERVER}/compare/${id}`;
+      const token = JSON.parse(localStorage.getItem("accessToken"));
+      const config = {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+        withCredentials: true,
+      };
+      const { data } = await axios.delete(link,config);
+      return data;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);
 export const getHotProduct = createAsyncThunk(
   "REQUEST_GETHOTPRODUCTS",
   async (_, { rejectWithValue }) => {
@@ -139,6 +223,7 @@ export const getAllReviews = createAsyncThunk(
   "ALL_REVIEWS",
   async (id, {rejectWithValue}) => {
     try {
+      console.log({id});
       const {data} = await axios.get(`${process.env.REACT_APP_SERVER}/reviews/?id=${id}`);
       return data;
     } catch (error) {

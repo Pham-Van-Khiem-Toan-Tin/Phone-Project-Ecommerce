@@ -1,0 +1,32 @@
+.product-compare {
+  display: inline-block;
+}
+.product-compare .dropdown-toggle {
+  color: #000;
+}
+.product-compare .dropdown-menu {
+  min-width: 8rem;
+}
+.product-compare .dropdown-menu li {
+  font-size: 0.8rem;
+  padding: 0.5rem;
+}
+
+#compareModal .modal-body img {
+  width: 6rem;
+  height: 6rem;
+}
+#compareModal .modal-body .name {
+  font-size: 0.8rem;
+}
+#compareModal .modal-body .price {
+  font-size: 1rem;
+  font-weight: 700;
+}
+#compareModal .modal-body button {
+  background-color: #f8d7da;
+  color: #ccc;
+}
+#compareModal .modal-body button:hover {
+  background-color: #cc2d3a;
+}/*# sourceMappingURL=product-compare.css.map */

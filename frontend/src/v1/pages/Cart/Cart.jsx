@@ -76,28 +76,28 @@ const Cart = ({HeaderComponent, FooterComponent}) => {
                       {cartList &&
                         cartList.map((item) => {
                           return (
-                            <tr key={item.id_product.name}>
+                            <tr key={item.product_id.name}>
                               <td data-th="Product">
                                 <div className="row">
                                   <div className="col-md-3 text-left">
                                     <img
-                                      src={item?.id_product.images[0].url}
+                                      src={item?.product_id.images[0].url}
                                       alt=""
                                       className="img-fluid rounded d-none d-md-block rounded mb-2 shadow"
                                     />
                                   </div>
                                   <div className="col-md-9 text-left mt-sm-2">
                                     <p className="name">
-                                      {item?.id_product.name}
+                                      {item?.product_id.name}
                                     </p>
                                     <p className="font-weight-light">
-                                      {item?.id_product.category}
+                                      {item?.product_id.category}
                                     </p>
                                   </div>
                                 </div>
                               </td>
                               <td data-th="Price">
-                                {item?.id_product.price} đ
+                                {Math.round(item?.product_id.price/23000)} $
                               </td>
                               <td data-th="Quantity" className="quality">
                                 <button
@@ -110,7 +110,7 @@ const Cart = ({HeaderComponent, FooterComponent}) => {
                                   onClick={(e) => {
                                     dispatch(
                                       addItemToCart({
-                                        id: item.id_product._id,
+                                        id: item.product_id._id,
                                         quanlityCart: -1,
                                       })
                                     );
@@ -131,7 +131,7 @@ const Cart = ({HeaderComponent, FooterComponent}) => {
                                   onClick={(e) => {
                                     dispatch(
                                       addItemToCart({
-                                        id: item.id_product._id,
+                                        id: item.product_id._id,
                                         quanlityCart: 1,
                                       })
                                     );
@@ -145,7 +145,7 @@ const Cart = ({HeaderComponent, FooterComponent}) => {
                                   <button
                                     onClick={() => {
                                       dispatch(
-                                        deleteItemCart(item.id_product._id)
+                                        deleteItemCart(item.product_id._id)
                                       );
                                     }}
                                     className="btn btn-delete btn-white border-0 btn-sm"
@@ -172,7 +172,7 @@ const Cart = ({HeaderComponent, FooterComponent}) => {
                   to="../shipping"
                   className="text-white btn btn-sm btn-danger"
                 >
-                  Checkout {total} đ
+                  Checkout {Math.round(total/23000)} $
                 </Link>
               </div>
             </div>

@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema(
         required: true,
       },
     },
-    wishList: [
+    wish: [
       {
         wProduct: {
           type: ObjectId,
@@ -44,7 +44,7 @@ const userSchema = new mongoose.Schema(
         },
       },
     ],
-    cartId: {
+    cart_id: {
       type: ObjectId,
       ref: "cart",
     },
@@ -52,9 +52,9 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "user",
     },
-    listRefeshToken: [
+    listRefreshToken: [
       {
-        refeshToken: {
+        refreshToken: {
           type: String,
         },
       },

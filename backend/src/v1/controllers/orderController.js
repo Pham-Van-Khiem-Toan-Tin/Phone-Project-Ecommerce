@@ -14,7 +14,6 @@ async function updateStock(id, quantity) {
 //create new order
 module.exports.newOrder = catchAsyncError(async (req, res, next) => {
   try {
-    
     const {
       shippingInfor,
       orderItems,
@@ -24,10 +23,7 @@ module.exports.newOrder = catchAsyncError(async (req, res, next) => {
       shippingPrice,
       totalPrice,
     } = req.body;
-    const user = await userModel.findOneAndUpdate(
-      { _id: req.user },
-    );
-    console.log("chay den day 123");
+    const user = await userModel.findById(req.user);
     await cartModel.findByIdAndUpdate({ _id: user.cartId }, {caProduct: []});
     const order = await orderModel.create({
       shippingInfor,

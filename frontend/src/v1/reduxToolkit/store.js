@@ -19,7 +19,7 @@ import orderReducer from "./reducer/order/orderSlice";
 import productReducer from "./reducer/product/productSlice";
 import allReviewsReducer from "./reducer/product/productReviewSlice";
 import reviewReducer from "./reducer/product/reviewSlice";
-
+import compareReducer from "./reducer/product/compareProductSlice";
 const store = configureStore({
   reducer: {
     user: userReducer,
@@ -42,6 +42,7 @@ const store = configureStore({
     forgotPass: forgotPasswordReducer,
     allReviews: allReviewsReducer,
     review: reviewReducer,
+    compare: compareReducer,
   },
 });
 export default store;
