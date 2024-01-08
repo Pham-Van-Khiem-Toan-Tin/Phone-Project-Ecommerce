@@ -73,7 +73,7 @@ module.exports.deleteProductCart = catchAsyncError(async (req, res, next) => {
 module.exports.getProductInCart = catchAsyncError(async (req, res, next) => {
   try {
     const user = await userModel.findById(req.user);
-    const listProductCart = await cartModel.findById(user.cartId).populate({
+    const listProductCart = await cartModel.findById(user.cart_id).populate({
       path: "caProduct.id_product",
       select: "name price images category",
     });
