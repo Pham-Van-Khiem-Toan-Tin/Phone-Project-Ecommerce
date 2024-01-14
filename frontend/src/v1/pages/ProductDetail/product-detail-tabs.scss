@@ -6,5 +6,33 @@
     .tab-content {
         min-height: 15rem;
         padding-top: 1rem;
+        #all-review {
+            .new-review {
+                display: inline-block;
+                text-decoration: underline;
+                cursor: pointer;
+            }
+            .avatar {
+                width: 5rem;
+                height: 5rem;
+                border-radius: 50%;
+            }
+            .comment {
+                background-color: #ccc;
+                padding: 0.5rem;
+            }
+        }
+    }
+    #newReviewModal {
+        .modal-body {
+            textarea {
+                display: block;
+                margin-top: 2rem;
+                width: 100%;
+                outline: none;
+                padding: 0.5rem;
+                font-size: 0.8rem;
+            }
+        }
     }
 }

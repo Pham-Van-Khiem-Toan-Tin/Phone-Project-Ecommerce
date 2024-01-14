@@ -2,11 +2,12 @@ const mongoose = require("mongoose");
 const ObjectId = mongoose.Schema.ObjectId;
 
 const cartSchema = new mongoose.Schema({
-    caProduct: [
+    products: [
       {
-        id_product: {
+        product_id: {
           type: ObjectId,
           ref: "products",
+          required: true,
         },
         quantity: {
           type: Number,

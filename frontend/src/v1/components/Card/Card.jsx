@@ -45,7 +45,7 @@ const Card = (props) => {
           <li
             className="product_menu-item"
             onClick={() =>
-              dispatch(addItemToCart({ id: data._id, quanlityCart: 1 }))
+              dispatch(addItemToCart({ id: data._id, quantity: 1 }))
             }
           >
             <span>

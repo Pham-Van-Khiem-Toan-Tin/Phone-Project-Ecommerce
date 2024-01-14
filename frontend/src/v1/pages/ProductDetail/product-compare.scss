@@ -1,0 +1,35 @@
+.product-compare {
+    display: inline-block;
+    .dropdown-toggle {
+        color: #000;
+    }
+    .dropdown-menu {
+        min-width: 8rem;
+        li {
+            font-size: 0.8rem;
+            padding: 0.5rem;
+        }
+    }
+}
+#compareModal {
+    .modal-body {
+        img {
+            width: 6rem;
+            height: 6rem;
+        }
+        .name {
+            font-size: 0.8rem;
+        }
+        .price {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+        button {
+            background-color: #f8d7da;
+            color: #ccc;
+            &:hover {
+                background-color: #cc2d3a;
+            }
+        }
+    }
+}

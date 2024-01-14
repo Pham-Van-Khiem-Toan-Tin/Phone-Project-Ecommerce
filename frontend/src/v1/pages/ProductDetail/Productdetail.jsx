@@ -9,7 +9,6 @@ import {
   FaTwitch,
   FaTwitter,
 } from "react-icons/fa";
-import { BiGitCompare } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getProductDetail,
@@ -18,10 +17,7 @@ import {
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { clearError } from "../../reduxToolkit/reducer/product/productDetailSlice";
-import {
-  clearErrorReview,
-  newReviewReset,
-} from "../../reduxToolkit/reducer/product/newReviewSlice";
+
 import Loader from "../../components/Loader/Loader";
 import { addItemToCart } from "../../reduxToolkit/actions/cartAction";
 import {
@@ -33,14 +29,13 @@ import Carousel from "../../components/Carousel/Carousel";
 import CardProductDetail from "../../components/CardProductDetail/CardProductDetail";
 import ProductDetailTabs from "./ProductDetailTabs";
 import ProductDetailCarousel from "./ProductDetailCarousel";
-const Productdetail = ({HeaderComponent, FooterComponent}) => {
+import ProductCompare from "./ProductCompare";
+const Productdetail = ({ HeaderComponent, FooterComponent }) => {
   const dispatch = useDispatch();
   const { error, isLoading, product } = useSelector(
     (state) => state.productDetail
   );
-  const { error: errorReview, success } = useSelector(
-    (state) => state.newReview
-  );
+
   const { success: successCart, error: errorCart } = useSelector(
     (state) => state.cart
   );
@@ -60,7 +55,7 @@ const Productdetail = ({HeaderComponent, FooterComponent}) => {
   };
   const detailCarouselModule = ["Autoplay", "Grid", "Navigation"];
   const { id } = useParams();
-  const [quanlityCart, setQuanlityCart] = useState(1);
+  const [quantityCart, setQuantityCart] = useState(1);
   const [ratings, setRatings] = useState(0);
   const [comment, setComment] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -74,18 +69,16 @@ const Productdetail = ({HeaderComponent, FooterComponent}) => {
   const changeRatings = (newRating, name) => {
     setRatings(newRating);
   };
+ 
   const handleAddCart = () => {
-    dispatch(addItemToCart({ id, quanlityCart }));
+    dispatch(addItemToCart({ id, quantityCart }));
   };
   useEffect(() => {
     if (error) {
       toast.error(error);
       dispatch(clearError());
     }
-    if (errorReview) {
-      toast.error(errorReview);
-      dispatch(clearErrorReview());
-    }
+    
     if (errorCart) {
       toast.error(errorCart);
       dispatch(clearErrorCart());
@@ -94,18 +87,14 @@ const Productdetail = ({HeaderComponent, FooterComponent}) => {
       toast.success("Product added ro cart");
       dispatch(resetToCart());
     }
-  }, [dispatch, error, errorReview, errorCart, successCart]);
+  }, [dispatch, error, errorCart, successCart]);
   useEffect(() => {
-    if (success) {
-      toast.success("Your's review created!");
-      dispatch(newReviewReset());
-    }
+    
     dispatch(getProductDetail(id));
-  }, [dispatch, success, id]);
-  console.log(product);
+  }, [dispatch, id]);
   return (
     <>
-    <HeaderComponent />
+      <HeaderComponent />
       {isLoading ? (
         <Loader />
       ) : (
@@ -128,7 +117,7 @@ const Productdetail = ({HeaderComponent, FooterComponent}) => {
             </div>
             <div className="row">
               <div className="col-6 product-detail-image d-flex flex-column align-items-center justify-content-center">
-                <ProductDetailCarousel datas={product?.images}/>
+                <ProductDetailCarousel datas={product?.images} />
               </div>
               <div className="col-6 product-detail-content">
                 <p className="name">{product?.name}</p>
@@ -147,30 +136,40 @@ const Productdetail = ({HeaderComponent, FooterComponent}) => {
                     ({product?.numOfReview} reviews)
                   </span>
                 </div>
-                <p className="price">$ {product?.price}</p>
+                <p className="price">$ {Math.round(product?.price/23000)}</p>
                 <div className="quality">
                   <span>QTY:</span>
-                  <input className="form-control" disabled defaultValue={1} type="number" min={0} />
+                  <input
+                    className="form-control"
+                    readOnly
+                    defaultValue={1}
+                    type="number"
+                    min={0}
+                  />
                 </div>
                 <div className="colors">
                   <span>Color: </span>
                   <button className="btn btn-sm color-item"></button>
-                  <button className="btn btn-sm color-item" style={{backgroundColor: "black"}}></button>
-                  <button className="btn btn-sm color-item"  style={{backgroundColor: "#cec2c2"}}></button>
+                  <button
+                    className="btn btn-sm color-item"
+                    style={{ backgroundColor: "black" }}
+                  ></button>
+                  <button
+                    className="btn btn-sm color-item"
+                    style={{ backgroundColor: "#cec2c2" }}
+                  ></button>
                 </div>
-                <button className="btn btn-sm btn-primary btn-add-cart text-uppercase">
+                <button
+                  onClick={handleAddCart}
+                  className="btn btn-sm btn-primary btn-add-cart text-uppercase"
+                >
                   Add to cart
                 </button>
-                <div className="trust-signal">
-                  <FaCheckCircle /> <span>Shop secure, Free return</span>
-                </div>
                 <div className="wish-and-compare">
                   <button className="btn btn-sm wish-button">
                     <FaHeart /> Add wish list
                   </button>
-                  <button className="btn btn-sm compare-button">
-                    <BiGitCompare /> Add to compare
-                  </button>
+                  <ProductCompare product={product}/>
                 </div>
                 <div className="share-group">
                   <span>Share this product: </span>
@@ -183,13 +182,14 @@ const Productdetail = ({HeaderComponent, FooterComponent}) => {
                 </div>
               </div>
             </div>
-            <ProductDetailTabs description={product?.description}/>
+            <ProductDetailTabs description={product?.description} productId={product?._id}/>
             <div className="related-products text-center">
               <p>Related Products</p>
             </div>
           </div>
         </div>
       )}
+      
       <FooterComponent />
     </>
   );

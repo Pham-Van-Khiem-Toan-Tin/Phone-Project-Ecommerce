@@ -5,4 +5,26 @@
 .detail-tabs .tab-content {
   min-height: 15rem;
   padding-top: 1rem;
+}
+.detail-tabs .tab-content #all-review .new-review {
+  display: inline-block;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.detail-tabs .tab-content #all-review .avatar {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+}
+.detail-tabs .tab-content #all-review .comment {
+  background-color: #ccc;
+  padding: 0.5rem;
+}
+.detail-tabs #newReviewModal .modal-body textarea {
+  display: block;
+  margin-top: 2rem;
+  width: 100%;
+  outline: none;
+  padding: 0.5rem;
+  font-size: 0.8rem;
 }/*# sourceMappingURL=product-detail-tabs.css.map */

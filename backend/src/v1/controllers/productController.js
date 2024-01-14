@@ -3,6 +3,12 @@ const productModel = require("../models/products");
 const ErrorHandle = require("../utils/errorHandle");
 const cloudinary = require("cloudinary");
 const Apifeatures = require("../utils/apifeatures");
+const roleModel = require("../models/role");
+const functionModel = require("../models/function");
+const wishModel = require("../models/wish");
+const compareModel = require("../models/compare");
+const reviewModel = require("../models/reviews");
+
 
 //create product--Admin
 module.exports.createProduct = catchAsyncError(async (req, res, next) => {
@@ -180,34 +186,30 @@ module.exports.deleteProduct = catchAsyncError(async (req, res, next) => {
 //create product review or update review
 module.exports.createProductReviews = catchAsyncError(
   async (req, res, next) => {
-    const { rating, comment, productId } = req.body;
-    const review = {
-      user: req.user,
+    const { rating, comment, product_id } = req.body;
+    const userReview = {
+      user_id: req.user,
       name: req.name,
+      product_id: product_id,
       rating: Number(rating),
       comment,
     };
-    const product = await productModel.findById(productId);
-    const isReviewed = product.reviews.find(
-      (rev) => rev.user.toString() === req.user.toString()
-    );
-    if (isReviewed) {
-      product.reviews.forEach((rev) => {
-        if (rev.user.toString() === req.user.toString()) {
-          rev.rating = rating;
-          rev.comment = comment;
-        }
-      });
+    console.log(userReview);
+    const review = await reviewModel.findOne({product_id: product_id, user_id: req.user});
+    console.log("chay vao day1");
+    console.log(review);
+    if (review === null) {
+      console.log("chay vao day2");
+      const newReview = await reviewModel.create({...userReview});
     } else {
-      product.reviews.push(review);
-      product.numOfReview = product.reviews.length;
+      throw new ErrorHandle("You have commented on the product", 500);
     }
-
-    let avg = 0;
-    product.reviews.forEach((rev) => {
-      avg += rev.rating;
-    });
-    product.ratings = avg / product.reviews.length;
+    const product = await productModel.findById(product_id);
+    console.log("chay den day 3");
+    console.log(product.ratings);
+    console.log(userReview.rating);
+    product.ratings = (product.ratings * product.numOfReview + 5 + userReview.rating)/(product.numOfReview + 1);
+    product.numOfReview += 1;
     await product.save({ validateBeforeSave: false });
     res.status(200).json({
       success: true,
@@ -216,13 +218,10 @@ module.exports.createProductReviews = catchAsyncError(
 );
 //get all review of product
 module.exports.getProductReviews = catchAsyncError(async (req, res, next) => {
-  const product = await productModel.findById(req.query.id);
-  if (!product) {
-    return next(new ErrorHandle("Product not found", 404));
-  }
+  const reviews = await reviewModel.find({product_id: req.query.id});
   res.status(200).json({
     success: true,
-    reviews: product.reviews,
+    reviews: reviews,
   });
 });
 //delete reviews
@@ -264,3 +263,69 @@ module.exports.deleteReview = catchAsyncError(async (req, res, next) => {
     success: true,
   });
 });
+
+
+module.exports.addWishList = catchAsyncError(async (req,res,next) => {
+  const {product_id} = req.body;
+  console.log(req.body);
+  await wishModel.create({
+    user_id: req.user,
+    item: [{product_id: product_id}]
+  });
+  res.status(200).json({
+    success: true,
+  });
+});
+module.exports.getCompare = catchAsyncError(async (req, res, next) => {
+  try {
+    const compare = await compareModel.findOne({user_id: req.user}).populate({
+      path: "items.product_id",
+      select: "name price images",
+    });
+    console.log("chay vao compare");
+    console.log(compare);
+    res.status(200).json({
+      success: true,
+      compare: compare
+    });
+  } catch (error) {
+    return next(new ErrorHandle(error, 500));
+  }
+})
+module.exports.addCompare = catchAsyncError(async (req,res,next) => {
+  try {
+    const product_id = req.params.id;
+    const compare = await compareModel.findOne({user_id: req.user});
+    if(compare && compare.items) {
+      compare.items.push({product_id: product_id});
+      await compare.save();
+    } else if(compare === null) {
+      console.log("chay vao day 2");
+      await compareModel.create({
+        user_id: req.user,
+        items: [{product_id: product_id}]
+      });
+    }
+    res.status(200).json({
+      success: true,
+    });
+  } catch (error) {
+    return next(new ErrorHandle(error, 500));
+  }
+});
+
+module.exports.deleteCompare = catchAsyncError(async (req, res, next) => {
+  try {
+    const product_id = req.params.id;
+    const oldCompare = await compareModel.findOne({user_id: req.user});
+    let idx = oldCompare.items.findIndex((item) => item.product_id === product_id);
+    oldCompare.items.splice(idx, 1);
+    await oldCompare.save();
+    res.status(200).json({
+      success: true,
+    });
+  } catch (error) {
+    return next(new ErrorHandle(error, 500));
+    
+  }
+})

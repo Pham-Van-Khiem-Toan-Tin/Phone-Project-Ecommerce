@@ -9,25 +9,12 @@ const sendEmail = require("../utils/sendEmail");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 module.exports.register = catchAsyncError(async (req, res, next) => {
-  console.log("chay den day");
   const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
     folder: "avatar",
     width: 150,
     crop: "scale",
   });
-  console.log(req.body);
-  console.log(myCloud);
-  console.log(process.env.ACESSTOKEN_SECRET);
   let { name, email, password } = req.body;
-  console.log({
-    name,
-    email,
-    password,
-    avatar: {
-      public_id: myCloud.public_id,
-      url: myCloud.secure_url,
-    },
-  });
   const user = await userModel.create({
     name,
     email,
@@ -38,7 +25,6 @@ module.exports.register = catchAsyncError(async (req, res, next) => {
       url: myCloud.secure_url,
     },
   });
-  console.log("chay den day 2");
   sendToken(user, 201, res);
 });
 
@@ -129,7 +115,6 @@ module.exports.resetPassword = catchAsyncError(async (req, res, next) => {
     .createHash("sha256")
     .update(req.params.token)
     .digest("hex");
-  // console.log("chay den phan thu 2");
   const user = await userModel.findOne({
     resetPasswordToken,
     resetPasswordExpire: {
@@ -220,7 +205,6 @@ module.exports.updateProfile = catchAsyncError(async (req, res, next) => {
 //get all user(admin)
 module.exports.getAllUser = catchAsyncError(async (req, res, next) => {
   const users = await userModel.find({});
-  console.log({token: req.token});
   if (req.token) {
     const newAccessToken = req.token;
     res.status(200).json({
@@ -268,8 +252,6 @@ module.exports.updateUserRole = catchAsyncError(async (req, res, next) => {
     email: req.body.email,
     role: req.body.role,
   };
-  console.log(newUserData);
-  console.log(req.params.id);
   await userModel.findByIdAndUpdate(req.params.id, newUserData, {
     new: true,
     runValidators: true,

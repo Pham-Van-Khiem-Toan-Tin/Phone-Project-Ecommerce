@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema(
         required: true,
       },
     },
-    wishList: [
+    wish: [
       {
         wProduct: {
           type: ObjectId,
@@ -44,7 +44,7 @@ const userSchema = new mongoose.Schema(
         },
       },
     ],
-    cartId: {
+    cart_id: {
       type: ObjectId,
       ref: "cart",
     },
@@ -52,9 +52,9 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "user",
     },
-    listRefeshToken: [
+    listRefreshToken: [
       {
-        refeshToken: {
+        refreshToken: {
           type: String,
         },
       },
@@ -79,7 +79,6 @@ userSchema.methods.getAccessToken = function () {
     process.env.ACCESSTOKEN_SECRET,
     { expiresIn: process.env.ACCESSTOKEN_EXPIRES }
   );
-  console.log(this.role);
   return accessToken;
 };
 

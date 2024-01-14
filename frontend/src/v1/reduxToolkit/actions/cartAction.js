@@ -15,7 +15,7 @@ export const addItemToCart = createAsyncThunk(
       };
       const { data } = await axios.put(
         `${process.env.REACT_APP_SERVER}/addcart`,
-        { producId: dataCart.id, quanlityProduct: dataCart.quanlityCart },
+        { product_id: dataCart.id, quantity_product: dataCart.quantity },
         config
       );
       return data;

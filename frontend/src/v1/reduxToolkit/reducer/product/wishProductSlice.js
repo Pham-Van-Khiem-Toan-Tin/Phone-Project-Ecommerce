@@ -7,7 +7,7 @@ const addItemCartSlice = createSlice({
     isLoading: false,
     success: null,
     error: null,
-    cartList: null,
+    wishList: null,
     total: null,
     shippingInfor: {},
   },

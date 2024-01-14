@@ -14,7 +14,6 @@ const sendEmail = async (options) => {
     subject: options.subject,
     text: options.message,
   };
-  console.log("chay den day");
   await transporter.sendMail(mailOptions, function(err, res) {
     if(err) {
       console.log(err);

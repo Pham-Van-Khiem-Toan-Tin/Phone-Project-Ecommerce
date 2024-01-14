@@ -10,6 +10,10 @@ const {
   getProductReviews,
   deleteReview,
   getHotProducts,
+  addWishList,
+  addCompare,
+  getCompare,
+  deleteCompare
 } = require("../controllers/productController");
 const {
   isAuthenticatedUser,
@@ -20,7 +24,13 @@ const router = express.Router();
 
 router.route("/products").get(getAllProducts);
 router.route("/hotproducts").get(getHotProducts);
-router.route("/addcart").put(isAuthenticatedUser,addCart);
+router.route("/addcart").put(isAuthenticatedUser, addCart);
+router.route("/wish/add").post(isAuthenticatedUser, addWishList);
+router.route("/compare").get(isAuthenticatedUser, getCompare);
+router
+  .route("/compare/:id")
+  .put(isAuthenticatedUser, addCompare)
+  .delete(isAuthenticatedUser, deleteCompare)
 router
   .route("/admin/products")
   .get(isAuthenticatedUser, isAuthorizeRoles("admin"), getAdminProducts);
@@ -36,6 +46,6 @@ router.route("/review").put(isAuthenticatedUser, createProductReviews);
 router
   .route("/reviews")
   .get(getProductReviews)
-  .delete(isAuthenticatedUser,isAuthorizeRoles("admin"), deleteReview);
+  .delete(isAuthenticatedUser, isAuthorizeRoles("admin"), deleteReview);
 
 module.exports = router;

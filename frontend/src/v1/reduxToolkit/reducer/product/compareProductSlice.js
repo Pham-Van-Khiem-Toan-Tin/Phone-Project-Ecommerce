@@ -1,29 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { deleteReview, getAllReviews, newReview } from "../../actions/productAction";
+import { addCompareList, deleteCompare, getCompareList } from "../../actions/productAction";
 
-const newProductReviewSlice = createSlice({
-  name: "newreview",
+const compareSlice = createSlice({
+  name: "compareSlice",
   initialState: {
     isLoading: false,
-    error: null,
     success: false,
-    reviews: []
+    error: null,
+    compareList: [],
   },
   reducers: {
-    clearErrorReview: (state) => {
+    clearErrorCompare: (state) => {
       state.error = null;
     },
-    newReviewReset: (state) => {
+    resetToCompare: (state) => {
       state.success = false;
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(newReview.pending, (state) => {
+    builder.addCase(addCompareList.pending, (state) => {
       state.isLoading = true;
     });
-    builder.addCase(newReview.fulfilled, (state, action) => {
-      state.isLoading = false;
+    builder.addCase(addCompareList.fulfilled, (state, action) => {
       state.success = action.payload.success;
+      state.isLoading = false;
       if (action.payload.accessToken) {
         localStorage.setItem(
           "accessToken",
@@ -31,17 +31,16 @@ const newProductReviewSlice = createSlice({
         );
       }
     });
-    builder.addCase(newReview.rejected, (state, action) => {
+    builder.addCase(addCompareList.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     });
-    builder.addCase(getAllReviews.pending, (state) => {
+    builder.addCase(deleteCompare.pending, (state) => {
       state.isLoading = true;
     });
-    builder.addCase(getAllReviews.fulfilled, (state, action) => {
+    builder.addCase(deleteCompare.fulfilled, (state, action) => {
+      state.success = action.payload.success;
       state.isLoading = false;
-      console.log(action.payload);
-      state.reviews = action.payload.reviews;
       if (action.payload.accessToken) {
         localStorage.setItem(
           "accessToken",
@@ -49,31 +48,32 @@ const newProductReviewSlice = createSlice({
         );
       }
     });
-    builder.addCase(getAllReviews.rejected, (state, action) => {
+    builder.addCase(deleteCompare.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
+    });
+    builder.addCase(getCompareList.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(getCompareList.fulfilled, (state, action) => {
+      state.isLoading = false;
+      console.log(action.payload.compare);
+      state.compareList = action.payload.compare.items;
+      if (action.payload.accessToken) {
+        localStorage.setItem(
+          "accessToken",
+          JSON.stringify(action.payload.accessToken)
+        );
+      }
+    });
+    builder.addCase(getCompareList.rejected, (state, action) => {
+      state.isLoading = false;
       state.success = false;
-    });
-    builder.addCase(deleteReview.pending, (state) => {
-      state.isLoading = true;
-    });
-    builder.addCase(deleteReview.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.success = action.payload.success;
-      if (action.payload.accessToken) {
-        localStorage.setItem(
-          "accessToken",
-          JSON.stringify(action.payload.accessToken)
-        );
-      }
-    });
-    builder.addCase(deleteReview.rejected, (state, action) => {
-      state.isLoading = false;
       state.error = action.payload;
     });
   },
 });
 
-export const { clearErrorReview, newReviewReset } =
-  newProductReviewSlice.actions;
-export default newProductReviewSlice.reducer;
+export const { clearErrorCompare, resetToCompare } =
+  compareSlice.actions;
+export default compareSlice.reducer;
