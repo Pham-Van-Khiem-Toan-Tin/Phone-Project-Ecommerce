@@ -39,6 +39,7 @@ import UpdatePassword from "./v1/pages/User/UpdatePassword";
 import ForgotPassword from "./v1/pages/User/ForgotPassword";
 import ResetPassword from "./v1/pages/User/ResetPassword";
 import ProductReview from "./v1/pages/Admin/ProductReview";
+import RoleManagement from "./v1/pages/Admin/role.management";
 import NotFound from "./v1/pages/NotFound/NotFound";
 import { socket } from "./socket";
 import AdminHeader from "./v1/components/layouts/AdminHeader";
@@ -166,6 +167,10 @@ function App() {
         <Route
           path="/admin/user/:id" 
           element={<ProtectRoute isAdmin={true} children={<UpdateUser ChildrenComponent={AdminHeader}/>} />}
+        />
+        <Route
+          path="/admin/role-management" 
+          element={<ProtectRoute isAdmin={true} children={<RoleManagement ChildrenComponent={AdminHeader}/>} />}
         />
         <Route
           path="/admin/reviews" 

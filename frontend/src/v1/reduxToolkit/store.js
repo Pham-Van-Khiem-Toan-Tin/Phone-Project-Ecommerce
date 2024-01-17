@@ -20,6 +20,7 @@ import productReducer from "./reducer/product/productSlice";
 import allReviewsReducer from "./reducer/product/productReviewSlice";
 import reviewReducer from "./reducer/product/reviewSlice";
 import compareReducer from "./reducer/product/compareProductSlice";
+import rolereducer from "./reducer/role/role.slice";
 const store = configureStore({
   reducer: {
     user: userReducer,
@@ -43,6 +44,7 @@ const store = configureStore({
     allReviews: allReviewsReducer,
     review: reviewReducer,
     compare: compareReducer,
+    role: rolereducer,
   },
 });
 export default store;

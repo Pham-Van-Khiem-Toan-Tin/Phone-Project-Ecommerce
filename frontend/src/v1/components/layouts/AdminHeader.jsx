@@ -54,6 +54,11 @@ const AdminHeader = () => {
           </Link>
         </div>
         <div className="menu-link">
+          <Link to="../../admin/role-management" className="menu-link rounded">
+            <FaUser /> <span>Role Management</span> 
+          </Link>
+        </div>
+        <div className="menu-link">
           <Link to="../../admin/all-users" className="menu-link rounded">
            <FaComment /> <span>Reviews</span>
           </Link>

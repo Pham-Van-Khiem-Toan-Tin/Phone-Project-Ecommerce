@@ -205,7 +205,6 @@ module.exports.createProductReviews = catchAsyncError(
       throw new ErrorHandle("You have commented on the product", 500);
     }
     const product = await productModel.findById(product_id);
-    console.log("chay den day 3");
     console.log(product.ratings);
     console.log(userReview.rating);
     product.ratings = (product.ratings * product.numOfReview + 5 + userReview.rating)/(product.numOfReview + 1);

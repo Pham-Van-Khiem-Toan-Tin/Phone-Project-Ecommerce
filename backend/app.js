@@ -2,6 +2,7 @@ const connect = require("./src/configs/db");
 const cloudinary = require("cloudinary");
 const { Server } = require("socket.io");
 const { createServer } = require("node:http");
+const {getRoleList} = require("./src/v1/controllers/role.Controller");
 require("dotenv").config();
 
 const app = require("./sever");
@@ -30,6 +31,7 @@ io.on("connection", (socket) => {
   });
 });
 server.listen(8000, () => {
+  // getRoleList();
   console.log("server running at http://localhost:8888");
 });
 
