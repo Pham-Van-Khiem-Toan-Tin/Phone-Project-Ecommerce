@@ -27,10 +27,10 @@ const Payment = ({ HeaderComponent, FooterComponent }) => {
   const listOrder = [];
   for (let i in cartList) {
     listOrder.push({
-      name: cartList[i].id_product.name,
-      price: cartList[i].id_product.price,
-      image: cartList[i].id_product.images[0].url,
-      product: cartList[i].id_product._id,
+      name: cartList[i].product_id.name,
+      price: cartList[i].product_id.price,
+      image: cartList[i].product_id.images[0].url,
+      product: cartList[i].product_id._id,
       quantity: cartList[i].quantity,
     });
   }

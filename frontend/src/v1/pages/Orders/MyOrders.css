@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #000;
   min-height: 100vh;
 }
 .myorders .container table {

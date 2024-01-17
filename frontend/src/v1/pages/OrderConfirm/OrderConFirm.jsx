@@ -8,8 +8,9 @@ const OrderConFirm = ({ HeaderComponent, FooterComponent }) => {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.user);
   const { shippingInfor, cartList } = useSelector((state) => state.cart);
+  console.log({cartList});
   const subtotal = cartList.reduce((acc, item) => {
-    return acc + item.id_product.price * item.quantity;
+    return acc + item.product_id.price * item.quantity;
   }, 0);
   const shippingCharges = subtotal > 100000000 ? 0 : 20000;
   const tax = subtotal * 0.008;
@@ -68,20 +69,20 @@ const OrderConFirm = ({ HeaderComponent, FooterComponent }) => {
               <p className="fw-bold text-center">Total</p>
               <div className="total-field">
                 <span>Total price: </span>
-                <span>{subtotal} đ</span>
+                <span>{Math.round(subtotal/23000)} $</span>
               </div>
               <div className="total-field">
                 <span>Shipping charges: </span>
-                <span>{shippingCharges} đ</span>
+                <span>{Math.round(shippingCharges/23000)} $</span>
               </div>
               <div className="total-field">
                 <span>Tax price: </span>
-                <span>{tax} đ</span>
+                <span>{Math.round(tax/23000)} $</span>
               </div>
               <div className="line"></div>
               <div className="total-field">
                 <span>Total:</span>
-                <span>{totalPrice} đ</span>
+                <span>{Math.round(totalPrice/23000)} $</span>
               </div>
               <button
                 className="btn btn-primary btn-sm w-100 mt-2"
@@ -104,15 +105,15 @@ const OrderConFirm = ({ HeaderComponent, FooterComponent }) => {
                 {cartList &&
                   cartList.map((item) => {
                     return (
-                      <tr key={item.id_product.name}>
+                      <tr key={item.product_id.name}>
                         <td data-th="Product">
                           <img
-                            src={item.id_product.images[0].url}
+                            src={item.product_id.images[0].url}
                             className="rounded"
                             alt=""
                           />
                         </td>
-                        <td data-th="Name">{item.id_product.name}</td>
+                        <td data-th="Name">{item.product_id.name}</td>
                         <td data-th="Quanlity">{item.quantity}</td>
                       </tr>
                     );
@@ -136,14 +137,14 @@ const OrderConFirm = ({ HeaderComponent, FooterComponent }) => {
                 return (
                   <>
                     <div className="card-shipping">
-                      <img src={item.id_product.images[0].url} alt=""/>
+                      <img src={item.product_id.images[0].url} alt=""/>
                       <div className="card-shipping-content">
-                        <h4>{item.id_product.name}</h4>
+                        <h4>{item.product_id.name}</h4>
                         <div className="sum-price">
-                        <h5>Price: {item.id_product.price} đ</h5>
+                        <h5>Price: {item.product_id.price} đ</h5>
                         <h5>Quanlity: {item.quantity}</h5>
                         <h5>Item total:{" "}
-                              {item.id_product.price * item.quantity} đ</h5>
+                              {item.product_id.price * item.quantity} đ</h5>
 
                         </div>
                       </div>
