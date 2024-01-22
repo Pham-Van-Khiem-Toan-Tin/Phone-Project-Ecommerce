@@ -1,0 +1,77 @@
+.admin-side-bar {
+  width: 11rem;
+  height: 100%;
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #2e2e48;
+  color: #fff;
+}
+.admin-side-bar .brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #475be8;
+  margin-top: 2rem;
+}
+.admin-side-bar .menus {
+  margin-top: 1.5rem;
+}
+.admin-side-bar .menus .menu-link {
+  padding: 0.5rem 0.5rem;
+  display: block;
+}
+.admin-side-bar .menus .menu-link a {
+  display: block;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+}
+.admin-side-bar .menus .menu-link a svg {
+  font-size: 0.8rem;
+  margin-right: 0.2rem;
+  vertical-align: baseline;
+}
+.admin-side-bar .menus .menu-dropdown {
+  border-bottom: none;
+  padding: 10px;
+}
+.admin-side-bar .menus .menu-dropdown button {
+  padding: 10px 15px;
+}
+.admin-side-bar .menus .menu-sub-link {
+  padding: 1rem 1.25rem;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #fff;
+  display: block;
+}
+.admin-side-bar .menus .active {
+  background-color: #475be8 !important;
+}
+.admin-side-bar .menus .accordion .accordion-item {
+  background-color: transparent;
+}
+.admin-side-bar .menus .accordion .accordion-item .accordion-header .accordion-button {
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  background-color: transparent;
+}
+.admin-side-bar .menus .accordion .accordion-item .accordion-header .accordion-button svg {
+  font-size: 0.8rem;
+  vertical-align: baseline;
+  margin-right: 0.2rem;
+}
+.admin-side-bar .menus .accordion .accordion-item .accordion-header .accordion-button:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+.admin-side-bar .menus .accordion .accordion-item .accordion-header .accordion-button::after {
+  display: none;
+}/*# sourceMappingURL=side-bar.css.map */

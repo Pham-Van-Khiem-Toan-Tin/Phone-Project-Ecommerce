@@ -17,6 +17,7 @@ const order = require("./src/v1/routers/orderRouter");
 const cart = require("./src/v1/routers/cartRouter");
 const payment = require("./src/v1/routers/paymentRouter");
 const role = require("./src/v1/routers/role.router");
+const category = require("./src/v1/routers/category.router");
 
 app.use(helmet());
 app.use(morgan("dev"));
@@ -42,6 +43,7 @@ app.use("/api/v1", order);
 app.use("/api/v1", cart);
 app.use("/api/v1", payment);
 app.use("/api/v1", role);
+app.use("/api/v1", category);
 app.use(erorMiddleware);
 
 module.exports = app;

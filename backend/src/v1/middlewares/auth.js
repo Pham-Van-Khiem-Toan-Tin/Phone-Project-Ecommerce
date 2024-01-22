@@ -10,7 +10,7 @@ module.exports.isAuthenticatedUser = async (req, res, next) => {
     try {
       const decodeData = await jwt.verify(
         accessToken,
-        process.env.ACESSTOKEN_SECRET
+        process.env.ACCESSTOKEN_SECRET
       );
       req.user = decodeData.id;
       req.role = decodeData.role;
@@ -18,11 +18,11 @@ module.exports.isAuthenticatedUser = async (req, res, next) => {
       req.cart = decodeData.cart;
       next();
     } catch (error) {
-      const { refeshToken } = req.cookies;
-      if (refeshToken) {
+      const { refreshToken } = req.cookies;
+      if (refreshToken) {
         try {
           const decoded = await jwt.verify(
-            refeshToken,
+            refreshToken,
             process.env.REFRESHTOKEN_SECRET 
           );
           const newAccessToken = jwt.sign(

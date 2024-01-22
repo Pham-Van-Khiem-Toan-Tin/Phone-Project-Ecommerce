@@ -9,39 +9,98 @@ const saleSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    today_sales: {
-      type: Number,
-      default: 0,
-      required: true,
-    },
-    weekly_sales: {
+    sales: {
+      day: {
         type: Number,
         default: 0,
-        required: true
-    },
-    monthly_sales: {
+        required: true,
+      },
+      week: {
         type: Number,
         default: 0,
-        required: true
-    },
-    today_revenue: {
-      type: Number,
-      default: 0,
-      required: true,
-    },
-    weekly_revenue: {
+        required: true,
+      },
+      month: {
         type: Number,
         default: 0,
-        required: true
+        required: true,
+      },
     },
-    monthly_revenue: {
+    revenue: {
+      day: {
         type: Number,
         default: 0,
-        required: true
+        required: true,
+      },
+      week: {
+        type: Number,
+        default: 0,
+        required: true,
+      },
+      month: {
+        type: Number,
+        default: 0,
+        required: true,
+      },
     },
-    in_escrow: {
-      type: Number,
-      required: true,
+    orders: {
+      day: {
+        type: Number,
+        default: 0,
+        required: true,
+      },
+      week: {
+        type: Number,
+        default: 0,
+        required: true,
+      },
+      month: {
+        type: Number,
+        default: 0,
+        required: true,
+      },
+    },
+    seller: {
+      day: [
+        {
+          product_id: {
+            type: ObjectId,
+            ref: "products",
+          },
+          sales: {
+            type: Number,
+            default: 0,
+            required: true,
+          },
+        },
+      ],
+      week: [
+        {
+          product_id: {
+            type: ObjectId,
+            ref: "products",
+          },
+          sales: {
+            type: Number,
+            default: 0,
+            required: true,
+          },
+        },
+      ],
+      month: [
+        {
+          product_id: {
+            type: ObjectId,
+            ref: "products",
+            required: true,
+          },
+          sales: {
+            type: Number,
+            default: 0,
+            required: true,
+          },
+        },
+      ],
     },
   },
   { timestamps: true }

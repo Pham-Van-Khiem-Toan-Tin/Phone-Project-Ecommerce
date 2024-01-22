@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { FaTrashAlt, FaEdit } from "react-icons/fa";
+import { FaTrashAlt, FaEdit, FaEye } from "react-icons/fa";
 import { clearError } from "../../reduxToolkit/reducer/user/allUserSlice";
 import { format } from "date-fns";
 import { allUser, deleteUser } from "../../reduxToolkit/actions/userAction";
@@ -14,7 +14,7 @@ import {
   clearErrorHandle,
   deleteReset,
 } from "../../reduxToolkit/reducer/user/userHandle";
-const AllUser = ({ChildrenComponent}) => {
+const AllUser = ({ SideBarComponent, HeaderComponent }) => {
   const dispatch = useDispatch();
   const { error, users, isLoading } = useSelector((state) => state.allUsers);
   const {
@@ -65,14 +65,14 @@ const AllUser = ({ChildrenComponent}) => {
         backgroundColor: "#475be8",
         borderRadius: 2,
         hoverBackgroundColor: "#36429e",
-        data: [10,8, 6, 15, 30, 40, 70, 90, 5],
+        data: [10, 8, 6, 15, 30, 40, 70, 90, 5],
       },
       {
         label: "User visited",
         backgroundColor: "#e3e6fc",
         borderRadius: 2,
         hoverBackgroundColor: "#989aa5",
-        data: [60,10,20,60, 80, 100, 80, 120, 10],
+        data: [60, 10, 20, 60, 80, 100, 80, 120, 10],
       },
     ],
   };
@@ -175,18 +175,18 @@ const AllUser = ({ChildrenComponent}) => {
     labels: ["jan", "Feb", "Mar"],
     datasets: [
       {
-        label: 'User visited',
-        data: [20,14,36],
+        label: "User visited",
+        data: [20, 14, 36],
         backgroundColor: "#475be8",
         borderColor: "#475be8",
       },
       {
-        label: 'User paid',
+        label: "User paid",
         data: [12, 8, 15],
         backgroundColor: "#e3e6fc",
         borderColor: "#e3e6fc",
-      }
-    ]
+      },
+    ],
   };
   useEffect(() => {
     if (error) {
@@ -211,93 +211,104 @@ const AllUser = ({ChildrenComponent}) => {
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="all-users">
-          <div className="row">
-            <div className="col-3"><ChildrenComponent/></div>
-            <div className="col-9 p-5" >
+        <>
+          <SideBarComponent />
+          <HeaderComponent />
+          <div className="all-users">
+            <span>Users</span>
             <div className="d-flex align-items-center justify-content-between date-picker">
-            <span>Dashboard</span>
-            <select className="form-select">
-              <option>Today</option>
-              <option>Week</option>
-              <option>Month</option>
-            </select>
+              <nav aria-label="breadcrumb">
+                <ol className="breadcrumb">
+                  <li className="breadcrumb-item">
+                    <span className="fw-bold">Home</span>
+                  </li>
+                  <li className="breadcrumb-item" aria-current="page">
+                    Users
+                  </li>
+                </ol>
+              </nav>
+              <select className="form-select">
+                <option>Today</option>
+                <option>Week</option>
+                <option>Month</option>
+              </select>
+            </div>
+            <div className="d-flex justify-content-between card-dashboard">
+              <div className="item rounded d-flex align-items-center">
+                <div className="item-content col-7">
+                  <p className="title">New Users</p>
+                  <p className="total">5 User</p>
+                  <p className="notify">We have 5 new user</p>
+                </div>
+                <div className="item-chart col-5">
+                  <Doughnut data={doughState1} options={optionsDoughnut} />
+                </div>
+              </div>
+              <div className="item rounded d-flex align-items-center">
+                <div className="item-content col-7">
+                  <p className="title">User paid</p>
+                  <p className="total">1 User</p>
+                  <p className="notify">We have 1 user paid</p>
+                </div>
+                <div className="item-chart col-5">
+                  <Doughnut data={doughState2} options={optionsDoughnut} />
+                </div>
+              </div>
+              <div className="item rounded d-flex align-items-center">
+                <div className="item-content col-7">
+                  <p className="title">Conversion Insights</p>
+                  <p className="total">1 User</p>
+                  <p className="notify">We have 1 user insights</p>
+                </div>
+                <div className="item-chart col-5">
+                  <Doughnut data={doughState2} options={optionsDoughnut} />
+                </div>
+              </div>
+            </div>
+            <div className="mt-2 insights-sold">
+              <div className="rounded insights-chart p-1">
+                <Line data={lineStateUserPaid} options={optionLineUserPaid} />
+              </div>
+              <div className="rounded insights-chart p-1 mt-2">
+                <Bar data={barState} options={optionsBar} />
+              </div>
+            </div>
+            <div className="last-users p-2 mt-2 rounded">
+              <div className="table-responsive">
+                <p className="title">New User</p>
+                <table className="table table-borderless">
+                  <thead>
+                    <tr>
+                      <th scope="col">User ID</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Created At</th>
+                      <th scope="col">Role</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {users &&
+                      users.map((user) => {
+                        return (
+                          <tr>
+                            <th scope="row">{user?._id}</th>
+                            <td>{user?.email}</td>
+                            <td>{user?.name}</td>
+                            <td>
+                              {format(new Date(user?.createdAt), "dd/MM/yyyy")}
+                            </td>
+                            <td>{user?.role}</td>
+                            <td><FaEye /> <span className="text-danger"><FaTrashAlt /></span></td>
+                          </tr>
+                        );
+                      })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
-          <div className="d-flex justify-content-between card-dashboard">
-            <div className="item rounded d-flex align-items-center">
-              <div className="item-content col-7">
-                <p className="title">New Users</p>
-                <p className="total">5 User</p>
-                <p className="notify">We have 5 new user</p>
-              </div>
-              <div className="item-chart col-5">
-                <Doughnut data={doughState1} options={optionsDoughnut} />
-              </div>
-            </div>
-            <div className="item rounded d-flex align-items-center">
-              <div className="item-content col-7">
-                <p className="title">User paid</p>
-                <p className="total">1 User</p>
-                <p className="notify">We have 1 user paid</p>
-              </div>
-              <div className="item-chart col-5">
-                <Doughnut data={doughState2} options={optionsDoughnut} />
-              </div>
-            </div>
-            <div className="item rounded d-flex align-items-center">
-              <div className="item-content col-7">
-                <p className="title">Conversion Insights</p>
-                <p className="total">1 User</p>
-                <p className="notify">We have 1 user insights</p>
-              </div>
-              <div className="item-chart col-5">
-                <Doughnut data={doughState2} options={optionsDoughnut} />
-              </div>
-            </div>
-          </div>
-          <div className="mt-2 insights-sold">
-            <div className="rounded insights-chart p-1">
-              <Line data={lineStateUserPaid} options={optionLineUserPaid} />
-            </div>
-            <div className="rounded insights-chart p-1 mt-2">
-              <Bar data={barState} options={optionsBar} />
-            </div>
-          </div>
-          <div className="last-users p-2 mt-2 rounded">
-            <div className="table-responsive">
-              <p className="title">New User</p>
-              <table className="table table-borderless">
-                <thead>
-                  <tr>
-                    <th scope="col">User ID</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Created At</th>
-                    <th scope="col">Role</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {users &&
-                    users.map((user) => {
-                      return (
-                        <tr>
-                          <th scope="row">{user?._id}</th>
-                          <td>{user?.email}</td>
-                          <td>{user?.name}</td>
-                          <td>{format(new Date(user?.createdAt), "dd/MM/yyyy")}</td>
-                          <td>{user?.role}</td>
-                          <td>@mdo</td>
-                        </tr>
-                      );
-                    })}
-                </tbody>
-              </table>
-            </div>
-            </div>
-            </div>
-          </div>
-        </div>
+        </>
       )}
     </>
   );

@@ -4,8 +4,9 @@ const orderModel = require("../models/orders");
 const productModel = require("../models/products");
 const saleModel = require("../models/sales");
 const userModel = require("../models/users");
+const { subDays, subMonths, addDays, format } = require("date-fns");
 const ErrorHandle = require("../utils/errorHandle");
-const moment = require("moment");
+
 async function updateStock(id, quantity) {
   const product = await productModel.findById(id);
   product.stock -= quantity;
@@ -15,20 +16,21 @@ async function updateStock(id, quantity) {
 module.exports.newOrder = catchAsyncError(async (req, res, next) => {
   try {
     const {
-      shippingInfor,
+      shippingInfo,
       orderItems,
-      paymentInfor,
+      paymentInfo,
       itemsPrice,
       taxPrice,
       shippingPrice,
       totalPrice,
     } = req.body;
+    console.log({id: req.user});
     const user = await userModel.findById(req.user);
-    await cartModel.findByIdAndUpdate({ _id: user.cartId }, {caProduct: []});
+    await cartModel.findByIdAndUpdate({ _id: user.cart_id }, { products: [] });
     const order = await orderModel.create({
-      shippingInfor,
+      shippingInfo,
       orderItems,
-      paymentInfor,
+      paymentInfo,
       itemsPrice,
       taxPrice,
       shippingPrice,
@@ -37,28 +39,69 @@ module.exports.newOrder = catchAsyncError(async (req, res, next) => {
       user: req.user,
       orderStatus: "Processing",
     });
-    const time = moment().format("DD-MM-YYYY");
-    const saleToday = await saleModel.findById(time);
+    const today = new Date();
+    const currentDay = format(today, "dd-MM-yyyy");
+    const saleToday = await saleModel.findById(currentDay);
     if (saleToday != null) {
-      saleToday.today_sales += totalPrice;
-      saleToday.weekly_sales += totalPrice;
-      saleToday.monthly_sales += totalPrice;
-      saleToday.today_revenue += totalPrice - taxPrice;
-      saleToday.weekly_revenue += totalPrice - taxPrice;
-      saleToday.monthly_revenue += totalPrice - taxPrice;
-      saleToday.in_escrow += totalPrice - taxPrice;
+      saleToday.sales.day += totalPrice;
+      saleToday.sales.week += totalPrice;
+      saleToday.sales.month += totalPrice;
+      saleToday.revenue.day += totalPrice - taxPrice;
+      saleToday.revenue.week += totalPrice - taxPrice;
+      saleToday.revenue.month += totalPrice - taxPrice;
       await saleToday.save();
     } else {
-      await saleModel.create({
-        _id: time,
-        today_sales: totalPrice,
-        weekly_sales: totalPrice,
-        monthly_sales: totalPrice,
-        today_revenue: totalPrice - taxPrice,
-        weekly_revenue: totalPrice - taxPrice,
-        monthly_revenue: totalPrice - taxPrice,
-        in_escrow: totalPrice - taxPrice,
+      const lastMonth = addDays(subMonths(today, 1), 1);
+      const lastWeek = subMonths(today, 6);
+      const saleListMonth = await saleModel.find({
+        createdAt: {
+          $gte: lastMonth,
+          $lte: today,
+        },
       });
+      const newSale = {
+        _id: currentDay,
+        sales: {
+          day: totalPrice,
+          week:
+            saleListMonth !== null
+              ? saleListMonth
+                  .filter((sale) => sale.createdAt >= lastWeek)
+                  .reduce(
+                    (accumulator, currentValue) =>
+                      accumulator + currentValue.sales.day
+                  ,0) + totalPrice
+              : totalPrice,
+          month:
+            saleListMonth !== null
+              ? saleListMonth.reduce(
+                  (accumulator, currentValue) =>
+                    accumulator + currentValue.sales.day
+                ,0) + totalPrice
+              : totalPrice,
+        },
+        revenue: {
+          day: totalPrice - taxPrice,
+          week:
+            saleListMonth !== null
+              ? saleListMonth
+                  .filter((sale) => sale.createdAt >= lastWeek)
+                  .reduce(
+                    (accumulator, currentValue) =>
+                      accumulator + currentValue.revenue.day
+                  ,0) + totalPrice
+              : totalPrice,
+          month:
+            saleListMonth !== null
+              ? saleListMonth.reduce(
+                  (accumulator, currentValue) =>
+                    accumulator + currentValue.revenue.day
+                ,0) + totalPrice
+              : totalPrice,
+        },
+      };
+      console.log({newSale});
+      await saleModel.create(newSale);
     }
     res.status(200).json({
       success: true,
@@ -94,15 +137,21 @@ module.exports.myOrders = catchAsyncError(async (req, res, next) => {
 
 //get all orders -- admin
 module.exports.getAllOrders = catchAsyncError(async (req, res, next) => {
-  const orders = await orderModel.find({});
-  let totalAmount = 0;
-  orders.forEach((order) => {
-    totalAmount += order.totalPrice;
-  });
+  const { page } = req.query;
+  const resultPerPage = 4;
+  const orderCount = await orderModel.countDocuments();
+  const currentPage = Number(page) || 1;
+  const skip = resultPerPage * (currentPage - 1);
+  const orders = await orderModel
+    .find()
+    .sort({ timestamp: "asc" })
+    .skip(skip)
+    .limit(resultPerPage);
   res.status(200).json({
     success: true,
-    totalAmount,
     orders,
+    resultPerPage,
+    filteredOrdersCount: orderCount,
   });
 });
 

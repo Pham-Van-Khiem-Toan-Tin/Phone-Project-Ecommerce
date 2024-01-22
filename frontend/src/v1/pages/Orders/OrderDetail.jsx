@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { clearError } from "../../reduxToolkit/reducer/order/orderDetailSlice";
-import { orderDetail } from "../../reduxToolkit/actions/orderAction";
+import { orderDetail } from "../../reduxToolkit/actions/order.action";
 import { Link, useParams } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 import "./OrderDetail.css";

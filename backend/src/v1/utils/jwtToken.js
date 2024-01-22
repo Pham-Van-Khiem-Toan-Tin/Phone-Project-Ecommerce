@@ -15,7 +15,7 @@ const sendToken = async (user, status, res) => {
   };
   res
     .status(status)
-    .cookie(`refeshToken`, refreshToken, optionRefreshToken)
+    .cookie(`refreshToken`, refreshToken, optionRefreshToken)
     .json({
       success: true,
       role: user.role,

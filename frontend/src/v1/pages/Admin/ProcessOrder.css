@@ -1,3 +1,16 @@
+.process_order {
+  background-color: #383854;
+  color: #fff;
+  margin-top: 98.25px;
+  margin-left: 11rem;
+  padding: 0.5rem;
+  padding-right: 2rem;
+  min-height: 120vh;
+  height: 100%;
+}
+.order_detail {
+  color: #fff;
+}
 .process_order .process_order-handle {
   color: #fff;
 }

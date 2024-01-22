@@ -14,13 +14,15 @@ import addToCartReducer from "./reducer/product/cartProductSlice";
 import newOrderReducer from "./reducer/order/newOrderSlice";
 import myOrdersReducer from "./reducer/order/myOrderSlice";
 import getOrderDetailReducer from "./reducer/order/orderDetailSlice";
-import getAllOrdersReducer from "./reducer/order/allOrdersSlice";
+import getAllOrdersReducer from "./reducer/order/allOrders.slice";
 import orderReducer from "./reducer/order/orderSlice";
 import productReducer from "./reducer/product/productSlice";
 import allReviewsReducer from "./reducer/product/productReviewSlice";
 import reviewReducer from "./reducer/product/reviewSlice";
 import compareReducer from "./reducer/product/compareProductSlice";
-import rolereducer from "./reducer/role/role.slice";
+import roleReducer from "./reducer/role/role.slice";
+import categoryReducer from "./reducer/category/category.slice";
+
 const store = configureStore({
   reducer: {
     user: userReducer,
@@ -44,7 +46,8 @@ const store = configureStore({
     allReviews: allReviewsReducer,
     review: reviewReducer,
     compare: compareReducer,
-    role: rolereducer,
+    role: roleReducer,
+    category: categoryReducer
   },
 });
 export default store;

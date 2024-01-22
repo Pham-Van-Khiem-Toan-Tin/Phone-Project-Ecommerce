@@ -13,7 +13,7 @@ import {clearError} from "../../reduxToolkit/reducer/product/productDetailSlice"
 import { getProductDetail, updateProduct } from "../../reduxToolkit/actions/productAction";
 import { toast } from "react-toastify";
 import { clearErrorHandle, resetUpdate } from "../../reduxToolkit/reducer/product/productSlice";
-const UpdateProduct = () => {
+const UpdateProduct = ( { SideBarComponent, HeaderComponent }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLoading, error, product } = useSelector(
@@ -89,6 +89,8 @@ const UpdateProduct = () => {
   }, [dispatch, product, id]);
   return (
     <>
+      <SideBarComponent />
+      <HeaderComponent />
       <div className="create-product">
         <form
           encType="multipart/form-data"
@@ -142,6 +144,15 @@ const UpdateProduct = () => {
             <option value="Oppo">Oppo</option>
             <option value="Xiaomi">Xiaomi</option>
           </select>
+          <label htmlFor="model">
+            Sub Categories <BsFillTagFill />
+          </label>
+          <select
+            name="model"
+            id="model"
+          >
+            <option>Pro</option>
+          </select>
           <label htmlFor="productStock">
             Stock <BsFillInboxesFill />{" "}
           </label>
@@ -186,6 +197,24 @@ const UpdateProduct = () => {
               </>
             )}
           </div>
+          <label htmlFor="model">
+            Chose color image
+          </label>
+          <select
+            name="model"
+            id="model"
+          >
+            <option>red, blue</option>
+          </select>
+          <label htmlFor="model">
+            Chose image primary
+          </label>
+          <select
+            name="model"
+            id="model"
+          >
+            <option>1</option>
+          </select>
           <button type="submit">Change</button>
         </form>
       </div>

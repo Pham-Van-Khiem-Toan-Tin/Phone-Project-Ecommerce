@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const OrderConFirm = ({ HeaderComponent, FooterComponent }) => {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.user);
-  const { shippingInfor, cartList } = useSelector((state) => state.cart);
+  const { shippingInfo, cartList } = useSelector((state) => state.cart);
   console.log({cartList});
   const subtotal = cartList.reduce((acc, item) => {
     return acc + item.product_id.price * item.quantity;
@@ -15,7 +15,7 @@ const OrderConFirm = ({ HeaderComponent, FooterComponent }) => {
   const shippingCharges = subtotal > 100000000 ? 0 : 20000;
   const tax = subtotal * 0.008;
   const totalPrice = subtotal + tax + shippingCharges;
-  const address = `${shippingInfor.address}, ${shippingInfor.city}, ${shippingInfor.pinCode}, ${shippingInfor.country}`;
+  const address = `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.pinCode}, ${shippingInfo.country}`;
   const processToPayment = () => {
     const data = {
       subtotal,
@@ -23,7 +23,7 @@ const OrderConFirm = ({ HeaderComponent, FooterComponent }) => {
       tax,
       totalPrice,
     };
-    sessionStorage.setItem("orderInfor", JSON.stringify(data));
+    sessionStorage.setItem("orderInfo", JSON.stringify(data));
     navigate("../payment");
   };
   return (
@@ -50,7 +50,7 @@ const OrderConFirm = ({ HeaderComponent, FooterComponent }) => {
               <input
                 id="phone"
                 disabled
-                value={shippingInfor?.phoneNum}
+                value={shippingInfo?.phoneNum}
                 className="form-control"
               />
               <label htmlFor="address">

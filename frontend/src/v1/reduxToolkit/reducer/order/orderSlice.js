@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { deleteOrder, updateOrder } from "../../actions/orderAction";
+import { deleteOrder, updateOrder } from "../../actions/order.action";
 
 const orderSlice = createSlice({
     name: "orderhandle",

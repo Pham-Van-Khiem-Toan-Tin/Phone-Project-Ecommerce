@@ -1,0 +1,83 @@
+$background-sidebar: #2e2e48;
+$background-active: #475be8;
+.admin-side-bar {
+    width: 11rem;
+    height: 100%;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: $background-sidebar;
+    color: #fff;
+    .brand {
+        font-weight: 700;
+        font-size: 1.5rem;
+        text-align: center;
+        color: #475be8;
+        margin-top: 2rem;
+    }
+    .menus {
+        margin-top: 1.5rem;
+        .menu-link {
+            padding: 0.5rem 0.5rem;
+            display: block;
+            a {
+                display: block;
+                border: none;
+                padding: 0.5rem 0.75rem;
+                font-size: 0.8rem;
+                font-weight: 700;
+                color: #fff;
+                svg {
+                    font-size: 0.8rem;
+                    margin-right: 0.2rem;
+                    vertical-align:baseline;
+                }
+            }
+        }
+        .menu-dropdown {
+            border-bottom: none;
+            padding: 10px;
+            button {
+                padding: 10px 15px;
+            }
+        }
+        .menu-sub-link {
+            padding: 1rem 1.25rem;
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: #fff;
+            display: block;
+        }
+        .active {
+            background-color: $background-active !important;
+        }
+        .accordion {
+            .accordion-item {
+                background-color: transparent;
+                .accordion-header {
+                    .accordion-button {
+                        color: #fff;
+                        font-size: 0.8rem;
+                        font-weight: 700;
+                        background-color: transparent;
+                        svg {
+                            font-size: 0.8rem;
+                            vertical-align: baseline;
+                            margin-right: 0.2rem;
+                        }
+                        &:focus {
+                            border: none;
+                            outline: none;
+                            box-shadow: none;
+                        }
+                        &::after {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

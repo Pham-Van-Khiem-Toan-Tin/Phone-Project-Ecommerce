@@ -3,7 +3,7 @@ import "./MyOrders.css";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { clearError } from "../../reduxToolkit/reducer/order/myOrderSlice";
-import { myOrders } from "../../reduxToolkit/actions/orderAction";
+import { myOrders } from "../../reduxToolkit/actions/order.action";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";

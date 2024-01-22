@@ -1,7 +1,29 @@
 .role-management {
-  min-height: 100vh;
   background-color: #383854;
   color: #fff;
+  margin-top: 98.25px;
+  margin-left: 11rem;
+  padding: 0.5rem;
+  padding-right: 2rem;
+  min-height: 100vh;
+}
+.role-management .title {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.role-management .role-tabs {
+  min-height: 100vh;
+}
+.role-management .new-role-name {
+  margin-bottom: 2rem;
+}
+.role-management .new-role-name label {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.role-management .new-role-name input {
+  width: 20rem;
+  font-size: 0.8rem;
 }
 .role-management .react-tabs__tab {
   font-size: 0.9rem;
@@ -20,6 +42,7 @@
 }
 .role-management .function {
   padding-right: 0;
+  margin-bottom: 0;
 }
 .role-management .function .react-tabs__tab {
   font-size: 0.8rem;
@@ -44,6 +67,7 @@
 }
 .role-management .sub-list {
   border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
   box-shadow: inset 21px 21px 42px #242437, inset -21px -21px 42px #4c4c71;
 }
 .role-management .sub-list .sub-function {

@@ -1,7 +1,11 @@
 .all-orders {
-  min-height: 100vh;
   background-color: #383854;
   color: #fff;
+  margin-top: 98.25px;
+  margin-left: 11rem;
+  padding: 0.5rem;
+  padding-right: 2rem;
+  min-height: 100vh;
 }
 .all-orders .date-picker select {
   color: #fff;

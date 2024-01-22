@@ -1,0 +1,86 @@
+$background-dashboard: #383854;
+.create-product {
+  background-color: $background-dashboard;
+  color: #fff;
+  margin-top: 98.25px;
+  margin-left: 11rem;
+  padding: 0.5rem;
+  padding-right: 2rem;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  form {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 20px;
+    color: #fff;
+    margin: 0 10px;
+    padding: 20px;
+    background: #5764b3;
+    box-shadow: 20px 20px 60px #4a5598, -20px -20px 60px #6473ce;
+    label {
+      font-size: 20px;
+      font-weight: 600;
+    }
+    input {
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      padding: 5px 10px;
+      outline: none;
+      margin: 10px;
+    }
+    textarea {
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      padding: 5px 10px;
+      outline: none;
+      margin: 10px;
+    }
+    select {
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      padding: 5px 10px;
+      outline: none;
+      margin: 10px;
+    }
+    input[type="file"] {
+      border: none;
+    }
+    input[type="file"]::-webkit-file-upload-button {
+      visibility: hidden;
+    }
+    input[type="file"]::before {
+      content: "Chose file";
+      -webkit-user-select: none;
+      cursor: pointer;
+      border: none;
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 10px;
+      background: rgb(14, 140, 241);
+      color: #fff;
+    }
+    button {
+      border: none;
+      background-color: #f79540;
+      color: #fff;
+      font-size: 20px;
+      border-radius: 10px;
+      height: 45px;
+    }
+    .imagesOldImages {
+        img {
+            width: 2rem;
+            height: 2rem;
+            margin: 0.2rem;
+          }
+    }
+    .imagesPreview img {
+        width: 2rem;
+        height: 2rem;
+        margin: 0.2rem;
+      }
+  }
+}

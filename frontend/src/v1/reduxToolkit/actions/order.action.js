@@ -81,7 +81,7 @@ export const orderDetail = createAsyncThunk(
 );
 export const getAllOrders = createAsyncThunk(
   "ALL_ORDERS",
-  async (_, { rejectWithValue }) => {
+  async (page, { rejectWithValue }) => {
     try {
       const token = JSON.parse(localStorage.getItem("accessToken"));
       const config = {
@@ -91,7 +91,7 @@ export const getAllOrders = createAsyncThunk(
         withCredentials: true,
       };
       const { data } = await axios.get(
-        `${process.env.REACT_APP_SERVER}/admin/orders`,
+        `${process.env.REACT_APP_SERVER}/admin/orders?page=${page}`,
         config
       );
       return data;

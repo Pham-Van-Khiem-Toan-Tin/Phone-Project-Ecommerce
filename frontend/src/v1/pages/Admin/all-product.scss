@@ -2,90 +2,99 @@ $background-dashboard: #383854;
 $background-neu: #2e2e48;
 $background-thead: #383854;
 .all-products {
-    min-height: 100vh;
-    background-color: $background-dashboard;
-    color: #fff;
-    .top-product {
-        background-color: $background-neu;
-        .search {
-            margin: 1rem 0;
-            span {
-                font-size: 1rem;
-                font-weight: 600;
-            }
-            select {
-                max-width: 10rem;
-                font-size: 0.8rem;
-                font-weight: 600;
-            }
-        }
-        table {
-            color: #fff;
-            vertical-align: middle;
-            font-size: 0.6rem;
-            thead {
-                background-color: $background-thead;
-                font-size: 0.8rem;
-                tr {
-                    th {
-                        font-weight: 400;
-                    }
-                }
-            }
-            tbody {
-                tr {
-                    .action {
-                        a {
-                            color: #fff;
-                            margin-right: 0.5rem;
-                        }
-                        button {
-                            border: none;
-                            outline: none;
-                            background-color: transparent;
-                        }
-                    }
-                }
-            }
-        }
+  background-color: $background-dashboard;
+  color: #fff;
+  margin-top: 98.25px;
+  margin-left: 11rem;
+  padding: 0.5rem;
+  padding-right: 2rem;
+  min-height: 100vh;
+  .top-product {
+    background-color: $background-neu;
+    .search {
+      margin: 1rem 0;
+      span {
+        font-size: 1rem;
+        font-weight: 600;
+      }
+      select {
+        max-width: 10rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+      
     }
-    .last-products {
-        background-color: $background-neu;
-        .title {
-            font-weight: 600;
+    table {
+      color: #fff;
+      vertical-align: middle;
+      font-size: 0.6rem;
+      thead {
+        background-color: $background-thead;
+        font-size: 0.8rem;
+        tr {
+          th {
+            font-weight: 400;
+          }
         }
-        .search {
-            input {
-                font-size: 0.8rem;
+      }
+      tbody {
+        tr {
+          .action {
+            a {
+              color: #fff;
+              margin-right: 0.5rem;
             }
+            button {
+              border: none;
+              outline: none;
+              background-color: transparent;
+            }
+          }
         }
-        table {
-            color: #fff;
-            font-size: 0.6rem;
-            thead {
-                background-color: $background-thead;
-                font-size: 0.8rem;
-                tr {
-                    th {
-                        font-weight: 400;
-                    }
-                }
-            }
-            tbody {
-                tr {
-                    .action {
-                        a {
-                            color: #fff;
-                            margin-right: 0.5rem;
-                        }
-                        button {
-                            border: none;
-                            outline: none;
-                            background-color: transparent;
-                        }
-                    }
-                }
-            }
-        }
+      }
     }
+  }
+  .last-products {
+    background-color: $background-neu;
+    .title {
+      font-weight: 600;
+    }
+    .search {
+      input {
+        font-size: 0.8rem;
+      }
+      select, input {
+        width: 10rem;
+        font-size: 0.8rem;
+      }
+    }
+    table {
+      color: #fff;
+      font-size: 0.6rem;
+      thead {
+        background-color: $background-thead;
+        font-size: 0.8rem;
+        tr {
+          th {
+            font-weight: 400;
+          }
+        }
+      }
+      tbody {
+        tr {
+          .action {
+            a {
+              color: #fff;
+              margin-right: 0.5rem;
+            }
+            button {
+              border: none;
+              outline: none;
+              background-color: transparent;
+            }
+          }
+        }
+      }
+    }
+  }
 }

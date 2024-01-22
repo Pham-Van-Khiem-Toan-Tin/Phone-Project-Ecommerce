@@ -1,0 +1,145 @@
+$background-dashboard: #383854;
+$background-neu: #2e2e48;
+$background-thead: #383854;
+$color: #111215;
+.dashboard {
+  background-color: $background-dashboard;
+  color: #fff;
+  margin-top: 98.25px;
+  margin-left: 11rem;
+  padding: 0.5rem;
+  padding-right: 2rem;
+  min-height: 100vh;
+
+  .title {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  .breadcrumb {
+    margin-bottom: 0;
+  }
+  .time-line {
+    svg {
+      vertical-align: baseline;
+      font-size: 0.8rem;
+      margin-right: 0.2rem;
+    }
+    input {
+      background-color: transparent;
+      color: #fff;
+      font-size: 0.6rem;
+      border: none;
+      cursor: pointer;
+    }
+    button {
+      font-size: 0.6rem;
+      font-weight: 500;
+      margin-left: 0.5rem;
+    }
+  }
+  .card-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .card-sale {
+      width: 24%;
+      padding: 1rem 0.5rem;
+      background-color: $background-neu;
+      svg {
+        vertical-align: baseline;
+        fill: #0d6efd;
+      }
+      .title {
+        font-size: 0.7rem;
+        font-weight: 700;
+      }
+      .content {
+        svg {
+          border-radius: 0.375rem;
+          border: 1px solid #0d6efd;
+          font-size: 1.7rem;
+          padding: 0.2rem;
+        }
+        .total {
+          font-size: 0.7rem;
+          font-weight: 700;
+        }
+        .percent {
+          font-size: 0.6rem;
+          svg {
+            font-size: 1rem;
+            vertical-align: bottom;
+            fill: #fff;
+            border: none;
+          }
+        }
+      }
+      .compare {
+        font-size: 0.6rem;
+      }
+    }
+  }
+  .sale-chart {
+    background-color: $background-neu;
+    .title {
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .time-pickup {
+      select {
+        width: 8rem;
+        margin-right: 0.2rem;
+        font-size: 0.6rem;
+        margin-left: 0.5rem;
+      }
+    }
+  }
+  .best-seller-chart {
+    background-color: $background-neu;
+    .title {
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+  }
+  .recent-orders {
+    padding: 0.5rem;
+    background-color: $background-neu;
+    .title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      font-weight: 600;
+    }
+    table {
+      color: #fff;
+      font-size: 0.6rem;
+      thead {
+        background-color: $background-thead;
+        font-size: 0.8rem;
+        tr {
+          th {
+            font-weight: 400;
+          }
+        }
+      }
+    }
+  }
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    li {
+      button {
+        border: none;
+        color: #fff;
+        font-weight: 500;
+        font-size: 0.6rem;
+        background: #2e2e48;
+        box-shadow: 20px 20px 26px #222235, -20px -20px 26px #3a3a5b;
+      }
+    }
+    button.active {
+      text-decoration: underline;
+      background-color: #ccc;
+    }
+  }
+}

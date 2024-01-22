@@ -8,24 +8,24 @@ import {
 } from "react-icons/fa";
 import "./shipping.css";
 import { useDispatch, useSelector } from "react-redux";
-import { shippingInforSubmit } from "../../reduxToolkit/reducer/product/cartProductSlice";
+import { shippingInfoSubmit } from "../../reduxToolkit/reducer/product/cartProductSlice";
 import { useNavigate } from "react-router-dom";
 import Steps from "../../components/Steps/Steps";
 const Shipping = ({ HeaderComponent, FooterComponent }) => {
   const dispatch = useDispatch();
-  const { shippingInfor } = useSelector((state) => state.cart);
+  const { shippingInfo } = useSelector((state) => state.cart);
   const [address, setAddress] = useState(
-    shippingInfor ? shippingInfor?.address : ""
+    shippingInfo ? shippingInfo?.address : ""
   );
-  const [city, setCity] = useState(shippingInfor ? shippingInfor?.city : "");
-  const [state, setState] = useState(shippingInfor ? shippingInfor?.state : "");
+  const [city, setCity] = useState(shippingInfo ? shippingInfo?.city : "");
+  const [state, setState] = useState(shippingInfo ? shippingInfo?.state : "");
   const [country, setCountry] = useState(
-    shippingInfor ? shippingInfor?.country : ""
+    shippingInfo ? shippingInfo?.country : ""
   );
   const [pinCode, setPinCode] = useState(
-    shippingInfor ? shippingInfor?.pinCode : ""
+    shippingInfo ? shippingInfo?.pinCode : ""
   );
-  const [phone, setPhone] = useState(shippingInfor ? shippingInfor?.phone : "");
+  const [phone, setPhone] = useState(shippingInfo ? shippingInfo?.phone : "");
   const navigate = useNavigate();
   const handleShippingSubmit = (e) => {
     e.preventDefault();
@@ -37,7 +37,7 @@ const Shipping = ({ HeaderComponent, FooterComponent }) => {
       phoneNum: phone,
       pinCode: pinCode,
     };
-    dispatch(shippingInforSubmit(formShipping));
+    dispatch(shippingInfoSubmit(formShipping));
     navigate("../order/confirm");
   };
   return (

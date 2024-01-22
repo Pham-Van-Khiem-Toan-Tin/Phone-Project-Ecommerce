@@ -3,7 +3,7 @@ const ObjectId = mongoose.Schema.ObjectId;
 
 const orderSchema = new mongoose.Schema(
   {
-    shippingInfor: {
+    shippingInfo: {
       address: {
         type: String,
         required: true,
@@ -59,7 +59,7 @@ const orderSchema = new mongoose.Schema(
       ref: "users",
       required: true,
     },
-    paymentInfor: {
+    paymentInfo: {
       id: {
         type: String,
         required: true,
@@ -96,7 +96,7 @@ const orderSchema = new mongoose.Schema(
     orderStatus: {
       type: String,
       required: true,
-      defaul: "Processing",
+      default: "Processing",
     },
     deliveredAt: Date,
   },

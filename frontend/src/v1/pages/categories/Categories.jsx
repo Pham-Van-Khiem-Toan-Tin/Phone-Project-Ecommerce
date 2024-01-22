@@ -75,14 +75,6 @@ const Categories = ({ HeaderComponent, FooterComponent }) => {
     setRating(storedRatings || 0);
     setMinValue(storedMinValue || 0);
     setMaxValue(storedMaxValue || 2200);
-    console.log({
-      keyword,
-      currentPage,
-      minValue,
-      maxValue,
-      category,
-      ratings,
-    });
     dispatch(
       getAllProducts({
         keyword,

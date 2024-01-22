@@ -7,6 +7,7 @@ import {
   FaHeart,
   FaUser,
   FaShoppingCart,
+  FaBars,
 } from "react-icons/fa";
 import { BiSolidDiscount, BiCartAdd } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
@@ -69,10 +70,16 @@ const Header = () => {
                 Deliver to <span className="fw-bold">423651</span>
               </span>
             </div>
-            <Link to="/orders" className="d-flex align-items-center justify-content-center gap-1">
+            <Link
+              to="/orders"
+              className="d-flex align-items-center justify-content-center gap-1"
+            >
               <FaShippingFast /> Track your order
             </Link>
-            <Link to="/discount" className="d-flex align-items-center justify-content-center gap-1">
+            <Link
+              to="/discount"
+              className="d-flex align-items-center justify-content-center gap-1"
+            >
               <BiSolidDiscount /> All Offers
             </Link>
           </div>
@@ -82,7 +89,7 @@ const Header = () => {
       {/* bottom menu */}
       <div className="middle-header">
         <div className="container d-flex align-items-center justify-content-between">
-          <div className="toogle-menu-home d-flex align-items-center justify-content-center gap-2">
+          <div className="toggle-menu-home d-flex align-items-center justify-content-center gap-2">
             <button
               className="btn"
               type="button"
@@ -90,17 +97,36 @@ const Header = () => {
               data-bs-target="#menuCanvas"
               aria-controls="menuCanvas"
             >
-              <FaAlignLeft />
+              <FaBars />
             </button>
             <Link to="/" className="logo">
-              <FaAmazonPay />
+              K-store
             </Link>
           </div>
           <InputSearch />
           <div className="group-account-cart d-flex align-items-center justify-content-center">
-            <Link to="/login" className="rounded">
-              <FaUser />
-            </Link>
+            <div className="dropdown rounded">
+              <button
+                className="btn btn-secondary dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <FaUser />
+              </button>
+              <ul className="dropdown-menu">
+                <li>
+                  <Link to="/login" className="rounded">
+                    Account
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/login" className="rounded">
+                    Logout
+                  </Link>
+                </li>
+              </ul>
+            </div>
             <Link to="/wishlist" className="rounded">
               <FaHeart />
             </Link>

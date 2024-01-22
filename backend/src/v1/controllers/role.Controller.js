@@ -33,6 +33,14 @@ module.exports.getRoleList = catchAsyncError(async (req, res, next) => {
   }
 });
 
-module.exports.editRoleList = catchAsyncError(async (req, res, next) => {});
+module.exports.editRoleList = catchAsyncError(async (req, res, next) => {
+  try {
+    const roles = req.body.roles;
+    console.log(JSON.stringify(roles));
+    
+  } catch (error) {
+    
+  }
+});
 
 module.exports.createRoleList = catchAsyncError(async (req, res, next) => {});

@@ -1,7 +1,11 @@
 .all-products {
-  min-height: 100vh;
   background-color: #383854;
   color: #fff;
+  margin-top: 98.25px;
+  margin-left: 11rem;
+  padding: 0.5rem;
+  padding-right: 2rem;
+  min-height: 100vh;
 }
 .all-products .top-product {
   background-color: #2e2e48;
@@ -46,6 +50,10 @@
   font-weight: 600;
 }
 .all-products .last-products .search input {
+  font-size: 0.8rem;
+}
+.all-products .last-products .search select, .all-products .last-products .search input {
+  width: 10rem;
   font-size: 0.8rem;
 }
 .all-products .last-products table {

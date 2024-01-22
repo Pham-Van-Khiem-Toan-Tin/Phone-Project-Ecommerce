@@ -35,17 +35,37 @@ header .middle-header svg {
   fill: #36a4d5;
   display: block;
 }
-header .middle-header .toogle-menu-home button {
-  display: none;
+header .middle-header .toggle-menu-home button {
   background-color: #f3f9fb;
 }
-header .middle-header .toogle-menu-home .logo {
-  font-size: 3rem;
+header .middle-header .toggle-menu-home .logo {
+  font-size: 1.5em;
+  font-weight: 700;
 }
 header .middle-header .group-account-cart .line {
   width: 1px;
   height: 1.1rem;
   background-color: #a7a7a7;
+}
+header .middle-header .group-account-cart .dropdown button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+header .middle-header .group-account-cart .dropdown button::after {
+  display: none;
+}
+header .middle-header .group-account-cart .dropdown .dropdown-menu {
+  min-width: 6rem !important;
+  padding: 0;
+}
+header .middle-header .group-account-cart .dropdown .dropdown-menu li {
+  width: 100%;
+}
+header .middle-header .group-account-cart .dropdown .dropdown-menu li a {
+  display: block;
+  width: 100%;
+  font-size: 0.8rem;
 }
 header .middle-header .group-account-cart a {
   font-size: 1.2rem;

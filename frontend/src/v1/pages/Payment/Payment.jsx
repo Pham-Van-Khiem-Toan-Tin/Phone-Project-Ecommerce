@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { FaCreditCard, FaCalendarAlt, FaKey } from "react-icons/fa";
-import { createOrder } from "../../reduxToolkit/actions/orderAction";
+import { createOrder } from "../../reduxToolkit/actions/order.action";
 import { clearError } from "../../reduxToolkit/reducer/order/newOrderSlice";
 const Payment = ({ HeaderComponent, FooterComponent }) => {
   const dispatch = useDispatch();
@@ -20,8 +20,8 @@ const Payment = ({ HeaderComponent, FooterComponent }) => {
   const elmements = useElements();
   const navigate = useNavigate();
   const payBtn = useRef(null);
-  const orderInfor = JSON.parse(sessionStorage.getItem("orderInfor"));
-  const { shippingInfor, cartList } = useSelector((state) => state.cart);
+  const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
+  const { shippingInfo, cartList } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
   const { error } = useSelector((state) => state.newOrder);
   const listOrder = [];
@@ -35,15 +35,15 @@ const Payment = ({ HeaderComponent, FooterComponent }) => {
     });
   }
   const order = {
-    shippingInfor,
+    shippingInfo,
     orderItems: listOrder,
-    itemsPrice: orderInfor.subtotal,
-    taxPrice: Math.round( orderInfor.tax / 23000),
-    shippingPrice: orderInfor.shippingCharges,
-    totalPrice: Math.round( orderInfor.totalPrice / 23000),
+    itemsPrice: orderInfo.subtotal,
+    taxPrice: Math.round( orderInfo.tax / 23000),
+    shippingPrice: orderInfo.shippingCharges,
+    totalPrice: Math.round( orderInfo.totalPrice / 23000),
   };
   const paymentData = {
-    amount: Math.round(orderInfor.totalPrice / 23000),
+    amount: Math.round(orderInfo.totalPrice / 23000),
   };
   const submitHandle = async (e) => {
     e.preventDefault();
@@ -71,11 +71,11 @@ const Payment = ({ HeaderComponent, FooterComponent }) => {
             name: user.name,
             email: user.email,
             address: {
-              line1: shippingInfor.address,
-              city: shippingInfor.city,
-              state: shippingInfor.state,
-              postal_code: shippingInfor.pinCode,
-              country: shippingInfor.country,
+              line1: shippingInfo.address,
+              city: shippingInfo.city,
+              state: shippingInfo.state,
+              postal_code: shippingInfo.pinCode,
+              country: shippingInfo.country,
             },
           },
         },
@@ -85,7 +85,7 @@ const Payment = ({ HeaderComponent, FooterComponent }) => {
         toast.error(result.error.message);
       } else {
         if (result.paymentIntent.status === "succeeded") {
-          order.paymentInfor = {
+          order.paymentInfo = {
             id: result.paymentIntent.id,
             status: result.paymentIntent.status,
           };
@@ -129,7 +129,7 @@ const Payment = ({ HeaderComponent, FooterComponent }) => {
             <input
               type="submit"
               value={`Pay - ${
-                orderInfor && Math.round(orderInfor.totalPrice / 23000)
+                orderInfo && Math.round(orderInfo.totalPrice / 23000)
               }$`}
               ref={payBtn}
               className="btn btn-submit btn-sm btn-warning text-danger"

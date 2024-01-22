@@ -6,7 +6,7 @@ const {
   myOrders,
   updateOrder,
   deleteOrder,
-} = require("../controllers/orderController");
+} = require("../controllers/order.Controller");
 const {
   isAuthenticatedUser,
   isAuthorizeRoles,

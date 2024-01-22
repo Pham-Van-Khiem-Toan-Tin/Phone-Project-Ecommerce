@@ -3,9 +3,32 @@ $background-neu: #2e2e48;
 $background-thead: #383854;
 
 .role-management {
-  min-height: 100vh;
   background-color: $background-dashboard;
   color: #fff;
+  margin-top: 98.25px;
+  margin-left: 11rem;
+  padding: 0.5rem;
+  padding-right: 2rem;
+  min-height: 100vh;
+  .title {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  .role-tabs {
+    min-height: 100vh;
+  }
+  .new-role-name {
+    margin-bottom: 2rem;
+    label {
+      font-size: 0.8rem;
+      font-weight: 700;
+
+    }
+    input {
+      width: 20rem;
+      font-size: 0.8rem;
+    }
+  }
   .react-tabs__tab {
     font-size: 0.9rem;
     background-color: transparent;
@@ -24,6 +47,7 @@ $background-thead: #383854;
 
   .function {
     padding-right: 0;
+    margin-bottom: 0;
     .react-tabs__tab {
       font-size: 0.8rem;
       background-color: transparent;
@@ -49,6 +73,8 @@ $background-thead: #383854;
   }
   .sub-list {
     border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+
     box-shadow: inset 21px 21px 42px #242437,
             inset -21px -21px 42px #4c4c71;
     .sub-function {

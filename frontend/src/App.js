@@ -13,7 +13,7 @@ import ProtectRoute from "./v1/Route/ProtectRoute";
 import "react-toastify/dist/ReactToastify.css";
 import * as bootstrap from "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import DashBoard from "./v1/pages/Admin/DashBoard";
+import DashBoard from "./v1/pages/Admin/Dashboard/DashBoard";
 import AllProduct from "./v1/pages/Admin/AllProduct";
 import CreateProduct from "./v1/pages/Admin/CreateProduct";
 import UpdateProduct from "./v1/pages/Admin/UpdateProduct";
@@ -42,7 +42,11 @@ import ProductReview from "./v1/pages/Admin/ProductReview";
 import RoleManagement from "./v1/pages/Admin/role.management";
 import NotFound from "./v1/pages/NotFound/NotFound";
 import { socket } from "./socket";
+import AdminSideBar from "./v1/components/layouts/AdminSideBar";
 import AdminHeader from "./v1/components/layouts/AdminHeader";
+import RoleUpdate from "./v1/pages/Admin/role.update";
+import RoleCreate from "./v1/pages/Admin/role.create";
+import CategoriesManagement from "./v1/pages/Admin/categories.management";
 function App() {
   const [isConnected, setIsConnected] = useState(socket.connected);
   const [fooEvents, setFooEvents] = useState([]);
@@ -138,43 +142,55 @@ function App() {
         />
         <Route
           path="/admin/dashboard" 
-          element={<ProtectRoute isAdmin={true} children={<DashBoard ChildrenComponent={AdminHeader}/>} />}
+          element={<ProtectRoute isAdmin={true} children={<DashBoard SideBarComponent={AdminSideBar} HeaderComponent={AdminHeader}/>} />}
         />
         <Route
           path="/admin/all-products" 
-          element={<ProtectRoute isAdmin={true} children={<AllProduct ChildrenComponent={AdminHeader}/>} />}
+          element={<ProtectRoute isAdmin={true} children={<AllProduct SideBarComponent={AdminSideBar} HeaderComponent={AdminHeader}/>} />}
         />
         <Route
           path="/admin/new-product" 
-          element={<ProtectRoute isAdmin={true} children={<CreateProduct ChildrenComponent={AdminHeader}/>} />}
+          element={<ProtectRoute isAdmin={true} children={<CreateProduct SideBarComponent={AdminSideBar} HeaderComponent={AdminHeader}/>} />}
         />
         <Route
           path="/admin/product/:id" 
-          element={<ProtectRoute isAdmin={true} children={<UpdateProduct ChildrenComponent={AdminHeader}/>} />}
+          element={<ProtectRoute isAdmin={true} children={<UpdateProduct SideBarComponent={AdminSideBar} HeaderComponent={AdminHeader}/>} />}
         />
         <Route
           path="/admin/all-orders" 
-          element={<ProtectRoute isAdmin={true} children={<OrdersAdmin ChildrenComponent={AdminHeader}/>} />}
+          element={<ProtectRoute isAdmin={true} children={<OrdersAdmin SideBarComponent={AdminSideBar} HeaderComponent={AdminHeader}/>} />}
         />
         <Route
           path="/admin/order/:id"
-          element={<ProtectRoute isAdmin={true} children={<ProcessOrder ChildrenComponent={AdminHeader}/>} />}
+          element={<ProtectRoute isAdmin={true} children={<ProcessOrder SideBarComponent={AdminSideBar} HeaderComponent={AdminHeader}/>} />}
         />
         <Route
           path="/admin/all-users" 
-          element={<ProtectRoute isAdmin={true} children={<AllUser ChildrenComponent={AdminHeader}/>} />}
+          element={<ProtectRoute isAdmin={true} children={<AllUser SideBarComponent={AdminSideBar} HeaderComponent={AdminHeader}/>} />}
         />
         <Route
           path="/admin/user/:id" 
-          element={<ProtectRoute isAdmin={true} children={<UpdateUser ChildrenComponent={AdminHeader}/>} />}
+          element={<ProtectRoute isAdmin={true} children={<UpdateUser SideBarComponent={AdminSideBar}/>} />}
+        />
+        <Route
+          path="/admin/category" 
+          element={<ProtectRoute isAdmin={true} children={<CategoriesManagement SideBarComponent={AdminSideBar} HeaderComponent={AdminHeader}/>} />}
         />
         <Route
           path="/admin/role-management" 
-          element={<ProtectRoute isAdmin={true} children={<RoleManagement ChildrenComponent={AdminHeader}/>} />}
+          element={<ProtectRoute isAdmin={true} children={<RoleManagement SideBarComponent={AdminSideBar} HeaderComponent={AdminHeader}/>} />}
+        />
+        <Route
+          path="/admin/role-management/update" 
+          element={<ProtectRoute isAdmin={true} children={<RoleUpdate SideBarComponent={AdminSideBar} HeaderComponent={AdminHeader}/>} />}
+        />
+        <Route
+          path="/admin/role-management/create" 
+          element={<ProtectRoute isAdmin={true} children={<RoleCreate SideBarComponent={AdminSideBar} HeaderComponent={AdminHeader}/>} />}
         />
         <Route
           path="/admin/reviews" 
-          element={<ProtectRoute isAdmin={true} children={<ProductReview ChildrenComponent={AdminHeader}/>} />}
+          element={<ProtectRoute isAdmin={true} children={<ProductReview SideBarComponent={AdminSideBar}/>} />}
         />
         <Route path="*" element={<NotFound />} />
       </Routes>

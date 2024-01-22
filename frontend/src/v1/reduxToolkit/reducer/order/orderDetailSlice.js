@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { orderDetail } from "../../actions/orderAction";
+import { orderDetail } from "../../actions/order.action";
 
 const orderDetailSlice = createSlice({
     name: "orderDetail",

@@ -9,7 +9,7 @@ const addItemCartSlice = createSlice({
     error: null,
     cartList: null,
     total: null,
-    shippingInfor: {},
+    shippingInfo: {},
   },
   reducers: {
     clearErrorCart: (state) => {
@@ -18,9 +18,9 @@ const addItemCartSlice = createSlice({
     resetToCart: (state) => {
       state.success = null;
     },
-    shippingInforSubmit: (state, action) => {
-      localStorage.setItem("shippingInfor", JSON.stringify(action.payload))
-      state.shippingInfor = action.payload;
+    shippingInfoSubmit: (state, action) => {
+      localStorage.setItem("shippingInfo", JSON.stringify(action.payload))
+      state.shippingInfo = action.payload;
     }
   },
   extraReducers: (builder) => {
@@ -79,5 +79,5 @@ const addItemCartSlice = createSlice({
   },
 });
 
-export const { clearErrorCart, resetToCart, shippingInforSubmit } = addItemCartSlice.actions;
+export const { clearErrorCart, resetToCart, shippingInfoSubmit } = addItemCartSlice.actions;
 export default addItemCartSlice.reducer;

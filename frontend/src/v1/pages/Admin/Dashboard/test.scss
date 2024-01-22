@@ -1,0 +1,15 @@
+.react-lef {
+
+    .leaflet-container {
+        height: 600px;
+        width: 100%;
+      }
+      
+      .leaflet-div-icon {
+        background: transparent;
+        border: none;
+      }
+      .leaflet-bottom.leaflet-right {
+        display: none;
+      }
+}

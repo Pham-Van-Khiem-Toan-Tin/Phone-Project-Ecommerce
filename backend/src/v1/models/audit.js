@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const ObjectId = mongoose.Schema.ObjectId;
 const auditSchema = new mongoose.Schema({
     user_name: {
         type: String,
@@ -9,33 +9,13 @@ const auditSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    action_type: {
-        type: String,
-        required: true
-    },
-    sub_function_type: {
-        type: String,
-        required: true
-    },
     description: {
         type: String,
         required: true
     },
-    affected_table: {
-        type: String,
-        required: true
-    },
-    old_value: {
-        type: String,
-        required: true
-    },
-    new_value: {
-        type: String,
-        required: true
-    },
-    modified_by: {
-        type: String,
-        required: true
+    product_id: {
+        type: ObjectId,
+        ref: "products"
     },
     created_by: {
         type: String,

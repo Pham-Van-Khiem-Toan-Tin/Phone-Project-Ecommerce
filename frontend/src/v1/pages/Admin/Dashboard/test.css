@@ -1,0 +1,11 @@
+.react-lef .leaflet-container {
+  height: 600px;
+  width: 100%;
+}
+.react-lef .leaflet-div-icon {
+  background: transparent;
+  border: none;
+}
+.react-lef .leaflet-bottom.leaflet-right {
+  display: none;
+}/*# sourceMappingURL=test.css.map */

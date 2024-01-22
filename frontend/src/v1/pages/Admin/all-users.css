@@ -1,7 +1,11 @@
 .all-users {
-  min-height: 100vh;
   background-color: #383854;
   color: #fff;
+  margin-top: 98.25px;
+  margin-left: 11rem;
+  padding: 0.5rem;
+  padding-right: 2rem;
+  min-height: 100vh;
 }
 .all-users .date-picker select {
   color: #fff;
@@ -53,4 +57,16 @@
 }
 .all-users .last-users table thead tr th {
   font-weight: 400;
+}
+.all-users .last-users table thead tr td svg {
+  font-size: 0.8rem;
+  display: inline-block;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+.all-users .last-users table tbody tr td svg {
+  font-size: 0.8rem;
+  display: inline-block;
+  margin-left: 0.5rem;
+  cursor: pointer;
 }/*# sourceMappingURL=all-users.css.map */

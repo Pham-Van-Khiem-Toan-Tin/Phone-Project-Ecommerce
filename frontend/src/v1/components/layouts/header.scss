@@ -44,13 +44,13 @@ header {
       fill: $svg-color;
       display: block;
     }
-    .toogle-menu-home {
+    .toggle-menu-home {
       button {
-        display: none;
         background-color: $background-toggle-search;
       }
       .logo {
-        font-size: 3rem;
+        font-size: 1.5em;
+        font-weight: 700;
       }
     }
     .group-account-cart {
@@ -58,6 +58,29 @@ header {
         width: 1px;
         height: 1.1rem;
         background-color: $color-primary;
+      }
+      .dropdown {
+        button {
+          border: none;
+          outline: none;
+          background-color: transparent;
+          &::after {
+            display: none;
+          }
+        }
+        .dropdown-menu {
+          min-width: 6rem !important;
+          padding: 0;
+          li {
+            width: 100%;
+            a {
+              display: block;
+            width: 100%;
+
+              font-size: 0.8rem;
+            }
+          }
+        }
       }
       a {
         font-size: 1.2rem;
