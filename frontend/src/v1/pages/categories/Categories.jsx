@@ -36,7 +36,7 @@ const Categories = ({ HeaderComponent, FooterComponent }) => {
   const { error: errorCart, success: successCart } = useSelector(
     (state) => state.cart
   );
-  const listCategories = ["Gaming", "Selfie", "Movie", "Study"];
+  const listCategories = ["Pro", "Pro Max", "Plus", "SE"];
   const brand = ["Samsung", "Apple", "Xiaomi", "Oppo"];
   const [currentPage, setCurrentPage] = useState(1);
   const [category, setCategory] = useState("");

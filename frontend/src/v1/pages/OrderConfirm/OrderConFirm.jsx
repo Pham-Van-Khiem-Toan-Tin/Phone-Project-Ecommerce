@@ -84,6 +84,14 @@ const OrderConFirm = ({ HeaderComponent, FooterComponent }) => {
                 <span>Total:</span>
                 <span>{Math.round(totalPrice/23000)} $</span>
               </div>
+              <div className="d-flex justify-content-between">
+                <div>
+                  <input type="checkbox"/> <span>Card</span>
+                </div>
+                <div>
+                  <input type="checkbox"/> <span>Cash</span>
+                </div>
+              </div>
               <button
                 className="btn btn-primary btn-sm w-100 mt-2"
                 onClick={processToPayment}

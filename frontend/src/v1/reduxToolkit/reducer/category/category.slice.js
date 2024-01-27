@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getRoleList, updateRoleList } from "../../actions/role.actions";
 import { createCategory, getAllCategory, updateCategory } from "../../actions/category.action";
 
 const categorySlice = createSlice({

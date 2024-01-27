@@ -20,4 +20,14 @@ $background-header: #2e2e48;
         border: 1px solid #fff;
         color: #fff;
     }
+    .dropdown {
+        .dropdown-menu {
+            padding: 0 !important;
+            .dropdown-item {
+                color: #2e2e48;
+                font-size: 0.8rem;
+                cursor: pointer;
+            }
+        }
+    }
 }

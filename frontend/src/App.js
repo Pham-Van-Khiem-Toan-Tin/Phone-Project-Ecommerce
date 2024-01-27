@@ -47,6 +47,8 @@ import AdminHeader from "./v1/components/layouts/AdminHeader";
 import RoleUpdate from "./v1/pages/Admin/role.update";
 import RoleCreate from "./v1/pages/Admin/role.create";
 import CategoriesManagement from "./v1/pages/Admin/categories.management";
+import ColorManagement from "./v1/pages/Admin/color.management";
+import Wish from "./v1/pages/Wish/Wish";
 function App() {
   const [isConnected, setIsConnected] = useState(socket.connected);
   const [fooEvents, setFooEvents] = useState([]);
@@ -102,6 +104,10 @@ function App() {
         <Route
           path="/me/update"
           element={<ProtectRoute children={<UpdateProfile HeaderComponent={Header} FooterComponent={Footer}/>} />}
+        />
+        <Route
+          path="/wishlist"
+          element={<ProtectRoute children={<Wish HeaderComponent={Header} FooterComponent={Footer}/>} />}
         />
         <Route
           path="/password/update"
@@ -177,6 +183,10 @@ function App() {
           element={<ProtectRoute isAdmin={true} children={<CategoriesManagement SideBarComponent={AdminSideBar} HeaderComponent={AdminHeader}/>} />}
         />
         <Route
+          path="/admin/color" 
+          element={<ProtectRoute isAdmin={true} children={<ColorManagement SideBarComponent={AdminSideBar} HeaderComponent={AdminHeader}/>} />}
+        />
+        <Route
           path="/admin/role-management" 
           element={<ProtectRoute isAdmin={true} children={<RoleManagement SideBarComponent={AdminSideBar} HeaderComponent={AdminHeader}/>} />}
         />
@@ -190,7 +200,7 @@ function App() {
         />
         <Route
           path="/admin/reviews" 
-          element={<ProtectRoute isAdmin={true} children={<ProductReview SideBarComponent={AdminSideBar}/>} />}
+          element={<ProtectRoute isAdmin={true} children={<ProductReview SideBarComponent={AdminSideBar} HeaderComponent={AdminHeader}/>} />}
         />
         <Route path="*" element={<NotFound />} />
       </Routes>

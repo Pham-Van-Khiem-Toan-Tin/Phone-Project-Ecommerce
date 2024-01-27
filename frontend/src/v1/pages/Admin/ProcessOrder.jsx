@@ -7,7 +7,7 @@ import {
   updateOrder,
 } from "../../reduxToolkit/actions/order.action";
 import { Link, useParams } from "react-router-dom";
-import { FaBoxOpen } from "react-icons/fa";
+import { FaBoxOpen, FaCommentMedical } from "react-icons/fa";
 import "./ProcessOrder.css";
 import {
   clearErrorOrder,
@@ -51,7 +51,7 @@ const ProcessOrder = ({ SideBarComponent, HeaderComponent }) => {
       <SideBarComponent />
       <HeaderComponent />
       <div className="process_order">
-        <div className="order_detail ">
+        <div className="order-detail ">
           <h5>#Order: {order && order._id}</h5>
           <h5>Shipping Info</h5>
           <div className="order_detail_box">
@@ -109,19 +109,39 @@ const ProcessOrder = ({ SideBarComponent, HeaderComponent }) => {
           </div>
           <div className="order_detail_cart_item">
             <h5>Order Items: </h5>
-            {order.orderItems &&
-              order.orderItems.map((item) => (
-                <div key={item.product}>
-                  <img src={item.image} alt="Product" />
-                  <Link to={`/categories/${item.product}`}>
-                    {item.name}
-                  </Link>{" "}
-                  <span>
-                    {item.quantity} X {item.price} vnd ={" "}
-                    <b>{item.quantity * item.price} vnd</b>
-                  </span>
-                </div>
-              ))}
+            <div className="table-responsive">
+              <table className="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Imgae</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {order.orderItems &&
+                    order.orderItems.map((item) => (
+                      <tr key={item.product}>
+                        <td>
+                          <img src={item.image} alt="Product" />
+                        </td>
+                        <td>
+                          <Link to={`/categories/${item.product}`}>
+                            {item.name}
+                          </Link>
+                        </td>
+                        <td>{item.quantity} X</td>
+                        <td>{Math.round(item.price / 23000)} $</td>
+                        <td>
+                          {item.quantity * Math.round(item.price / 23000)} $
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
         <div

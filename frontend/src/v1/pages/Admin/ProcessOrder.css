@@ -8,7 +8,8 @@
   min-height: 120vh;
   height: 100%;
 }
-.order_detail {
+.process_order .order-detail {
+  margin-top: 0;
   color: #fff;
 }
 .process_order .process_order-handle {
@@ -38,4 +39,5 @@
   border-radius: 50px;
   background: #476DB5;
   box-shadow: 20px 20px 60px #3c5d9a, -20px -20px 60px #527dd0;
-}/*# sourceMappingURL=ProcessOrder.css.map */
+}
+/*# sourceMappingURL=ProcessOrder.css.map */

@@ -6,45 +6,13 @@
   padding: 0.5rem;
   padding-right: 2rem;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .create-product form {
   display: flex;
   flex-direction: column;
-  background: #fff;
-  border-radius: 20px;
-  color: #fff;
-  margin: 0 10px;
-  padding: 20px;
-  background: #5764b3;
-  box-shadow: 20px 20px 60px #4a5598, -20px -20px 60px #6473ce;
 }
-.create-product form label {
-  font-size: 20px;
-  font-weight: 600;
-}
-.create-product form input {
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  padding: 5px 10px;
-  outline: none;
-  margin: 10px;
-}
-.create-product form textarea {
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  padding: 5px 10px;
-  outline: none;
-  margin: 10px;
-}
-.create-product form select {
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  padding: 5px 10px;
-  outline: none;
-  margin: 10px;
+.create-product form input, .create-product form select, .create-product form textarea {
+  margin-bottom: 1rem;
 }
 .create-product form input[type=file] {
   border: none;
@@ -76,7 +44,7 @@
   height: 2rem;
   margin: 0.2rem;
 }
-.create-product form .imagesPreview img {
+.create-product form .image-preview {
   width: 2rem;
   height: 2rem;
   margin: 0.2rem;

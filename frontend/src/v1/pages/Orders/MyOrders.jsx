@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "./MyOrders.css";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { clearError } from "../../reduxToolkit/reducer/order/myOrderSlice";
@@ -7,6 +6,7 @@ import { myOrders } from "../../reduxToolkit/actions/order.action";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
+import "./my-order.css";
 const MyOrders = ({HeaderComponent, FooterComponent}) => {
   const dispatch = useDispatch();
   const { isLoading, error, orders } = useSelector((state) => state.myOrders);
@@ -38,8 +38,18 @@ const MyOrders = ({HeaderComponent, FooterComponent}) => {
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="myorders">
+        <div className="my-order">
           <div className="container table-responsive">
+          <nav aria-label="breadcrumb">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
+                <span className="fw-bold">Home</span>
+              </li>
+              <li className="breadcrumb-item" aria-current="page">
+                orders
+              </li>
+            </ol>
+          </nav>
             <table className="table table-bordered table-hover">
               <thead>
                 <tr>

@@ -8,7 +8,10 @@ import {
   newReviewReset,
 } from "../../reduxToolkit/reducer/product/newReviewSlice";
 import "./product-detail-tabs.css";
-import { getAllReviews, newReview } from "../../reduxToolkit/actions/productAction";
+import {
+  getAllReviews,
+  newReview,
+} from "../../reduxToolkit/actions/productAction";
 const ProductDetailTabs = (props) => {
   const { description, productId } = props;
   const dispatch = useDispatch();
@@ -28,7 +31,7 @@ const ProductDetailTabs = (props) => {
   };
   const handleRating = (newRating) => {
     setRatings(newRating);
-  }
+  };
   const handleAddSubmit = () => {
     const myForm = new FormData();
     myForm.set("rating", ratings);
@@ -96,9 +99,23 @@ const ProductDetailTabs = (props) => {
           ) : (
             <>
               {reviews.map((item) => (
-                <div className="d-flex align-items-center">
-                  <img className="avatar" src={Avatar} />
-                  <span className="comment rounded">{item.comment}</span>
+                <div className="review-box rounded ">
+                  <div className="user-box d-flex">
+                    <div>
+                      <img className="avatar" src={Avatar} />
+                      <p>{item?.name}</p>
+                    </div>
+                    <span className="comment rounded">{item?.comment}</span>
+                  </div>
+                  {item?.feed_back && (
+                    <div className="admin-box d-flex">
+                      <div>
+                        <img className="avatar" src={Avatar} />
+                        <p className="text-center">Admin</p>
+                      </div>
+                      <span className="comment rounded">{item?.feed_back}</span>
+                    </div>
+                  )}
                 </div>
               ))}
             </>
@@ -136,7 +153,9 @@ const ProductDetailTabs = (props) => {
                   starDimension="15px"
                   starSpacing="1px"
                 />
-                <textarea onChange={(e) => setComment(e.target.value)}></textarea>
+                <textarea
+                  onChange={(e) => setComment(e.target.value)}
+                ></textarea>
               </div>
             </div>
             <div className="modal-footer">
@@ -147,7 +166,11 @@ const ProductDetailTabs = (props) => {
               >
                 Close
               </button>
-              <button onClick={handleAddSubmit} type="button" className="btn btn-sm btn-primary">
+              <button
+                onClick={handleAddSubmit}
+                type="button"
+                className="btn btn-sm btn-primary"
+              >
                 Submit
               </button>
             </div>

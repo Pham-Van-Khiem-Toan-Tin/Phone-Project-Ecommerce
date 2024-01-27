@@ -19,6 +19,8 @@ const Carousel = ({
   responsive,
   modules,
   title,
+  titleName,
+  content
 }) => {
   const moduleAccess = [];
   for (let i = 0; i < modules.length; i++) {
@@ -32,7 +34,7 @@ const Carousel = ({
       {title && (
         <div className="carousel-swiper-title d-flex align-items-center justify-content-between">
           <span className="title-content">
-            Grab the best deal on <span>Iphone</span>
+            {content} <span>{titleName}</span>
             <div className="line"></div>
           </span>
           <Link to="/categories">
@@ -56,11 +58,11 @@ const Carousel = ({
         }}
       >
         {datas &&
-          datas.map((data) => {
+          datas.map((data, index) => {
             return (
               data && (
                 <div key={data._id}>
-                  <SwiperSlide key={data._id}>
+                  <SwiperSlide key={data?._id ? data.id : index}>
                     <ChildComponent data={data} />
                   </SwiperSlide>
                 </div>

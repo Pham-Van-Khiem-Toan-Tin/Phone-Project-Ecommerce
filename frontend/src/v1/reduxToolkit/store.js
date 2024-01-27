@@ -11,6 +11,7 @@ import allProductsHomeReducer from "./reducer/product/productsHomeSlice";
 import productDetailReducer from "./reducer/product/productDetailSlice";
 import newProductReviewReducer from "./reducer/product/newReviewSlice";
 import addToCartReducer from "./reducer/product/cartProductSlice";
+import addToWishReducer from "./reducer/wish/wish.slice";
 import newOrderReducer from "./reducer/order/newOrderSlice";
 import myOrdersReducer from "./reducer/order/myOrderSlice";
 import getOrderDetailReducer from "./reducer/order/orderDetailSlice";
@@ -22,6 +23,8 @@ import reviewReducer from "./reducer/product/reviewSlice";
 import compareReducer from "./reducer/product/compareProductSlice";
 import roleReducer from "./reducer/role/role.slice";
 import categoryReducer from "./reducer/category/category.slice";
+import colorReducer from "./reducer/color/color.slice";
+import reviewsReducer from "./reducer/review/review.slice";
 
 const store = configureStore({
   reducer: {
@@ -47,7 +50,10 @@ const store = configureStore({
     review: reviewReducer,
     compare: compareReducer,
     role: roleReducer,
-    category: categoryReducer
+    category: categoryReducer,
+    color: colorReducer,
+    reviews: reviewsReducer,
+    wish: addToWishReducer
   },
 });
 export default store;

@@ -16,13 +16,18 @@ import Carousel from "../../components/Carousel/Carousel";
 import Card from "../../components/Card/Card";
 import CardTechDeal from "../../components/CardTechDeal/CardTechDeal";
 import CardBrand from "../../components/CardBrand/CardBrand";
-
+import { dataTech } from "../../../data/imgTest/data";
+import { dataBrand } from "../../../data/imgTest/brandData";
+import { clearErrorWish, resetToWish } from "../../reduxToolkit/reducer/wish/wish.slice";
 const Home = ({HeaderComponent, FooterComponent}) => {
   const dispatch = useDispatch();
   const { isLoading, error, ssproducts, xiaoproducts, approducts, opproducts } =
     useSelector((state) => state.productshome);
   const { error: errorCart, success: successCart } = useSelector(
     (state) => state.cart
+  );
+  const { error: errorWish, success: successWish } = useSelector(
+    (state) => state.wish
   );
   const hotProductResponsive = {
     640: {
@@ -83,7 +88,15 @@ const Home = ({HeaderComponent, FooterComponent}) => {
       toast.success(successCart);
       dispatch(resetToCart());
     }
-  }, [dispatch, error, errorCart, successCart]);
+    if (errorWish) {
+      toast.error(errorWish);
+      dispatch(clearErrorWish());
+    }
+    if (successWish) {
+      toast.success(successWish);
+      dispatch(resetToWish());
+    }
+  }, [dispatch, error, errorCart, successCart, errorWish, successWish]);
   useEffect(() => {
     dispatch(getHotProduct());
   }, [dispatch]);
@@ -96,11 +109,11 @@ const Home = ({HeaderComponent, FooterComponent}) => {
         <div className="Home">
           <div className="container">
             <HomeBannerCarousel />
-            <Carousel ChildComponent={Card} title={true} datas={approducts} responsive={hotProductResponsive} modules={hotProductModule} />
-            <Carousel ChildComponent={Card} title={true} datas={ssproducts} responsive={hotProductResponsive} modules={hotProductModule} />
-            <Carousel ChildComponent={Card} title={true} datas={xiaoproducts} responsive={hotProductResponsive} modules={hotProductModule} />
-            <Carousel ChildComponent={CardTechDeal} title={true} datas={approducts} responsive={techResponsive} modules={techModule} />
-            <Carousel ChildComponent={CardBrand} title={true} datas={approducts} responsive={brandResponsive} modules={brandModule} />
+            <Carousel ChildComponent={Card} content="Best grab on the deal" titleName={"Iphone"} title={true} datas={approducts} responsive={hotProductResponsive} modules={hotProductModule} />
+            <Carousel ChildComponent={Card} content="Best grab on the deal" titleName={"Samsung"} title={true} datas={ssproducts} responsive={hotProductResponsive} modules={hotProductModule} />
+            <Carousel ChildComponent={Card} content="New product" titleName={"Xiaomi"} title={true} datas={xiaoproducts} responsive={hotProductResponsive} modules={hotProductModule} />
+            <Carousel ChildComponent={CardTechDeal} content="Best deal" titleName={"Tech"} title={true} datas={dataTech} responsive={techResponsive} modules={techModule} />
+            <Carousel ChildComponent={CardBrand} content="Best deal" titleName={"Brand"} title={true} datas={dataBrand} responsive={brandResponsive} modules={brandModule} />
           </div>
         </div>
       )}

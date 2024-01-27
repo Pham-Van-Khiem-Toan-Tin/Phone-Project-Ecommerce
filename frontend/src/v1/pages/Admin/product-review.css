@@ -1,0 +1,84 @@
+.review-management {
+  background-color: #383854;
+  color: #fff;
+  margin-top: 98.25px;
+  margin-left: 11rem;
+  padding: 0.5rem;
+  padding-right: 2rem;
+  min-height: 100vh;
+}
+.review-management .review-list {
+  background-color: #2e2e48;
+}
+.review-management .review-list .btn-handle-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.review-management .review-list .btn-handle-group .search, .review-management .review-list .btn-handle-group .sort, .review-management .review-list .btn-handle-group button, .review-management .review-list .btn-handle-group input, .review-management .review-list .btn-handle-group select {
+  font-size: 0.8rem;
+}
+.review-management .review-list .btn-handle-group input, .review-management .review-list .btn-handle-group select {
+  width: 10rem;
+}
+.review-management .review-list .btn-handle-group label {
+  vertical-align: middle;
+}
+.review-management .review-list .btn-handle-group .search, .review-management .review-list .btn-handle-group .sort {
+  display: flex;
+  gap: 0.5rem;
+}
+.review-management .review-list table {
+  margin-top: 2rem;
+  color: #fff;
+  font-size: 0.6rem;
+}
+.review-management .review-list table thead {
+  background-color: #383854;
+  font-size: 0.8rem;
+}
+.review-management .review-list table thead tr th {
+  font-weight: 400;
+}
+.review-management .review-list table tbody tr td button {
+  border: none;
+  outline: none;
+}
+.review-management .review-list table tbody tr td button svg {
+  fill: #fff;
+  vertical-align: baseline;
+}
+.review-management .review-list .pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.review-management .review-list .pagination li button {
+  border: none;
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.6rem;
+  background: #2e2e48;
+  box-shadow: 20px 20px 26px #222235, -20px -20px 26px #3a3a5b;
+}
+.review-management .review-list .pagination button.active {
+  text-decoration: underline;
+  background-color: #ccc;
+}
+
+#delete-modal .modal-content, #edit-modal .modal-content {
+  max-width: 20rem;
+}
+#delete-modal .modal-content .modal-header h1, #edit-modal .modal-content .modal-header h1 {
+  font-size: 1rem;
+}
+#delete-modal .modal-content .modal-body, #edit-modal .modal-content .modal-body {
+  font-size: 0.8rem;
+}
+#delete-modal .modal-content .modal-body label, #edit-modal .modal-content .modal-body label {
+  display: block;
+}
+#delete-modal .modal-content .modal-body input, #delete-modal .modal-content .modal-body textarea, #delete-modal .modal-content .modal-body select, #edit-modal .modal-content .modal-body input, #edit-modal .modal-content .modal-body textarea, #edit-modal .modal-content .modal-body select {
+  width: 100%;
+  font-size: 0.8rem;
+}/*# sourceMappingURL=product-review.css.map */

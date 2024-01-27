@@ -7,6 +7,7 @@ import { FaEye, FaHeart, FaCartPlus } from "react-icons/fa";
 
 import "./card.css";
 import { Link } from "react-router-dom";
+import { addItemToWish } from "../../reduxToolkit/actions/wish.action";
 const Card = (props) => {
   const dispatch = useDispatch();
 
@@ -52,7 +53,9 @@ const Card = (props) => {
               <FaCartPlus />
             </span>
           </li>
-          <li className="product_menu-item">
+          <li className="product_menu-item" onClick={() =>
+              dispatch(addItemToWish({ id: data._id}))
+            }>
             <span>
               <FaHeart />
             </span>

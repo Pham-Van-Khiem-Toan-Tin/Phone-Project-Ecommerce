@@ -49,17 +49,27 @@ const AdminSideBar = () => {
           </Link>
         </div>
         <div className="menu-link">
-          <Link to="../../admin/all-users" className="menu-link rounded ">
+          <Link to="../../admin/all-users" className="menu-link rounded active">
             <FaUser /> <span>All Users</span> 
           </Link>
         </div>
         <div className="menu-link">
-          <Link to="../../admin/role-management" className="menu-link rounded active">
+          <Link to="../../admin/role-management" className="menu-link rounded ">
             <FaUser /> <span>Role Management</span> 
           </Link>
         </div>
         <div className="menu-link">
-          <Link to="../../admin/all-users" className="menu-link rounded">
+          <Link to="../../admin/category" className="menu-link rounded ">
+           <FaLuggageCart /> <span>Category</span> 
+          </Link>
+        </div>
+        <div className="menu-link">
+          <Link to="../../admin/color" className="menu-link rounded">
+           <FaLuggageCart /> <span>Color</span> 
+          </Link>
+        </div>
+        <div className="menu-link">
+          <Link to="../../admin/reviews" className="menu-link rounded ">
            <FaComment /> <span>Reviews</span>
           </Link>
         </div>

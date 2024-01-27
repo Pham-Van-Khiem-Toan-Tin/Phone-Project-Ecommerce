@@ -1,0 +1,101 @@
+$background-dashboard: #383854;
+$background-neu: #2e2e48;
+$background-thead: #383854;
+
+.review-management{
+    background-color: $background-dashboard;
+  color: #fff;
+  margin-top: 98.25px;
+  margin-left: 11rem;
+  padding: 0.5rem;
+  padding-right: 2rem;
+  min-height: 100vh;
+  .review-list {
+    background-color: $background-neu;
+    .btn-handle-group {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .search, .sort, button, input, select {
+        font-size: 0.8rem;
+      }
+      input, select {
+        width: 10rem;
+      }
+      label {
+        vertical-align: middle;
+      }
+      .search, .sort {
+        display: flex;
+        gap: 0.5rem;
+      }
+    }
+    table {
+      margin-top: 2rem;
+      color: #fff;
+      font-size: 0.6rem;
+      thead {
+        background-color: $background-thead;
+        font-size: 0.8rem;
+        tr {
+          th {
+            font-weight: 400;
+          }
+        }
+      }
+      tbody {
+        tr {
+          td {
+            button {
+              border: none;
+              outline: none;
+              svg {
+                fill: #fff;
+                vertical-align: baseline;
+              }
+            }
+          }
+        }
+      }
+    }
+    .pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      li {
+        button {
+          border: none;
+          color: #fff;
+          font-weight: 500;
+          font-size: 0.6rem;
+          background: #2e2e48;
+          box-shadow: 20px 20px 26px #222235, -20px -20px 26px #3a3a5b;
+        }
+      }
+      button.active {
+        text-decoration: underline;
+        background-color: #ccc;
+      }
+    }
+  }
+}
+#delete-modal, #edit-modal {
+  .modal-content {
+    max-width: 20rem;
+    .modal-header {
+      h1 {
+        font-size: 1rem;
+      }
+    }
+    .modal-body {
+      font-size: 0.8rem;
+      label {
+        display:  block;
+      }
+      input, textarea, select {
+        width: 100%;
+        font-size: 0.8rem;
+      }
+    }
+  }
+}

@@ -18,4 +18,12 @@
 .admin-header button {
   border: 1px solid #fff;
   color: #fff;
+}
+.admin-header .dropdown .dropdown-menu {
+  padding: 0 !important;
+}
+.admin-header .dropdown .dropdown-menu .dropdown-item {
+  color: #2e2e48;
+  font-size: 0.8rem;
+  cursor: pointer;
 }/*# sourceMappingURL=admin-header.css.map */

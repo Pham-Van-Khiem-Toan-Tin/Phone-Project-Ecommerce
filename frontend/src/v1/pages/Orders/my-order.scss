@@ -1,0 +1,51 @@
+.my-order {
+  margin-top: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  min-height: 100vh;
+  .container {
+    table {
+      min-width: 40rem;
+      border-collapse: collapse;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      margin: 0 auto;
+      thead th {
+        background-color: #55608f;
+      }
+      th,
+      td {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.2);
+        color: black;
+      }
+      th {
+        text-align: left;
+      }
+      tbody {
+        .icon-handle_user {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          span {
+            display: inline-block;
+            flex: 1;
+            text-align: center;
+            color: black;
+            &:hover {
+              color: #49a09d;
+            }
+            a {
+              color: black;
+              :hover {
+                color: #ccc;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -7,44 +7,13 @@ $background-dashboard: #383854;
   padding: 0.5rem;
   padding-right: 2rem;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   form {
     display: flex;
     flex-direction: column;
-    background: #fff;
-    border-radius: 20px;
-    color: #fff;
-    margin: 0 10px;
-    padding: 20px;
-    background: #5764b3;
-    box-shadow: 20px 20px 60px #4a5598, -20px -20px 60px #6473ce;
-    label {
-      font-size: 20px;
-      font-weight: 600;
-    }
-    input {
-      border: 1px solid rgba(0, 0, 0, 0.3);
-      border-radius: 10px;
-      padding: 5px 10px;
-      outline: none;
-      margin: 10px;
-    }
-    textarea {
-      border: 1px solid rgba(0, 0, 0, 0.3);
-      border-radius: 10px;
-      padding: 5px 10px;
-      outline: none;
-      margin: 10px;
-    }
-    select {
-      border: 1px solid rgba(0, 0, 0, 0.3);
-      border-radius: 10px;
-      padding: 5px 10px;
-      outline: none;
-      margin: 10px;
-    }
+   input, select, textarea {
+    margin-bottom: 1rem;
+   }
+
     input[type="file"] {
       border: none;
     }
@@ -77,7 +46,7 @@ $background-dashboard: #383854;
             margin: 0.2rem;
           }
     }
-    .imagesPreview img {
+    .image-preview {
         width: 2rem;
         height: 2rem;
         margin: 0.2rem;

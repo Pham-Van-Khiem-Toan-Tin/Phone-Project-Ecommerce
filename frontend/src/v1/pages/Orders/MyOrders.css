@@ -1,45 +1,45 @@
-.myorders {
+.my-order {
   display: flex;
   align-items: center;
   justify-content: center;
   color: #000;
   min-height: 100vh;
 }
-.myorders .container table {
+.my-order .container table {
   min-width: 40rem;
   border-collapse: collapse;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   margin: 0 auto;
 }
-.myorders .container table thead th {
+.my-order .container table thead th {
   background-color: #55608f;
 }
-.myorders .container table th, .myorders .container table td {
+.my-order .container table th, .my-order .container table td {
   padding: 15px;
   background-color: rgba(255, 255, 255, 0.2);
   color: black;
 }
-.myorders .container table th {
+.my-order .container table th {
   text-align: left;
 }
-.myorders .container table tbody .icon-handle_user {
+.my-order .container table tbody .icon-handle_user {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.myorders .container table tbody .icon-handle_user span {
+.my-order .container table tbody .icon-handle_user span {
   display: inline-block;
   flex: 1;
   text-align: center;
   color: black;
 }
-.myorders .container table tbody .icon-handle_user span:hover {
+.my-order .container table tbody .icon-handle_user span:hover {
   color: #49a09d;
 }
-.myorders .container table tbody .icon-handle_user span a {
+.my-order .container table tbody .icon-handle_user span a {
   color: black;
 }
-.myorders .container table tbody .icon-handle_user span a:hover {
+.my-order .container table tbody .icon-handle_user span a:hover {
   color: #ccc;
 }/*# sourceMappingURL=MyOrders.css.map */

@@ -47,7 +47,7 @@ module.exports.addCart = catchAsyncError(async (req, res, next) => {
 
 module.exports.deleteProductCart = catchAsyncError(async (req, res, next) => {
   const product_id = req.params.id;
-  const userCart = await userModel.findById(req.user).select("cartId");
+  const userCart = await userModel.findById(req.user).select("cart_id");
   if (!userCart) {
     throw next(new ErrorHandle("You should add product to delete", 500));
   }

@@ -18,19 +18,10 @@ const AdminHeader = () => {
         </button>
         <ul className="dropdown-menu">
           <li>
-            <a className="dropdown-item" href="#">
-              Action
-            </a>
+            <button className="dropdown-item btn btn-sm">Logout</button>
           </li>
           <li>
-            <a className="dropdown-item" href="#">
-              Another action
-            </a>
-          </li>
-          <li>
-            <a className="dropdown-item" href="#">
-              Something else here
-            </a>
+            <Link className="dropdown-item" to="/">Go to user UI</Link>
           </li>
         </ul>
       </div>

@@ -5,7 +5,7 @@ const CardBrand = (props) => {
     const {data} = props;
   return (
     <div className='card-brand'>
-        <img className='rounded' src={brand} alt='' />
+        <img className='rounded' src={data} alt='' />
     </div>
   )
 }

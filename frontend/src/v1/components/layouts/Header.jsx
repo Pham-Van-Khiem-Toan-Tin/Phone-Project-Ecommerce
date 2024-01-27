@@ -153,13 +153,13 @@ const Header = () => {
                 </button>
                 <ul className="dropdown-menu">
                   <li>
-                    <div className="dropdown-item">IphoneXs</div>
+                    <div className="dropdown-item">Pro</div>
                   </li>
                   <li>
-                    <div className="dropdown-item">Iphone 14</div>
+                    <div className="dropdown-item">Pro Max</div>
                   </li>
                   <li>
-                    <div className="dropdown-item">Iphone 15</div>
+                    <div className="dropdown-item">Plus</div>
                   </li>
                 </ul>
               </div>

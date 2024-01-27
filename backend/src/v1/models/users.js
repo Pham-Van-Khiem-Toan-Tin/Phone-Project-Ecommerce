@@ -3,6 +3,7 @@ const validator = require("validator");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
+const { type } = require("os");
 const ObjectId = mongoose.Schema.ObjectId;
 require("dotenv").config();
 
@@ -36,14 +37,10 @@ const userSchema = new mongoose.Schema(
         required: true,
       },
     },
-    wish: [
-      {
-        wProduct: {
+    wish_id: {
           type: ObjectId,
-          ref: "products",
-        },
+          ref: "wishs",
       },
-    ],
     cart_id: {
       type: ObjectId,
       ref: "cart",

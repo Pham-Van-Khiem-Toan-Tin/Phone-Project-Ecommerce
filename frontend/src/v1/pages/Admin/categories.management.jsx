@@ -48,7 +48,7 @@ const CategoriesManagement = ({ SideBarComponent, HeaderComponent }) => {
         id: selectedItem._id,
         name: selectedItem.name.trim(),
         description: selectedItem.description.trim(),
-        parentId: selectedItem.parent._id || (selectedItem.parent || ""),
+        parentId: selectedItem.parent._id || selectedItem.parent || "",
       })
     );
   };
@@ -137,16 +137,14 @@ const CategoriesManagement = ({ SideBarComponent, HeaderComponent }) => {
                           {format(new Date(item?.createdAt), "dd/MM/yyyy")}
                         </td>
                         <td className="action">
-                          <button className="btn btn-sm">
-                            <button
-                              type="button"
-                              className="btn btn-sm"
-                              data-bs-toggle="modal"
-                              data-bs-target="#edit-modal"
-                              onClick={() => handleSelectItemEdit(item)}
-                            >
-                              <FaEdit />
-                            </button>
+                          <button
+                            type="button"
+                            className="btn btn-sm"
+                            data-bs-toggle="modal"
+                            data-bs-target="#edit-modal"
+                            onClick={() => handleSelectItemEdit(item)}
+                          >
+                            <FaEdit />
                           </button>
                         </td>
                       </tr>

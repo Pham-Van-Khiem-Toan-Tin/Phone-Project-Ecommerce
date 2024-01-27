@@ -77,14 +77,14 @@ const OrdersAdmin = ({ SideBarComponent, HeaderComponent }) => {
         backgroundColor: "#475be8",
         borderRadius: 2,
         hoverBackgroundColor: "#36429e",
-        data: [40, 60, 80, 100, 60, 20, 70, 90, 30],
+        data: [60, 63, 81, 102, 80, 21, 72, 97, 34],
       },
       {
-        label: "New Order",
+        label: "Order Success",
         backgroundColor: "#e3e6fc",
         borderRadius: 2,
         hoverBackgroundColor: "#989aa5",
-        data: [60, 10, 20, 60, 80, 100, 60, 20, 70],
+        data: [40, 12, 24, 65, 39, 17, 62, 23, 26],
       },
     ],
   };

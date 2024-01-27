@@ -1,0 +1,90 @@
+.colors-management {
+  background-color: #383854;
+  color: #fff;
+  margin-top: 98.25px;
+  margin-left: 11rem;
+  padding: 0.5rem;
+  padding-right: 2rem;
+  min-height: 100vh;
+}
+.colors-management .colors-list {
+  background-color: #2e2e48;
+}
+.colors-management .colors-list .btn-handle-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.colors-management .colors-list .btn-handle-group .search, .colors-management .colors-list .btn-handle-group .sort, .colors-management .colors-list .btn-handle-group button, .colors-management .colors-list .btn-handle-group input, .colors-management .colors-list .btn-handle-group select {
+  font-size: 0.8rem;
+}
+.colors-management .colors-list .btn-handle-group input, .colors-management .colors-list .btn-handle-group select {
+  width: 10rem;
+}
+.colors-management .colors-list .btn-handle-group label {
+  vertical-align: middle;
+}
+.colors-management .colors-list .btn-handle-group .search, .colors-management .colors-list .btn-handle-group .sort {
+  display: flex;
+  gap: 0.5rem;
+}
+.colors-management .colors-list table {
+  margin-top: 2rem;
+  color: #fff;
+  font-size: 0.6rem;
+}
+.colors-management .colors-list table thead {
+  background-color: #383854;
+  font-size: 0.8rem;
+}
+.colors-management .colors-list table thead tr th {
+  font-weight: 400;
+}
+.colors-management .colors-list table tbody tr td button {
+  border: none;
+  outline: none;
+  padding: 0.5rem;
+}
+.colors-management .colors-list table tbody tr td button svg {
+  vertical-align: baseline;
+}
+.colors-management .colors-list table tbody tr td button.edit svg {
+  fill: #fff;
+}
+.colors-management .colors-list .pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.colors-management .colors-list .pagination li button {
+  border: none;
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.6rem;
+  background: #2e2e48;
+  box-shadow: 20px 20px 26px #222235, -20px -20px 26px #3a3a5b;
+}
+.colors-management .colors-list .pagination button.active {
+  text-decoration: underline;
+  background-color: #ccc;
+}
+
+#create-modal .modal-content, #edit-modal .modal-content {
+  max-width: 20rem;
+}
+#create-modal .modal-content .modal-header h1, #edit-modal .modal-content .modal-header h1 {
+  font-size: 1rem;
+}
+#create-modal .modal-content .modal-body, #edit-modal .modal-content .modal-body {
+  font-size: 0.8rem;
+}
+#create-modal .modal-content .modal-body label, #edit-modal .modal-content .modal-body label {
+  display: block;
+}
+#create-modal .modal-content .modal-body input, #create-modal .modal-content .modal-body textarea, #create-modal .modal-content .modal-body select, #edit-modal .modal-content .modal-body input, #edit-modal .modal-content .modal-body textarea, #edit-modal .modal-content .modal-body select {
+  width: 100%;
+  font-size: 0.8rem;
+}
+#create-modal .modal-content .modal-body input[type=color], #edit-modal .modal-content .modal-body input[type=color] {
+  width: 5rem;
+}/*# sourceMappingURL=color-management.css.map */

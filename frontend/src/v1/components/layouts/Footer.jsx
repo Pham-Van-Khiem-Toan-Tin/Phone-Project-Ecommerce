@@ -52,10 +52,10 @@ const Footer = () => {
           <div className="col-3 column-footer">
             <p>Most Popular Categories</p>
             <ul>
-              <li>Gaming</li>
-              <li>Selfie</li>
-              <li>Read Book</li>
-              <li>Movie</li>
+              <li>Iphone</li>
+              <li>Samsung</li>
+              <li>Oppo</li>
+              <li>Xiaomi</li>
             </ul>
           </div>
           <div className="col-3 column-footer">
