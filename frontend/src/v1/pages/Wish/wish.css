@@ -1,27 +1,27 @@
-.cart {
+.wish {
   margin-top: 150px;
   font-size: 0.8rem;
 }
-.cart .cart-content {
+.wish .cart-content {
   padding: 0.5rem;
   background: #ffffff;
   box-shadow: 5px 5px 23px #e3e3e3, -5px -5px 23px #ffffff;
   margin-bottom: 2rem;
 }
-.cart .cart-content span {
+.wish .cart-content span {
   font-size: 0.8rem;
   font-weight: 500;
 }
-.cart table {
+.wish table {
   box-shadow: 5px 5px 23px #e3e3e3, -5px -5px 23px #ffffff;
 }
-.cart table tbody td .name {
+.wish table tbody td .name {
   font-weight: 600;
 }
-.cart table tbody td input.quanlity-value {
+.wish table tbody td input.quanlity-value {
   text-align: right;
 }
-.cart table tbody td .subtraction, .cart table tbody td .summation {
+.wish table tbody td .subtraction, .wish table tbody td .summation {
   background-color: transparent;
   border: none;
   outline: none;
@@ -29,11 +29,11 @@
   line-height: 24px;
   vertical-align: top;
 }
-.cart table tbody td .subtraction:hover, .cart table tbody td .summation:hover {
+.wish table tbody td .subtraction:hover, .wish table tbody td .summation:hover {
   color: #ffffff;
   background-color: #118fcc;
 }
-.cart table tbody td .btn-delete svg {
+.wish table tbody td .btn-delete svg {
   display: block;
   fill: red;
 }/*# sourceMappingURL=wish.css.map */

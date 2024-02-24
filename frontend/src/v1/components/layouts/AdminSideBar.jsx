@@ -1,78 +1,117 @@
-import React from "react";
+import React, { useState } from "react";
 import "./side-bar.css";
 import { Link } from "react-router-dom";
-import { FaComment, FaLuggageCart, FaMicrosoft, FaShoppingBag, FaUser } from "react-icons/fa";
-
+import {
+  FaComment,
+  FaLuggageCart,
+  FaMicrosoft,
+  FaPaintBrush,
+  FaShoppingBag,
+  FaUser,
+  FaUserShield,
+} from "react-icons/fa";
 const AdminSideBar = () => {
+  const [activeLink, setActiveLink] = useState(() => {
+    const storedActiveLink = localStorage.getItem('activeLink');
+    return storedActiveLink !== null ? parseInt(storedActiveLink) : 0;
+  });
+  let menus = [
+    {
+      link: "../../admin/dashboard",
+      icon: FaMicrosoft,
+      text: "Dashboard",
+    },
+    {
+      link: "products",
+      icon: FaShoppingBag,
+      text: " Products",
+    },
+    {
+      link: "../../admin/all-orders",
+      icon: FaLuggageCart,
+      text: "All Orders",
+    },
+    {
+      link: "../../admin/all-users",
+      icon: FaUser,
+      text: "All Users",
+    },
+    {
+      link: "../../admin/role-management",
+      icon: FaUserShield,
+      text: "Role Management",
+    },
+    {
+      link: "../../admin/category",
+      icon: FaLuggageCart,
+      text: "Category",
+    },
+    {
+      link: "../../admin/color",
+      icon: FaPaintBrush,
+      text: "Color",
+    },
+    {
+      link: "../../admin/reviews",
+      icon: FaComment,
+      text: "Reviews",
+    },
+  ];
+  const handleActiveMenu = (index) => {
+    console.log(activeLink);
+    console.log(index);
+    setActiveLink(index);
+    localStorage.setItem('activeLink', index.toString());
+  }
   return (
     <section className="admin-side-bar col-3">
       <div className="brand">K-store</div>
       <div className="menus">
-        <div className="menu-link">
-          <Link to="../../admin/dashboard" className="rounded ">
-            <FaMicrosoft /> <span>Dashboard</span> 
-          </Link>
-        </div>
-        <div className="accordion accordion-flush" id="adminHeader">
-          <div className="accordion-item menu-dropdown ">
-            <h2 className="accordion-header">
-              <button
-                className="accordion-button collapsed rounded "
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#item-one"
-                aria-expanded="false"
-                aria-controls="item-one"
-              >
-              <FaShoppingBag /> {" Products"}
-              </button>
-            </h2>
-            <div
-              id="item-one"
-              className="accordion-collapse collapse"
-              data-bs-parent="#adminHeader"
-            >
-              <div className="accordion-body p-0">
-                <Link to="/admin/all-products" className="menu-sub-link">
-                  All Products
-                </Link>
-                <Link to="/admin/new-product" className="menu-sub-link">
-                  New Products
+        {menus.map((menu, index) => {
+          const IconComponent = menu.icon;
+          if (menu.link === "products") {
+            return (
+              <div className="accordion accordion-flush" id="adminHeader">
+                <div className="accordion-item menu-dropdown ">
+                  <h2 className="accordion-header">
+                    <button
+                      className={"accordion-button collapsed rounded" + (index == activeLink ? " active" : "") }
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#item-one"
+                      aria-expanded="false"
+                      aria-controls="item-one"
+                    >
+                      <IconComponent /> {menu.text}
+                    </button>
+                  </h2>
+                  <div
+                    id="item-one"
+                    className="accordion-collapse collapse"
+                    data-bs-parent="#adminHeader"
+                  >
+                    <div className="accordion-body p-0">
+                      <Link to="/admin/all-products" onClick={() => handleActiveMenu(index)} className="menu-sub-link">
+                        All Products
+                      </Link>
+                      <Link to="/admin/new-product" onClick={() => handleActiveMenu(index)} className="menu-sub-link">
+                        New Products
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          } else {
+            return (
+              <div className="menu-link" >
+                <Link to={menu.link} onClick={() => handleActiveMenu(index)} className={"rounded" + (index == activeLink ? " active" : "")}>
+                  <IconComponent /> <span>{menu.text}</span>
                 </Link>
               </div>
-            </div>
-          </div>
-        </div>
-        <div className="menu-link">
-          <Link to="../../admin/all-orders" className="menu-link rounded ">
-           <FaLuggageCart /> <span>All Orders</span> 
-          </Link>
-        </div>
-        <div className="menu-link">
-          <Link to="../../admin/all-users" className="menu-link rounded active">
-            <FaUser /> <span>All Users</span> 
-          </Link>
-        </div>
-        <div className="menu-link">
-          <Link to="../../admin/role-management" className="menu-link rounded ">
-            <FaUser /> <span>Role Management</span> 
-          </Link>
-        </div>
-        <div className="menu-link">
-          <Link to="../../admin/category" className="menu-link rounded ">
-           <FaLuggageCart /> <span>Category</span> 
-          </Link>
-        </div>
-        <div className="menu-link">
-          <Link to="../../admin/color" className="menu-link rounded">
-           <FaLuggageCart /> <span>Color</span> 
-          </Link>
-        </div>
-        <div className="menu-link">
-          <Link to="../../admin/reviews" className="menu-link rounded ">
-           <FaComment /> <span>Reviews</span>
-          </Link>
-        </div>
+            );
+          }
+        })}
       </div>
     </section>
   );

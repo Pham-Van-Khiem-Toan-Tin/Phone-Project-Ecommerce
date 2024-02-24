@@ -92,6 +92,17 @@ const UpdateProduct = ( { SideBarComponent, HeaderComponent }) => {
       <SideBarComponent />
       <HeaderComponent />
       <div className="create-product">
+      <p className="title">Create Product</p>
+        <nav aria-label="breadcrumb">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <span className="fw-bold">Home</span>
+            </li>
+            <li className="breadcrumb-item" aria-current="page">
+              product-edit
+            </li>
+          </ol>
+        </nav>
         <form
           encType="multipart/form-data"
           onSubmit={handleSubmitChangeProduct}
@@ -101,6 +112,7 @@ const UpdateProduct = ( { SideBarComponent, HeaderComponent }) => {
           </label>
           <input
             type="text"
+            className="form-control"
             required
             id="productName"
             placeholder="product name..."
@@ -114,6 +126,7 @@ const UpdateProduct = ( { SideBarComponent, HeaderComponent }) => {
             type="number"
             required
             id="productPrice"
+            className="form-control"
             placeholder="price"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
@@ -124,6 +137,7 @@ const UpdateProduct = ( { SideBarComponent, HeaderComponent }) => {
           <textarea
             cols="30"
             rows="2"
+            className="form-control"
             required
             id="productDescription"
             value={description}
@@ -135,6 +149,7 @@ const UpdateProduct = ( { SideBarComponent, HeaderComponent }) => {
           </label>
           <select
             name="model"
+            className="form-select"
             id="model"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
@@ -150,6 +165,7 @@ const UpdateProduct = ( { SideBarComponent, HeaderComponent }) => {
           <select
             name="model"
             id="model"
+            className="form-select"
           >
             <option>Pro</option>
           </select>
@@ -159,6 +175,7 @@ const UpdateProduct = ( { SideBarComponent, HeaderComponent }) => {
           <input
             type="number"
             id="productStock"
+            className="form-control"
             required
             min={1}
             value={Stock}
@@ -203,6 +220,7 @@ const UpdateProduct = ( { SideBarComponent, HeaderComponent }) => {
           <select
             name="model"
             id="model"
+            className="form-select"
           >
             <option>red, blue</option>
           </select>

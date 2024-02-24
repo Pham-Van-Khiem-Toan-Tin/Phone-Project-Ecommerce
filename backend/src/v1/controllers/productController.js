@@ -12,38 +12,47 @@ const reviewModel = require("../models/reviews");
 
 //create product--Admin
 module.exports.createProduct = catchAsyncError(async (req, res, next) => {
-  let images = [];
-  if (typeof req.body.images === "string") {
-    images.push(req.body.images);
-  } else {
-    images = req.body.images;
-  }
-  const imagesLinks = [];
-  for (let i = 0; i < images.length; i++) {
-    const result = await cloudinary.v2.uploader.upload(images[i], {
-      folder: "products",
-    });
-    imagesLinks.push({
-      public_id: result.public_id,
-      url: result.secure_url,
-    });
-  }
-  req.body.images = imagesLinks;
-
-  const product = await productModel.create(req.body);
-
-  if (req.token) {
-    const newAccessToken = req.token;
-    res.status(200).json({
-      success: true,
-      product: product,
-      accessToken: newAccessToken,
-    });
-  } else {
-    res.status(200).json({
-      success: true,
-      product: product,
-    });
+  try {
+    console.log(req.body);
+    let images = [];
+    if (typeof req.body.images === "string") {
+      images.push(req.body.images);
+    } else {
+      images = req.body.images;
+    }
+    const imagesLinks = [];
+    for (let i = 0; i < images.length; i++) {
+      const result = await cloudinary.v2.uploader.upload(images[i].src, {
+        folder: "products",
+      });
+      imagesLinks.push({
+        public_id: result.public_id,
+        url: result.secure_url,
+        color_name: images[i].color,
+        hex: images[i].hex,
+        stock: images[i].stock,
+        order: images[i].order ? 1 : 0
+      });
+    }
+    req.body.images = imagesLinks;
+  
+    const product = await productModel.create(req.body);
+  
+    if (req.token) {
+      const newAccessToken = req.token;
+      res.status(200).json({
+        success: true,
+        product: product,
+        accessToken: newAccessToken,
+      });
+    } else {
+      res.status(200).json({
+        success: true,
+        product: product,
+      });
+    }
+  } catch (error) {
+    console.log(error);
   }
 });
 

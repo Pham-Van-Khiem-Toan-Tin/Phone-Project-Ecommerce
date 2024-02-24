@@ -269,7 +269,7 @@ const Header = () => {
       >
         <div className="offcanvas-header">
           <h5 className="offcanvas-title" id="menuCanvasLabel">
-            Offcanvas
+            Welcome
           </h5>
           <button
             type="button"
@@ -279,10 +279,6 @@ const Header = () => {
           ></button>
         </div>
         <div className="offcanvas-body">
-          <div>
-            Some text as placeholder. In real life you can have the elements you
-            have chosen. Like, text, images, lists, etc.
-          </div>
           <div className="dropdown mt-3">
             <button
               className="btn btn-secondary dropdown-toggle"
@@ -293,13 +289,13 @@ const Header = () => {
             </button>
             <ul className="dropdown-menu">
               <li>
-                <div className="dropdown-item">Action</div>
+                <div className="dropdown-item">Go to dashboard</div>
               </li>
               <li>
-                <div className="dropdown-item">Another action</div>
+                <div className="dropdown-item">Home</div>
               </li>
               <li>
-                <div className="dropdown-item">Something else here</div>
+                <div className="dropdown-item">New product</div>
               </li>
             </ul>
           </div>

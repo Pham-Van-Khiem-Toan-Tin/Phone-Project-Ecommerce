@@ -35,7 +35,7 @@ const Wish = ({HeaderComponent, FooterComponent}) => {
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="cart">
+        <div className="wish">
           <section className="pb-5">
             <div className="container">
               <div>

@@ -23,15 +23,15 @@ const CreateProduct = ({ SideBarComponent, HeaderComponent }) => {
   const { error, isLoading, success } = useSelector(
     (state) => state.newProduct
   );
-  const { colors, resultPerPage, filteredColorCount, message } =
-    useSelector((state) => state.color);
+  const { colors, resultPerPage, filteredColorCount, message } = useSelector(
+    (state) => state.color
+  );
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
-  const [stock, setStock] = useState(20);
-  const [images, setImages] = useState([]);
+  const [cost, setCost] = useState(0);
   const [imagePreview, setImagePreview] = useState([]);
 
   useEffect(() => {
@@ -54,20 +54,36 @@ const CreateProduct = ({ SideBarComponent, HeaderComponent }) => {
   };
   const handleChangeColor = (e, index) => {
     setImagePreview((old) => {
-      old[index] = { ...old[index], color: e.target.value._id, hex: e.target.value.hex };
+      old[index] = {
+        ...old[index],
+        color: e.target.value._id,
+        hex: e.target.value.hex,
+      };
       return [...old];
     });
+  };
+  const handleChangeStock = (e, index) => {
+    setImagePreview((old) => {
+      old[index] = {
+        ...old[index],
+        stock: e.target.value
+      }
+      return [...old];
+    })
   }
   const handleSubmitCreateProduct = (e) => {
+    console.log(imagePreview);
     e.preventDefault();
     const myForm = new FormData();
     myForm.set("name", name);
     myForm.set("price", price);
     myForm.set("category", category);
-    myForm.set("stock", stock);
     myForm.set("description", description);
-    images.forEach((image) => {
-      myForm.append("images", image.src);
+    imagePreview.forEach((image, index) => {
+      myForm.append(`images[${index}][src]`, image.src);
+      myForm.append(`images[${index}][hex]`, image.hex);
+      myForm.append(`images[${index}][color]`, image.color);
+      myForm.append(`images[${index}][stock]`, image.stock);
     });
     console.log("Form data:");
     for (const pair of myForm.entries()) {
@@ -78,21 +94,17 @@ const CreateProduct = ({ SideBarComponent, HeaderComponent }) => {
 
   const handleCreateProductImagesChange = (e) => {
     const files = Array.from(e.target.files);
-    setImages([]);
     setImagePreview([]);
     files.forEach((file) => {
       const reader = new FileReader();
       reader.onload = () => {
         if (reader.readyState === 2) {
           setImagePreview((old) => [...old, { src: reader.result }]);
-          setImages((old) => [...old, { src: reader.result }]);
         }
       };
-      console.log(images);
       reader.readAsDataURL(file);
     });
   };
-  console.log({ data: images });
 
   return (
     <>
@@ -126,6 +138,18 @@ const CreateProduct = ({ SideBarComponent, HeaderComponent }) => {
             placeholder="product name..."
             value={name}
             onChange={(e) => setName(e.target.value)}
+          />
+          <label htmlFor="product-cost">
+            Cost: <span className="text-danger">*</span>
+          </label>
+          <input
+            type="number"
+            required
+            id="product-cost"
+            className="form-control"
+            placeholder="price"
+            value={cost}
+            onChange={(e) => setCost(e.target.value)}
           />
           <label htmlFor="product-price">
             Price: <span className="text-danger">*</span>
@@ -173,19 +197,6 @@ const CreateProduct = ({ SideBarComponent, HeaderComponent }) => {
           <select name="sub-category" id="sub-category" className="form-select">
             <option>Pro</option>
           </select>
-          <label htmlFor="product-stock">
-            Stock: <span className="text-danger">*</span>
-          </label>
-          <input
-            type="number"
-            className="form-control"
-            id="product-stock"
-            required
-            min={0}
-            value={stock}
-            placeholder="Stock"
-            onChange={(e) => setStock(e.target.value)}
-          />
           <label htmlFor="productImage">
             Image <BsFillImageFill />: <span className="text-danger">*</span>
           </label>
@@ -202,13 +213,47 @@ const CreateProduct = ({ SideBarComponent, HeaderComponent }) => {
             {imagePreview.map((image, index) => {
               return (
                 <div key={index}>
-                  <img  src={image.src} className="image-preview" alt="Product Preview" />
-                  <label htmlFor={"color" + index} className="form-label">Color picker</label>
-                  {image?.color && (<input type="color" class="form-control form-control-color" value={image.hex} title="Choose your color" />)}
-                  <select className="form-select" onChange={(e) =>handleChangeColor(e, index)} id={"color" + index} title="Choose your color">
-                    {colors && colors.map((item) => (<option value={item}>{item._id}</option>))}
+                  <img
+                    src={image.src}
+                    className="image-preview"
+                    alt="Product Preview"
+                  />
+                  
+                  <label htmlFor={"color" + index} className="form-label">
+                    Color picker
+                  </label>
+                  {image?.color && (
+                    <input
+                      type="color"
+                      class="form-control form-control-color"
+                      value={image.hex}
+                      title="Choose your color"
+                    />
+                  )}
+                  <select
+                    className="form-select"
+                    onChange={(e) => handleChangeColor(e, index)}
+                    id={"color" + index}
+                    title="Choose your color"
+                  >
+                    {colors &&
+                      colors.map((item) => (
+                        <option value={item}>{item._id}</option>
+                      ))}
                   </select>
-                  {image?.order && (<p>Main: true</p>)}
+                  {image?.order && <p>Main: true</p>}
+                  <label htmlFor="product-stock">
+                    Stock: <span className="text-danger">*</span>
+                  </label>
+                  <input
+                    type="number"
+                    className="form-control"
+                    required
+                    min={0}
+                    value={image.stock ? image.stock : 20}
+                    placeholder="Stock"
+                    onChange={(e) => handleChangeStock(e, index)}
+                  />
                 </div>
               );
             })}
